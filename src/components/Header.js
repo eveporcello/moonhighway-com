@@ -1,12 +1,12 @@
 import React from 'react'
-import { css } from 'emotion'
+import { css } from '@emotion/core'
 
 import { Container } from './markupHelpers'
 import Logo from './Logo'
 
 const Header = ({ logoDark }) => (
   <header
-    className={css`
+    css={css`
       width: 100%;
       padding: 55px 0;
       flex-shrink: 0;

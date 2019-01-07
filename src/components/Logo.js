@@ -1,9 +1,9 @@
 import React from 'react'
-import { css } from 'emotion'
+import { css } from '@emotion/core'
 
 const Logo = ({ width, dark }) => (
   <div
-    className={css`
+    css={css`
       width: ${width ? width : 87}px;
     `}
   >
