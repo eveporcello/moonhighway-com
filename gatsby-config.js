@@ -7,7 +7,7 @@ module.exports = {
     description: 'This is where they post things!',
     keywords: ['Video Blogger'],
   },
-  plugins: [1
+  plugins: [
     {
       resolve: 'gatsby-source-filesystem',
       options: {
