@@ -5,8 +5,13 @@ import { MDXProvider } from '@mdx-js/tag'
 import { css, Global } from '@emotion/core'
 
 import mdxComponents from './mdx'
+import Header from './Header'
+import Footer from './Footer'
 
 const globalStyles = css`
+  * {
+    box-sizing: border-box;
+  }
   html,
   body {
     margin: 0;
@@ -49,19 +54,30 @@ export default ({ site, frontmatter = {}, children }) => {
 
   return (
     <Fragment>
-      <Helmet
-        title={title}
-        meta={[
-          { name: 'description', content: description },
-          { name: 'keywords', content: keywords },
-        ]}
+      <div
+        css={css`
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          min-height: 100vh;
+        `}
       >
-        <html lang="en" />
-      </Helmet>
-      <Global styles={globalStyles} />
-      <MDXProvider components={mdxComponents}>
-        <Fragment>{children}</Fragment>
-      </MDXProvider>
+        <Helmet
+          title={title}
+          meta={[
+            { name: 'description', content: description },
+            { name: 'keywords', content: keywords },
+          ]}
+        >
+          <html lang="en" />
+        </Helmet>
+        <Global styles={globalStyles} />
+        <Header logoDark />
+        <MDXProvider components={mdxComponents}>
+          <Fragment>{children}</Fragment>
+        </MDXProvider>
+        <Footer />
+      </div>
     </Fragment>
   )
 }
