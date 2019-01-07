@@ -9,7 +9,7 @@ const Logo = ({ width, dark }) => (
   >
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 87 53">
       <g
-        fill={dark ? '#000' : '#fff'}
+        fill={dark ? '#090909' : '#fff'}
         fill-rule="evenodd"
         transform="translate(-1)"
       >

@@ -16,6 +16,7 @@ const globalStyles = css`
   body {
     margin: 0;
     padding: 0;
+    background: #fafafa;
   }
 
   ${() => {
@@ -37,7 +38,7 @@ const globalStyles = css`
   }
 `
 
-export default ({ site, frontmatter = {}, children }) => {
+export default ({ site, frontmatter = {}, children, dark }) => {
   const {
     title,
     description: siteDescription,
@@ -72,9 +73,18 @@ export default ({ site, frontmatter = {}, children }) => {
           <html lang="en" />
         </Helmet>
         <Global styles={globalStyles} />
-        <Header logoDark />
+        <Header dark={dark} />
         <MDXProvider components={mdxComponents}>
-          <Fragment>{children}</Fragment>
+          <Fragment>
+            <div
+              css={css`
+                flex-grow: 1;
+                width: 100%;
+              `}
+            >
+              {children}
+            </div>
+          </Fragment>
         </MDXProvider>
         <Footer />
       </div>
