@@ -4,8 +4,6 @@ import { css } from '@emotion/core'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 
-import underConstruction from './uc.gif'
-
 export default function Index({ data: { site } }) {
   return (
     <Layout site={site}>
