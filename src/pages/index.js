@@ -3,9 +3,39 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
-import { Container } from '../components/markupHelpers'
+import { Container } from '../components/markupHelpers/'
+import Item from '../components/Item'
 
 import imgMoon from '../images/moon.jpg'
+import categories from '../data/categories'
+
+const Button = props => {
+  const { children, ...restProps } = props
+  return (
+    <Link
+      {...restProps}
+      css={css`
+        padding: 13px 20px;
+        background: white;
+        color: black;
+        margin: 0;
+        box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.15);
+        border-radius: 3px;
+        display: inline-flex;
+        align-items: center;
+      `}
+    >
+      <span>{children}</span>
+      <span
+        css={css`
+          margin-left: 20px;
+        `}
+      >
+        →
+      </span>
+    </Link>
+  )
+}
 
 const Hero = () => (
   <section
@@ -59,6 +89,20 @@ export default function Index({ data: { site } }) {
   return (
     <Layout site={site} dark>
       <Hero />
+      <br />
+      <br />
+      {/* <Button>123</Button> */}
+      {categories.map(category => (
+        <Item
+          key={category.title}
+          title={category.title}
+          description={category.description}
+          thumb={category.thumb}
+          button={category.button}
+          length={category.length}
+          tags={category.tags}
+        />
+      ))}
     </Layout>
   )
 }
