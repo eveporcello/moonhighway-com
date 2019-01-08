@@ -19,6 +19,7 @@ const globalStyles = css`
     margin: 0;
     padding: 0;
     background: #fafafa;
+    color: #090909;
   }
   html,
   body {
