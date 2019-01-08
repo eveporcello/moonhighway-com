@@ -15,7 +15,7 @@ const Header = ({ dark }) => (
     `}
   >
     <Container>
-      <div
+      <nav
         css={css`
           display: flex;
           justify-content: space-between;
@@ -43,7 +43,7 @@ const Header = ({ dark }) => (
           <a href="">About</a>
           <a href="">Contact us</a>
         </div>
-      </div>
+      </nav>
     </Container>
   </header>
 )
