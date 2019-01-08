@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="335" viewBox="0 0 255 335">
+  <defs>
+    <polygon id="css3kickoff-a" points="0 0 0 315 163.974 315 235 315 235 246.741 235 0"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" fill-rule="nonzero" stroke="#FFF" stroke-width="10" d="M5,5 L5,330 L178,330 L250,330 L250,5 L5,5 Z"/>
+    <g transform="translate(10 10)">
+      <mask id="css3kickoff-b" fill="#fff">
+        <use xlink:href="#css3kickoff-a"/>
+      </mask>
+      <use fill="#264DE4" fill-rule="nonzero" opacity=".1" xlink:href="#css3kickoff-a"/>
+      <path stroke="#264DE4" stroke-dasharray="2 5" stroke-linecap="square" stroke-width="2" d="M17 22L77 22 77 82 17 82 17 22zM158 22L218 22 218 82 158 82 158 22zM158 163L218 163 218 223 158 223 158 163zM88 22L148 22 148 82 88 82 88 22zM17 163L148 163 148 223 17 223 17 163zM17 92L218 92 218 152 17 152 17 92zM17 233L218 233 218 293 17 293 17 233z" mask="url(#css3kickoff-b)" opacity=".2"/>
+      <g mask="url(#css3kickoff-b)">
+        <g transform="translate(102 134)">
+          <polygon fill="#264DE4" points="31.803 9.065 28.914 42.091 15.926 45.764 2.974 42.096 .087 9.065"/>
+          <polygon fill="#2965F1" points="26.44 39.988 28.909 11.766 15.945 11.766 15.945 42.956"/>
+          <polygon fill="#EBEBEB" points="6.704 24.017 7.06 28.068 15.945 28.068 15.945 24.017"/>
+          <polygon fill="#EBEBEB" points="15.945 15.817 15.932 15.817 5.989 15.817 6.35 19.868 15.945 19.868"/>
+          <polygon fill="#EBEBEB" points="15.945 38.752 15.945 34.538 15.928 34.542 11.506 33.324 11.223 30.093 9.075 30.093 7.238 30.093 7.794 36.454 15.927 38.758"/>
+          <polygon fill="#000" points="7.552 .089 12.361 .089 12.361 2.141 9.563 2.141 9.563 4.193 12.361 4.193 12.361 6.245 7.552 6.245"/>
+          <polygon fill="#000" points="13.322 .089 18.131 .089 18.131 1.873 15.333 1.873 15.333 2.23 18.131 2.23 18.131 6.334 13.322 6.334 13.322 4.46 16.12 4.46 16.12 4.104 13.322 4.104"/>
+          <polygon fill="#000" points="19.093 .089 23.902 .089 23.902 1.873 21.104 1.873 21.104 2.23 23.902 2.23 23.902 6.334 19.093 6.334 19.093 4.46 21.891 4.46 21.891 4.104 19.093 4.104"/>
+          <polygon fill="#FFF" points="20.821 28.068 20.36 33.322 15.932 34.541 15.932 38.756 24.071 36.454 24.131 35.77 25.064 25.105 25.161 24.017 25.878 15.817 15.932 15.817 15.932 19.868 21.526 19.868 21.165 24.017 15.932 24.017 15.932 28.068"/>
+        </g>
+      </g>
+    </g>
+    <rect width="86" height="12" x="39" y="115" fill="#FFF" fill-rule="nonzero"/>
+    <rect width="33" height="12" x="180" y="256" fill="#FFF" fill-rule="nonzero"/>
+    <rect width="48" height="12" x="127" y="256" fill="#FFF" fill-rule="nonzero"/>
+    <rect width="33" height="7" x="39" y="132" fill="#FFF" fill-rule="nonzero"/>
+    <rect width="58" height="7" x="127" y="273" fill="#FFF" fill-rule="nonzero"/>
+    <rect width="58" height="7" x="39" y="142" fill="#FFF" fill-rule="nonzero"/>
+    <rect width="29" height="7" x="127" y="283" fill="#FFF" fill-rule="nonzero"/>
+    <g fill-rule="nonzero" stroke="#264DE4" stroke-dasharray="2 5" stroke-linecap="square" stroke-width="2" opacity=".2" transform="translate(178 183)">
+      <path d="M0,0 L40.3278689,40"/>
+      <path d="M0,0 L40.3278689,40" transform="matrix(-1 0 0 1 41 0)"/>
+    </g>
+  </g>
+</svg>

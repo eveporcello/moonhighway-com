@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="335" viewBox="0 0 255 335">
+  <defs>
+    <polygon id="responsivedesign-a" points="0 0 0 315 163.974 315 235 315 235 246.741 235 0"/>
+    <linearGradient id="responsivedesign-c" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#C3CDF8"/>
+      <stop offset="100%" stop-color="#F2F2F2" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="responsivedesign-d" x1="50%" x2="50%" y1="100%" y2="0%">
+      <stop offset="0%" stop-color="#C3CDF8"/>
+      <stop offset="100%" stop-color="#F2F2F2" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" fill-rule="nonzero" stroke="#FFF" stroke-width="10" d="M5,5 L5,330 L178,330 L250,330 L250,5 L5,5 Z"/>
+    <g transform="translate(10 10)">
+      <mask id="responsivedesign-b" fill="#fff">
+        <use xlink:href="#responsivedesign-a"/>
+      </mask>
+      <use fill="#264DE4" fill-rule="nonzero" opacity=".1" xlink:href="#responsivedesign-a"/>
+      <g fill="url(#responsivedesign-c)" fill-rule="nonzero" mask="url(#responsivedesign-b)" opacity=".5">
+        <g transform="translate(17 17)">
+          <rect width="22" height="64" style="mix-blend-mode:overlay"/>
+          <rect width="22" height="64" x="36" style="mix-blend-mode:overlay"/>
+          <rect width="22" height="64" x="72" style="mix-blend-mode:overlay"/>
+          <rect width="22" height="64" x="108" style="mix-blend-mode:overlay"/>
+          <rect width="22" height="64" x="144" style="mix-blend-mode:overlay"/>
+          <rect width="22" height="64" x="180" style="mix-blend-mode:overlay"/>
+        </g>
+      </g>
+      <g fill="url(#responsivedesign-d)" fill-rule="nonzero" mask="url(#responsivedesign-b)" opacity=".5">
+        <g transform="translate(17 234)">
+          <rect width="58" height="64" style="mix-blend-mode:overlay"/>
+          <rect width="58" height="64" x="72" style="mix-blend-mode:overlay"/>
+          <rect width="58" height="64" x="144" style="mix-blend-mode:overlay"/>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(27 81)">
+      <rect width="133" height="168" x="70.5" y="18.5" fill="#728FFE" stroke="#E9EDFC" stroke-width="3" rx="5"/>
+      <path fill="#D8DFFA" fill-rule="nonzero" d="M18.5 151L19.5 151 19.5 154 18.5 154 18.5 162-.5 152.5 18.5 143 18.5 151zM39.5 154L39 154 38 154 36.5 154 36.5 151 38 151 39 151 39.5 151 39.5 143 58.5 152.5 39.5 162 39.5 154zM24 154L22.5 154 22.5 151 24 151 25 151 26.5 151 26.5 154 25 154 24 154zM31 154L29.5 154 29.5 151 31 151 32 151 33.5 151 33.5 154 32 154 31 154zM90.5-2.22044605e-16L93-2.22044605e-16 94.5-2.22044605e-16 94.5 3 93 3 90.5 3 90.5 11 71.5 1.5 90.5-8 90.5 0zM183.5 3L183 3 179 3 177.5 3 177.5-6.66133815e-16 179-6.66133815e-16 183-6.66133815e-16 183.5-6.66133815e-16 183.5-8 202.5 1.5 183.5 11 183.5 3zM104 3L102.5 3 102.5-2.22044605e-16 104-2.22044605e-16 108-2.22044605e-16 109.5-2.22044605e-16 109.5 3 108 3 104 3zM119 3L117.5 3 117.5-4.4408921e-16 119-4.4408921e-16 123-4.4408921e-16 124.5-4.4408921e-16 124.5 3 123 3 119 3zM134 3L132.5 3 132.5-4.4408921e-16 134-4.4408921e-16 138-4.4408921e-16 139.5-4.4408921e-16 139.5 3 138 3 134 3zM149 3L147.5 3 147.5-4.4408921e-16 149-4.4408921e-16 153-4.4408921e-16 154.5-4.4408921e-16 154.5 3 153 3 149 3zM164 3L162.5 3 162.5-6.66133815e-16 164-6.66133815e-16 168-6.66133815e-16 169.5-6.66133815e-16 169.5 3 168 3 164 3z"/>
+      <rect width="14" height="147" x="85" y="38" fill="url(#responsivedesign-d)" fill-rule="nonzero" style="mix-blend-mode:overlay"/>
+      <rect width="14" height="147" x="103" y="38" fill="url(#responsivedesign-d)" fill-rule="nonzero" style="mix-blend-mode:overlay"/>
+      <rect width="14" height="147" x="121" y="38" fill="url(#responsivedesign-d)" fill-rule="nonzero" style="mix-blend-mode:overlay"/>
+      <rect width="14" height="147" x="139" y="38" fill="url(#responsivedesign-d)" fill-rule="nonzero" style="mix-blend-mode:overlay"/>
+      <rect width="14" height="147" x="157" y="38" fill="url(#responsivedesign-d)" fill-rule="nonzero" style="mix-blend-mode:overlay"/>
+      <rect width="14" height="147" x="175" y="38" fill="url(#responsivedesign-d)" fill-rule="nonzero" style="mix-blend-mode:overlay"/>
+    </g>
+    <g transform="translate(27 121)">
+      <rect width="61" height="94" x="-1.5" y="-1.5" fill="#728FFE" stroke="#E9EDFC" stroke-width="3" rx="5"/>
+      <rect width="14" height="81" x="4" y="10" fill="url(#responsivedesign-d)" fill-rule="nonzero" style="mix-blend-mode:overlay"/>
+      <rect width="14" height="81" x="22" y="10" fill="url(#responsivedesign-d)" fill-rule="nonzero" style="mix-blend-mode:overlay"/>
+      <rect width="14" height="81" x="40" y="10" fill="url(#responsivedesign-d)" fill-rule="nonzero" style="mix-blend-mode:overlay"/>
+    </g>
+  </g>
+</svg>

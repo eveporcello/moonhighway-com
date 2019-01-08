@@ -1,0 +1,397 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="335" viewBox="0 0 255 335">
+  <defs>
+    <radialGradient id="d3-data-visualizations-b" r="134.043%" fx="50%" fy="50%" gradientTransform="matrix(0 .74603 -1 0 1 .127)">
+      <stop offset="0%" stop-color="#8E372C" stop-opacity=".5"/>
+      <stop offset="100%" stop-color="#C65C4F" stop-opacity=".5"/>
+    </radialGradient>
+    <polygon id="d3-data-visualizations-a" points="10 10 10 325 173.974 325 245 325 245 256.741 245 10"/>
+    <radialGradient id="d3-data-visualizations-d" cx="49.902%" cy="51.956%" r="88.402%" fx="49.902%" fy="51.956%" gradientTransform="scale(-1 -.60925) rotate(-88.254 -.707 .348)">
+      <stop offset="0%" stop-color="#8E372C" stop-opacity="0"/>
+      <stop offset="98.103%" stop-color="#C65C4F"/>
+    </radialGradient>
+    <linearGradient id="d3-data-visualizations-e" x1="-89.677%" x2="106.628%" y1="-92.814%" y2="106.042%">
+      <stop offset="0%" stop-color="#F9A03C"/>
+      <stop offset="100%" stop-color="#F7974E"/>
+    </linearGradient>
+    <linearGradient id="d3-data-visualizations-f" x1="-258.932%" x2="97.616%" y1="-255.015%" y2="99.762%">
+      <stop offset="0%" stop-color="#F9A03C"/>
+      <stop offset="100%" stop-color="#F7974E"/>
+    </linearGradient>
+    <linearGradient id="d3-data-visualizations-g" x1="-254.746%" x2="99.122%" y1="-261.98%" y2="101.694%">
+      <stop offset="0%" stop-color="#F9A03C"/>
+      <stop offset="100%" stop-color="#F7974E"/>
+    </linearGradient>
+    <linearGradient id="d3-data-visualizations-h" x1="1.723%" x2="90.579%" y1="-1.822%" y2="92.107%">
+      <stop offset="0%" stop-color="#F26D58"/>
+      <stop offset="100%" stop-color="#F9A03C"/>
+    </linearGradient>
+    <linearGradient id="d3-data-visualizations-i" x1="15.843%" x2="120.125%" y1="-14.567%" y2="81.316%">
+      <stop offset="0%" stop-color="#B84E51"/>
+      <stop offset="100%" stop-color="#F68E48"/>
+    </linearGradient>
+    <linearGradient id="d3-data-visualizations-j" x1="10.005%" x2="74.944%" y1="23.465%" y2="147.387%">
+      <stop offset="0%" stop-color="#F9A03C"/>
+      <stop offset="100%" stop-color="#F7974E"/>
+    </linearGradient>
+    <linearGradient id="d3-data-visualizations-k" x1="96.288%" x2="0%" y1="3.334%" y2="89.827%">
+      <stop offset="0%" stop-color="#F99E40"/>
+      <stop offset="100%" stop-color="#B9574A"/>
+    </linearGradient>
+    <linearGradient id="d3-data-visualizations-l" x1="0%" x2="96.288%" y1="89.827%" y2="3.334%">
+      <stop offset="0%" stop-color="#F99E40"/>
+      <stop offset="100%" stop-color="#C05F50"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" fill-rule="nonzero" stroke="#FFF" stroke-width="10" d="M5,5 L5,330 L178,330 L250,330 L250,5 L5,5 Z"/>
+    <mask id="d3-data-visualizations-c" fill="#fff">
+      <use xlink:href="#d3-data-visualizations-a"/>
+    </mask>
+    <g fill-rule="nonzero">
+      <use fill="#C65C4F" xlink:href="#d3-data-visualizations-a"/>
+      <use fill="url(#d3-data-visualizations-b)" xlink:href="#d3-data-visualizations-a"/>
+    </g>
+    <g mask="url(#d3-data-visualizations-c)" opacity=".6" style="mix-blend-mode:overlay">
+      <g opacity=".3" transform="translate(-183 -143)">
+        <g transform="rotate(45 -71.771 492.5)">
+          <g fill-rule="nonzero" stroke="#FFF" style="mix-blend-mode:overlay" transform="translate(1 1)">
+            <rect width="45.805" height="46.397" y="138.603"/>
+            <rect width="45.805" height="46.397" y="92.206"/>
+            <rect width="45.8" height="45.81" y="46.397"/>
+            <rect width="45.805" height="46.397"/>
+            <rect width="45.805" height="46.397" x="45.805" y="138.603"/>
+            <rect width="45.805" height="46.397" x="45.805" y="92.206"/>
+            <rect width="45.8" height="45.81" x="45.805" y="46.397"/>
+            <rect width="45.805" height="46.397" x="45.805"/>
+            <rect width="45.805" height="46.397" x="91.61" y="138.603"/>
+            <rect width="45.805" height="46.397" x="91.61" y="92.206"/>
+            <rect width="46.385" height="45.81" x="91.61" y="46.397"/>
+            <rect width="45.805" height="46.397" x="91.61"/>
+          </g>
+          <g fill-rule="nonzero" stroke="#FFF" style="mix-blend-mode:overlay" transform="translate(.852 .831)">
+            <rect width="23.192" height="22.854" y="69.146"/>
+            <rect width="22.903" height="23.146" y="46"/>
+            <rect width="22.9" height="22.854" y="23.146"/>
+            <rect width="22.903" height="23.146"/>
+            <rect width="23.192" height="22.854" x="22.903" y="69.146"/>
+            <rect width="22.903" height="23.146" x="22.903" y="46"/>
+            <rect width="22.9" height="22.854" x="22.903" y="23.146"/>
+            <rect width="22.903" height="23.146" x="22.903"/>
+            <rect width="23.192" height="22.854" x="45.805" y="69.146"/>
+            <rect width="22.903" height="23.146" x="45.805" y="46"/>
+            <rect width="23.192" height="22.854" x="45.805" y="23.146"/>
+            <rect width="22.903" height="23.146" x="45.805"/>
+          </g>
+          <g fill-rule="nonzero" stroke="#FFF" style="mix-blend-mode:overlay" transform="translate(70.148 .831)">
+            <rect width="23.192" height="22.854" y="69.146"/>
+            <rect width="22.903" height="23.146" y="46"/>
+            <rect width="22.9" height="22.854" y="23.146"/>
+            <rect width="22.903" height="23.146"/>
+            <rect width="23.192" height="22.854" x="22.903" y="69.146"/>
+            <rect width="22.903" height="23.146" x="22.903" y="46"/>
+            <rect width="22.9" height="22.854" x="22.903" y="23.146"/>
+            <rect width="22.903" height="23.146" x="22.903"/>
+            <rect width="23.192" height="22.854" x="45.805" y="69.146"/>
+            <rect width="22.903" height="23.146" x="45.805" y="46"/>
+            <rect width="23.192" height="22.854" x="45.805" y="23.146"/>
+            <rect width="22.903" height="23.146" x="45.805"/>
+          </g>
+          <g fill-rule="nonzero" stroke="#FFF" style="mix-blend-mode:overlay" transform="translate(.498 93.315)">
+            <rect width="22.903" height="23.324" y="69.676"/>
+            <rect width="22.903" height="23.324" y="46.352"/>
+            <rect width="22.9" height="23.029" y="23.324"/>
+            <rect width="22.903" height="23.324"/>
+            <rect width="22.903" height="23.324" x="22.903" y="69.676"/>
+            <rect width="22.903" height="23.324" x="22.903" y="46.352"/>
+            <rect width="22.9" height="23.029" x="22.903" y="23.324"/>
+            <rect width="22.903" height="23.324" x="22.903"/>
+            <rect width="22.903" height="23.324" x="45.805" y="69.676"/>
+            <rect width="22.903" height="23.324" x="45.805" y="46.352"/>
+            <rect width="23.192" height="23.029" x="45.805" y="23.324"/>
+            <rect width="22.903" height="23.324" x="45.805"/>
+          </g>
+          <g fill-rule="nonzero" stroke="#FFF" style="mix-blend-mode:overlay" transform="translate(69.795 93.315)">
+            <rect width="22.903" height="23.324" y="69.676"/>
+            <rect width="22.903" height="23.324" y="46.352"/>
+            <rect width="22.9" height="23.029" y="23.324"/>
+            <rect width="22.903" height="23.324"/>
+            <rect width="22.903" height="23.324" x="22.903" y="69.676"/>
+            <rect width="22.903" height="23.324" x="22.903" y="46.352"/>
+            <rect width="22.9" height="23.029" x="22.903" y="23.324"/>
+            <rect width="22.903" height="23.324" x="22.903"/>
+            <rect width="22.903" height="23.324" x="45.805" y="69.676"/>
+            <rect width="22.903" height="23.324" x="45.805" y="46.352"/>
+            <rect width="23.192" height="23.029" x="45.805" y="23.324"/>
+            <rect width="22.903" height="23.324" x="45.805"/>
+          </g>
+        </g>
+        <g fill-rule="nonzero" stroke="#FFF" transform="rotate(45 65.51 159.864)">
+          <rect width="46.385" height="45.81" x="91.61" y="46.397" style="mix-blend-mode:overlay" transform="translate(1 1)"/>
+          <rect width="22.903" height="23.146" x="45.805" y="46" style="mix-blend-mode:overlay" transform="translate(70.148 .831)"/>
+        </g>
+        <g fill-rule="nonzero" stroke="#FFF" transform="rotate(45 -139.86 659.297)">
+          <g style="mix-blend-mode:overlay" transform="translate(1 1)">
+            <rect width="45.805" height="46.397" y="138.603"/>
+            <rect width="45.805" height="46.397" y="92.206"/>
+            <rect width="45.8" height="45.81" y="46.397"/>
+            <rect width="45.805" height="46.397"/>
+            <rect width="45.805" height="46.397" x="45.805" y="138.603"/>
+            <rect width="45.805" height="46.397" x="45.805" y="92.206"/>
+            <rect width="45.8" height="45.81" x="45.805" y="46.397"/>
+            <rect width="45.805" height="46.397" x="45.805"/>
+            <rect width="45.805" height="46.397" x="91.61" y="138.603"/>
+            <rect width="45.805" height="46.397" x="91.61" y="92.206"/>
+            <rect width="46.385" height="45.81" x="91.61" y="46.397"/>
+          </g>
+          <g style="mix-blend-mode:overlay" transform="translate(.852 .831)">
+            <rect width="23.192" height="22.854" y="69.146"/>
+            <rect width="22.903" height="23.146" y="46"/>
+            <rect width="22.9" height="22.854" y="23.146"/>
+            <rect width="22.903" height="23.146"/>
+            <rect width="23.192" height="22.854" x="22.903" y="69.146"/>
+            <rect width="22.903" height="23.146" x="22.903" y="46"/>
+            <rect width="22.9" height="22.854" x="22.903" y="23.146"/>
+            <rect width="22.903" height="23.146" x="22.903"/>
+            <rect width="23.192" height="22.854" x="45.805" y="69.146"/>
+            <rect width="22.903" height="23.146" x="45.805" y="46"/>
+            <rect width="23.192" height="22.854" x="45.805" y="23.146"/>
+          </g>
+          <g style="mix-blend-mode:overlay" transform="translate(70.148 .831)">
+            <rect width="23.192" height="22.854" y="69.146"/>
+            <rect width="22.903" height="23.146" y="46"/>
+            <rect width="23.192" height="22.854" x="22.903" y="69.146"/>
+          </g>
+          <g style="mix-blend-mode:overlay" transform="translate(.498 93.315)">
+            <rect width="22.903" height="23.324" y="69.676"/>
+            <rect width="22.903" height="23.324" y="46.352"/>
+            <rect width="22.9" height="23.029" y="23.324"/>
+            <rect width="22.903" height="23.324"/>
+            <rect width="22.903" height="23.324" x="22.903" y="69.676"/>
+            <rect width="22.903" height="23.324" x="22.903" y="46.352"/>
+            <rect width="22.9" height="23.029" x="22.903" y="23.324"/>
+            <rect width="22.903" height="23.324" x="22.903"/>
+            <rect width="22.903" height="23.324" x="45.805" y="69.676"/>
+            <rect width="22.903" height="23.324" x="45.805" y="46.352"/>
+            <rect width="23.192" height="23.029" x="45.805" y="23.324"/>
+            <rect width="22.903" height="23.324" x="45.805"/>
+          </g>
+          <g style="mix-blend-mode:overlay" transform="translate(69.795 93.315)">
+            <rect width="22.903" height="23.324" y="69.676"/>
+            <rect width="22.903" height="23.324" y="46.352"/>
+            <rect width="22.9" height="23.029" y="23.324"/>
+            <rect width="22.903" height="23.324"/>
+            <rect width="22.903" height="23.324" x="22.903" y="69.676"/>
+            <rect width="22.903" height="23.324" x="22.903" y="46.352"/>
+            <rect width="22.9" height="23.029" x="22.903" y="23.324"/>
+            <rect width="22.903" height="23.324" x="22.903"/>
+            <rect width="22.903" height="23.324" x="45.805" y="46.352"/>
+            <rect width="23.192" height="23.029" x="45.805" y="23.324"/>
+            <rect width="22.903" height="23.324" x="45.805"/>
+          </g>
+        </g>
+        <g fill-rule="nonzero" stroke="#FFF" transform="rotate(45 -2.578 326.66)">
+          <g style="mix-blend-mode:overlay" transform="translate(1 1)">
+            <rect width="45.805" height="46.397" y="92.206"/>
+            <rect width="45.8" height="45.81" y="46.397"/>
+            <rect width="45.805" height="46.397"/>
+            <rect width="45.805" height="46.397" x="45.805" y="138.603"/>
+            <rect width="45.805" height="46.397" x="45.805" y="92.206"/>
+            <rect width="45.8" height="45.81" x="45.805" y="46.397"/>
+            <rect width="45.805" height="46.397" x="45.805"/>
+            <rect width="45.805" height="46.397" x="91.61" y="138.603"/>
+            <rect width="45.805" height="46.397" x="91.61" y="92.206"/>
+            <rect width="46.385" height="45.81" x="91.61" y="46.397"/>
+            <rect width="45.805" height="46.397" x="91.61"/>
+          </g>
+          <g style="mix-blend-mode:overlay" transform="translate(.852 .831)">
+            <rect width="23.192" height="22.854" y="69.146"/>
+            <rect width="22.903" height="23.146" y="46"/>
+            <rect width="22.9" height="22.854" y="23.146"/>
+            <rect width="23.192" height="22.854" x="22.903" y="69.146"/>
+            <rect width="22.903" height="23.146" x="22.903" y="46"/>
+            <rect width="22.9" height="22.854" x="22.903" y="23.146"/>
+            <rect width="22.903" height="23.146" x="22.903"/>
+            <rect width="23.192" height="22.854" x="45.805" y="69.146"/>
+            <rect width="22.903" height="23.146" x="45.805" y="46"/>
+            <rect width="23.192" height="22.854" x="45.805" y="23.146"/>
+            <rect width="22.903" height="23.146" x="45.805"/>
+          </g>
+          <g style="mix-blend-mode:overlay" transform="translate(70.148 .831)">
+            <rect width="23.192" height="22.854" y="69.146"/>
+            <rect width="22.903" height="23.146" y="46"/>
+            <rect width="22.9" height="22.854" y="23.146"/>
+            <rect width="22.903" height="23.146"/>
+            <rect width="23.192" height="22.854" x="22.903" y="69.146"/>
+            <rect width="22.903" height="23.146" x="22.903" y="46"/>
+            <rect width="22.9" height="22.854" x="22.903" y="23.146"/>
+            <rect width="22.903" height="23.146" x="22.903"/>
+            <rect width="23.192" height="22.854" x="45.805" y="69.146"/>
+            <rect width="22.903" height="23.146" x="45.805" y="46"/>
+            <rect width="23.192" height="22.854" x="45.805" y="23.146"/>
+            <rect width="22.903" height="23.146" x="45.805"/>
+          </g>
+          <g style="mix-blend-mode:overlay" transform="translate(.498 93.315)">
+            <rect width="22.903" height="23.324" x="22.903"/>
+            <rect width="23.192" height="23.029" x="45.805" y="23.324"/>
+            <rect width="22.903" height="23.324" x="45.805"/>
+          </g>
+          <g style="mix-blend-mode:overlay" transform="translate(69.795 93.315)">
+            <rect width="22.903" height="23.324" y="46.352"/>
+            <rect width="22.9" height="23.029" y="23.324"/>
+            <rect width="22.903" height="23.324"/>
+            <rect width="22.903" height="23.324" x="22.903" y="69.676"/>
+            <rect width="22.903" height="23.324" x="22.903" y="46.352"/>
+            <rect width="22.9" height="23.029" x="22.903" y="23.324"/>
+            <rect width="22.903" height="23.324" x="22.903"/>
+            <rect width="22.903" height="23.324" x="45.805" y="69.676"/>
+            <rect width="22.903" height="23.324" x="45.805" y="46.352"/>
+            <rect width="23.192" height="23.029" x="45.805" y="23.324"/>
+            <rect width="22.903" height="23.324" x="45.805"/>
+          </g>
+        </g>
+        <g transform="translate(277 15)">
+          <g fill-rule="nonzero" stroke="#FFF" transform="rotate(45 65.51 159.864)">
+            <g style="mix-blend-mode:overlay" transform="translate(1 1)">
+              <rect width="45.805" height="46.397" y="138.603"/>
+              <rect width="45.805" height="46.397" y="92.206"/>
+              <rect width="45.805" height="46.397" x="45.805" y="138.603"/>
+              <rect width="45.805" height="46.397" x="45.805" y="92.206"/>
+              <rect width="45.8" height="45.81" x="45.805" y="46.397"/>
+              <rect width="45.805" height="46.397" x="91.61" y="138.603"/>
+              <rect width="45.805" height="46.397" x="91.61" y="92.206"/>
+              <rect width="46.385" height="45.81" x="91.61" y="46.397"/>
+            </g>
+            <g style="mix-blend-mode:overlay" transform="translate(70.148 .831)">
+              <rect width="23.192" height="22.854" y="69.146"/>
+              <rect width="23.192" height="22.854" x="22.903" y="69.146"/>
+              <rect width="22.903" height="23.146" x="22.903" y="46"/>
+              <rect width="23.192" height="22.854" x="45.805" y="69.146"/>
+            </g>
+            <g style="mix-blend-mode:overlay" transform="translate(.498 93.315)">
+              <rect width="22.903" height="23.324" y="69.676"/>
+              <rect width="22.903" height="23.324" y="46.352"/>
+              <rect width="22.903" height="23.324" x="22.903" y="69.676"/>
+              <rect width="22.903" height="23.324" x="22.903" y="46.352"/>
+              <rect width="22.9" height="23.029" x="22.903" y="23.324"/>
+              <rect width="22.903" height="23.324" x="45.805" y="69.676"/>
+              <rect width="22.903" height="23.324" x="45.805" y="46.352"/>
+              <rect width="23.192" height="23.029" x="45.805" y="23.324"/>
+              <rect width="22.903" height="23.324" x="45.805"/>
+            </g>
+            <g style="mix-blend-mode:overlay" transform="translate(69.795 93.315)">
+              <rect width="22.903" height="23.324" y="69.676"/>
+              <rect width="22.903" height="23.324" y="46.352"/>
+              <rect width="22.9" height="23.029" y="23.324"/>
+              <rect width="22.903" height="23.324"/>
+              <rect width="22.903" height="23.324" x="22.903" y="69.676"/>
+              <rect width="22.903" height="23.324" x="22.903" y="46.352"/>
+              <rect width="22.9" height="23.029" x="22.903" y="23.324"/>
+              <rect width="22.903" height="23.324" x="22.903"/>
+              <rect width="22.903" height="23.324" x="45.805" y="69.676"/>
+              <rect width="22.903" height="23.324" x="45.805" y="46.352"/>
+              <rect width="23.192" height="23.029" x="45.805" y="23.324"/>
+              <rect width="22.903" height="23.324" x="45.805"/>
+            </g>
+          </g>
+          <g fill-rule="nonzero" stroke="#FFF" transform="rotate(45 -2.578 326.66)">
+            <g style="mix-blend-mode:overlay" transform="translate(1 1)">
+              <rect width="45.805" height="46.397" y="138.603"/>
+              <rect width="45.805" height="46.397" y="92.206"/>
+              <rect width="45.805" height="46.397" x="45.805" y="138.603"/>
+            </g>
+            <g style="mix-blend-mode:overlay" transform="translate(.498 93.315)">
+              <rect width="22.903" height="23.324" y="69.676"/>
+              <rect width="22.903" height="23.324" y="46.352"/>
+              <rect width="22.9" height="23.029" y="23.324"/>
+              <rect width="22.903" height="23.324"/>
+              <rect width="22.903" height="23.324" x="22.903" y="69.676"/>
+              <rect width="22.903" height="23.324" x="22.903" y="46.352"/>
+              <rect width="22.9" height="23.029" x="22.903" y="23.324"/>
+              <rect width="22.903" height="23.324" x="45.805" y="69.676"/>
+              <rect width="22.903" height="23.324" x="45.805" y="46.352"/>
+            </g>
+            <rect width="22.903" height="23.324" y="69.676" style="mix-blend-mode:overlay" transform="translate(69.795 93.315)"/>
+          </g>
+        </g>
+        <g transform="translate(15 277)">
+          <g fill-rule="nonzero" stroke="#FFF" transform="rotate(45 65.51 159.864)">
+            <g style="mix-blend-mode:overlay" transform="translate(1 1)">
+              <rect width="45.805" height="46.397" x="45.805"/>
+              <rect width="46.385" height="45.81" x="91.61" y="46.397"/>
+              <rect width="45.805" height="46.397" x="91.61"/>
+            </g>
+            <rect width="22.903" height="23.146" x="45.805" style="mix-blend-mode:overlay" transform="translate(.852 .831)"/>
+            <g style="mix-blend-mode:overlay" transform="translate(70.148 .831)">
+              <rect width="22.9" height="22.854" y="23.146"/>
+              <rect width="22.903" height="23.146"/>
+              <rect width="22.903" height="23.146" x="22.903" y="46"/>
+              <rect width="22.9" height="22.854" x="22.903" y="23.146"/>
+              <rect width="22.903" height="23.146" x="22.903"/>
+              <rect width="23.192" height="22.854" x="45.805" y="69.146"/>
+              <rect width="22.903" height="23.146" x="45.805" y="46"/>
+              <rect width="23.192" height="22.854" x="45.805" y="23.146"/>
+              <rect width="22.903" height="23.146" x="45.805"/>
+            </g>
+          </g>
+          <g fill-rule="nonzero" stroke="#FFF" transform="rotate(45 -2.578 326.66)">
+            <g style="mix-blend-mode:overlay" transform="translate(1 1)">
+              <rect width="45.805" height="46.397" y="92.206"/>
+              <rect width="45.8" height="45.81" y="46.397"/>
+              <rect width="45.805" height="46.397"/>
+              <rect width="45.805" height="46.397" x="45.805" y="92.206"/>
+              <rect width="45.8" height="45.81" x="45.805" y="46.397"/>
+              <rect width="45.805" height="46.397" x="45.805"/>
+              <rect width="46.385" height="45.81" x="91.61" y="46.397"/>
+              <rect width="45.805" height="46.397" x="91.61"/>
+            </g>
+            <g style="mix-blend-mode:overlay" transform="translate(.852 .831)">
+              <rect width="23.192" height="22.854" y="69.146"/>
+              <rect width="22.903" height="23.146" y="46"/>
+              <rect width="22.9" height="22.854" y="23.146"/>
+              <rect width="22.903" height="23.146"/>
+              <rect width="23.192" height="22.854" x="22.903" y="69.146"/>
+              <rect width="22.903" height="23.146" x="22.903" y="46"/>
+              <rect width="22.9" height="22.854" x="22.903" y="23.146"/>
+              <rect width="22.903" height="23.146" x="22.903"/>
+              <rect width="23.192" height="22.854" x="45.805" y="69.146"/>
+              <rect width="22.903" height="23.146" x="45.805" y="46"/>
+              <rect width="23.192" height="22.854" x="45.805" y="23.146"/>
+              <rect width="22.903" height="23.146" x="45.805"/>
+            </g>
+            <g style="mix-blend-mode:overlay" transform="translate(70.148 .831)">
+              <rect width="23.192" height="22.854" y="69.146"/>
+              <rect width="22.903" height="23.146" y="46"/>
+              <rect width="22.9" height="22.854" y="23.146"/>
+              <rect width="22.903" height="23.146"/>
+              <rect width="22.903" height="23.146" x="22.903" y="46"/>
+              <rect width="22.9" height="22.854" x="22.903" y="23.146"/>
+              <rect width="22.903" height="23.146" x="22.903"/>
+              <rect width="23.192" height="22.854" x="45.805" y="23.146"/>
+              <rect width="22.903" height="23.146" x="45.805"/>
+            </g>
+            <g style="mix-blend-mode:overlay" transform="translate(.498 93.315)">
+              <rect width="22.903" height="23.324"/>
+              <rect width="22.9" height="23.029" x="22.903" y="23.324"/>
+              <rect width="22.903" height="23.324" x="22.903"/>
+              <rect width="22.903" height="23.324" x="45.805"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <rect width="237" height="389" x="8" y="-23" fill="url(#d3-data-visualizations-d)" fill-rule="nonzero" mask="url(#d3-data-visualizations-c)"/>
+    <g mask="url(#d3-data-visualizations-c)">
+      <g transform="translate(103 144)">
+        <path fill="url(#d3-data-visualizations-e)" d="M49.8700311,34.0645213 C49.8923913,33.8494 49.9085404,33.6319672 49.9208075,33.4129934 C49.9360248,33.1542623 34.2377329,18.3731475 34.2377329,18.3731475 L33.8625776,18.3731475 C33.8625776,18.3731475 49.7737578,35.0293311 49.8700311,34.0645213 Z"/>
+        <path fill="url(#d3-data-visualizations-f)" d="M16.3773292,28.9370525 C16.3568323,28.9823574 16.3360248,29.0275082 16.3152174,29.0728131 C16.2925466,29.1201213 16.2701863,29.1672754 16.247205,29.2147377 C15.7467391,30.2502787 23.2526398,37.5320426 23.8565217,36.6473639 C23.884472,36.608223 23.9114907,36.5669246 23.9391304,36.5276295 C23.9694099,36.4814 23.9996894,36.4370197 24.0298137,36.3906361 C24.5121118,35.6636 16.5917702,28.4641246 16.3773292,28.9370525 Z"/>
+        <path fill="url(#d3-data-visualizations-g)" d="M26.9841615,39.1770426 C26.9624224,39.2232721 26.8119565,39.4763016 26.673913,39.6103672 C26.6501553,39.6565967 34.001087,46.8912066 34.001087,46.8912066 L34.6625776,46.8912066 C34.6635093,46.8915148 27.7628882,39.4829279 26.9841615,39.1770426 Z"/>
+        <path fill="url(#d3-data-visualizations-h)" fill-rule="nonzero" d="M49.9309006,33.2817016 C49.5872671,40.8442328 43.2830745,46.8915148 35.5801242,46.8915148 L34.5389752,46.8915148 L26.8464286,39.3712066 C27.4790373,38.4857574 28.0670807,37.5681016 28.5913043,36.6113049 L35.5801242,36.6113049 C37.7903727,36.6113049 39.5891304,34.8271541 39.5891304,32.6327934 C39.5891304,30.4395115 37.7903727,28.6544361 35.5801242,28.6544361 L31.4444099,28.6544361 C31.7597826,27.0012689 31.9326087,25.2963246 31.9326087,23.5525475 C31.9326087,21.7819574 31.7562112,20.0529738 31.4302795,18.3734557 L33.9995342,18.3734557 L49.8868012,33.9087279 C49.9046584,33.7002328 49.9197205,33.4920459 49.9309006,33.2817016 Z M4.3068323,0.136839344 L0.127950311,0.136839344 L0.127950311,10.4170492 L4.3068323,10.4170492 C11.6055901,10.4170492 17.5442547,16.309 17.5442547,23.5523934 C17.5442547,25.5230033 17.101087,27.3934492 16.3145963,29.0728131 L23.9385093,36.5276295 C26.4417702,32.810777 27.9048137,28.3483967 27.9048137,23.5523934 C27.9048137,10.6411082 17.3186335,0.136839344 4.3068323,0.136839344 Z"/>
+        <path fill="url(#d3-data-visualizations-i)" d="M35.5801242,0.136839344 L18.657764,0.136839344 C22.7911491,2.6409377 26.2136646,6.19213443 28.5456522,10.4170492 L35.5801242,10.4170492 C37.7903727,10.4170492 39.5891304,12.2010459 39.5891304,14.3955607 C39.5891304,16.5897672 37.7903727,18.3737639 35.5801242,18.3737639 L33.9995342,18.3737639 L49.8863354,33.9085738 C49.923913,33.4869607 49.9476708,33.0634984 49.9476708,32.6327934 C49.9476708,29.1674295 48.6945652,25.987918 46.6138199,23.5137148 C48.6939441,21.0405902 49.9476708,17.8606164 49.9476708,14.3957148 C49.9470497,6.53361639 43.502795,0.136839344 35.5801242,0.136839344 Z"/>
+        <path fill="url(#d3-data-visualizations-j)" fill-rule="nonzero" d="M34.5389752,46.8915148 L18.7791925,46.8915148 C21.9518634,44.9475639 24.6940994,42.3809016 26.8464286,39.3712066 L34.5389752,46.8915148 Z M23.9385093,36.5276295 L16.3152174,29.0728131 C14.2091615,33.5644721 9.61956522,36.6886623 4.3068323,36.6886623 L0.127950311,36.6886623 L0.127950311,46.9679475 L4.3068323,46.9679475 C12.4850932,46.9679475 19.7034161,42.8163836 23.9385093,36.5276295 Z"/>
+      </g>
+    </g>
+    <path stroke="url(#d3-data-visualizations-k)" stroke-linecap="square" stroke-width="1.5" d="M211.797928,115.791783 L196.578949,131.010762" mask="url(#d3-data-visualizations-c)"/>
+    <path stroke="url(#d3-data-visualizations-l)" stroke-linecap="square" stroke-width="1.5" d="M79.4696604,118.120051 L67.5346018,130.05511" mask="url(#d3-data-visualizations-c)"/>
+    <path stroke="url(#d3-data-visualizations-k)" stroke-linecap="square" stroke-width="1.5" d="M140.797928,248.791783 L111.5,279.5" mask="url(#d3-data-visualizations-c)" transform="rotate(-90 126 264)"/>
+  </g>
+</svg>

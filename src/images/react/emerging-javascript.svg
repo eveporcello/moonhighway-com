@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="255" height="336" viewBox="0 0 255 336">
+  <g fill="none" fill-rule="evenodd" transform="translate(0 .5)">
+    <path fill="#FFE538" fill-rule="nonzero" stroke="#FFF" stroke-width="10" d="M5,5 L5,330 L172.083008,330 L250,330 L250,5 L5,5 Z"/>
+    <g fill-rule="nonzero" transform="matrix(-1 0 0 1 91 254.5)">
+      <polyline stroke="#FBD724" stroke-width="6" points="12 12 31.5 31.5 31.5 70.5"/>
+      <circle cx="12" cy="12" r="12" fill="#FBD724"/>
+      <circle cx="12" cy="12" r="6" fill="#FFE538"/>
+    </g>
+    <g fill-rule="nonzero" transform="matrix(0 1 1 0 125 271.5)">
+      <polyline stroke="#FBD724" stroke-width="6" points="12 11 31.5 30.5 31.5 119.5"/>
+      <path stroke="#FBD724" stroke-dasharray="9" stroke-width="6" d="M14.5,47.8320313 L14.5,116.146484"/>
+      <circle cx="12" cy="12" r="12" fill="#FBD724"/>
+      <circle cx="12" cy="12" r="6" fill="#FFE538"/>
+    </g>
+    <text fill="#323330" font-family="AvenirNext-Bold, Avenir Next" font-size="40" font-weight="bold">
+      <tspan x="103.5" y="190">ES</tspan>
+    </text>
+  </g>
+</svg>

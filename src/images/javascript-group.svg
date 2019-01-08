@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="335" viewBox="0 0 255 335">
+  <defs>
+    <rect id="javascript-group-a" width="111" height="98.786" x="134" y="225.511" rx="3"/>
+    <mask id="javascript-group-b" width="111" height="98.786" x="0" y="0" fill="#fff">
+      <use xlink:href="#javascript-group-a"/>
+    </mask>
+    <linearGradient id="javascript-group-d" x1="-8.373%" y1="20.533%" y2="100%">
+      <stop offset="0%" stop-color="#FFF469"/>
+      <stop offset="78.292%" stop-color="#FFE843"/>
+      <stop offset="84.427%" stop-color="#E9D33C"/>
+      <stop offset="100%" stop-color="#FFE538"/>
+    </linearGradient>
+    <path id="javascript-group-c" d="M0,0 L0,314.317918 L160.5,314.317918 C173.312109,302.875728 186.145442,290.5691 199,277.398036 C211.854558,264.226971 223.854558,251.088815 235,237.983567 L235,0 L0,0 Z"/>
+    <linearGradient id="javascript-group-g" x1="0%" x2="60.906%" y1="0%" y2="58.324%">
+      <stop offset="0%" stop-color="#FFF08F"/>
+      <stop offset="72.975%" stop-color="#F1D830"/>
+      <stop offset="100%" stop-color="#CAB213"/>
+    </linearGradient>
+    <path id="javascript-group-f" d="M160.875854,241.393986 L225.322703,241.393986 C231.651152,240.896036 234.815377,237.397573 234.815377,230.898595 C234.815377,230.898595 235.814606,241.393986 233.64084,243.833559 C218.781281,260.439032 194.526286,284.281679 160.875854,315.361501 C148.885107,315.361501 145.88742,315.361501 151.882794,315.361501 C157.878167,315.361501 160.875854,312.983965 160.875854,308.228892 L160.875854,241.393986 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFF" fill-rule="nonzero" stroke="#FFF" stroke-width="10" d="M5,5 L5,329.274611 L178,329.274611 L250,329.274611 L250,5 L5,5 Z"/>
+    <use fill="#FAFAFA" fill-rule="nonzero" stroke="#C3C3C3" stroke-dasharray="2" stroke-width="2" mask="url(#javascript-group-b)" opacity=".5" xlink:href="#javascript-group-a"/>
+    <g transform="translate(10 9.978)">
+      <mask id="javascript-group-e" fill="#fff">
+        <use xlink:href="#javascript-group-c"/>
+      </mask>
+      <use fill="url(#javascript-group-d)" fill-rule="nonzero" xlink:href="#javascript-group-c"/>
+      <text fill="#323330" font-family="AvenirNext-Bold, Avenir Next" font-size="32" font-weight="bold" mask="url(#javascript-group-e)">
+        <tspan x="93.808" y="174.067">JS</tspan>
+      </text>
+      <g fill-rule="nonzero" mask="url(#javascript-group-e)">
+        <use fill="#FFF" xlink:href="#javascript-group-f"/>
+        <use fill="#F5D118" xlink:href="#javascript-group-f"/>
+        <use fill="url(#javascript-group-g)" xlink:href="#javascript-group-f"/>
+      </g>
+    </g>
+  </g>
+</svg>

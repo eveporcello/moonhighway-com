@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="255" height="335" viewBox="0 0 255 335">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFE538" fill-rule="nonzero" stroke="#FFF" stroke-width="10" d="M5,5 L5,330 L172.083008,330 L249.33459,330 L250,261 L250,5 L5,5 Z"/>
+    <text fill="#323330" font-family="AvenirNext-Bold, Avenir Next" font-size="40" font-weight="bold">
+      <tspan x="105" y="198">JS</tspan>
+    </text>
+  </g>
+</svg>

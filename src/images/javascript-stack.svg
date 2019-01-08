@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="275" height="321" viewBox="0 0 275 321">
+  <defs>
+    <path id="javascript-stack-c" d="M3,0 L190,0 C191.656854,-3.04359188e-16 193,1.34314575 193,3 L193,197.113433 L193,250 C193,251.656854 191.656854,253 190,253 L134.721569,253 L3,253 C1.34314575,253 1.07695378e-14,251.656854 -4.88498131e-15,250 L0,3 C-2.02906125e-16,1.34314575 1.34314575,3.04359188e-16 3,0 Z"/>
+    <filter id="javascript-stack-b" width="157%" height="143.5%" x="-28.5%" y="-13.8%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" radius="7.5" result="shadowSpreadOuter1"/>
+      <feOffset dy="20" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="22.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.204030797 0"/>
+    </filter>
+    <linearGradient id="javascript-stack-e" x1="50%" x2="50%" y1="100%" y2="-33.359%">
+      <stop offset="0%" stop-color="#FFF" stop-opacity=".5"/>
+      <stop offset="100%" stop-opacity=".5"/>
+    </linearGradient>
+    <path id="javascript-stack-d" d="M2,2 L166,2 L166,3 C166,3.55228475 165.552285,4 165,4 L3,4 C2.44771525,4 2,3.55228475 2,3 L2,2 Z"/>
+    <path id="javascript-stack-f" d="M2,2 L152,2 L152,3 C152,3.55228475 151.552285,4 151,4 L3,4 C2.44771525,4 2,3.55228475 2,3 L2,2 Z"/>
+    <path id="javascript-stack-g" d="M2,2 L180,2 L180,3 C180,3.55228475 179.552285,4 179,4 L3,4 C2.44771525,4 2,3.55228475 2,3 L2,2 Z"/>
+    <rect id="javascript-stack-a" width="84.012" height="74.767" x="101.42" y="170.681" rx="3"/>
+    <mask id="javascript-stack-h" width="84.012" height="74.767" x="0" y="0" fill="#fff">
+      <use xlink:href="#javascript-stack-a"/>
+    </mask>
+    <linearGradient id="javascript-stack-j" x1="-8.373%" y1="20.533%" y2="100%">
+      <stop offset="0%" stop-color="#FFF469"/>
+      <stop offset="78.292%" stop-color="#FFE843"/>
+      <stop offset="84.427%" stop-color="#E9D33C"/>
+      <stop offset="100%" stop-color="#FFE538"/>
+    </linearGradient>
+    <path id="javascript-stack-i" d="M0,0 L0,237.895522 L121.476471,237.895522 C131.173479,229.235355 140.88655,219.920927 150.615686,209.952239 C160.344822,199.983551 169.427175,190.039769 177.862745,180.120896 L177.862745,0 L0,0 Z"/>
+    <linearGradient id="javascript-stack-m" x1="0%" x2="60.906%" y1="0%" y2="58.324%">
+      <stop offset="0%" stop-color="#FFF08F"/>
+      <stop offset="72.975%" stop-color="#F1D830"/>
+      <stop offset="100%" stop-color="#CAB213"/>
+    </linearGradient>
+    <path id="javascript-stack-l" d="M121.854902,182.386567 L170.669962,182.386567 C175.463426,182.010338 177.860158,179.367055 177.860158,174.456716 C177.860158,174.456716 178.617021,182.386567 176.970509,184.229801 C165.715183,196.776158 147.343314,214.790602 121.854902,238.273134 C112.772549,238.273134 110.501961,238.273134 115.043137,238.273134 C119.584314,238.273134 121.854902,236.476773 121.854902,232.884051 L121.854902,182.386567 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(41 15)">
+    <g fill-rule="nonzero">
+      <use fill="#000" filter="url(#javascript-stack-b)" xlink:href="#javascript-stack-c"/>
+      <path fill="#FFF" fill-rule="evenodd" stroke="#FFF" stroke-linejoin="square" stroke-width="10" d="M5,5 L5,248 L134.721569,248 L188,248 L188,5 L5,5 Z"/>
+    </g>
+    <g fill-rule="nonzero" opacity=".5" transform="translate(5 253)">
+      <g transform="translate(7 6)">
+        <path fill="#F4F4F4" d="M0,0 L169,0 L169,4 C169,5.1045695 168.104569,6 167,6 L2,6 C0.8954305,6 1.3527075e-16,5.1045695 0,4 L0,0 Z"/>
+        <use fill="#4A3622" xlink:href="#javascript-stack-d"/>
+        <use fill="url(#javascript-stack-e)" fill-opacity=".4" xlink:href="#javascript-stack-d"/>
+      </g>
+      <g transform="translate(14 12)">
+        <path fill="#F1F1F1" d="M0,0 L155,0 L155,4 C155,5.1045695 154.104569,6 153,6 L2,6 C0.8954305,6 1.3527075e-16,5.1045695 0,4 L0,0 Z"/>
+        <use fill="#E04B77" xlink:href="#javascript-stack-f"/>
+        <use fill="url(#javascript-stack-e)" fill-opacity=".4" xlink:href="#javascript-stack-f"/>
+      </g>
+      <path fill="#FAFAFA" d="M0,0 L183,0 L183,4 C183,5.1045695 182.104569,6 181,6 L2,6 C0.8954305,6 1.3527075e-16,5.1045695 0,4 L0,0 Z"/>
+      <use fill="#00AAA7" xlink:href="#javascript-stack-g"/>
+      <use fill="url(#javascript-stack-e)" fill-opacity=".2" xlink:href="#javascript-stack-g"/>
+    </g>
+    <use fill="#FAFAFA" fill-rule="nonzero" stroke="#C3C3C3" stroke-dasharray="2" stroke-width="2" mask="url(#javascript-stack-h)" opacity=".5" xlink:href="#javascript-stack-a"/>
+    <g transform="translate(7.569 7.552)">
+      <mask id="javascript-stack-k" fill="#fff">
+        <use xlink:href="#javascript-stack-i"/>
+      </mask>
+      <use fill="url(#javascript-stack-j)" fill-rule="nonzero" xlink:href="#javascript-stack-i"/>
+      <text fill="#323330" font-family="AvenirNext-Bold, Avenir Next" font-size="32" font-weight="bold" mask="url(#javascript-stack-k)">
+        <tspan x="71" y="136">JS</tspan>
+      </text>
+      <g fill-rule="nonzero" mask="url(#javascript-stack-k)">
+        <use fill="#FFF" xlink:href="#javascript-stack-l"/>
+        <use fill="#F5D118" xlink:href="#javascript-stack-l"/>
+        <use fill="url(#javascript-stack-m)" xlink:href="#javascript-stack-l"/>
+      </g>
+    </g>
+  </g>
+</svg>

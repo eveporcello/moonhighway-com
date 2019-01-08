@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="336" viewBox="0 0 255 336">
+  <defs>
+    <linearGradient id="graphql-with-node-a" x1="50%" x2="50%" y1="53.049%" y2="108.603%">
+      <stop offset="0%" stop-color="#00AAA7"/>
+      <stop offset="100%" stop-color="#E04B77"/>
+    </linearGradient>
+    <polygon id="graphql-with-node-b" points="10 10 245 10 245 325 10 325"/>
+    <linearGradient id="graphql-with-node-d" x1="100%" x2="0%" y1="50%" y2="50%">
+      <stop offset="0%" stop-color="#E04B77"/>
+      <stop offset="100%" stop-color="#CD4069"/>
+    </linearGradient>
+    <path id="graphql-with-node-f" d="M22.0200373,49.9148936 C21.3997546,49.9148936 20.6244011,49.7593955 20.1591891,49.4483993 L14.1114324,45.8719427 C13.1810083,45.2499503 13.6462203,45.0944522 13.9563617,44.9389541 C15.1969272,44.4724597 15.3519978,44.4724597 16.747634,43.6949692 C16.9027047,43.6949692 17.0577754,43.6949692 17.2128461,43.6949692 L21.8649666,46.4939352 C22.0200373,46.6494333 22.3301787,46.6494333 22.4852494,46.4939352 L40.7835902,35.9200636 C40.9386609,35.7645655 41.0937316,35.6090674 41.0937316,35.4535693 L41.0937316,14.4613243 C41.0937316,14.3058262 40.9386609,13.99483 40.7835902,13.99483 L22.3301787,3.26546033 C22.175108,3.10996222 21.8649666,3.10996222 21.7098959,3.26546033 L3.56662576,13.8393319 C3.41155508,13.99483 3.25648439,14.1503281 3.25648439,14.4613243 L3.25648439,35.6090674 C3.25648439,35.7645655 3.41155508,36.0755617 3.56662576,36.0755617 L8.52888769,38.8745277 C11.1650893,40.2740107 12.8708669,38.5635315 12.8708669,37.0085504 L12.8708669,16.1718035 C12.8708669,15.8608073 13.1810083,15.7053092 13.3360789,15.7053092 L15.6621392,15.7053092 C15.9722806,15.7053092 16.1273513,15.8608073 16.1273513,16.1718035 L16.1273513,37.0085504 C16.1273513,40.585007 14.1114324,42.7619805 10.6998773,42.7619805 C9.61438249,42.7619805 8.83902906,42.7619805 6.51296878,41.6734937 L1.86084822,38.8745277 C0.775353427,38.0970372 0,36.8530523 0,35.4535693 L0,14.4613243 C0,13.0618413 0.775353427,11.8178564 1.86084822,11.195864 L20.1591891,0.466494333 C21.2446839,-0.155498111 22.7953907,-0.155498111 24.0359562,0.466494333 L42.3342971,11.0403659 C43.5748626,11.6623583 44.1951453,13.0618413 44.1951453,14.3058262 L44.1951453,35.4535693 C44.1951453,36.8530523 43.4197919,38.0970372 42.3342971,38.7190296 L24.0359562,49.2929012 C23.4156735,49.7593955 22.7953907,49.9148936 22.0200373,49.9148936 Z"/>
+    <filter id="graphql-with-node-e" width="102.3%" height="104%" x="-1.1%" y="-1%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feColorMatrix in="shadowOffsetOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/>
+    </filter>
+    <filter id="graphql-with-node-g" width="102.3%" height="104%" x="-1.1%" y="-1%" filterUnits="objectBoundingBox">
+      <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+      <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0"/>
+    </filter>
+    <path id="graphql-with-node-i" d="M27.7143917,35.8085106 C19.9907087,35.8085106 18.3248164,32.0022913 18.3248164,28.9890344 C18.3248164,28.6718494 18.6277059,28.513257 18.7791506,28.513257 L21.0508221,28.513257 C21.3537116,28.513257 21.5051564,28.6718494 21.5051564,28.9890344 C21.8080459,31.3679214 22.8681592,32.6366612 27.5629469,32.6366612 C31.349066,32.6366612 32.8635136,31.6851064 32.8635136,29.6234043 C32.8635136,28.3546645 32.4091793,27.5617021 26.6542783,26.9273322 C21.8080459,26.4515548 18.7791506,25.3414075 18.7791506,21.2180033 C18.7791506,17.411784 21.8080459,15.1914894 26.9571679,15.1914894 C32.7120689,15.1914894 35.4380746,17.2531915 35.8924089,21.6937807 C35.8924089,21.8523732 35.8924089,22.0109656 35.7409641,22.1695581 C35.5895194,22.3281506 35.4380746,22.3281506 35.4380746,22.3281506 L33.1664032,22.3281506 C32.8635136,22.3281506 32.7120689,22.1695581 32.7120689,21.8523732 C32.1062898,19.3148936 30.7432869,18.5219313 27.1086126,18.5219313 C23.019604,18.5219313 22.5652697,19.9492635 22.5652697,21.0594108 C22.5652697,22.486743 23.1710488,22.803928 28.6230603,23.5968903 C34.0750717,24.3898527 36.6496327,25.5 36.6496327,29.4648118 C36.4981879,33.588216 33.3178479,35.8085106 27.7143917,35.8085106 Z"/>
+    <filter id="graphql-with-node-h" width="105.5%" height="109.7%" x="-2.7%" y="-2.4%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feColorMatrix in="shadowOffsetOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/>
+    </filter>
+    <filter id="graphql-with-node-j" width="105.5%" height="109.7%" x="-2.7%" y="-2.4%" filterUnits="objectBoundingBox">
+      <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+      <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0"/>
+    </filter>
+    <path id="graphql-with-node-l" d="M49.2142857,41.9857143 C47.8428571,44.3714286 44.7857143,45.1857143 42.4,43.8142857 C40.0142857,42.4428571 39.2,39.3857143 40.5714286,37 C41.9428571,34.6142857 45,33.8 47.3857143,35.1714286 C49.7857143,36.5571429 50.6,39.6 49.2142857,41.9857143 M9.41428571,19 C8.04285714,21.3857143 4.98571429,22.2 2.6,20.8285714 C0.214285714,19.4571429 -0.6,16.4 0.771428571,14.0142857 C2.14285714,11.6285714 5.2,10.8142857 7.58571429,12.1857143 C9.97142857,13.5714286 10.7857143,16.6142857 9.41428571,19 M0.785714286,41.9857143 C-0.585714286,39.6 0.228571429,36.5571429 2.61428571,35.1714286 C5,33.8 8.04285714,34.6142857 9.42857143,37 C10.8,39.3857143 9.98571429,42.4285714 7.6,43.8142857 C5.2,45.1857143 2.15714286,44.3714286 0.785714286,41.9857143 M40.5857143,19 C39.2142857,16.6142857 40.0285714,13.5714286 42.4142857,12.1857143 C44.8,10.8142857 47.8428571,11.6285714 49.2285714,14.0142857 C50.6,16.4 49.7857143,19.4428571 47.4,20.8285714 C45.0142857,22.2 41.9571429,21.3857143 40.5857143,19 M25,55.9714286 C22.2428571,55.9714286 20.0142857,53.7428571 20.0142857,50.9857143 C20.0142857,48.2285714 22.2428571,46 25,46 C27.7571429,46 29.9857143,48.2285714 29.9857143,50.9857143 C29.9857143,53.7285714 27.7571429,55.9714286 25,55.9714286 M25,10 C22.2428571,10 20.0142857,7.77142857 20.0142857,5.01428571 C20.0142857,2.25714286 22.2428571,0.0285714286 25,0.0285714286 C27.7571429,0.0285714286 29.9857143,2.25714286 29.9857143,5.01428571 C29.9857143,7.77142857 27.7571429,10 25,10"/>
+    <filter id="graphql-with-node-k" width="102%" height="103.6%" x="-1%" y="-.9%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feColorMatrix in="shadowOffsetOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/>
+    </filter>
+    <filter id="graphql-with-node-m" width="102%" height="103.6%" x="-1%" y="-.9%" filterUnits="objectBoundingBox">
+      <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+      <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(0 .5)">
+    <path fill="url(#graphql-with-node-a)" fill-rule="nonzero" stroke="#FFF" stroke-width="10" d="M5,5 L5,330 L249.815334,330 L250,261 L250,5 L5,5 Z"/>
+    <mask id="graphql-with-node-c" fill="#fff">
+      <use xlink:href="#graphql-with-node-b"/>
+    </mask>
+    <use fill="#E04B77" fill-rule="nonzero" xlink:href="#graphql-with-node-b"/>
+    <text fill="#A62047" font-family="InterUI-SemiBold, Inter UI" font-size="20" font-weight="500" mask="url(#graphql-with-node-c)">
+      <tspan x="124.374" y="175">+</tspan>
+    </text>
+    <polygon fill="url(#graphql-with-node-d)" fill-rule="nonzero" points="-62.001 88.648 -62.661 82.684 302.001 42.352 302.661 48.316" mask="url(#graphql-with-node-c)"/>
+    <polygon fill="url(#graphql-with-node-d)" fill-rule="nonzero" points="-62.841 89.42 171.458 371.748 166.841 375.58 -67.458 93.252" mask="url(#graphql-with-node-c)"/>
+    <polygon fill="url(#graphql-with-node-d)" fill-rule="nonzero" points="155.297 383.243 149.734 380.995 296.959 16.6 302.522 18.848" mask="url(#graphql-with-node-c)"/>
+    <g transform="translate(143 143)">
+      <use fill="#000" filter="url(#graphql-with-node-e)" xlink:href="#graphql-with-node-f"/>
+      <use fill="#F6F6F6" xlink:href="#graphql-with-node-f"/>
+      <use fill="#000" filter="url(#graphql-with-node-g)" xlink:href="#graphql-with-node-f"/>
+      <g>
+        <use fill="#000" filter="url(#graphql-with-node-h)" xlink:href="#graphql-with-node-i"/>
+        <use fill="#F6F6F6" xlink:href="#graphql-with-node-i"/>
+        <use fill="#000" filter="url(#graphql-with-node-j)" xlink:href="#graphql-with-node-i"/>
+      </g>
+    </g>
+    <g transform="translate(68 140)">
+      <polygon fill="#FFF" points="4.638 42.666 2.585 41.48 25.463 1.854 27.517 3.04"/>
+      <polygon fill="#FFF" points="2.114 38.314 47.871 38.314 47.871 40.686 2.114 40.686"/>
+      <path fill="#FFF" fill-rule="nonzero" d="M25.9068571,52.8608571 L3.01971429,39.6465714 L4.20542857,37.5928571 L27.0925714,50.8071429 L25.9068571,52.8608571 Z M45.7888571,18.421 L22.9017143,5.20671429 L24.0874286,3.153 L46.9745714,16.3672857 L45.7888571,18.421 Z"/>
+      <polygon fill="#FFF" points="4.212 18.412 3.026 16.358 25.913 3.144 27.099 5.198"/>
+      <path fill="#FFF" fill-rule="nonzero" d="M45.3668571,42.6661429 L22.4882857,3.04042857 L24.542,1.85471429 L47.4205714,41.4804286 L45.3668571,42.6661429 Z M3.92857143,14.7857143 L6.3,14.7857143 L6.3,41.2142857 L3.92857143,41.2142857 L3.92857143,14.7857143 Z M43.7,14.7857143 L46.0714286,14.7857143 L46.0714286,41.2142857 L43.7,41.2142857 L43.7,14.7857143 Z"/>
+      <polygon fill="#FFF" points="25.503 51.857 24.467 50.063 44.373 38.57 45.409 40.364"/>
+      <use fill="#000" filter="url(#graphql-with-node-k)" xlink:href="#graphql-with-node-l"/>
+      <use fill="#F6F6F6" xlink:href="#graphql-with-node-l"/>
+      <use fill="#000" filter="url(#graphql-with-node-m)" xlink:href="#graphql-with-node-l"/>
+    </g>
+  </g>
+</svg>

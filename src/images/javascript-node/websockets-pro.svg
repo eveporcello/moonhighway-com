@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="335" viewBox="0 0 255 335">
+  <defs>
+    <rect id="websockets-pro-a" width="235" height="315"/>
+    <path id="websockets-pro-c" d="M45.103125,33.8826423 L52.5515625,33.8826423 L52.5515625,16.0081986 L44.1597656,7.62122277 L38.8928906,12.885219 L45.103125,19.092059 L45.103125,33.8824081 L45.103125,33.8826423 Z M52.57125,37.6144296 L26.5903125,37.6144296 L20.3798437,31.4078238 L23.0135156,28.7758257 L28.1428125,33.902319 L38.69625,33.902319 L28.3000781,23.4921527 L30.9532031,20.8404779 L41.349375,31.2312017 L41.349375,20.6830639 L36.2397656,15.5762474 L38.8535156,12.9636917 L25.9417969,0 L0,0 L7.42875,7.42468962 L7.42875,7.44436636 L22.8365625,7.44436636 L28.2803906,12.885219 L20.3210156,20.8402436 L14.8771875,15.399391 L14.8771875,11.1763879 L7.42875,11.1763879 L7.42875,18.4832513 L20.3210156,31.3684704 L15.0735937,36.6127899 L23.4653906,45 L60,45 L52.57125,37.6144296 Z"/>
+    <filter id="websockets-pro-d" width="103.3%" height="104.4%" x="-1.7%" y="-2.2%" filterUnits="objectBoundingBox">
+      <feGaussianBlur in="SourceAlpha" result="shadowBlurInner1" stdDeviation=".5"/>
+      <feOffset dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+      <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFE538" fill-rule="nonzero" stroke="#FFF" stroke-width="10" d="M5,5 L5,330 L249.815334,330 L250,261 L250,5 L5,5 Z"/>
+    <g transform="translate(10 10)">
+      <mask id="websockets-pro-b" fill="#fff">
+        <use xlink:href="#websockets-pro-a"/>
+      </mask>
+      <g fill="#FBD724" fill-rule="nonzero" mask="url(#websockets-pro-b)">
+        <g transform="translate(107 -3)">
+          <polygon points="75.968 37.332 -.839 1.815 -2.655 .976 -.976 -2.655 .839 -1.815 77.647 33.701 81.844 24.624 98.591 45.589 71.771 46.408 75.968 37.332"/>
+          <polygon points="75.968 100.332 -.839 64.815 -2.655 63.976 -.976 60.345 .839 61.185 77.647 96.701 81.844 87.624 98.591 108.589 71.771 109.408 75.968 100.332"/>
+          <polygon points="75.968 130.332 -.839 94.815 -2.655 93.976 -.976 90.345 .839 91.185 77.647 126.701 81.844 117.624 98.591 138.589 71.771 139.408 75.968 130.332"/>
+          <polygon points="75.968 300.332 -.839 264.815 -2.655 263.976 -.976 260.345 .839 261.185 77.647 296.701 81.844 287.624 98.591 308.589 71.771 309.408"/>
+          <polygon points="75.968 160.332 -.839 124.815 -2.655 123.976 -.976 120.345 .839 121.185 77.647 156.701 81.844 147.624 98.591 168.589 71.771 169.408 75.968 160.332"/>
+          <polygon points="75.968 330.332 -.839 294.815 -2.655 293.976 -.976 290.345 .839 291.185 77.647 326.701 81.844 317.624 98.591 338.589 71.771 339.408 75.968 330.332"/>
+          <polygon points="75.968 230.332 -.839 194.815 -2.655 193.976 -.976 190.345 .839 191.185 77.647 226.701 81.844 217.624 98.591 238.589 71.771 239.408 75.968 230.332"/>
+        </g>
+      </g>
+    </g>
+    <g fill-rule="nonzero" transform="translate(98 151)">
+      <use fill="#FAD624" xlink:href="#websockets-pro-c"/>
+      <use fill="#323330" xlink:href="#websockets-pro-c"/>
+      <use fill="#000" filter="url(#websockets-pro-d)" xlink:href="#websockets-pro-c"/>
+    </g>
+  </g>
+</svg>

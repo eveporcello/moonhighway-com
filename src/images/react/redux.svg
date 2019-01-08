@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="335" viewBox="0 0 255 335">
+  <defs>
+    <radialGradient id="redux-b" cx="70.482%" cy="78.57%" r="85.529%" fx="70.482%" fy="78.57%" gradientTransform="matrix(0 .74603 -1 0 1.49 .26)">
+      <stop offset="0%" stop-color="#764ABC"/>
+      <stop offset="96.688%" stop-color="#9261E1"/>
+    </radialGradient>
+    <polygon id="redux-a" points="0 0 0 315 163.974 315 235 315 235 246.741 235 0"/>
+    <path id="redux-e" d="M44.9240506,42.731964 C47.3101266,42.4873153 49.1202532,40.4485766 49.0379747,38.0020901 C48.9556962,35.5556036 46.8987342,33.5984144 44.4303797,33.5984144 L44.2658228,33.5984144 C41.7151899,33.679964 39.7405063,35.8002523 39.8227848,38.3282883 C39.9050633,39.5515315 40.3987342,40.6116757 41.1392405,41.3456216 C38.3417722,46.8094414 34.0632911,50.8053694 27.6455696,54.1489009 C23.2848101,56.4322883 18.7594937,57.2477838 14.2341772,56.6769369 C10.5316456,56.1876396 7.65189873,54.5566486 5.84177215,51.8655135 C3.20886076,47.8695856 2.96202532,43.5474595 5.1835443,39.2253333 C6.74683544,36.1264505 9.21518987,33.8430631 10.778481,32.7013694 C10.4493671,31.6412252 9.9556962,29.8471351 9.70886076,28.5423423 C-2.22151899,37.105045 -0.987341772,48.6850811 2.63291139,54.1489009 C5.34810127,58.2263784 10.8607595,60.7544144 16.9493671,60.7544144 C18.5949367,60.7544144 20.2405063,60.5913153 21.8860759,60.1835676 C32.4177215,58.1448288 40.3987342,51.9470631 44.9240506,42.731964 Z"/>
+    <filter id="redux-d" width="102%" height="106.2%" x="-1%" y="-1.6%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feColorMatrix in="shadowOffsetOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/>
+    </filter>
+    <filter id="redux-f" width="102%" height="106.2%" x="-1%" y="-1.6%" filterUnits="objectBoundingBox">
+      <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+      <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0"/>
+    </filter>
+    <path id="redux-h" d="M59.5945402,32.9705946 C53.3413756,25.7126847 44.1261857,21.7167568 33.5945402,21.7167568 L32.2780845,21.7167568 C31.5375781,20.2488649 29.974287,19.2702703 28.2464389,19.2702703 L28.0818819,19.2702703 C25.531249,19.3518198 23.5565655,21.4721081 23.638844,24.0001441 C23.7211224,26.4466306 25.7780845,28.4038198 28.2464389,28.4038198 L28.4109959,28.4038198 C30.2211224,28.3222703 31.7844136,27.1805766 32.4426414,25.6311351 L33.9236541,25.6311351 C40.1768187,25.6311351 46.1008693,27.4252252 51.4489706,30.9318559 C55.5628946,33.622991 58.5249199,37.1296216 60.1704895,41.3701982 C61.5692237,44.7952793 61.4869452,48.1388108 60.0059326,50.993045 C57.7021351,55.3151712 53.8350465,57.6801081 48.7337807,57.6801081 C45.4426414,57.6801081 42.3160592,56.7015135 40.6704895,55.9675676 C39.7654262,56.7830631 38.1198566,58.0878559 36.9679579,58.9033514 C40.5059326,60.5343423 44.1261857,61.4313874 47.5818819,61.4313874 C55.4806161,61.4313874 61.3223883,57.1092613 63.5439073,52.7871351 C65.9299832,48.0572613 65.7654262,39.9023063 59.5945402,32.9705946 Z"/>
+    <filter id="redux-g" width="102.4%" height="104.7%" x="-1.2%" y="-1.2%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feColorMatrix in="shadowOffsetOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/>
+    </filter>
+    <filter id="redux-i" width="102.4%" height="104.7%" x="-1.2%" y="-1.2%" filterUnits="objectBoundingBox">
+      <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+      <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0"/>
+    </filter>
+    <path id="redux-k" d="M17.6075949,44.1183063 C17.6898734,46.5647928 19.7468354,48.521982 22.2151899,48.521982 L22.3797468,48.521982 C24.9303797,48.4404324 26.9050633,46.3201441 26.8227848,43.7921081 C26.7405063,41.3456216 24.6835443,39.3884324 22.2151899,39.3884324 L22.0506329,39.3884324 C21.8860759,39.3884324 21.6392405,39.3884324 21.4746835,39.469982 C18.1012658,33.9246126 16.7025316,27.8899459 17.1962025,21.365982 C17.5253165,16.473009 19.1708861,12.2324324 22.0506329,8.7258018 C24.4367089,5.70846847 29.0443038,4.24057658 32.1708861,4.15902703 C40.8924051,3.99592793 44.5949367,14.7604685 44.8417722,19.0825946 C45.9113924,19.3272432 47.721519,19.8980901 48.9556962,20.3058378 C47.9683544,7.09481081 39.7405063,0.244648649 31.8417722,0.244648649 C24.4367089,0.244648649 17.6075949,5.54536937 14.8924051,13.3741261 C11.1075949,23.8124685 13.5759494,33.8430631 18.1835443,41.7533694 C17.7721519,42.3242162 17.5253165,43.2212613 17.6075949,44.1183063 Z"/>
+    <filter id="redux-j" width="102.8%" height="104.1%" x="-1.4%" y="-1%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feColorMatrix in="shadowOffsetOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/>
+    </filter>
+    <filter id="redux-l" width="102.8%" height="104.1%" x="-1.4%" y="-1%" filterUnits="objectBoundingBox">
+      <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+      <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#38FFC3" fill-rule="nonzero" stroke="#FFF" stroke-width="10" d="M5,5 L5,330 L178,330 L250,330 L250,5 L5,5 Z"/>
+    <g transform="translate(10 10)">
+      <mask id="redux-c" fill="#fff">
+        <use xlink:href="#redux-a"/>
+      </mask>
+      <use fill="url(#redux-b)" fill-rule="nonzero" xlink:href="#redux-a"/>
+      <g mask="url(#redux-c)">
+        <g transform="translate(86 127)">
+          <use fill="#000" filter="url(#redux-d)" xlink:href="#redux-e"/>
+          <use fill="#F6F6F6" xlink:href="#redux-e"/>
+          <use fill="#000" filter="url(#redux-f)" xlink:href="#redux-e"/>
+          <g>
+            <use fill="#000" filter="url(#redux-g)" xlink:href="#redux-h"/>
+            <use fill="#F6F6F6" xlink:href="#redux-h"/>
+            <use fill="#000" filter="url(#redux-i)" xlink:href="#redux-h"/>
+          </g>
+          <g>
+            <use fill="#000" filter="url(#redux-j)" xlink:href="#redux-k"/>
+            <use fill="#F6F6F6" xlink:href="#redux-k"/>
+            <use fill="#000" filter="url(#redux-l)" xlink:href="#redux-k"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

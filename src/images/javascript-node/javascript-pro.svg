@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="336" viewBox="0 0 255 336">
+  <defs>
+    <linearGradient id="javascript-pro-c" x1="0%" x2="62.3%" y1="0%" y2="59.659%">
+      <stop offset="0%" stop-color="#FBD929"/>
+      <stop offset="71.189%" stop-color="#F4D017"/>
+      <stop offset="100%" stop-color="#CBB022"/>
+    </linearGradient>
+    <path id="javascript-pro-b" d="M180.575956,261.5 L245.072538,261.5 C251.405871,261.001832 254.572538,257.501832 254.572538,251 C254.572538,251 255.572538,261.5 253.397094,263.940645 C239.110428,279.900609 217.658838,304.058684 184.502359,331.86807 C179.575956,336 157.575956,335 167.575956,335 C174.242623,335 178.575956,330.480143 180.575956,321.44043 L180.575956,261.5 Z"/>
+    <filter id="javascript-pro-a" width="194.7%" height="189.2%" x="-72.4%" y="-65.4%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" radius="7.5" result="shadowSpreadOuter1"/>
+      <feOffset dy="10" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="22.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.204030797 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#FFE538" fill-rule="nonzero" stroke="#FFF" stroke-width="10" d="M5,5 L5,330 L171.416861,330 L181.729781,327.202372 L250,258.929 L250,5 L5,5 Z"/>
+    <g fill-rule="nonzero" transform="translate(182 196)">
+      <polyline stroke="#FBD724" stroke-width="6" points="12 12 31.5 31.5 31.5 70.5"/>
+      <circle cx="12" cy="12" r="12" fill="#FBD724"/>
+      <circle cx="12" cy="12" r="6" fill="#FFE538"/>
+    </g>
+    <g fill-rule="nonzero" transform="matrix(0 1 1 0 63 275)">
+      <polyline stroke="#FBD724" stroke-width="6" points="12 11 31.5 30.5 31.5 119.5"/>
+      <path stroke="#FBD724" stroke-dasharray="9" stroke-width="6" d="M14.5,46.8320313 L14.5,119.5"/>
+      <circle cx="12" cy="12" r="12" fill="#FBD724"/>
+      <circle cx="12" cy="12" r="6" fill="#FFE538"/>
+    </g>
+    <text fill="#323330" font-family="AvenirNext-Bold, Avenir Next" font-size="40" font-weight="bold">
+      <tspan x="105" y="182">JS</tspan>
+    </text>
+    <g fill-rule="nonzero">
+      <use fill="#000" filter="url(#javascript-pro-a)" xlink:href="#javascript-pro-b"/>
+      <use fill="#FFF" xlink:href="#javascript-pro-b"/>
+      <use fill="#F5D118" xlink:href="#javascript-pro-b"/>
+      <use fill="url(#javascript-pro-c)" xlink:href="#javascript-pro-b"/>
+    </g>
+  </g>
+</svg>
