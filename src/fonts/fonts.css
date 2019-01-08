@@ -10,7 +10,6 @@
   font-weight: 400;
   src: url('Inter-UI-Italic.woff') format('woff');
 }
-
 @font-face {
   font-family: 'Inter UI SemiBold';
   font-style: normal;
@@ -23,7 +22,6 @@
   font-weight: 600;
   src: url('Inter-UI-SemiBoldItalic.woff') format('woff');
 }
-
 @font-face {
   font-family: 'Inter UI Bold';
   font-style: normal;

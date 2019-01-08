@@ -1,9 +1,11 @@
+import '../fonts/fonts.css'
 import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/tag'
 import { css, Global } from '@emotion/core'
 
+import fonts from '../lib/fonts'
 import mdxComponents from './mdx'
 import Header from './Header'
 import Footer from './Footer'
@@ -17,6 +19,35 @@ const globalStyles = css`
     margin: 0;
     padding: 0;
     background: #fafafa;
+  }
+  html,
+  body {
+    font-family: ${fonts.regular}, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      'Roboto', 'Roboto Light', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+      'Droid Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: ${fonts.semibold};
+  }
+  p {
+    margin: 0 0 20px 0;
+    &:last-child {
+      margin: 0;
+    }
+  }
+  input,
+  textarea,
+  button {
+    -webkit-appearance: none;
   }
 
   ${() => {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import { css } from '@emotion/core'
 
 import { Container } from './markupHelpers'
@@ -14,7 +15,35 @@ const Header = ({ dark }) => (
     `}
   >
     <Container>
-      <Logo dark={!dark} />
+      <div
+        css={css`
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        `}
+      >
+        <Link to="/">
+          <Logo dark={!dark} />
+        </Link>
+        <div
+          css={css`
+            font-size: 16px;
+            line-height: 1.25;
+            display: flex;
+            align-items: center;
+            a {
+              color: #fbfbfb;
+              text-decoration: none;
+              & + a {
+                margin-left: 32px;
+              }
+            }
+          `}
+        >
+          <a href="">About</a>
+          <a href="">Contact us</a>
+        </div>
+      </div>
     </Container>
   </header>
 )
