@@ -142,26 +142,33 @@ export default function Index({ data: { site } }) {
       <Hero />
       <section
         css={css`
-          padding: 0;
+          padding: 80px 0;
           ${bpMaxMD} {
-            padding: 0 40px;
+            padding: 40px 0;
           }
           ${bpMaxSM} {
-            padding: 0 20px;
+            padding: 20px 0;
           }
         `}
       >
-        {categories.map(category => (
-          <Item
-            key={category.title}
-            title={category.title}
-            description={category.description}
-            thumb={category.thumb}
-            button={category.button}
-            length={category.length}
-            tags={category.tags}
-          />
-        ))}
+        <div
+          css={css`
+            max-width: 920px;
+            margin: 0 auto;
+          `}
+        >
+          {categories.map(category => (
+            <Item
+              key={category.title}
+              title={category.title}
+              description={category.description}
+              thumb={category.thumb}
+              button={category.button}
+              length={category.length}
+              tags={category.tags}
+            />
+          ))}
+        </div>
       </section>
     </Layout>
   )
