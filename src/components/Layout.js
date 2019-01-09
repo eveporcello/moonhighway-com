@@ -59,10 +59,6 @@ const globalStyles = css`
     outline: none;
   }
 }
-  h1 {
-    font-size: 3rem;
-  }
-
   input,
   textarea,
   button {
