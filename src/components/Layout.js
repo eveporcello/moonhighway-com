@@ -59,6 +59,7 @@ const globalStyles = css`
     text-decoration-color: #c4c4c4;
     outline: none;
   }
+
   input,
   textarea,
   button {

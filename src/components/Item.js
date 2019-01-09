@@ -203,7 +203,6 @@ const ItemBox = styled.div`
 `
 
 const ItemInfo = styled.div`
-  font-family: 'Inter UI', Helvetica, sans-serif;
   width: 100%;
   opacity: 0.9;
   font-size: 17px;

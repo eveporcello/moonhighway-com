@@ -52,10 +52,12 @@ const Hero = () => (
       margin-bottom: 80px;
       ${bpMaxMD} {
         padding: 20px 20px;
+        margin-bottom: 40px;
       }
       ${bpMaxSM} {
         height: auto;
         padding: 100px 10px 30px 10px;
+        margin-bottom: 20px;
       }
     `}
   >
@@ -117,6 +119,10 @@ const Hero = () => (
           css={css`
             display: flex;
             align-items: center;
+            justify-content: flex-end;
+            ${bpMaxSM} {
+              justify-content: center;
+            }
           `}
         >
           <img
@@ -137,17 +143,29 @@ export default function Index({ data: { site } }) {
   return (
     <Layout site={site} dark>
       <Hero />
-      {categories.map(category => (
-        <Item
-          key={category.title}
-          title={category.title}
-          description={category.description}
-          thumb={category.thumb}
-          button={category.button}
-          length={category.length}
-          tags={category.tags}
-        />
-      ))}
+      <section
+        css={css`
+          padding: 0;
+          ${bpMaxMD} {
+            padding: 0 40px;
+          }
+          ${bpMaxSM} {
+            padding: 0 20px;
+          }
+        `}
+      >
+        {categories.map(category => (
+          <Item
+            key={category.title}
+            title={category.title}
+            description={category.description}
+            thumb={category.thumb}
+            button={category.button}
+            length={category.length}
+            tags={category.tags}
+          />
+        ))}
+      </section>
     </Layout>
   )
 }
