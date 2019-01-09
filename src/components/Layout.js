@@ -59,7 +59,7 @@ const globalStyles = css`
     text-decoration-color: #c4c4c4;
     outline: none;
   }
-
+  
   input,
   textarea,
   button {
@@ -130,6 +130,8 @@ export default ({ site, frontmatter = {}, children, dark }) => {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                min-height: 100vh;
+                justify-content: center;
               `}
             >
               {children}

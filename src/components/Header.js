@@ -10,13 +10,13 @@ const Header = ({ dark }) => (
   <header
     css={css`
       width: 100%;
+      flex-shrink: 0;
+      background: none;
+      position: absolute;
       padding: 30px 0 0 0;
       ${bpMaxMD} {
         padding: 30px 20px 0 20px;
       }
-      flex-shrink: 0;
-      background: ${dark ? 'none' : 'none'};
-      position: absolute;
     `}
   >
     <Container>
@@ -45,8 +45,8 @@ const Header = ({ dark }) => (
             }
           `}
         >
-          <a href="">About</a>
-          <a href="">Contact us</a>
+          <Link to="/about">About</Link>
+          <Link to="#">Contact us</Link>
         </div>
       </nav>
     </Container>
