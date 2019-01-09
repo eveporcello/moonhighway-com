@@ -1,11 +1,10 @@
-import '../fonts/fonts.css'
 import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/tag'
 import { css, Global } from '@emotion/core'
+import { fonts } from '../lib/typography'
 
-import fonts from '../lib/fonts'
 import mdxComponents from './mdx'
 import Header from './Header'
 import Footer from './Footer'
