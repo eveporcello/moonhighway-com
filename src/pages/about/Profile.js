@@ -4,7 +4,8 @@ import MDReactComponent from 'markdown-react-js'
 import linkedin from './icon-linkedin.svg'
 import twitter from './icon-twitter.svg'
 import github from './icon-github.svg'
-import { bpMaxSM } from '../../lib/breakpoints'
+import banner from './linkedinBanner.png'
+import { bpMaxSM, bpMaxMD } from '../../lib/breakpoints'
 
 export default ({
   children,
@@ -22,8 +23,12 @@ export default ({
       margin: 80px 0;
       margin-left: auto;
       margin-right: auto;
-      width: 130%;
-      margin-left: -15%;
+      width: 120%;
+      margin-left: -10%;
+      ${bpMaxMD} {
+        width: 110%;
+        margin-left: -5%;
+      }
       ${bpMaxSM} {
         width: 100%;
         margin-left: 0;
@@ -33,19 +38,36 @@ export default ({
       }
     `}
   >
-    <img
-      src={image}
-      css={css`
-        border-radius: 3px;
-        box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.2);
-        width: 100%;
-        max-width: 200px;
-        height: auto;
-      `}
-    />
     <div
       css={css`
-        padding-left: 30px;
+        display: flex;
+        flex-direction: column;
+      `}
+    >
+      <img
+        src={image}
+        css={css`
+          border-radius: 3px;
+          box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.2);
+          width: 100%;
+          max-width: 230px;
+          height: auto;
+        `}
+        alt={title}
+      />
+      <img
+        src={banner}
+        css={css`
+          max-width: 160px;
+        `}
+      />
+    </div>
+    <div
+      css={css`
+        padding-left: 80px;
+        ${bpMaxMD} {
+          padding-left: 40px;
+        }
         ${bpMaxSM} {
           padding: 0;
         }
@@ -74,10 +96,10 @@ export default ({
         <a href={linkedinUrl}>
           <img src={linkedin} />
         </a>
-        <a href={linkedinUrl}>
+        <a href={twitterUrl}>
           <img src={twitter} />
         </a>
-        <a href={linkedinUrl}>
+        <a href={githubUrl}>
           <img src={github} />
         </a>
       </div>
