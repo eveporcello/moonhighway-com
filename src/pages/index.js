@@ -41,30 +41,31 @@ const Button = props => {
 const Hero = () => (
   <section
     css={css`
-      width: 100vw;
+      width: 100%;
       background: #090909;
-      color: white;
-      padding: 20px 0;
-      height: 90vh;
+      padding: 30px 0 50px 0;
+      height: 75vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 80px;
       ${bpMaxMD} {
-        padding: 20px 20px;
-        margin-bottom: 40px;
+        padding: 20px 0 40px 0;
+        height: 80vh;
       }
       ${bpMaxSM} {
         height: auto;
-        padding: 100px 10px 30px 10px;
-        margin-bottom: 20px;
+        padding: 10px 0 30px 0;
       }
     `}
   >
-    <Container>
+    <Container
+      css={css`
+        display: flex;
+        flex-direction: column;
+      `}
+    >
       <div
         css={css`
           display: flex;
+          flex-grow: 1;
           ${bpMaxSM} {
             flex-direction: column-reverse;
             align-items: center;
@@ -74,14 +75,12 @@ const Hero = () => (
         <div
           css={css`
             display: flex;
-            justify-content: space-between;
-            flex-direction: column;
+            align-items: center;
             width: 50%;
-            height: 90vh;
             flex-shrink: 0;
             ${bpMaxSM} {
               width: 100%;
-              height: auto;
+              margin-top: 60px;
             }
           `}
         >
@@ -90,30 +89,17 @@ const Hero = () => (
               color: #fff;
               font-size: 2.4rem;
               line-height: 1.5;
-              padding-top: 35vh;
               margin: 0;
               max-width: 540px;
               ${bpMaxSM} {
                 line-height: 1.4;
                 font-size: 1.6rem;
-                padding: 30px 0 10px 0;
               }
             `}
           >
             The cutting edge JavaScript training for engineers of all skill
             levels
           </h2>
-          <p
-            css={css`
-              padding-bottom: 50px;
-              ${bpMaxSM} {
-                padding-top: 30px;
-                padding-bottom: 0;
-              }
-            `}
-          >
-            View our trainings ↓
-          </p>
         </div>
         <div
           css={css`
@@ -130,10 +116,21 @@ const Hero = () => (
             alt=""
             css={css`
               display: block;
-              max-width: 90%;
+              max-width: 85%;
+              margin: 0;
             `}
           />
         </div>
+      </div>
+      <div
+        css={css`
+          align-self: flex-start;
+          color: white;
+          cursor: pointer;
+          margin-top: 40px;
+        `}
+      >
+        View our trainings ↓
       </div>
     </Container>
   </section>
