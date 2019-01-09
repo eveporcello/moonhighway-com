@@ -20,10 +20,15 @@ const globalStyles = css`
     padding: 0;
     background: #fafafa;
     color: #090909;
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
   }
   html,
   body {
-    font-family: ${fonts.regular}, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    font-family: ${
+      fonts.regular
+    }, -apple-system, BlinkMacSystemFont, 'Segoe UI',
       'Roboto', 'Roboto Light', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
       'Droid Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
       'Segoe UI Emoji', 'Segoe UI Symbol';
@@ -38,12 +43,21 @@ const globalStyles = css`
   h5,
   h6 {
     font-family: ${fonts.semibold};
+    a { color: inherit;}
   }
   p {
     margin: 0 0 20px 0;
     &:last-child {
       margin: 0;
     }
+  }
+  a {
+  text-decoration: none;
+  color: blue;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #c4c4c4;
+    outline: none;
   }
   input,
   textarea,
@@ -111,7 +125,10 @@ export default ({ site, frontmatter = {}, children, dark }) => {
             <div
               css={css`
                 flex-grow: 1;
-                width: 100%;
+                width: 100vw;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
               `}
             >
               {children}

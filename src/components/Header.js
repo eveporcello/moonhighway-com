@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { css } from '@emotion/core'
+import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
 
 import { Container } from './markupHelpers'
 import Logo from './Logo'
@@ -9,9 +10,13 @@ const Header = ({ dark }) => (
   <header
     css={css`
       width: 100%;
-      padding: 55px 0;
+      padding: 30px 0 0 0;
+      ${bpMaxMD} {
+        padding: 30px 20px 0 20px;
+      }
       flex-shrink: 0;
-      background: ${dark ? '#090909' : 'none'};
+      background: ${dark ? 'none' : 'none'};
+      position: absolute;
     `}
   >
     <Container>
