@@ -20,15 +20,11 @@ const Blog = ({
           {post.frontmatter.banner && (
             <Img sizes={post.frontmatter.banner.childImageSharp.sizes} />
           )}
-
           <h2>
             <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
           </h2>
-
           <small>{post.frontmatter.date}</small>
-
           <p>{post.excerpt}</p>
-
           <Link to={post.fields.slug}>Continue Reading</Link>
         </div>
       ))}
