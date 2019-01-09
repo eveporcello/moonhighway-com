@@ -5,7 +5,6 @@ import { css } from '@emotion/core'
 import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
 import MDReactComponent from 'markdown-react-js'
 
-<<<<<<< HEAD
 const ItemInfoBlock = styled.div`
   flex-grow: 1;
   padding-right: 80px;
@@ -47,107 +46,11 @@ const Item = ({ title, description, thumb, length, button, tags = [] }) => (
     />
   </div>
 )
-=======
-// const Item = ({ title, description, thumb, length, button, tags = [] }) => (
-//   <div
-//     css={css`
-//       display: flex;
-//       & + & {
-//         margin-top: 100px;
-//       }
-//       ${bpMaxSM} {
-//         flex-direction: column;
-//       }
-//     `}
-//   >
-//     <div>
-//       <h3>{title}</h3>
-//       <div>{description}</div>
-//     </div>
-//     <img src={thumb} alt={title} title={title} />
-//   </div>
-// )
-
-const Item = ({
-  title,
-  description,
-  thumb,
-  length,
-  button,
-  tags = [],
-  slug,
-}) => {
-  return (
-    <ItemBox>
-      <a href="#">
-        <div className="image">
-          <img src={thumb} alt={title} />
-        </div>
-      </a>
-
-      <ItemInfo className="info">
-        <h1>
-          <a href="#">{title}</a>
-        </h1>
-        {length && (
-          <h5
-            className={css`
-              margin-bottom: 10px;
-            `}
-          >
-            Length: {length} {length <= 1 ? 'day' : 'days'}
-          </h5>
-        )}
-        <MDReactComponent text={description} />
-        {tags && (
-          <div
-            className={css`
-              h5 {
-                margin-bottom: 10px;
-                opacity: 0.9;
-                font-size: 14px;
-              }
-            `}
-          >
-            <h5>Topics</h5>
-            <div
-              className={css`
-                //margin-bottom: 50px;
-                display: flex;
-                flex-wrap: wrap;
-              `}
-            >
-              {tags.map(tag => (
-                <span
-                  className={css`
-                    font-size: 15px;
-                    margin: 0px 8px 8px 0;
-                    padding: 5px 10px;
-                    border-radius: 3px;
-                    background: white;
-                    box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.2);
-                  `}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-        {button && (
-          <Link to={slug} className="button">
-            <MDReactComponent text={button} />
-          </Link>
-        )}
-      </ItemInfo>
-    </ItemBox>
-  )
-}
->>>>>>> 3dde0da00ec3d3adb2a1f06c29ecf7b07f932120
 
 export default Item
 
-// const Item = ({ title, description, thumb, length, button, tags = [] }) => {
+{
+  /*// const Item = ({ title, description, thumb, length, button, tags = [] }) => {
 //   return (
 //     <ItemBox>
 //       <a href="#">
@@ -236,7 +139,6 @@ export default Item
 //       padding-left: 0px;
 //       padding-right: 80px;
 
-<<<<<<< HEAD
 //       ${bpMaxMD} {
 //         padding-right: 40px;
 //       }
@@ -251,53 +153,6 @@ export default Item
 //       padding-left: 40px;
 //     }
 //   }
-=======
-  &img {
-    width: 100%;
-    max-width: 320px;
-    height: auto;
-  }
-  .image {
-    ${bpMaxMD} {
-      margin-top: 30px;
-    }
-    overflow: none;
-    box-shadow: 0 15px 80px -20px rgba(0, 0, 0, 0.15);
-    transition: all 250ms ease-in-out;
-    border-radius: 5px;
-    overflow: hidden;
-    background: white;
-    :hover,
-    :focus {
-      box-shadow: 0 10px 50px -20px rgba(0, 0, 0, 0.35);
-      transition: all 250ms ease-in-out;
-      outline: none;
-    }
-  }
-  .button {
-    cursor: pointer;
-    > span > p {
-      padding: 13px 20px;
-      background: white;
-      color: black;
-      margin: 0;
-      margin-top: 15px;
-      box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.15);
-      border-radius: 3px;
-      strong {
-        padding-left: 20px;
-        text-decoration: none;
-      }
-    }
-  }
-  p {
-    margin-bottom: 20px;
-    ${bpMaxMD} {
-      margin-bottom: 20px;
-    }
-  }
-`
->>>>>>> 3dde0da00ec3d3adb2a1f06c29ecf7b07f932120
 
 //   ${bpMaxSM} {
 //     .info {
@@ -381,4 +236,5 @@ export default Item
 //   ${bpMaxSM} {
 //     width: auto;
 //   }
-// `
+// `*/
+}
