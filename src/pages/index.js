@@ -151,25 +151,27 @@ export default function Index({ data: { site } }) {
           }
         `}
       >
-        <div
-          css={css`
-            max-width: 920px;
-            margin: 0 auto;
-          `}
-        >
-          {categories.map(category => (
-            <Item
-              key={category.title}
-              title={category.title}
-              description={category.description}
-              thumb={category.thumb}
-              button={category.button}
-              length={category.length}
-              tags={category.tags}
-              slug={category.slug}
-            />
-          ))}
-        </div>
+        <Container>
+          <div
+            css={css`
+              max-width: 920px;
+              margin: 0 auto;
+            `}
+          >
+            {categories.map(category => (
+              <Item
+                key={category.title}
+                title={category.title}
+                description={category.description}
+                thumb={category.thumb}
+                button={category.button}
+                length={category.length}
+                tags={category.tags}
+                slug={category.slug}
+              />
+            ))}
+          </div>
+        </Container>
       </section>
     </Layout>
   )
