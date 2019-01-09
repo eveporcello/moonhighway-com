@@ -15,6 +15,8 @@ export default function Post({
       <div
         css={css`
           max-width: 640px;
+          display: flex;
+          flex-direction: column;
           p,
           h1,
           h2,
