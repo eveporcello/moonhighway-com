@@ -42,7 +42,7 @@ export default ({ children, src, link }) => (
         alt={children}
         css={css`
           box-shadow: 0 10px 50px -15px rgba(0, 0, 0, 0.15);
-
+          width: 100%;
           margin-bottom: 10px;
           border-radius: 5px;
         `}
