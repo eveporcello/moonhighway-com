@@ -24,8 +24,6 @@ export default function Post({
           h4,
           blockquote {
             max-width: 640px;
-            text-align: left;
-            border: none;
           }
         `}
       >

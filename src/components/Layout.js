@@ -25,13 +25,13 @@ const globalStyles = css`
   }
   html,
   body {
-    font-family: ${
+    /* font-family: ${
       fonts.regular
     }, -apple-system, BlinkMacSystemFont, 'Segoe UI',
       'Roboto', 'Roboto Light', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
       'Droid Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
       'Segoe UI Emoji', 'Segoe UI Symbol';
-    font-weight: 400;
+    font-weight: 400; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -58,7 +58,11 @@ const globalStyles = css`
     text-decoration-color: #c4c4c4;
     outline: none;
   }
-  
+}
+  h1 {
+    font-size: 3rem;
+  }
+
   input,
   textarea,
   button {
@@ -81,8 +85,7 @@ const globalStyles = css`
     margin-left: -1em;
     padding-right: 1em;
     padding-left: 1em;
-  }
-`
+  }`
 
 export default ({ site, frontmatter = {}, children, dark }) => {
   const {
