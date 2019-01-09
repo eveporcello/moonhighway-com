@@ -160,6 +160,7 @@ export default function Index({ data: { site } }) {
             button={category.button}
             length={category.length}
             tags={category.tags}
+            slug={category.slug}
           />
         ))}
       </section>

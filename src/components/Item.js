@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from '../components/Link'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
@@ -24,7 +25,15 @@ import MDReactComponent from 'markdown-react-js'
 //   </div>
 // )
 
-const Item = ({ title, description, thumb, length, button, tags = [] }) => {
+const Item = ({
+  title,
+  description,
+  thumb,
+  length,
+  button,
+  tags = [],
+  slug,
+}) => {
   return (
     <ItemBox>
       <a href="#">
@@ -83,9 +92,9 @@ const Item = ({ title, description, thumb, length, button, tags = [] }) => {
           </div>
         )}
         {button && (
-          <a href="#" className="button">
+          <Link to={slug} className="button">
             <MDReactComponent text={button} />
-          </a>
+          </Link>
         )}
       </ItemInfo>
     </ItemBox>
@@ -180,6 +189,7 @@ const ItemBox = styled.div`
     }
   }
   .button {
+    cursor: pointer;
     > span > p {
       padding: 13px 20px;
       background: white;

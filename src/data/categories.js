@@ -6,7 +6,7 @@ import continuous from '../images/continuous-group.svg'
 export default [
   {
     title: 'React.js Training',
-    slug: 'react-training',
+    slug: '/react',
     description: `Since its open-source release by Facebook in 2013, the React library has exploded in popularity due to its performance features and declarative style. Many related tools and frameworks have emerged to supplement the features of React, and our classes introduce these with practicality in mind. 
     
 Our React training goes beyond the basics to explore testing with Jest, routing with React Router, and universal apps with Redux. We also go beyond the browser with our React Native course.`,
