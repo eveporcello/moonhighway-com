@@ -12,7 +12,15 @@ const Blog = ({
 }) => {
   const { page, nextPagePath, previousPagePath } = pagination
 
-  const posts = page.map(id => allMdx.edges.find(edge => edge.node.id === id))
+  const posts = page
+    .map(id =>
+      allMdx.edges.find(
+        edge =>
+          edge.node.id === id &&
+          edge.node.parent.sourceInstanceName !== 'pages',
+      ),
+    )
+    .filter(post => post !== undefined)
 
   return (
     <Layout site={site}>
@@ -68,6 +76,11 @@ export const pageQuery = graphql`
             title
             slug
             date
+          }
+          parent {
+            ... on File {
+              sourceInstanceName
+            }
           }
           frontmatter {
             title
