@@ -4,6 +4,11 @@ import { css } from '@emotion/core'
 import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
 import MDReactComponent from 'markdown-react-js'
 
+const ItemInfoBlock = styled.div`
+  flex-grow: 1;
+  padding-right: 80px;
+`
+
 const Item = ({ title, description, thumb, length, button, tags = [] }) => (
   <div
     css={css`
@@ -13,17 +18,31 @@ const Item = ({ title, description, thumb, length, button, tags = [] }) => (
       }
       &:nth-child(even) {
         flex-direction: row-reverse;
+        ${ItemInfoBlock} {
+          padding-right: 0;
+          padding-left: 80px;
+        }
       }
       ${bpMaxSM} {
         flex-direction: column-reverse;
       }
     `}
   >
-    <div>
+    <ItemInfoBlock>
       <h3>{title}</h3>
       <div>{description}</div>
-    </div>
-    <img src={thumb} alt={title} title={title} />
+    </ItemInfoBlock>
+    <img
+      src={thumb}
+      alt={title}
+      title={title}
+      css={css`
+        display: block;
+        max-width: 250px;
+        flex-shrink: 0;
+        margin: 0;
+      `}
+    />
   </div>
 )
 
