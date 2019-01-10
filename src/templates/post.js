@@ -4,6 +4,7 @@ import Img from 'gatsby-image'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import { css } from '@emotion/core'
 import { Container } from '../components/markupHelpers/'
+import { bpMaxMD } from '../lib/breakpoints'
 
 import Layout from '../components/Layout'
 
@@ -13,22 +14,15 @@ export default function Post({
 }) {
   return (
     <Layout site={site} frontmatter={mdx.frontmatter}>
-      <Container maxWidth={640}>
-        {/* <div
+      <Container
+        maxWidth={640}
         css={css`
-          max-width: 640px;
-          display: flex;
-          flex-direction: column;
-          p,
-          h1,
-          h2,
-          h3,
-          h4,
-          blockquote {
-            max-width: 640px;
+          margin-top: 8vh;
+          ${bpMaxMD} {
+            margin-top: 30px;
           }
         `}
-      > */}
+      >
         <h1>{mdx.frontmatter.title}</h1>
         <h2>{mdx.frontmatter.date}</h2>
         {mdx.frontmatter.banner && (

@@ -44,6 +44,7 @@ const globalStyles = css`
     font-family: ${fonts.semibold};
     a { color: inherit;}
   }
+
   p {
     margin: 0 0 20px 0;
     &:last-child {

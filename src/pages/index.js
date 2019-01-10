@@ -29,6 +29,7 @@ const Hero = () => (
     `}
   >
     <Container
+      maxWidth={920}
       css={css`
         display: flex;
         flex-direction: column;
@@ -56,10 +57,10 @@ const Hero = () => (
             }
           `}
         >
-          <h2
+          <h1
             css={css`
               color: #fff;
-              font-size: 2.4rem;
+              font-size: 2.1rem;
               line-height: 1.5;
               margin: 0;
               max-width: 540px;
@@ -71,7 +72,7 @@ const Hero = () => (
           >
             The cutting edge JavaScript training for engineers of all skill
             levels
-          </h2>
+          </h1>
         </div>
         <div
           css={css`
@@ -126,26 +127,19 @@ export default function Index({ data: { site } }) {
           }
         `}
       >
-        <Container>
-          <div
-            css={css`
-              max-width: 920px;
-              margin: 0 auto;
-            `}
-          >
-            {categories.map(category => (
-              <Item
-                key={category.title}
-                title={category.title}
-                description={category.description}
-                thumb={category.thumb}
-                button={category.button}
-                length={category.length}
-                tags={category.tags}
-                slug={category.slug}
-              />
-            ))}
-          </div>
+        <Container maxWidth={920}>
+          {categories.map(category => (
+            <Item
+              key={category.title}
+              title={category.title}
+              description={category.description}
+              thumb={category.thumb}
+              button={category.button}
+              length={category.length}
+              tags={category.tags}
+              slug={category.slug}
+            />
+          ))}
         </Container>
       </section>
     </Layout>

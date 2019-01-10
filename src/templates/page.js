@@ -28,9 +28,7 @@ const Blog = ({
           <Link to={post.fields.slug}>Continue Reading</Link>
         </div>
       ))}
-
       <hr />
-
       <div>
         Pagination:
         <ul>

@@ -20,6 +20,9 @@ const ItemInfo = styled.div`
 const ItemBox = styled.div`
   & + & {
     margin-top: 100px;
+    ${bpMaxSM} {
+      margin-top: 50px;
+    }
   }
   display: flex;
   align-items: flex-start;
@@ -33,21 +36,13 @@ const ItemBox = styled.div`
   flex-direction: row;
   width: 100%;
   max-width: 920px;
-  :nth-of-type(odd) {
-    //flex-direction: row-reverse;
-    .info {
-      /* padding-left: 0px;
-      padding-right: 80px;
-      ${bpMaxMD} {
-        padding-right: 40px;
-      } */
-    }
-  }
+
   .info {
     //padding-left: 80px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
     ${bpMaxMD} {
       padding-left: 40px;
     }
@@ -60,7 +55,7 @@ const ItemBox = styled.div`
     flex-direction: column;
     align-items: flex-start;
     ${bpMaxSM} {
-      align-items: center;
+      align-items: flex-start;
     }
     width: 100%;
     margin-bottom: 50px;
