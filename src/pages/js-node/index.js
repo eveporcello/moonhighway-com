@@ -64,7 +64,7 @@ export default function JsPage({ data: { site } }) {
             />
           ))}
           <TrainingInfo
-            title={`JavaScript & Node.js`}
+            title={`JavaScript & Node.js & GraphQL`}
             description={Categories[1].description}
           />
         </section>

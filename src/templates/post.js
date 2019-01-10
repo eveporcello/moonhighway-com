@@ -5,6 +5,9 @@ import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import { css } from '@emotion/core'
 import { Container } from '../components/markupHelpers/'
 import { bpMaxMD } from '../lib/breakpoints'
+import SubscribeForm from '../components/SubscribeForm'
+import { fonts, rhythm } from '../lib/typography'
+import { bpMaxSM } from '../lib/breakpoints'
 
 import Layout from '../components/Layout'
 
@@ -18,6 +21,7 @@ export default function Post({
         maxWidth={640}
         css={css`
           margin-top: 8vh;
+          margin-bottom: 100px;
           ${bpMaxMD} {
             margin-top: 30px;
           }
@@ -32,8 +36,8 @@ export default function Post({
           />
         )}
         <MDXRenderer>{mdx.code.body}</MDXRenderer>
-        {/* </div> */}
       </Container>
+      <SubscribeForm />
     </Layout>
   )
 }

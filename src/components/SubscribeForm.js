@@ -95,7 +95,7 @@ const SubscribeForm = () => (
             color: #090909;
             font-size: 12px;
             line-height: 1.25;
-            margin-top: 20px;
+            margin-top: 15px;
           `}
         >
           We won't send you spam. Unsubscribe at any time.

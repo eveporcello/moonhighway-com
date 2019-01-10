@@ -6,6 +6,7 @@ import Link from '../components/Link'
 import { Container } from '../components/markupHelpers/'
 import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
 import Item from '../components/Item'
+import SubscribeForm from '../components/SubscribeForm'
 
 import imgMoon from '../images/moon.jpg'
 import categories from '../data/categories'
@@ -140,6 +141,13 @@ export default function Index({ data: { site } }) {
               slug={category.slug}
             />
           ))}
+          <div
+            css={css`
+              margin-top: 120px;
+            `}
+          >
+            <SubscribeForm />
+          </div>
         </Container>
       </section>
     </Layout>
