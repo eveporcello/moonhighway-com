@@ -137,24 +137,25 @@ const Item = ({
 }) => {
   return (
     <ItemBox>
-      <a
-        href="#"
+      <div
         css={css`
           flex-shrink: 0;
         `}
       >
         <div className="image">
-          <img src={thumb} alt={title} />
+          <Link to={slug}>
+            <img src={thumb} alt={title} />
+          </Link>
         </div>
-      </a>
+      </div>
 
       <ItemInfo className="info">
         <h1>
-          <a href="#">{title}</a>
+          <Link to={slug}>{title}</Link>
         </h1>
         {length && (
           <h5
-            className={css`
+            css={css`
               margin-bottom: 10px;
             `}
           >
@@ -164,7 +165,7 @@ const Item = ({
         <MDReactComponent text={description} />
         {tags && (
           <div
-            className={css`
+            css={css`
               h5 {
                 margin-bottom: 10px;
                 opacity: 0.9;
@@ -174,7 +175,7 @@ const Item = ({
           >
             <h5>Topics</h5>
             <div
-              className={css`
+              css={css`
                 //margin-bottom: 50px;
                 display: flex;
                 flex-wrap: wrap;
@@ -182,7 +183,7 @@ const Item = ({
             >
               {tags.map(tag => (
                 <span
-                  className={css`
+                  css={css`
                     font-size: 15px;
                     margin: 0px 8px 8px 0;
                     padding: 5px 10px;

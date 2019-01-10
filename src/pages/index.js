@@ -126,11 +126,13 @@ const Hero = () => (
         css={css`
           align-self: flex-start;
           color: white;
-          cursor: pointer;
           margin-top: 40px;
+          a {
+            color: inherit;
+          }
         `}
       >
-        View our trainings ↓
+        <Link to="#trainings">View our trainings ↓</Link>
       </div>
     </Container>
   </section>
@@ -141,8 +143,9 @@ export default function Index({ data: { site } }) {
     <Layout site={site} dark>
       <Hero />
       <section
+        id="trainings"
         css={css`
-          padding: 80px 0;
+          padding: 100px 0 60px 0;
           ${bpMaxMD} {
             padding: 40px 0;
           }

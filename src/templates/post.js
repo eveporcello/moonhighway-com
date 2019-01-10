@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import { css } from '@emotion/core'
+import { Container } from '../components/markupHelpers/'
 
 import Layout from '../components/Layout'
 
@@ -12,7 +13,8 @@ export default function Post({
 }) {
   return (
     <Layout site={site} frontmatter={mdx.frontmatter}>
-      <div
+      <Container maxWidth={640}>
+        {/* <div
         css={css`
           max-width: 640px;
           display: flex;
@@ -26,7 +28,7 @@ export default function Post({
             max-width: 640px;
           }
         `}
-      >
+      > */}
         <h1>{mdx.frontmatter.title}</h1>
         <h2>{mdx.frontmatter.date}</h2>
         {mdx.frontmatter.banner && (
@@ -36,7 +38,8 @@ export default function Post({
           />
         )}
         <MDXRenderer>{mdx.code.body}</MDXRenderer>
-      </div>
+        {/* </div> */}
+      </Container>
     </Layout>
   )
 }

@@ -16,7 +16,7 @@ Our React training goes beyond the basics to explore testing with Jest, routing 
   },
   {
     title: 'JavaScript & Node.js Training',
-    slug: 'javascript-and-node-training',
+    slug: '/js-node',
     description: `With JavaScript and Node.js training from Moon Highway, your team will learn the skills necessary to be successful at building full-stack JavaScript applications. Our beginner JavaScript courses emphasize the fundamentals of JavaScript. 
     
 They are designed for developers, engineers, creatives and managers who have very little JavaScript experience. Our Node.js materials are designed to train you for the job. We focus heavily on unit testing, best practices, and real world scenarios.`,
@@ -26,7 +26,7 @@ They are designed for developers, engineers, creatives and managers who have ver
   },
   {
     title: 'HTML & CSS Training',
-    slug: 'html-and-css-training',
+    slug: '/html-css',
     description: `Make your pages semantic, responsive, and accessible with the latest HTML and CSS techniques. 
     
 Whether you're creating elements for a webpage or styling components in your app, using the most efficient HTML and CSS will help showcase your content in the best way possible.`,
@@ -36,7 +36,7 @@ Whether you're creating elements for a webpage or styling components in your app
   },
   {
     title: 'Continuous Delivery',
-    slug: 'continuous-delivery',
+    slug: '/continuous-delivery',
     description: `Continuous Delivery is the practice of deploying your code to production without any human intervention.It allows your business products to rapidly incorporate feedback and instantly push new features to production without compromising quality. 
     
 The JavaScript community has plenty of tools that we can use to build continuous delivery systems.Our courses are geared towards students who want to master the patterns and tools associated with JavaScript build pipelines.`,

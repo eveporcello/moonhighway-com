@@ -1,15 +1,15 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import Layout from '../components/Layout'
-import Link from '../components/Link'
-import { Container } from '../components/markupHelpers/'
-import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
-import Item from '../components/Item'
+import Layout from '../../components/Layout'
+import Link from '../../components/Link'
+import { Container } from '../../components/markupHelpers'
+import { bpMaxSM, bpMaxMD } from '../../lib/breakpoints'
+import Item from '../../components/Item'
 
-import ReactTraining from '../data/reactTrainings'
+import ReactTraining from '../../data/reactTrainings'
 
-export default function ReactPace({ data: { site } }) {
+export default function JsPage({ data: { site } }) {
   return (
     <Layout site={site}>
       <section
