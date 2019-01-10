@@ -27,8 +27,8 @@ const Footer = () => (
       maxWidth={1000}
       css={css`
         background: white;
-        //box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.05);
-        //border-radius: 5px;
+        box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.05);
+        border-radius: 5px;
         padding-top: 80px;
         padding-bottom: 80px;
         ${bpMaxSM} {
