@@ -39,9 +39,15 @@ const Header = ({ dark }) => (
                 margin-left: 32px;
               }
             }
+            .active {
+              display: none;
+              visibility: hidden;
+            }
           `}
         >
-          <Link to="/about">About</Link>
+          <Link to="/about" activeClassName="active">
+            About
+          </Link>
           <Link to="#">Contact us</Link>
         </div>
       </nav>

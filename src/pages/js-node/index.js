@@ -7,14 +7,34 @@ import { Container } from '../../components/markupHelpers'
 import { bpMaxSM, bpMaxMD } from '../../lib/breakpoints'
 import Item from '../../components/Item'
 
+import HeaderImage from '../../images/javascript-stack.svg'
 import JsNodeTraining from '../../data/javascriptNodeTrainings'
+import Categories from '../../data/categories'
 
 export default function JsPage({ data: { site } }) {
   return (
     <Layout site={site}>
+      <div
+        css={css`
+          position: absolute;
+          top: -80px;
+          display: flex;
+          flex-direction: column;
+          align-content: center;
+          justify-content: center;
+          h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-top: -30px;
+          }
+        `}
+      >
+        <img src={HeaderImage} alt={Categories[1].title} />
+        <h1>{Categories[1].title}</h1>
+      </div>
       <section
         css={css`
-          padding: 100px 0 50px 0;
+          padding: 300px 0 50px 0;
           ${bpMaxMD} {
             padding: 50px 100px;
           }

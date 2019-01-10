@@ -28,7 +28,6 @@ const Footer = () => (
     <div
       css={css`
         background: white;
-        //border: 2px solid #f1f1f1;
         box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.05);
         border-radius: 5px;
         max-width: 1200px;
@@ -48,21 +47,34 @@ const Footer = () => (
           `}
         >
           <div>
-            <h4
-              css={css`
-                margin-top: 10px;
-              `}
-            >
-              Trainings
-            </h4>
+            <Link to="/#trainings">
+              <h4
+                css={css`
+                  margin-top: 10px;
+                `}
+              >
+                Trainings
+              </h4>
+            </Link>
             {categories.map(category => (
               <div
                 key={category.title}
                 css={css`
                   margin: 10px 0;
+                  .active {
+                    opacity: 0.8;
+
+                    font-family: ${fonts.semibold}, sans-serif;
+                    ::before {
+                      content: '→';
+                      padding-right: 10px;
+                    }
+                  }
                 `}
               >
-                <Link to={category.slug}>{category.title}</Link>
+                <Link to={category.slug} activeClassName="active">
+                  {category.title}
+                </Link>
               </div>
             ))}
           </div>
