@@ -12,7 +12,7 @@ const Container = props => {
         max-width: ${maxWidth + (noPadding ? 0 : 80)}px;
         padding: 0 ${noPadding ? 0 : '40px'};
         ${bpMaxSM} {
-          max-width: ${maxWidth + (noPadding ? 0 : 80)}px;
+          max-width: ${maxWidth + (noPadding ? 0 : 40)}px;
           padding: 0 ${noPadding ? 0 : '20px'};
         }
       `}
