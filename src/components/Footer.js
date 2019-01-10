@@ -30,7 +30,7 @@ const Footer = () => (
         background: white;
         box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.05);
         border-radius: 5px;
-        max-width: 1200px;
+        max-width: 1080px;
         margin-left: auto;
         margin-right: auto;
         ${bpMaxMD} {

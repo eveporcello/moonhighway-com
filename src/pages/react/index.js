@@ -26,7 +26,7 @@ export default function ReactPage({ data: { site } }) {
         `}
       >
         <img src={HeaderImage} alt={Categories[0].title} />
-        <h1>{Categories[0].title}</h1>
+        <h1>{Categories[0].title}s</h1>
       </div>
       <section
         css={css`
