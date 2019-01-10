@@ -25,17 +25,13 @@ const Footer = () => (
       }
     `}
   >
-    <div
+    <Container
+      maxWidth={1080}
+      noPadding
       css={css`
         background: white;
         box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.05);
         border-radius: 5px;
-        max-width: 1080px;
-        margin-left: auto;
-        margin-right: auto;
-        ${bpMaxMD} {
-          max-width: auto;
-        }
       `}
     >
       <Container maxWidth={900}>
@@ -85,7 +81,7 @@ const Footer = () => (
           />
         </div>
       </Container>
-    </div>
+    </Container>
     <div
       css={css`
         padding: 70px 0;
