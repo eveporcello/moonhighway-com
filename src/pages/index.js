@@ -10,34 +10,6 @@ import Item from '../components/Item'
 import imgMoon from '../images/moon.jpg'
 import categories from '../data/categories'
 
-const Button = props => {
-  const { children, ...restProps } = props
-  return (
-    <Link
-      {...restProps}
-      css={css`
-        padding: 13px 20px;
-        background: white;
-        color: black;
-        margin: 0;
-        box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.15);
-        border-radius: 3px;
-        display: inline-flex;
-        align-items: center;
-      `}
-    >
-      <span>{children}</span>
-      <span
-        css={css`
-          margin-left: 20px;
-        `}
-      >
-        →
-      </span>
-    </Link>
-  )
-}
-
 const Hero = () => (
   <section
     css={css`
