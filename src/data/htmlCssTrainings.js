@@ -13,7 +13,7 @@ import accessibilityAndUxDesign from '../images/html-css/accessibility-and-ux-de
 export default [
   {
     title: 'HTML & HTTP Foundation',
-    slug: 'html-http-foundation',
+    //slug: 'html-http-foundation',
     description: `This course is designed for **anyone** who is new to the web or Google Chrome. This includes **managers** who are new to web projects, **engineers** new to JavaScript and the browser, and **creatives** new to digital design. In this course, students learn how the browser works with HTTP, HTML, CSS, and JavaScript by learning how to review and debug websites with Google Chrome.We discuss techniques that are used to optimize website performance.`,
     thumb: `${htmlHttpFoundation}`,
     button: '',
@@ -34,7 +34,7 @@ export default [
   },
   {
     title: 'HTML5 Kickoff',
-    slug: 'html5-kickoff',
+    //slug: 'html5-kickoff',
     description: `This course introduces **creatives**, **managers**, **developers**, and **engineers** to the latest HTML markup. Students learn how HTML, CSS, and JavaScript all fit together within an HTML document. We dive deep into the browser DOM and HTML debugging tools. We learn how to effectively add elements to a page to improve SEO and accessibility.`,
     thumb: `${html5Kickoff}`,
     button: '',
@@ -51,7 +51,7 @@ export default [
   },
   {
     title: 'HTML5 Pro',
-    slug: 'html5-pro',
+    //slug: 'html5-pro',
     description: `This course is designed for **creatives**, **developers**, and **engineers** who are familiar with the basics of HTML and have dabbled with JavaScript. This course introduces features and tags from the fifth version of the HTML specification. These features allow developers to add interactivity to their browser applications. Students will improve their ability to work with the browser by implementing these features and testing them in browsers on devices.`,
     thumb: `${html5Pro}`,
     button: '',
@@ -69,7 +69,7 @@ export default [
   },
   {
     title: 'CSS3 Kickoff',
-    slug: 'css3-kickoff',
+    //slug: 'css3-kickoff',
     description: `This course introduces **creatives**, **managers**, **developers**, and **engineers** to Cascading Style Sheets, the language that controls the look and feel of your application. Students will apply look and feel to existing HTML and will learn how to create and use stylesheets within their applications. This course focuses on CSS core functionality and provides the necessary foundation for our other CSS courses.`,
     thumb: `${css3Kickoff}`,
     button: '',
@@ -89,7 +89,7 @@ export default [
   },
   {
     title: 'CSS Pro',
-    slug: 'css-pro',
+    //slug: 'css-pro',
     description: `This course is designed to teach **creatives**, **developers**, and **engineers** who have a solid foundation in CSS how to construct complex full-page layouts. This course analyzes how to construct layouts using percentages, the box models, and floats. In addition to covering legacy layout techniques, students will gain an understanding of how to use the latest layout techniques including flexbox and the grid.`,
     thumb: `${cssPro}`,
     button: '',
@@ -108,7 +108,7 @@ export default [
   },
   {
     title: 'Responsive Design',
-    slug: 'responsive-design',
+    //slug: 'responsive-design',
     description: `This course is designed to teach **creatives**, **developers**, and **engineers** who have a solid foundation in CSS how to construct responsive full-page layouts that look good in all screen sizes and on all devices. First, this course covers how to make design flexible with percentages, ems, and flexbox. Next, we move on to how to implement media queries to target specific screen sizes or devices. Students build responsive CSS layouts using the latest techniques.`,
     thumb: `${responsiveDesign}`,
     button: '',
@@ -126,7 +126,7 @@ export default [
   },
   {
     title: 'CSS Animations',
-    slug: 'css-animations',
+    //slug: 'css-animations',
     description: `This course is designed to teach **creatives**, **developers**, and **engineers** who have a solid foundation in CSS how to build animations. First, students learn how to transform objects and add transition effects. We then dive deep into building both 2D and 3D animations as well as animating SVG. Students are also challenged to design and build their own native CSS animations.`,
     thumb: `${cssAnimations}`,
     button: '',
@@ -143,7 +143,7 @@ export default [
   },
   {
     title: 'Sass & SCSS Kickoff',
-    slug: 'sass-scss-kickoff',
+    //slug: 'sass-scss-kickoff',
     description: `This course is designed to teach **creatives**, **developers**, and **engineers** who have a solid foundation is CSS how to improve their stylesheet code with Sass and SCSS. Sass is a scripting language that generates CSS files. In this class, students learn how to enhance the way they write CSS as well as statically pre-process stylesheets with Sass.
       `,
     thumb: `${sassScssKickoff}`,
@@ -162,7 +162,7 @@ export default [
   },
   {
     title: 'LESS Kickoff',
-    slug: 'less-kickoff',
+    //slug: 'less-kickoff',
     description: `This course is designed to teach **creatives**, **developers**, and **engineers** who have a solid foundation is CSS how to improve their stylesheet code with LESS. LESS is a scripting language that statically generates CSS files. Students learn how to enhance the way they write CSS as well as statically preprocess stylesheets with LESS.`,
     thumb: `${less}`,
     button: '',
@@ -180,7 +180,7 @@ export default [
   },
   {
     title: 'D3 Data Visualizations',
-    slug: 'd3-data-visualizations',
+    //slug: 'd3-data-visualizations',
     description: `This course introduces the popular data visualization framework, Data Driven Documents, to **developers**, **engineers**, and **creatives**  who have worked with JavaScript and have a solid understanding of HTML and CSS. In this course, students learn to create data visualizations with HTML, CSS, JavaScript, and SVG. Students who complete this course will be able to use the D3 library to create a multitude of charts, graphs, and maps that can be used to visualize data.`,
     thumb: `${d3DataVisualizations}`,
     button: '',
@@ -200,7 +200,7 @@ export default [
   },
   {
     title: 'Accessibility and UX Design',
-    slug: 'accessibility-and-ux-design',
+    //slug: 'accessibility-and-ux-design',
     description: `In this course, we focus on the best techniques for creating accessible and enjoyable user experiences. Designed for **developers**, **engineers**, **creatives**, **managers**, and anyone else involved in working on web projects. We'll go over the legal and ethical guidelines to consider when creating websites. Then we'll discuss how accessibility fits in with the UX design process and can enhance experiences for every user.`,
     thumb: `${accessibilityAndUxDesign}`,
     button: '',

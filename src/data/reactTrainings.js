@@ -10,7 +10,7 @@ import universalReact from '../images/react/universal-react.svg'
 export default [
   {
     title: 'Learning React',
-    slug: 'learning-react',
+    //slug: 'learning-react',
     description: `This course is based on our book: [Learning React](http://shop.oreilly.com/product/0636920049579.do). This course is designed for **developers** and **engineers**  who already have a strong JavaScript background. Students learn how to construct applications with React and the ecosystem of related libraries. In class, students use React and Redux to build and test the [color organizer](https://rawgit.com/MoonHighway/learning-react/master/chapter-09/color-organizer/dist/index.html).`,
     thumb: `${learningReact}`,
     button: '',
@@ -29,7 +29,7 @@ export default [
   },
   {
     title: 'React Kickoff',
-    slug: 'react-kickoff',
+    //slug: 'react-kickoff',
     description: `This course specifically covers the React library. It is designed for **developers** and **engineers**  who have some JavaScript experience. In this course, we dive deep into the React library and develop applications using React and vanilla JavaScript with a touch of Jest testing.`,
     thumb: `${reactKickoff}`,
     button: '',
@@ -46,7 +46,7 @@ export default [
   },
   {
     title: 'React Native Kickoff',
-    slug: 'react-native-kickoff',
+    //slug: 'react-native-kickoff',
     description: `React Native allows you to build powerful native applications with JavaScript. Our React Native course is designed for **developers** and **engineers** who have some experience with JavaScript and React. In this course, we teach you how to utilize your current React knowledge to build native applications that are powered by React. Students will create applications that run on both iOS and Android devices.`,
     thumb: `${reactNativeKickoff}`,
     button: '',
@@ -64,7 +64,7 @@ export default [
   },
   {
     title: 'Zero to React',
-    slug: 'zero-to-react',
+    //slug: 'zero-to-react',
     description: `This course is designed for **project managers**, **designers**, or **engineers** who have little experience with JavaScript and the web. Before covering React, this course provides foundational knowledge about the browser and front-end web technologies.`,
     thumb: `${zeroToReact}`,
     button: '',
@@ -81,7 +81,7 @@ export default [
   },
   {
     title: 'Emerging JavaScript',
-    slug: 'emerging-javascript',
+    //slug: 'emerging-javascript',
     description: `This JavaScript course is designed for **developers**, and **engineers** who have some JavaScript experience. It covers the latest syntax that is being used to make JavaScript code more beautiful and friendly across the web. Understanding ES2015, ES2016, and ES2017 will make your **team** much more proficient with React.`,
     thumb: `${emergingJavascript}`,
     button: '',
@@ -99,7 +99,7 @@ export default [
   },
   {
     title: 'Functional JavaScript',
-    slug: 'functional-javascript',
+    //slug: 'functional-javascript',
     description: `This course introduces the functional programming paradigm and shows JavaScript **developers** and **engineers** how to use functional design patterns to produce more efficient and beautiful code. An understanding of functional programming techniques is vital to being highly proficient with React. This course serves as an excellent prerequisite for our React courses.`,
     thumb: `${functionalJavascript}`,
     button: '',
@@ -115,7 +115,7 @@ export default [
   },
   {
     title: 'Redux',
-    slug: 'redux',
+    //slug: 'redux',
     description: `Redux is a popular library that can be used in conjunction with React to manage state in your application. Our Redux course is designed for **engineers** and **developers** who are experienced with JavaScript. In this class, students create and test the data layer for an application called the [color organizer](https://rawgit.com/MoonHighway/learning-react/master/chapter-09/color-organizer/dist/index.html).`,
     thumb: `${redux}`,
     button: '',
@@ -133,7 +133,7 @@ export default [
   },
   {
     title: 'Universal React',
-    slug: 'universal-react',
+    //slug: 'universal-react',
     description: `This course is designed to teach **developers** and **engineers** who are proficient with React how to incorporate and communicate with the backend. In this class, students will reuse JavaScript code in both the client and server environments. This course covers the techniques and patterns that are used to build some of the most efficient applications on the web.`,
     thumb: `${universalReact}`,
     button: '',

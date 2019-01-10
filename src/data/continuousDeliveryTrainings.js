@@ -10,7 +10,7 @@ import accessibilityAndUxDesign from '../images/html-css/accessibility-and-ux-de
 export default [
   {
     title: 'Git and GitHub',
-    slug: 'git-and-github',
+    //slug: 'git-and-github',
     description: `Git is a version control system that helps you manage your codebase. GitHub is the world's leading software development platform. This class is designed for **developers**, **engineers**, **creatives**, and **managers**. We teach your entire **team** how to work efficiently with Git and GitHub.`,
     thumb: `${gitAndGithub}`,
     button: '',
@@ -28,7 +28,7 @@ export default [
   },
   {
     title: 'Test Driven JavaScript',
-    slug: 'test-driven-javascript',
+    //slug: 'test-driven-javascript',
     description: `This course is designed for **developers** and **engineers** who have the basics of JavaScript under their belts. This course covers how to write unit tests and practice Test Driven Development (TDD) with JavaScript. Students gain hands-on experience with writing unit tests with vanilla JavaScript before exploring the Mocha and Jest testing frameworks.`,
     thumb: `${testDrivenJavascript}`,
     button: '',
@@ -46,7 +46,7 @@ export default [
   },
   {
     title: 'Behavior Driven JavaScript',
-    slug: 'behavior-driven-javascript',
+    //slug: 'behavior-driven-javascript',
     description: `This course is designed for **developers** and **engineers** who have the basics of JavaScript under their belts. This course covers how to use JavaScript to incorporate integration testing for full stack browser applications. Students gain hands on experience writing features and practicing Behavior Driven Development (BDD).`,
     thumb: `${behaviorDrivenJavascript}`,
     button: '',
@@ -64,7 +64,7 @@ export default [
   },
   {
     title: 'Webpack Pro',
-    slug: 'webpack-pro',
+    //slug: 'webpack-pro',
     description: `This course is designed for **developers** and **engineers** who want a deeper understanding of how webpack works. In this class, we build custom loaders and plugins and create various webpack configurations. Students gain an understanding of how to preprocess and package code with webpack through hands-on challenges and examples.`,
     thumb: `${webpackPro}`,
     button: '',
@@ -83,7 +83,7 @@ export default [
   },
   {
     title: 'npm Publisher',
-    slug: 'npm-publisher',
+    //slug: 'npm-publisher',
     description: `This course is designed for **developers** and **engineers** who plan to publish their JavaScript repositories to npm. Students will learn to build and publish CLIs and libraries. We cover the best practices and techniques for documenting, versioning, and setting up automated continuous delivery pipelines that deploy your code to npm.`,
     thumb: `${npmPublisher}`,
     button: '',
@@ -101,7 +101,7 @@ export default [
   },
   {
     title: 'Heroku Publisher',
-    slug: 'heroku-publisher',
+    //slug: 'heroku-publisher',
     description: `This course is designed for **developers** and **engineers** who wish to deploy JavaScript applications using Heroku, the Salesforce cloud platform. Students will learn how to create and mange Heroku with both the Heroku CLI and the Heroku dashboard. Students will build continuous delivery pipelines that test and certify applications before deploying to Heroku.`,
     thumb: `${herokuPublisher}`,
     button: '',
@@ -120,7 +120,7 @@ export default [
   },
   {
     title: 'Engineer Onboarding',
-    slug: 'engineer-onboarding',
+    //slug: 'engineer-onboarding',
     description: `We can help design and deliver your onboarding program for **engineers**, **developers**, **managers**, or **creatives**. As your organization grows, it is very important to keep a uniform engineering culture. We can dive deep into your proprietary solutions and practices to provide a hands-on training curriculum for your incoming **technical professionals**.`,
     thumb: `${engineerOnboarding}`,
     button: '',
@@ -140,7 +140,7 @@ export default [
   },
   {
     title: 'Accessibility and UX Design',
-    slug: 'accessibility-and-ux-design',
+    //slug: 'accessibility-and-ux-design',
     description: `In this course, we focus on the best techniques for creating accessible and enjoyable user experiences. Designed for **developers**, **engineers**, **creatives**, **managers**, and anyone else involved in working on web projects. We'll go over the legal and ethical guidelines to consider when creating websites. Then we'll discuss how accessibility fits in with the UX design process and can enhance experiences for every user.`,
     thumb: `${accessibilityAndUxDesign}`,
     button: '',

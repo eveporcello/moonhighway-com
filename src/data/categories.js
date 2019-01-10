@@ -35,7 +35,7 @@ Whether you're creating elements for a webpage or styling components in your app
     tags: '',
   },
   {
-    title: 'Continuous Delivery',
+    title: 'Continuous Delivery Training',
     slug: '/continuous-delivery',
     description: `Continuous Delivery is the practice of deploying your code to production without any human intervention.It allows your business products to rapidly incorporate feedback and instantly push new features to production without compromising quality. 
     

@@ -14,12 +14,12 @@ export default function ReactPage({ data: { site } }) {
     <Layout site={site}>
       <section
         css={css`
-          padding: 0;
+          padding: 100px 0 50px 0;
           ${bpMaxMD} {
-            padding: 0 40px;
+            padding: 50px 100px;
           }
           ${bpMaxSM} {
-            padding: 0 20px;
+            padding: 10px 20px;
           }
         `}
       >

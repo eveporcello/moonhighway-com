@@ -33,7 +33,7 @@ const Header = ({ dark }) => (
             display: flex;
             align-items: center;
             a {
-              color: #fbfbfb;
+              color: ${dark ? '#fbfbfb' : 'rgba(0,0,0,0.85)'};
               text-decoration: none;
               & + a {
                 margin-left: 32px;

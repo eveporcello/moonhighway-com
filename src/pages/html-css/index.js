@@ -7,23 +7,23 @@ import { Container } from '../../components/markupHelpers'
 import { bpMaxSM, bpMaxMD } from '../../lib/breakpoints'
 import Item from '../../components/Item'
 
-import ReactTraining from '../../data/reactTrainings'
+import HtmlCss from '../../data/htmlCssTrainings'
 
 export default function HtmlPage({ data: { site } }) {
   return (
     <Layout site={site}>
       <section
         css={css`
-          padding: 0;
+          padding: 100px 0 50px 0;
           ${bpMaxMD} {
-            padding: 0 40px;
+            padding: 50px 100px;
           }
           ${bpMaxSM} {
-            padding: 0 20px;
+            padding: 10px 20px;
           }
         `}
       >
-        {ReactTraining.map(training => (
+        {HtmlCss.map(training => (
           <Item
             key={training.title}
             title={training.title}

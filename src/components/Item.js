@@ -22,7 +22,7 @@ const ItemBox = styled.div`
     margin-top: 100px;
   }
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   ${bpMaxMD} {
     align-items: flex-start;
   }
@@ -34,17 +34,17 @@ const ItemBox = styled.div`
   width: 100%;
   max-width: 920px;
   :nth-of-type(odd) {
-    flex-direction: row-reverse;
+    //flex-direction: row-reverse;
     .info {
-      padding-left: 0px;
+      /* padding-left: 0px;
       padding-right: 80px;
       ${bpMaxMD} {
         padding-right: 40px;
-      }
+      } */
     }
   }
   .info {
-    padding-left: 80px;
+    //padding-left: 80px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -66,7 +66,7 @@ const ItemBox = styled.div`
     margin-bottom: 50px;
     flex-direction: column;
     :nth-of-type(odd) {
-      flex-direction: column;
+      flex-direction: column !important;
       .info {
         padding: 0;
       }
@@ -136,23 +136,51 @@ const Item = ({
   slug,
 }) => {
   return (
-    <ItemBox>
+    <ItemBox
+      css={css`
+        :nth-of-type(odd) {
+          flex-direction: ${slug ? 'row-reverse' : 'row'};
+          .info {
+            padding-left: ${slug ? '0' : '80px'};
+            padding-right: ${slug ? '80px' : '0'};
+            ${bpMaxMD} {
+              padding-right: 40px;
+              padding-left: ${slug ? '0' : '80px'};
+            }
+            ${bpMaxSM} {
+              padding-left: ${slug ? '0' : '0'};
+            }
+          }
+        }
+        .info {
+          padding-left: 80px;
+          ${bpMaxMD} {
+            padding-left: 80px;
+          }
+          ${bpMaxSM} {
+            padding-left: 0;
+          }
+        }
+      `}
+    >
       <div
         css={css`
           flex-shrink: 0;
         `}
       >
         <div className="image">
-          <Link to={slug}>
+          {slug ? (
+            <Link to={slug}>
+              <img src={thumb} alt={title} />
+            </Link>
+          ) : (
             <img src={thumb} alt={title} />
-          </Link>
+          )}
         </div>
       </div>
 
       <ItemInfo className="info">
-        <h1>
-          <Link to={slug}>{title}</Link>
-        </h1>
+        <h1>{slug ? <Link to={slug}>{title}</Link> : `${title}`}</h1>
         {length && (
           <h5
             css={css`

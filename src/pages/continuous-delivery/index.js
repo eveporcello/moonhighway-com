@@ -7,23 +7,23 @@ import { Container } from '../../components/markupHelpers'
 import { bpMaxSM, bpMaxMD } from '../../lib/breakpoints'
 import Item from '../../components/Item'
 
-import ReactTraining from '../../data/reactTrainings'
+import ContinuousDeliveryTraining from '../../data/continuousDeliveryTrainings'
 
 export default function ContinuousDeiveryPage({ data: { site } }) {
   return (
     <Layout site={site}>
       <section
         css={css`
-          padding: 0;
+          padding: 100px 0 50px 0;
           ${bpMaxMD} {
-            padding: 0 40px;
+            padding: 50px 100px;
           }
           ${bpMaxSM} {
-            padding: 0 20px;
+            padding: 10px 20px;
           }
         `}
       >
-        {ReactTraining.map(training => (
+        {ContinuousDeliveryTraining.map(training => (
           <Item
             key={training.title}
             title={training.title}

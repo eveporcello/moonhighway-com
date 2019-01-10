@@ -13,7 +13,7 @@ import graphqlWithNode from '../images/javascript-node/graphql-with-node.svg'
 export default [
   {
     title: 'JavaScript Kickoff',
-    slug: 'javascript-kickoff',
+    //slug: 'javascript-kickoff',
     description: `This course is designed for **developers**, **engineers**, **creatives**, and **managers** who have never had the chance to learn the core fundamentals of vanilla JavaScript. This course examines the core types available in JavaScript and how these types are used to create every library, framework, or application that uses the language. We examine JavaScript's quirks and discuss how JavaScript differs from other programming languages. Students leave this course with a solid understanding of the basics of vanilla JavaScript and become more confident at their jobs.`,
     thumb: `${javascriptKickoff}`,
     button: '',
@@ -32,7 +32,7 @@ export default [
   },
   {
     title: 'Node Kickoff',
-    slug: 'node-kickoff',
+    //slug: 'node-kickoff',
     description: `This course introduces the concepts of Node.js and is aimed at **developers**, **engineers**, **creatives**, and **managers** who have a basic understanding of the JavaScript language. In this course, we cover the core modules that ship with Node.js. We wrap this course up by introducing npm and using JavaScript modules that are developed by the community. Students leave this course with their environments setup for rapid development ready to build awesome apps.`,
     thumb: `${nodeKickoff}`,
     button: '',
@@ -50,7 +50,7 @@ export default [
   },
   {
     title: 'JavaScript Pro',
-    slug: 'javascript-pro',
+    //slug: 'javascript-pro',
     description: `This course is designed for **developers** and **engineers** who have the basics of JavaScript under their belt and are ready to improve their code by implementing object-oriented design patterns in JavaScript. This course examines how JavaScript objects and functions work together with prototypal inheritance to allow you to develop applications with the same design patterns that you are currently familiar with like singletons, composites, MV*, and more.`,
     thumb: `${javascriptPro}`,
     button: '',
@@ -67,7 +67,7 @@ export default [
   },
   {
     title: 'Node Pro',
-    slug: 'node-pro',
+    //slug: 'node-pro',
     description: `This course is designed for **developers** and **engineers** who already have Node.js installed and are ready to dive deeper into its core modules and patterns. In this class, we examine the stream interface and how to work with synchronicity and asynchronicity in Node.js applications. Students implement the stream interface several times by working with the core modules that incorporate streams.`,
     thumb: `${nodePro}`,
     button: '',
@@ -85,7 +85,7 @@ export default [
   },
   {
     title: 'Node Stacked',
-    slug: 'node-stacked',
+    //slug: 'node-stacked',
     description: `This course is designed for **developers** and **engineers** who have the basics of Node and JavaScript under their belt. In this course, we example techniques for developing full-stack JavaScript applications. Students build and modify an Express application that that serves data to a single-page browser application.`,
     thumb: `${nodeStacked}`,
     button: '',
@@ -106,7 +106,7 @@ export default [
   },
   {
     title: 'Node Data Pro',
-    slug: 'node-data-pro',
+    //slug: 'node-data-pro',
     description: `This course is designed for **developers** and **engineers** who have the basics of Node and JavaScript under their belt. This class examines how Node.js applications interact with data layers. In this class, students setup Mongo databases and learn to work with Mongo. This course also introduces and compares mLab and Firebase, two popular database services.`,
     thumb: `${nodeDataPro}`,
     button: '',
@@ -124,7 +124,7 @@ export default [
   },
   {
     title: 'Emerging JavaScript',
-    slug: 'emerging-javascript',
+    //slug: 'emerging-javascript',
     description: `This JavaScript course is designed for **developers** and **engineers** who have some JavaScript experience. It covers the latest syntax that is being used to make JavaScript code more beautiful and friendly across the web. Understanding ES2015, ES2016, and ES2017 will make your **team** much more proficient with React.`,
     thumb: `${emergingJavascript}`,
     button: '',
@@ -142,7 +142,7 @@ export default [
   },
   {
     title: 'Functional JavaScript',
-    slug: 'functional-javascript',
+    //slug: 'functional-javascript',
     description: `This course introduces the functional programming paradigm and shows JavaScript **developers** and **engineers** how to use functional design patterns to produce more efficient and beautiful code. An understanding of functional programming techniques is vital to being highly proficient with React. This course serves as an excellent prerequisite for our React courses.`,
     thumb: `${functionalJavascript}`,
     button: '',
@@ -158,7 +158,7 @@ export default [
   },
   {
     title: 'WebSockets Pro',
-    slug: 'websockets-pro',
+    //slug: 'websockets-pro',
     description: `This JavaScript course is designed for **developers** and **engineers** who are proficient with JavaScript and Node and are ready to build real-time interactive browser applications using WebSockets. WebSockets allow for real time two way data communications between clients and servers. In this course, we dive deep into TCP sockets and the WebSockets spec. Students gain an understanding of how WebSockets work before moving on to using libraries and frameworks like SocketIO and Firebase.`,
     thumb: `${websocketsPro}`,
     button: '',
@@ -176,7 +176,7 @@ export default [
   },
   {
     title: 'Using GraphQL',
-    slug: 'using-graphql',
+    //slug: 'using-graphql',
     description: `This course introduces the efficient data fetching and querying language, Graph QL. This course is designed for **developers**, **engineers**, **creatives**, **managers**, and anyone who wants to learn how to query a GraphQL service. This course covers how to build GraphQL queries and interact with existing GraphQL services.`,
     thumb: `${usingGraphql}`,
     button: '',
@@ -192,7 +192,7 @@ export default [
   },
   {
     title: 'GraphQL with Node',
-    slug: 'graphql-with-node',
+    //slug: 'graphql-with-node',
     description: `This course is designed for **developers** and **engineers** who are proficient with JavaScript, comfortable with Node and JavaScript, and are familiar with using GraphQL. In this course, students learn how to build GraphQL endpoints with Node, Express, and GraphQL. Students learn to build and connect schemas and practice hands-on techniques for retrieving data from multiple sources.`,
     thumb: `${graphqlWithNode}`,
     button: '',
