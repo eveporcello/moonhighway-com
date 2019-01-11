@@ -47,6 +47,42 @@ const checkboxes = [
   },
 ]
 
+const SubmitBtn = props => {
+  const { children, ...restProps } = props
+  return (
+    <button
+      {...restProps}
+      css={css`
+        font-size: 16px;
+        line-height: 1.25;
+        padding: 12px 16px;
+        background: black;
+        color: white;
+        margin: 30px 0 0 0;
+        box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.15);
+        border-radius: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 200px;
+        cursor: pointer;
+        border: none;
+        height: 50px;
+      `}
+    >
+      <span>{children}</span>
+      <span
+        css={css`
+          margin-left: 20px;
+        `}
+      >
+        →
+      </span>
+    </button>
+  )
+}
+
 const InputStyles = css`
   width: 100%;
   display: block;
@@ -120,6 +156,7 @@ export default ({ data: { site } }) => (
               ${InputStyles};
             `}
           />
+          <SubmitBtn>Subscribe</SubmitBtn>
         </form>
       </div>
     </Container>
