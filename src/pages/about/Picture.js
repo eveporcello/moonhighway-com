@@ -17,7 +17,7 @@ export default ({ children, src, link }) => (
     `}
   >
     {link ? (
-      <a href={link} target="_blank">
+      <a href={link}>
         <img
           src={src}
           alt={children}

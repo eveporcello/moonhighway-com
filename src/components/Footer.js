@@ -5,7 +5,6 @@ import { bpMaxSM } from '../lib/breakpoints'
 import { fonts } from '../lib/typography'
 
 import { Container } from './markupHelpers'
-import SubscribeForm from './SubscribeForm'
 import Logo from './Logo'
 
 import categories from '../data/categories'
@@ -46,11 +45,11 @@ const Footer = () => (
             a {
               color: #090909;
             }
-            &:not(:first-child) {
+            &:not(:first-of-type) {
               margin-top: 80px;
             }
             ${bpMaxSM} {
-              &:not(:first-child) {
+              &:not(:first-of-type) {
                 margin-top: 40px;
               }
             }

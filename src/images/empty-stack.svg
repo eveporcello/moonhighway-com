@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="275" height="321" viewBox="0 0 275 321">
+  <defs>
+    <path id="continous-stack-c" d="M3,0 L190,0 C191.656854,-3.04359188e-16 193,1.34314575 193,3 L193,197.113433 L193,250 C193,251.656854 191.656854,253 190,253 L134.721569,253 L3,253 C1.34314575,253 1.07695378e-14,251.656854 -4.88498131e-15,250 L0,3 C-2.02906125e-16,1.34314575 1.34314575,3.04359188e-16 3,0 Z"/>
+    <filter id="continous-stack-b" width="157%" height="143.5%" x="-28.5%" y="-13.8%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" radius="7.5" result="shadowSpreadOuter1"/>
+      <feOffset dy="20" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="22.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.204030797 0"/>
+    </filter>
+    <rect id="continous-stack-a" width="84.012" height="74.767" x="101.42" y="170.681" rx="3"/>
+    <mask id="continous-stack-d" width="84.012" height="74.767" x="0" y="0" fill="#fff">
+      <use xlink:href="#continous-stack-a"/>
+    </mask>
+    <path id="continous-stack-e" d="M0,0 L0,237.895522 L121.476471,237.895522 C131.173479,229.235355 140.88655,219.920927 150.615686,209.952239 C160.344822,199.983551 169.427175,190.039769 177.862745,180.120896 L177.862745,0 L0,0 Z"/>
+    <linearGradient id="continous-stack-i" x1="0%" x2="62.3%" y1="0%" y2="59.659%">
+      <stop offset="0%" stop-color="#F1F1F1"/>
+      <stop offset="71.189%" stop-color="#D8D8D8"/>
+      <stop offset="100%" stop-color="#ADADAD"/>
+    </linearGradient>
+    <path id="continous-stack-h" d="M121.854902,182.386567 L170.669962,182.386567 C175.463426,182.010338 177.860158,179.367055 177.860158,174.456716 C177.860158,174.456716 178.617021,182.386567 176.970509,184.229801 C165.715183,196.776158 147.343314,214.790602 121.854902,238.273134 C112.772549,238.273134 110.501961,238.273134 115.043137,238.273134 C119.584314,238.273134 121.854902,236.476773 121.854902,232.884051 L121.854902,182.386567 Z"/>
+    <filter id="continous-stack-g" width="230.2%" height="217.5%" x="-99.6%" y="-86.2%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" radius="7.5" result="shadowSpreadOuter1"/>
+      <feOffset dy="10" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="22.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.204030797 0"/>
+    </filter>
+    <linearGradient id="continous-stack-k" x1="50%" x2="50%" y1="100%" y2="-33.359%">
+      <stop offset="0%" stop-color="#FFF" stop-opacity=".5"/>
+      <stop offset="100%" stop-opacity=".5"/>
+    </linearGradient>
+    <path id="continous-stack-j" d="M2,2 L166,2 L166,3 C166,3.55228475 165.552285,4 165,4 L3,4 C2.44771525,4 2,3.55228475 2,3 L2,2 Z"/>
+    <path id="continous-stack-l" d="M2,2 L152,2 L152,3 C152,3.55228475 151.552285,4 151,4 L3,4 C2.44771525,4 2,3.55228475 2,3 L2,2 Z"/>
+    <path id="continous-stack-m" d="M2,2 L180,2 L180,3 C180,3.55228475 179.552285,4 179,4 L3,4 C2.44771525,4 2,3.55228475 2,3 L2,2 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(41 15)">
+    <g fill-rule="nonzero">
+      <use fill="#000" filter="url(#continous-stack-b)" xlink:href="#continous-stack-c"/>
+      <path fill="#FFF" fill-rule="evenodd" stroke="#FFF" stroke-linejoin="square" stroke-width="10" d="M5,5 L5,248 L134.721569,248 L188,248 L188,5 L5,5 Z"/>
+    </g>
+    <use fill="#FAFAFA" fill-rule="nonzero" stroke="#C3C3C3" stroke-dasharray="2" stroke-width="2" mask="url(#continous-stack-d)" opacity=".5" xlink:href="#continous-stack-a"/>
+    <g transform="translate(7.569 7.552)">
+      <mask id="continous-stack-f" fill="#fff">
+        <use xlink:href="#continous-stack-e"/>
+      </mask>
+      <use fill="#F2F2F2" fill-rule="nonzero" xlink:href="#continous-stack-e"/>
+      <g fill-rule="nonzero" mask="url(#continous-stack-f)">
+        <use fill="#000" filter="url(#continous-stack-g)" xlink:href="#continous-stack-h"/>
+        <use fill="#FFF" xlink:href="#continous-stack-h"/>
+        <use fill="#F5D118" xlink:href="#continous-stack-h"/>
+        <use fill="url(#continous-stack-i)" xlink:href="#continous-stack-h"/>
+      </g>
+    </g>
+    <g fill-rule="nonzero" opacity=".5" transform="translate(5 253)">
+      <g transform="translate(7 6)">
+        <path fill="#F4F4F4" d="M0,0 L169,0 L169,4 C169,5.1045695 168.104569,6 167,6 L2,6 C0.8954305,6 1.3527075e-16,5.1045695 0,4 L0,0 Z"/>
+        <use fill="#D1D1D1" xlink:href="#continous-stack-j"/>
+        <use fill="url(#continous-stack-k)" fill-opacity=".4" xlink:href="#continous-stack-j"/>
+      </g>
+      <g transform="translate(14 12)">
+        <path fill="#F1F1F1" d="M0,0 L155,0 L155,4 C155,5.1045695 154.104569,6 153,6 L2,6 C0.8954305,6 1.3527075e-16,5.1045695 0,4 L0,0 Z"/>
+        <use fill="#D1D1D1" xlink:href="#continous-stack-l"/>
+        <use fill="url(#continous-stack-k)" fill-opacity=".4" xlink:href="#continous-stack-l"/>
+      </g>
+      <path fill="#FAFAFA" d="M0,0 L183,0 L183,4 C183,5.1045695 182.104569,6 181,6 L2,6 C0.8954305,6 1.3527075e-16,5.1045695 0,4 L0,0 Z"/>
+      <use fill="#D1D1D1" xlink:href="#continous-stack-m"/>
+      <use fill="url(#continous-stack-k)" fill-opacity=".2" xlink:href="#continous-stack-m"/>
+    </g>
+  </g>
+</svg>

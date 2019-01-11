@@ -1,11 +1,17 @@
 module.exports = {
   pathPrefix: '/',
   siteMetadata: {
-    siteUrl: 'https://egghead.io/',
-    author: 'egghead.io',
-    title: 'The blog of an egghead creator',
-    description: 'This is where they post things!',
-    keywords: ['Video Blogger'],
+    siteUrl: 'https://moonhighway.com/',
+    author: 'Moonhighway',
+    title: 'Moonhighway - professional web development trainings',
+    description:
+      'We develop and deliver cutting edge JavaScript training for technical professionals.',
+    keywords: [
+      'JavaScript training',
+      'React training',
+      'GraphQL training',
+      'Web Development',
+    ],
   },
   plugins: [
     {
@@ -45,11 +51,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Video Blogger',
-        short_name: 'EGGcreator',
+        name:
+          'Moonhighway - The cutting edge JavaScript training for engineers of all skill levels',
+        short_name: 'Moonhighway',
         start_url: '/',
         background_color: '#fff',
-        theme_color: '#525dce',
+        theme_color: '#2E2F30',
         display: 'standalone',
         icon: 'assets/logo.png',
       },

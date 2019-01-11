@@ -34,8 +34,6 @@ export default ({
         margin-left: 0;
         flex-direction: column;
       }
-      img {
-      }
     `}
   >
     <div
@@ -60,6 +58,7 @@ export default ({
         css={css`
           max-width: 160px;
         `}
+        alt="LinkedIn Learning Insider"
       />
     </div>
     <div
@@ -94,13 +93,13 @@ export default ({
         `}
       >
         <a href={linkedinUrl}>
-          <img src={linkedin} />
+          <img src={linkedin} alt={`${title}'s LinkedIn`} />
         </a>
         <a href={twitterUrl}>
-          <img src={twitter} />
+          <img src={twitter} alt={`${title}'s Twitter`} />
         </a>
         <a href={githubUrl}>
-          <img src={github} />
+          <img src={github} alt={`${title}'s GitHub`} />
         </a>
       </div>
       <MDReactComponent text={children} />

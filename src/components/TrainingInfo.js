@@ -1,8 +1,7 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { css } from '@emotion/core'
 import { fonts, rhythm } from '../lib/typography'
-import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
+import { bpMaxSM } from '../lib/breakpoints'
 import MDReactComponent from 'markdown-react-js'
 
 const TrainingInfo = ({ description, title }) => (
@@ -85,9 +84,13 @@ const TrainingInfo = ({ description, title }) => (
         >
           Custom Curriculums
         </h5>
-        <p>
+        <p
+          css={css`
+            font-size: 17px;
+          `}
+        >
           Any of our classes can be customized to fit your specific needs. We
-          can create the perfect React training course for your team. Our
+          can create the perfect {title} training course for your team. Our
           materials are designed to be isolated, combined, and rearranged to
           create the perfect class.
         </p>

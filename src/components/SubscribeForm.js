@@ -42,7 +42,7 @@ const InputWrapperStyles = css`
   flex-shrink: 0;
   ${bpMaxSM} {
     width: 100%;
-    &:not(:first-child) {
+    &:not(:first-of-type) {
       margin-top: 20px;
     }
   }
@@ -55,12 +55,16 @@ const InputStyles = css`
   padding: 12px 16px;
   height: 50px;
   transition: 100ms;
+  box-sizing: border-box;
   &::placeholder {
     color: rgba(0, 0, 0, 0.4);
     transition: 100ms;
   }
   &:focus {
     outline: none;
+    border: 1px solid #adadad;
+    box-sizing: border-box;
+
     &::placeholder {
       color: transparent;
     }
@@ -70,7 +74,7 @@ const InputStyles = css`
 const SubscribeForm = () => (
   <div>
     <h4>Subscribe to get our latest content by email</h4>
-    <div
+    <form
       css={css`
         display: flex;
         justify-content: space-between;
@@ -82,10 +86,21 @@ const SubscribeForm = () => (
       `}
     >
       <div css={InputWrapperStyles}>
-        <input type="text" placeholder="Your first name" css={InputStyles} />
+        <label />
+        <input
+          type="text"
+          placeholder="Your first name"
+          css={InputStyles}
+          required
+        />
       </div>
       <div css={InputWrapperStyles}>
-        <input type="text" placeholder="Your email address" css={InputStyles} />
+        <input
+          type="text"
+          placeholder="Your email address"
+          css={InputStyles}
+          required
+        />
       </div>
       <div css={InputWrapperStyles}>
         <SubmitBtn>Subscribe</SubmitBtn>
@@ -101,7 +116,7 @@ const SubscribeForm = () => (
           We won't send you spam. Unsubscribe at any time.
         </div>
       </div>
-    </div>
+    </form>
   </div>
 )
 

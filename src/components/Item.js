@@ -35,7 +35,6 @@ const ItemBox = styled.div`
   justify-content: center;
   flex-direction: row;
   width: 100%;
-  max-width: 920px;
 
   .info {
     //padding-left: 80px;
@@ -143,6 +142,7 @@ const Item = ({
               padding-left: ${slug ? '0' : '80px'};
             }
             ${bpMaxSM} {
+              padding-right: 0;
               padding-left: ${slug ? '0' : '0'};
             }
           }
@@ -206,6 +206,7 @@ const Item = ({
             >
               {tags.map(tag => (
                 <span
+                  key={tag.id}
                   css={css`
                     font-size: 15px;
                     margin: 0px 8px 8px 0;

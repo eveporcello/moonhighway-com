@@ -6,9 +6,6 @@ import { css } from '@emotion/core'
 import { Container } from '../components/markupHelpers/'
 import { bpMaxMD } from '../lib/breakpoints'
 import SubscribeForm from '../components/SubscribeForm'
-import { fonts, rhythm } from '../lib/typography'
-import { bpMaxSM } from '../lib/breakpoints'
-
 import Layout from '../components/Layout'
 
 export default function Post({

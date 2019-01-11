@@ -48,7 +48,7 @@ const Header = ({ dark }) => (
           <Link to="/about" activeClassName="active">
             About
           </Link>
-          <Link to="#">Contact us</Link>
+          <Link to="/contact">Contact us</Link>
         </div>
       </nav>
     </Container>

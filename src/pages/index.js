@@ -112,14 +112,14 @@ const Hero = () => (
   </section>
 )
 
-export default function Index({ data: { site } }) {
+export default function Index({ data: { site } }, { allMdx }) {
   return (
     <Layout site={site} dark>
       <Hero />
       <section
         id="trainings"
         css={css`
-          padding: 100px 0 60px 0;
+          padding: 100px 0 20px 0;
           ${bpMaxMD} {
             padding: 40px 0;
           }

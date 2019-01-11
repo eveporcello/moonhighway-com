@@ -84,7 +84,7 @@ const globalStyles = css`
     padding-left: 1em;
   }`
 
-export default ({ site, frontmatter = {}, children, dark }) => {
+export default ({ site, frontmatter = {}, children, dark, noFooter }) => {
   const {
     title,
     description: siteDescription,
@@ -136,7 +136,7 @@ export default ({ site, frontmatter = {}, children, dark }) => {
             </div>
           </Fragment>
         </MDXProvider>
-        <Footer />
+        {!noFooter && <Footer />}
       </div>
     </Fragment>
   )
