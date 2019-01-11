@@ -98,23 +98,30 @@ export default ({ data: { site } }) => (
           </label>
         ))}
       </div>
-      <input
-        type="email"
-        placeholder="Your email address"
+      <div
         css={css`
           margin-top: 30px;
-          ${InputStyles};
         `}
-      />
-      <textarea
-        type="email"
-        placeholder="Other thoughts or topics of interest?"
-        rows="10"
-        css={css`
-          margin-top: 30px;
-          ${InputStyles};
-        `}
-      />
+      >
+        <form>
+          <input
+            type="email"
+            placeholder="Your email address"
+            css={css`
+              ${InputStyles};
+            `}
+          />
+          <textarea
+            type="email"
+            placeholder="Other thoughts or topics of interest?"
+            rows="10"
+            css={css`
+              margin-top: 30px;
+              ${InputStyles};
+            `}
+          />
+        </form>
+      </div>
     </Container>
   </Layout>
 )
