@@ -85,7 +85,29 @@ const Footer = () => (
             css={css`
               margin-left: 100px;
             `}
-          />
+          >
+            <h4>
+              <Link to="/blog">Articles</Link>
+            </h4>
+            <div
+              css={css`
+                margin: 10px 0;
+                .active {
+                  opacity: 0.8;
+
+                  font-family: ${fonts.semibold}, sans-serif;
+                  ::before {
+                    content: '→';
+                    padding-right: 10px;
+                  }
+                }
+              `}
+            >
+              <Link to="#" activeClassName="active">
+                Blog post
+              </Link>
+            </div>
+          </div>
         </div>
       </Container>
     </Container>
