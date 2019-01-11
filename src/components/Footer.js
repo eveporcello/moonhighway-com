@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import Link from './Link'
-import { bpMaxSM } from '../lib/breakpoints'
+import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
 import { fonts } from '../lib/typography'
 
 import { Container } from './markupHelpers'
@@ -54,10 +54,20 @@ const Footer = () => (
               &:not(:first-of-type) {
                 margin-top: 40px;
               }
+              flex-direction: column;
+              padding: 0;
+            }
+            ${bpMaxMD} {
+              padding: 50px 0;
             }
           `}
         >
-          <div>
+          <div
+            css={css`
+              width: 100%;
+              max-width: 240px;
+            `}
+          >
             <h4>
               <Link to="/#trainings">Trainings</Link>
             </h4>
@@ -68,7 +78,6 @@ const Footer = () => (
                   margin: 10px 0;
                   .active {
                     opacity: 0.8;
-
                     font-family: ${fonts.semibold}, sans-serif;
                     ::before {
                       content: '→';
@@ -86,14 +95,23 @@ const Footer = () => (
           <div
             css={css`
               margin-left: 100px;
+              margin-top: 0;
+
+              ${bpMaxSM} {
+                margin-left: 0;
+                margin-top: 30px;
+              }
             `}
           >
             <h4>
-              <Link to="/blog">Articles</Link>
+              <Link to="/blog/">Articles</Link>
             </h4>
             <div
               css={css`
-                margin: 10px 0;
+                a {
+                  margin: 10px 0;
+                  display: block;
+                }
                 .active {
                   opacity: 0.8;
                   font-family: ${fonts.semibold}, sans-serif;
@@ -104,7 +122,23 @@ const Footer = () => (
                 }
               `}
             >
-              <Link to="#">Blog post</Link>
+              <Link activeClassName="active" to="/blog/demo-post-1/">
+                15 Benefits Of Javascript That May Change Your Perspective
+              </Link>
+              <Link activeClassName="active" to="/blog/demo-post-2/">
+                Here's What No One Tells You About Javascript
+              </Link>
+              <Link activeClassName="active" to="/blog/demo-post-3/">
+                Javascript Is Not Rocket Science! Learn It Now!
+              </Link>
+              <Link
+                to="/blog/"
+                css={css`
+                  font-family: ${fonts.semibold}, sans-serif;
+                `}
+              >
+                Show all
+              </Link>
             </div>
           </div>
         </div>
