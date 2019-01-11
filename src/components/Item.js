@@ -175,7 +175,13 @@ const Item = ({
       </div>
 
       <ItemInfo className="info">
-        <h1>{slug ? <Link to={slug}>{title}</Link> : `${title}`}</h1>
+        <h1
+          css={css`
+            margin-bottom: 20px;
+          `}
+        >
+          {slug ? <Link to={slug}>{title}</Link> : `${title}`}
+        </h1>
         {length && (
           <h5
             css={css`
@@ -185,7 +191,7 @@ const Item = ({
             Length: {length} {length <= 1 ? 'day' : 'days'}
           </h5>
         )}
-        ${description && <MDReactComponent text={description} />}
+        {description && <MDReactComponent text={description} />}
         {tags && (
           <div
             css={css`
