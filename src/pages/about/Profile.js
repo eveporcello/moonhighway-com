@@ -102,7 +102,7 @@ export default ({
           <img src={github} alt={`${title}'s GitHub`} />
         </a>
       </div>
-      <MDReactComponent text={children} />
+      {children && <MDReactComponent text={children} />}
     </div>
   </div>
 )

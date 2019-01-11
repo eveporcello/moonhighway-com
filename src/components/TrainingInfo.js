@@ -32,16 +32,18 @@ const TrainingInfo = ({ description, title }) => (
         >
           {title}
         </h3>
-        <MDReactComponent
-          text={description}
-          css={css`
-            ${bpMaxSM} {
-              max-width: 100%;
-              padding-right: 0;
-            }
-            padding-right: ${rhythm(2)};
-          `}
-        />
+        {description && (
+          <MDReactComponent
+            text={description}
+            css={css`
+              ${bpMaxSM} {
+                max-width: 100%;
+                padding-right: 0;
+              }
+              padding-right: ${rhythm(2)};
+            `}
+          />
+        )}
       </div>
       <div
         css={css`

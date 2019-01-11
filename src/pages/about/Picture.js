@@ -49,6 +49,6 @@ export default ({ children, src, link }) => (
       />
     )}
 
-    <MDReactComponent text={children} />
+    {children && <MDReactComponent text={children} />}
   </div>
 )

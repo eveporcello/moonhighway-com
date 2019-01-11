@@ -28,7 +28,7 @@ export default function Post({
           }
         `}
       >
-        <img src={moon} alt="image of a moon" />
+        <img src={moon} alt="moon" />
       </div>
       <Container
         maxWidth={640}

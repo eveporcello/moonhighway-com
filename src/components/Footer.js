@@ -120,6 +120,10 @@ const Footer = () => (
                     padding-right: 10px;
                   }
                 }
+                .all-active {
+                  visibility: hidden;
+                  display: none;
+                }
               `}
             >
               <Link activeClassName="active" to="/blog/demo-post-1/">
@@ -136,6 +140,7 @@ const Footer = () => (
                 css={css`
                   font-family: ${fonts.semibold}, sans-serif;
                 `}
+                activeClassName="all-active"
               >
                 Show all
               </Link>

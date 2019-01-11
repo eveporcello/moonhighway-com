@@ -185,7 +185,7 @@ const Item = ({
             Length: {length} {length <= 1 ? 'day' : 'days'}
           </h5>
         )}
-        <MDReactComponent text={description} />
+        ${description && <MDReactComponent text={description} />}
         {tags && (
           <div
             css={css`

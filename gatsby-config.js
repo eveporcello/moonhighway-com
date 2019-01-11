@@ -106,7 +106,7 @@ module.exports = {
                     node {
                       excerpt(pruneLength: 250)
                       html
-                      fields { 
+                      fields {
                         slug
                         date
                       }

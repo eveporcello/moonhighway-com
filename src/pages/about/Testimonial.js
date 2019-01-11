@@ -18,7 +18,7 @@ export default ({ children, author }) => (
       }
     `}
   >
-    <MDReactComponent text={children} />
+    {children && <MDReactComponent text={children} />}
     <div>{author}</div>
   </div>
 )
