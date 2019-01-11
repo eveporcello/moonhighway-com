@@ -42,10 +42,10 @@ export default function HtmlPage({ data: { site } }) {
           css={css`
             padding: 300px 0 50px 0;
             ${bpMaxMD} {
-              padding: 50px 100px;
+              padding: 250px 0 50px 0;
             }
             ${bpMaxSM} {
-              padding: 10px 20px;
+              padding: 10px 0;
             }
           `}
         >
