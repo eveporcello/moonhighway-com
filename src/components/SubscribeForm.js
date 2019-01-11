@@ -87,20 +87,10 @@ const SubscribeForm = () => (
     >
       <div css={InputWrapperStyles}>
         <label />
-        <input
-          type="text"
-          placeholder="Your first name"
-          css={InputStyles}
-          required
-        />
+        <input type="text" placeholder="Your first name" css={InputStyles} />
       </div>
       <div css={InputWrapperStyles}>
-        <input
-          type="text"
-          placeholder="Your email address"
-          css={InputStyles}
-          required
-        />
+        <input type="text" placeholder="Your email address" css={InputStyles} />
       </div>
       <div css={InputWrapperStyles}>
         <SubmitBtn>Subscribe</SubmitBtn>
