@@ -68,7 +68,6 @@ const Footer = () => (
                   margin: 10px 0;
                   .active {
                     opacity: 0.8;
-
                     font-family: ${fonts.semibold}, sans-serif;
                     ::before {
                       content: '→';
@@ -89,11 +88,14 @@ const Footer = () => (
             `}
           >
             <h4>
-              <Link to="/blog">Articles</Link>
+              <Link to="/blog/">Articles</Link>
             </h4>
             <div
               css={css`
-                margin: 10px 0;
+                a {
+                  margin: 10px 0;
+                  display: block;
+                }
                 .active {
                   opacity: 0.8;
                   font-family: ${fonts.semibold}, sans-serif;
@@ -104,7 +106,15 @@ const Footer = () => (
                 }
               `}
             >
-              <Link to="#">Blog post</Link>
+              <Link activeClassName="active" to="/blog/demo-post-1/">
+                15 Benefits Of Javascript That May Change Your Perspective
+              </Link>
+              <Link activeClassName="active" to="/blog/demo-post-2/">
+                Here's What No One Tells You About Javascript
+              </Link>
+              <Link activeClassName="active" to="/blog/demo-post-3/">
+                Javascript Is Not Rocket Science! Learn It Now!
+              </Link>
             </div>
           </div>
         </div>

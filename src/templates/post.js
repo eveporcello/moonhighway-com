@@ -7,6 +7,7 @@ import { Container } from '../components/markupHelpers/'
 import { bpMaxMD } from '../lib/breakpoints'
 import SubscribeForm from '../components/SubscribeForm'
 import Layout from '../components/Layout'
+import moon from '../images/moonHeader.jpg'
 
 export default function Post({
   data: { site, mdx },
@@ -14,6 +15,21 @@ export default function Post({
 }) {
   return (
     <Layout site={site} frontmatter={mdx.frontmatter}>
+      <div
+        css={css`
+          display: flex;
+          z-index: 1;
+          align-items: center;
+          justify-content: center;
+          img {
+            top: 0;
+            position: absolute;
+            max-width: 550px;
+          }
+        `}
+      >
+        <img src={moon} alt="image of a moon" />
+      </div>
       <Container
         maxWidth={640}
         css={css`
