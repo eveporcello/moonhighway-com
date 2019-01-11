@@ -65,10 +65,11 @@ const SubmitBtn = props => {
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        max-width: 160px;
+        max-width: 180px;
         cursor: pointer;
         border: none;
         height: 50px;
+        align-self: center;
       `}
     >
       <span>{children}</span>
@@ -134,12 +135,15 @@ export default ({ data: { site } }) => (
           </label>
         ))}
       </div>
-      <div
-        css={css`
-          margin-top: 30px;
-        `}
-      >
-        <form>
+
+      <form>
+        <div
+          css={css`
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+          `}
+        >
           <input
             type="email"
             placeholder="Your email address"
@@ -157,8 +161,8 @@ export default ({ data: { site } }) => (
             `}
           />
           <SubmitBtn>Send</SubmitBtn>
-        </form>
-      </div>
+        </div>
+      </form>
     </Container>
   </Layout>
 )
