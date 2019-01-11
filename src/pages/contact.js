@@ -65,7 +65,7 @@ const SubmitBtn = props => {
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        max-width: 200px;
+        max-width: 160px;
         cursor: pointer;
         border: none;
         height: 50px;
@@ -156,7 +156,7 @@ export default ({ data: { site } }) => (
               ${InputStyles};
             `}
           />
-          <SubmitBtn>Subscribe</SubmitBtn>
+          <SubmitBtn>Send</SubmitBtn>
         </form>
       </div>
     </Container>
