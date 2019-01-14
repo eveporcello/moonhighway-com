@@ -50,7 +50,7 @@ const Item = ({
       >
         <div className="image">
           {slug ? (
-            <Link to={slug}>
+            <Link to={slug} aria-label={`View ${title} trainings`}>
               <img src={thumb} alt={title} />
             </Link>
           ) : (
@@ -65,7 +65,13 @@ const Item = ({
             margin-bottom: 20px;
           `}
         >
-          {slug ? <Link to={slug}>{title}</Link> : `${title}`}
+          {slug ? (
+            <Link to={slug} aria-label={`View ${title} trainings`}>
+              {title}
+            </Link>
+          ) : (
+            `${title}`
+          )}
         </h1>
         {length && (
           <h5
@@ -114,7 +120,11 @@ const Item = ({
           </div>
         )}
         {button && (
-          <Link to={slug} className="button">
+          <Link
+            to={slug}
+            className="button"
+            aria-label={`View ${title} trainings`}
+          >
             <MDReactComponent text={button} />
           </Link>
         )}

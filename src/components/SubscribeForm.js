@@ -17,11 +17,30 @@ const SubscribeForm = () => (
       `}
     >
       <div css={InputWrapperStyles}>
-        <label />
-        <input type="text" placeholder="Your first name" css={InputStyles} />
+        <label>
+          <p>Your first name</p>
+          <input
+            aria-label="your first name"
+            aria-required="true"
+            type="text"
+            id="firstName"
+            placeholder="Your first name"
+            css={InputStyles}
+          />
+        </label>
       </div>
       <div css={InputWrapperStyles}>
-        <input type="text" placeholder="Your email address" css={InputStyles} />
+        <label>
+          <p>Your email address</p>
+          <input
+            aria-label="your email address"
+            aria-required="true"
+            type="text"
+            id="emailAddress"
+            placeholder="Your email address"
+            css={InputStyles}
+          />
+        </label>
       </div>
       <div css={InputWrapperStyles}>
         <SubmitBtn>Subscribe</SubmitBtn>
@@ -77,6 +96,10 @@ const SubmitBtn = props => {
 }
 
 const InputWrapperStyles = css`
+  p {
+    display: none;
+    visibility: hidden;
+  }
   width: 32.5%;
   flex-shrink: 0;
   ${bpMaxSM} {

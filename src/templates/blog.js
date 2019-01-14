@@ -54,11 +54,21 @@ const Blog = ({
                 margin-bottom: 10px;
               `}
             >
-              <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
+              <Link
+                aria-label={`View "${post.frontmatter.title}" article`}
+                to={post.frontmatter.slug}
+              >
+                {post.frontmatter.title}
+              </Link>
             </h2>
             <small>{post.frontmatter.date}</small>
             <p>{post.excerpt}</p>{' '}
-            <Link to={post.fields.slug}>Continue Reading →</Link>
+            <Link
+              to={post.fields.slug}
+              aria-label={`view "${post.frontmatter.title}" article`}
+            >
+              Continue Reading →
+            </Link>
           </div>
         ))}
         <hr
@@ -67,9 +77,15 @@ const Blog = ({
           `}
         />
         <div>
-          {nextPagePath && <Link to={nextPagePath}>Next Page →</Link>}
+          {nextPagePath && (
+            <Link to={nextPagePath} aria-label="view next page">
+              Next Page →
+            </Link>
+          )}
           {previousPagePath && (
-            <Link to={previousPagePath}>← Previous Page</Link>
+            <Link to={previousPagePath} aria-label="view previous page">
+              ← Previous Page
+            </Link>
           )}
         </div>
       </Container>

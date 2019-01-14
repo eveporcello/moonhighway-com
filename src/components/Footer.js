@@ -72,7 +72,9 @@ const Footer = () => (
             `}
           >
             <h4>
-              <Link to="/#trainings">Trainings</Link>
+              <Link to="/#trainings" aria-label="View all our trainings">
+                Trainings
+              </Link>
             </h4>
             {categories.map(category => (
               <div
@@ -89,7 +91,11 @@ const Footer = () => (
                   }
                 `}
               >
-                <Link to={category.slug} activeClassName="active">
+                <Link
+                  to={category.slug}
+                  activeClassName="active"
+                  aria-label={`Link to ${category.title} training`}
+                >
                   {category.title}
                 </Link>
               </div>
@@ -106,7 +112,9 @@ const Footer = () => (
             `}
           >
             <h4>
-              <Link to="/blog/">Articles</Link>
+              <Link to="/blog/" aria-label="View all our articles">
+                Articles
+              </Link>
             </h4>
             <div
               css={css`
@@ -128,13 +136,25 @@ const Footer = () => (
                 }
               `}
             >
-              <Link activeClassName="active" to="/blog/demo-post-1/">
+              <Link
+                activeClassName="active"
+                to="/blog/demo-post-1/"
+                aria-label="Read Article"
+              >
                 15 Benefits Of Javascript That May Change Your Perspective
               </Link>
-              <Link activeClassName="active" to="/blog/demo-post-2/">
+              <Link
+                activeClassName="active"
+                to="/blog/demo-post-2/"
+                aria-label="Read Article"
+              >
                 Here's What No One Tells You About Javascript
               </Link>
-              <Link activeClassName="active" to="/blog/demo-post-3/">
+              <Link
+                activeClassName="active"
+                to="/blog/demo-post-3/"
+                aria-label="Read Article"
+              >
                 Javascript Is Not Rocket Science! Learn It Now!
               </Link>
               <Link
@@ -173,12 +193,12 @@ const Footer = () => (
               margin: 0;
               font-style: normal;
             }
-            color: rgba(0, 0, 0, 0.5);
+            color: rgba(0, 0, 0, 0.55);
             font-size: 13px;
             line-height: 1.65;
           `}
         >
-          <Link to="/">
+          <Link to="/" aria-label="go to homepage">
             <Logo width={90} dark />
           </Link>
           <div
@@ -221,22 +241,35 @@ const Footer = () => (
                 }
               `}
             >
-              <Link to="https://twitter.com/moonhighway/">
+              <Link
+                to="https://twitter.com/moonhighway/"
+                aria-label="Visit our Twitter"
+              >
                 <Twitter color={`#797979`} />
               </Link>
-              <Link to="https://www.linkedin.com/company/moon-highway">
+              <Link
+                to="https://www.linkedin.com/company/moon-highway"
+                aria-label="Visit our LinkedIn"
+              >
                 <LinkedIn color={`#797979`} />
               </Link>
-              <Link to="https://github.com/MoonHighway">
+              <Link
+                to="https://github.com/MoonHighway"
+                aria-label="Visit our GitHub"
+              >
                 <GitHub color={`#797979`} />
               </Link>
             </div>
             <div>
-              {' '}
-              <a href="mailto:info@moonhighway.com?subject=Hello!">
+              <a
+                aria-label="Send us an email"
+                href="mailto:info@moonhighway.com?subject=Hello!"
+              >
                 info@moonhighway.com
               </a>
-              <a href="tel:530-523-3084">(530) 523 - 3084</a>
+              <a aria-label="Call us" href="tel:530-523-3084">
+                (530) 523 - 3084
+              </a>
               Moon Highway, LLC
               <br />
               PO BOX 1578

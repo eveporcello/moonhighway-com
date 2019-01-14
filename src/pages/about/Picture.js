@@ -17,7 +17,7 @@ export default ({ children, src, link }) => (
     `}
   >
     {link ? (
-      <a href={link}>
+      <a href={link} aria-label={children}>
         <img
           src={src}
           alt={children}

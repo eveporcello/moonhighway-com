@@ -106,7 +106,9 @@ const Hero = () => (
           }
         `}
       >
-        <Link to="#trainings">View our trainings ↓</Link>
+        <Link to="#trainings" aria-label="Scroll down to our trainings">
+          View our trainings ↓
+        </Link>
       </div>
     </Container>
   </section>

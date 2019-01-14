@@ -29,7 +29,7 @@ const Header = ({ dark }) => (
           align-items: center;
         `}
       >
-        <Link to="/">
+        <Link to="/" aria-label="go to homepage">
           <Logo dark={!dark} />
         </Link>
         <div
@@ -51,10 +51,16 @@ const Header = ({ dark }) => (
             }
           `}
         >
-          <Link to="/about" activeClassName="active">
+          <Link
+            to="/about"
+            activeClassName="active"
+            aria-label="Read more about moon highway"
+          >
             About
           </Link>
-          <Link to="/contact">Contact us</Link>
+          <Link to="/contact" aria-label="Go to contact form">
+            Contact us
+          </Link>
         </div>
       </nav>
     </Container>

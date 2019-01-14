@@ -10,6 +10,7 @@ export default ({ title, length, image, link }) => (
     css={css`
       text-decoration: none !important;
     `}
+    aria-label={`View ${title} course on linkedin learning`}
   >
     <div
       css={css`

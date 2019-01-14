@@ -92,13 +92,13 @@ export default ({
           }
         `}
       >
-        <a href={linkedinUrl}>
+        <a aria-label={`${title}'s LinkedIn`} href={linkedinUrl}>
           <img src={linkedin} alt={`${title}'s LinkedIn`} />
         </a>
-        <a href={twitterUrl}>
+        <a aria-label={`${title}'s LinkedIn`} href={twitterUrl}>
           <img src={twitter} alt={`${title}'s Twitter`} />
         </a>
-        <a href={githubUrl}>
+        <a aria-label={`${title}'s LinkedIn`} href={githubUrl}>
           <img src={github} alt={`${title}'s GitHub`} />
         </a>
       </div>
