@@ -7,7 +7,7 @@ import Link from '../components/Link'
 
 const Blog = ({
   data: { site, allMdx },
-  pageContext: { pagination, categories },
+  pageContext: { pagination, categories }
 }) => {
   const { page, nextPagePath, previousPagePath } = pagination
 
@@ -44,7 +44,7 @@ const Blog = ({
         <ul>
           {nextPagePath && (
             <li>
-              <Link to={nextPagePath} aria-label="view next page">
+              <Link to={nextPagePath} aria-label='view next page'>
                 Next Page
               </Link>
             </li>
@@ -52,7 +52,7 @@ const Blog = ({
 
           {previousPagePath && (
             <li>
-              <Link to={previousPagePath} aria-label="view previous page">
+              <Link to={previousPagePath} aria-label='view previous page'>
                 Previous Page
               </Link>
             </li>
