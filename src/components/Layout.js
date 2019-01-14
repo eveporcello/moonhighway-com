@@ -19,7 +19,7 @@ const globalStyles = css`
     padding: 0;
     background: #fafafa;
     color: #090909;
-    scroll-behavior: smooth;
+    //scroll-behavior: smooth;
     max-width: 100%;
     overflow-x: hidden;
   }
@@ -52,6 +52,7 @@ const globalStyles = css`
     }
   }
   a {
+  cursor: pointer;
   text-decoration: none;
   color: blue;
   &:hover {

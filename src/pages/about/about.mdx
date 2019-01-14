@@ -7,6 +7,8 @@ description: 'Moon Highway is a training and curriculum development company base
 import Profile from './Profile'
 import Picture from './Picture'
 import Testimonial from './Testimonial'
+import Course from './Course'
+import Grid from './Grid'
 
 import Eve from './eve-porcello.jpg'
 import Alex from './alex-banks.jpg'
@@ -15,6 +17,14 @@ import CodeSample from './code-sample.png'
 import Topics from './topics.png'
 import Labs from './labs.png'
 import Exercises from './exercises.png'
+
+import NodeCourse from './courses/node.jpg'
+import LearningReactCourse from './courses/learning-react.jpg'
+import ReactEssentialCourse from './courses/react-essential.jpg'
+import ReactNativeCourse from './courses/react-native.jpg'
+import ReduxCourse from './courses/redux.jpg'
+import es6Course from './courses/es6.jpg'
+import GraphqlCourse from './courses/graphql.jpg'
 
 Moon Highway is a training and curriculum development company based
 in Northern California. Our goal in every course is to build confidence by
@@ -153,21 +163,78 @@ process leverages the power of reinforcement and is designed to build student co
 
 # Student testimonials
 
-<Testimonial author={'Node.js Kickoff student'}>
-  I like that this was hands-on and less lecture/presentation based.
-</Testimonial>
-<Testimonial author={'JavaScript Pro student'}>
-  No student left behind - very cool.
-</Testimonial>
-<Testimonial author={'JavaScript Kickoff student'}>
-  Great job of both answering questions & keeping the pace moving in class!
-</Testimonial>
-<Testimonial author={'JavaScript Pro student'}>
-  Instructor is good about redirecting lessons on the fly based on questions and input.
-</Testimonial>
-<Testimonial author={'HTML Foundation student'}>
-Very knowledgeable, able to discuss any side topic or deeper concept, engaging, built excellent connection to class. Good pacing.
-</Testimonial>
-<Testimonial author={'JavaScript Pro student'}>
-Instructor is very good. Knowledgeable and a good communicator. Pace of class was great as well as the materials. Fast enough to challenge but not to frustrate. 
-</Testimonial>
+<Grid maxWidth="350px">
+  <Testimonial author={'Node.js Kickoff student'}>
+    I like that this was hands-on and less lecture/presentation based.
+  </Testimonial>
+  <Testimonial author={'JavaScript Pro student'}>
+    No student left behind - very cool.
+  </Testimonial>
+  <Testimonial author={'JavaScript Kickoff student'}>
+    Great job of both answering questions & keeping the pace moving in class!
+  </Testimonial>
+  <Testimonial author={'JavaScript Pro student'}>
+    Instructor is good about redirecting lessons on the fly based on questions
+    and input.
+  </Testimonial>
+  <Testimonial author={'HTML Foundation student'}>
+    Very knowledgeable, able to discuss any side topic or deeper concept,
+    engaging, built excellent connection to class. Good pacing.
+  </Testimonial>
+  <Testimonial author={'JavaScript Pro student'}>
+    Instructor is very good. Knowledgeable and a good communicator. Pace of
+    class was great as well as the materials. Fast enough to challenge but not
+    to frustrate.
+  </Testimonial>
+</Grid>
+
+# Online content
+
+Since 2015, we’ve created several classes as LinkedIn Learning authors. Although our classroom
+materials go into greater detail, these online courses are a great way to get a feel for our
+presentation style.
+
+<Grid>
+  <Course
+    title="Node.js Essential Training"
+    image={NodeCourse}
+    length="6hr 16min"
+    link="https://www.linkedin.com/learning/node-js-essential-training"
+  />
+  <Course
+    title="Learning React"
+    image={LearningReactCourse}
+    length="1hr 41min"
+    link="https://www.linkedin.com/learning/learning-react-js-3"
+  />
+  <Course
+    title="React.js Essential Training"
+    image={ReactEssentialCourse}
+    length="3hr"
+    link="https://www.linkedin.com/learning/react-js-essential-training"
+  />
+  <Course
+    title="Learning React Native"
+    image={ReactNativeCourse}
+    length="2hr 48min"
+    link="https://www.linkedin.com/learning/learning-react-native-2"
+  />
+  <Course
+    title="Learning Redux"
+    image={ReduxCourse}
+    length="2hr 59min"
+    link="https://www.linkedin.com/learning/learning-redux"
+  />
+  <Course
+    title="Learning ECMAScript 6"
+    image={es6Course}
+    length="1hr 18min"
+    link="https://www.linkedin.com/learning/learning-ecmascript-6"
+  />
+  <Course
+    title="Learning GraphQL"
+    image={GraphqlCourse}
+    length="53min"
+    link="https://www.linkedin.com/learning/learning-graphql"
+  />
+</Grid>
