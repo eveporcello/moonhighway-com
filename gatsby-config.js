@@ -15,6 +15,7 @@ module.exports = {
       'Web Development',
     ],
     canonicalUrl: 'https://moonhighway.com',
+    image: '',
     author: {
       name: 'Moon Highway',
       minibio:
@@ -23,9 +24,11 @@ module.exports = {
     organization: {
       name: 'Moon Highway',
       url: 'https://moonhighway.com',
+      logo: '',
     },
     social: {
       twitter: '@MoonHighway',
+      fbAppID: '',
     },
   },
   plugins: [
