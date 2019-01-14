@@ -1,20 +1,19 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import {graphql} from 'gatsby'
 import Img from 'gatsby-image'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
-import { css } from '@emotion/core'
-import { Container } from '../components/markupHelpers/'
-import { bpMaxMD } from '../lib/breakpoints'
+import SEO from 'components/SEO'
+import {css} from '@emotion/core'
+import {Container} from '../components/markupHelpers/'
+import {bpMaxMD} from '../lib/breakpoints'
 import SubscribeForm from '../components/SubscribeForm'
 import Layout from '../components/Layout'
 import moon from '../images/moonHeader.jpg'
 
-export default function Post({
-  data: { site, mdx },
-  pageContext: { next, prev },
-}) {
+export default function Post({data: {site, mdx}, pageContext: {next, prev}}) {
   return (
     <Layout site={site} frontmatter={mdx.frontmatter}>
+      <SEO frontmatter={mdx.frontmatter} isBlogPost />
       <div
         css={css`
           display: flex;
@@ -61,7 +60,7 @@ export const pageQuery = graphql`
     site {
       ...site
     }
-    mdx(fields: { id: { eq: $id } }) {
+    mdx(fields: {id: {eq: $id}}) {
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
