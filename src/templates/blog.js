@@ -1,18 +1,18 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import {graphql} from 'gatsby'
 import Img from 'gatsby-image'
-import { css } from '@emotion/core'
-import { Container } from '../components/markupHelpers'
-import { bpMaxMD } from '../lib/breakpoints'
-
+import {css} from '@emotion/core'
+import {Container} from '../components/markupHelpers'
+import {bpMaxMD} from '../lib/breakpoints'
+import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 
 const Blog = ({
-  data: { site, allMdx },
-  pageContext: { pagination, categories },
+  data: {site, allMdx},
+  pageContext: {pagination, categories},
 }) => {
-  const { page, nextPagePath, previousPagePath } = pagination
+  const {page, nextPagePath, previousPagePath} = pagination
 
   const posts = page
     .map(id =>
@@ -26,6 +26,7 @@ const Blog = ({
 
   return (
     <Layout site={site}>
+      <SEO />
       <Container
         maxWidth={920}
         css={css`
@@ -43,7 +44,7 @@ const Blog = ({
           }
         `}
       >
-        {posts.map(({ node: post }) => (
+        {posts.map(({node: post}) => (
           <div key={post.id}>
             {post.frontmatter.banner && (
               <Img sizes={post.frontmatter.banner.childImageSharp.sizes} />
@@ -64,7 +65,7 @@ const Blog = ({
             <small>{post.frontmatter.date}</small>
             <p>{post.excerpt}</p>{' '}
             <Link
-              to={post.fields.slug}
+              to={`blog/${post.fields.slug}`}
               aria-label={`view "${post.frontmatter.title}" article`}
             >
               Continue Reading →

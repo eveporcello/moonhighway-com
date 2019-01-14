@@ -4,8 +4,8 @@ module.exports = {
   pathPrefix: '/',
   siteMetadata: {
     siteUrl: 'https://moonhighway.com/',
-    author: 'Moonhighway',
-    title: 'Moonhighway - professional web development trainings',
+    author: 'Moon Highway',
+    title: 'Moon Highway - professional web development trainings',
     description:
       'We develop and deliver cutting edge JavaScript training for technical professionals.',
     keywords: [
@@ -14,6 +14,22 @@ module.exports = {
       'GraphQL training',
       'Web Development',
     ],
+    canonicalUrl: 'https://moonhighway.com',
+    image: '',
+    author: {
+      name: 'Moon Highway',
+      minibio:
+        'Moon Highway develops and delivers cutting edge JavaScript training for technical professionals.',
+    },
+    organization: {
+      name: 'Moon Highway',
+      url: 'https://moonhighway.com',
+      logo: '',
+    },
+    social: {
+      twitter: '@MoonHighway',
+      fbAppID: '',
+    },
   },
   plugins: [
     {

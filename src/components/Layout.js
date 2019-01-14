@@ -87,12 +87,12 @@ export default ({ site, frontmatter = {}, children, dark, noFooter }) => {
   const {
     title,
     description: siteDescription,
-    keywords: siteKeywords,
+    keywords: siteKeywords
   } = site.siteMetadata
 
   const {
     keywords: frontmatterKeywords,
-    description: frontmatterDescription,
+    description: frontmatterDescription
   } = frontmatter
 
   const keywords = (frontmatterKeywords || siteKeywords).join(', ')
@@ -112,10 +112,10 @@ export default ({ site, frontmatter = {}, children, dark, noFooter }) => {
           title={title}
           meta={[
             { name: 'description', content: description },
-            { name: 'keywords', content: keywords },
+            { name: 'keywords', content: keywords }
           ]}
         >
-          <html lang="en" />
+          <html lang='en' />
         </Helmet>
         <Global styles={globalStyles} />
         <Header dark={dark} />
@@ -149,7 +149,9 @@ export const pageQuery = graphql`
     siteMetadata {
       title
       description
-      author
+      author {
+        name
+      }
       keywords
     }
   }
