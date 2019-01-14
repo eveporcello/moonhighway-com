@@ -5,121 +5,6 @@ import { css } from '@emotion/core'
 import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
 import MDReactComponent from 'markdown-react-js'
 
-const ItemInfo = styled.div`
-  width: 100%;
-  opacity: 0.9;
-  font-size: 17px;
-  color: #090909;
-  letter-spacing: 0;
-  line-height: 26px;
-  ${bpMaxSM} {
-    width: auto;
-  }
-`
-
-const ItemBox = styled.div`
-  & + & {
-    margin-top: 100px;
-    ${bpMaxSM} {
-      margin-top: 50px;
-    }
-  }
-  display: flex;
-  align-items: flex-start;
-  ${bpMaxMD} {
-    align-items: flex-start;
-  }
-  ${bpMaxSM} {
-    align-items: center;
-  }
-  justify-content: center;
-  flex-direction: row;
-  width: 100%;
-
-  .info {
-    //padding-left: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    ${bpMaxMD} {
-      padding-left: 40px;
-    }
-  }
-  ${bpMaxSM} {
-    .info {
-      padding: 0;
-    }
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    ${bpMaxSM} {
-      align-items: flex-start;
-    }
-    width: 100%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    :nth-of-type(odd) {
-      flex-direction: column !important;
-      .info {
-        padding: 0;
-      }
-    }
-    .image {
-      margin-bottom: 30px;
-      ${bpMaxMD} {
-        margin-top: 20px;
-      }
-    }
-  }
-  img {
-    display: block;
-    margin: 0;
-    width: 100%;
-    max-width: 320px;
-    height: auto;
-  }
-  .image {
-    ${bpMaxMD} {
-      margin-top: 30px;
-    }
-    overflow: none;
-    box-shadow: 0 15px 80px -20px rgba(0, 0, 0, 0.15);
-    transition: all 250ms ease-in-out;
-    border-radius: 5px;
-    overflow: hidden;
-    background: white;
-    :hover,
-    :focus {
-      box-shadow: 0 10px 50px -20px rgba(0, 0, 0, 0.35);
-      transition: all 250ms ease-in-out;
-      outline: none;
-    }
-  }
-  .button {
-    cursor: pointer;
-    > span > p {
-      padding: 13px 20px;
-      background: white;
-      color: black;
-      margin: 0;
-      margin-top: 15px;
-      box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.15);
-      border-radius: 3px;
-      strong {
-        padding-left: 20px;
-        text-decoration: none;
-      }
-    }
-  }
-  p {
-    margin-bottom: 20px;
-    ${bpMaxMD} {
-      margin-bottom: 20px;
-    }
-  }
-`
-
 const Item = ({
   title,
   description,
@@ -237,5 +122,128 @@ const Item = ({
     </ItemBox>
   )
 }
+
+const ItemInfo = styled.div`
+  width: 100%;
+  opacity: 0.9;
+  font-size: 17px;
+  color: #090909;
+  letter-spacing: 0;
+  line-height: 26px;
+  ${bpMaxSM} {
+    width: auto;
+  }
+`
+
+const ItemBox = styled.div`
+  & + & {
+    margin-top: 100px;
+    ${bpMaxSM} {
+      margin-top: 50px;
+    }
+  }
+  display: flex;
+  align-items: flex-start;
+  ${bpMaxMD} {
+    align-items: flex-start;
+  }
+  ${bpMaxSM} {
+    align-items: center;
+  }
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+
+  .info {
+    //padding-left: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    ${bpMaxMD} {
+      padding-left: 40px;
+    }
+  }
+  ${bpMaxSM} {
+    .info {
+      align-items: center;
+      padding: 0;
+      h1 {
+        text-align: center;
+        font-size: 26px;
+      }
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    ${bpMaxSM} {
+      align-items: center;
+    }
+    width: 100%;
+    margin-bottom: 50px;
+    flex-direction: column;
+    :nth-of-type(odd) {
+      flex-direction: column !important;
+      .info {
+        padding: 0;
+      }
+    }
+    .image {
+      margin-bottom: 30px;
+      ${bpMaxMD} {
+        margin-top: 20px;
+      }
+    }
+  }
+  img {
+    display: block;
+    margin: 0;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    ${bpMaxSM} {
+      max-width: 230px;
+    }
+  }
+  .image {
+    ${bpMaxMD} {
+      margin-top: 30px;
+    }
+    overflow: none;
+    box-shadow: 0 15px 80px -20px rgba(0, 0, 0, 0.15);
+    transition: all 250ms ease-in-out;
+    border-radius: 5px;
+    overflow: hidden;
+    background: white;
+    :hover,
+    :focus {
+      box-shadow: 0 10px 50px -20px rgba(0, 0, 0, 0.35);
+      transition: all 250ms ease-in-out;
+      outline: none;
+    }
+  }
+  .button {
+    cursor: pointer;
+    > span > p {
+      padding: 13px 20px;
+      background: white;
+      color: black;
+      margin: 0;
+      margin-top: 15px;
+      box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.15);
+      border-radius: 3px;
+      strong {
+        padding-left: 20px;
+        text-decoration: none;
+      }
+    }
+  }
+  p {
+    margin-bottom: 20px;
+    ${bpMaxMD} {
+      margin-bottom: 20px;
+    }
+  }
+`
 
 export default Item

@@ -2,6 +2,45 @@ import React from 'react'
 import { css } from '@emotion/core'
 import { bpMaxSM } from '../lib/breakpoints'
 
+const SubscribeForm = () => (
+  <div>
+    <h4>Subscribe to get our latest content by email</h4>
+    <form
+      css={css`
+        display: flex;
+        justify-content: space-between;
+        ${bpMaxSM} {
+          flex-direction: column;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+      `}
+    >
+      <div css={InputWrapperStyles}>
+        <label />
+        <input type="text" placeholder="Your first name" css={InputStyles} />
+      </div>
+      <div css={InputWrapperStyles}>
+        <input type="text" placeholder="Your email address" css={InputStyles} />
+      </div>
+      <div css={InputWrapperStyles}>
+        <SubmitBtn>Subscribe</SubmitBtn>
+        <div
+          css={css`
+            opacity: 0.6;
+            color: #090909;
+            font-size: 12px;
+            line-height: 1.25;
+            margin-top: 15px;
+          `}
+        >
+          We won't send you spam. Unsubscribe at any time.
+        </div>
+      </div>
+    </form>
+  </div>
+)
+
 const SubmitBtn = props => {
   const { children, ...restProps } = props
   return (
@@ -70,44 +109,5 @@ const InputStyles = css`
     }
   }
 `
-
-const SubscribeForm = () => (
-  <div>
-    <h4>Subscribe to get our latest content by email</h4>
-    <form
-      css={css`
-        display: flex;
-        justify-content: space-between;
-        ${bpMaxSM} {
-          flex-direction: column;
-          max-width: 400px;
-          margin: 0 auto;
-        }
-      `}
-    >
-      <div css={InputWrapperStyles}>
-        <label />
-        <input type="text" placeholder="Your first name" css={InputStyles} />
-      </div>
-      <div css={InputWrapperStyles}>
-        <input type="text" placeholder="Your email address" css={InputStyles} />
-      </div>
-      <div css={InputWrapperStyles}>
-        <SubmitBtn>Subscribe</SubmitBtn>
-        <div
-          css={css`
-            opacity: 0.6;
-            color: #090909;
-            font-size: 12px;
-            line-height: 1.25;
-            margin-top: 15px;
-          `}
-        >
-          We won't send you spam. Unsubscribe at any time.
-        </div>
-      </div>
-    </form>
-  </div>
-)
 
 export default SubscribeForm

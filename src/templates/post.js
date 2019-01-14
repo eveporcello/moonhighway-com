@@ -21,18 +21,19 @@ export default function Post({
           z-index: 1;
           align-items: center;
           justify-content: center;
-          img {
-            top: 0;
-            position: absolute;
-            max-width: 550px;
-          }
+          top: 0;
+          position: absolute;
+          height: 130px;
+          width: 100%;
+          background: url(${moon}) no-repeat;
+          background-size: 550px;
+          background-position: top center;
         `}
-      >
-        <img src={moon} alt="moon" />
-      </div>
+      />
       <Container
         maxWidth={640}
         css={css`
+          z-index: 999;
           margin-top: 8vh;
           margin-bottom: 100px;
           ${bpMaxMD} {

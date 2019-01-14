@@ -16,6 +16,9 @@ const Footer = () => (
     css={css`
       width: 100%;
       margin-top: 70px;
+      ${bpMaxSM} {
+        margin-top: 30px;
+      }
       background: #fafafa;
       flex-shrink: 0;
       h4 {
@@ -50,15 +53,15 @@ const Footer = () => (
             &:not(:first-of-type) {
               margin-top: 80px;
             }
+            ${bpMaxMD} {
+              padding: 50px 0;
+            }
             ${bpMaxSM} {
               &:not(:first-of-type) {
                 margin-top: 40px;
               }
               flex-direction: column;
               padding: 0;
-            }
-            ${bpMaxMD} {
-              padding: 50px 0;
             }
           `}
         >
@@ -96,7 +99,6 @@ const Footer = () => (
             css={css`
               margin-left: 100px;
               margin-top: 0;
-
               ${bpMaxSM} {
                 margin-left: 0;
                 margin-top: 30px;
@@ -160,6 +162,9 @@ const Footer = () => (
             display: flex;
             align-items: center;
             justify-content: space-between;
+            ${bpMaxSM} {
+              justify-content: space-around;
+            }
             a {
               display: block;
               color: rgba(0, 0, 0, 0.9);

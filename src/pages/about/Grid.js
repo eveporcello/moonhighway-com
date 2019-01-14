@@ -1,15 +1,13 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import MDReactComponent from 'markdown-react-js'
-import { fonts } from '../../lib/typography'
 import { bpMaxSM, bpMaxMD } from '../../lib/breakpoints'
 
-export default ({ children, maxWidth = '240px' }) => (
+export default ({ children, colWidth = '240px', marginTop = '50px' }) => (
   <div
     css={css`
-      margin-top: 50px;
+      margin-top: ${marginTop};
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(${maxWidth}, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(${colWidth}, 1fr));
       grid-gap: 20px;
       width: 120%;
       margin-left: -10%;

@@ -54,7 +54,7 @@ const Hero = () => (
             flex-shrink: 0;
             ${bpMaxSM} {
               width: 100%;
-              margin-top: 60px;
+              margin-top: 30px;
             }
           `}
         >
@@ -144,6 +144,11 @@ export default function Index({ data: { site } }, { allMdx }) {
           <div
             css={css`
               margin-top: 120px;
+              ${bpMaxSM} {
+                margin-top: 50px;
+                border-top: 1px solid #f1f1f1;
+                padding-top: 30px;
+              }
             `}
           >
             <SubscribeForm />

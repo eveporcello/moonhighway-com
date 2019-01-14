@@ -16,8 +16,7 @@ export default ({ children, author }) => (
         margin: 10px 0;
       }
       ${bpMaxSM} {
-        margin: 10px 0 10px 45px;
-        padding-right: 30px;
+        margin: 10px 0 10px 0;
       }
       ::before {
         content: '';

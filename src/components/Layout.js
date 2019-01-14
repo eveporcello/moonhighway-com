@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/tag'
 import { css, Global } from '@emotion/core'
 import { fonts } from '../lib/typography'
+import { bpMaxSM } from '../lib/breakpoints'
 
 import mdxComponents from './mdx'
 import Header from './Header'
@@ -60,6 +61,9 @@ const globalStyles = css`
     text-decoration-color: #c4c4c4;
     outline: none;
   }
+}
+hr {
+  margin-top: 50px;
 }
   input,
   textarea,
@@ -131,6 +135,9 @@ export default ({ site, frontmatter = {}, children, dark, noFooter }) => {
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                ${bpMaxSM} {
+                  justify-content: flex-start;
+                }
               `}
             >
               {children}

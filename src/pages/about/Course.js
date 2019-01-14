@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import MDReactComponent from 'markdown-react-js'
 import { fonts } from '../../lib/typography'
 import Link from '../../components/Link'
 import { bpMaxMD } from '../../lib/breakpoints'

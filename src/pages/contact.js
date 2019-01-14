@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import Layout from '../components/Layout'
 import { Container } from '../components/markupHelpers'
+import { bpMaxSM } from '../lib/breakpoints'
 
 const checkboxes = [
   {
@@ -60,7 +61,7 @@ const SubmitBtn = props => {
         color: white;
         margin: 30px 0 0 0;
         box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.15);
-        border-radius: 0;
+        border-radius: 5px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -87,7 +88,8 @@ const SubmitBtn = props => {
 const InputStyles = css`
   width: 100%;
   display: block;
-  border: 1px solid #d7d7d7;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   box-shadow: none;
   padding: 12px 16px;
   min-height: 50px;
@@ -111,24 +113,51 @@ const InputStyles = css`
 
 export default ({ data: { site } }) => (
   <Layout site={site} noFooter>
-    <h1>Contact us</h1>
-    <Container>
+    <Container
+      maxWidth={480}
+      css={css`
+        ${bpMaxSM} {
+          padding-top: 30px;
+          h1 {
+            font-size: 24px;
+            padding: 0 50px;
+          }
+        }
+        h1 {
+          text-align: center;
+          padding-bottom: 20px;
+        }
+      `}
+    >
+      <h1>What are you interested in learning?</h1>
       <div
         css={css`
           border-radius: 5px;
-          padding: 20px;
-          background: white;
-          border: 1px solid rgba(0, 0, 0, 0.4);
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          grid-gap: 20px;
         `}
       >
         {checkboxes.map(item => (
-          <label>
+          <label
+            css={css`
+              padding: 10px 15px;
+              background: white;
+              border-radius: 3px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.1);
+            `}
+          >
             <input
               type="checkbox"
               value={item.value}
               name={item.name}
               css={css`
                 -webkit-appearance: checkbox;
+                margin-right: 8px;
+                margin-bottom: 1px;
               `}
             />
             <span>{item.name}</span>
@@ -142,22 +171,27 @@ export default ({ data: { site } }) => (
             margin-top: 30px;
             display: flex;
             flex-direction: column;
+            label {
+              padding-bottom: 8px;
+            }
           `}
         >
+          <label>Your email address</label>
           <input
             type="email"
-            placeholder="Your email address"
+            placeholder="example@email.com"
             css={css`
               ${InputStyles};
+              margin-bottom: 30px;
             `}
           />
+          <label>Other thoughts or topics of interest?</label>
           <textarea
             type="email"
-            placeholder="Other thoughts or topics of interest?"
             rows="10"
             css={css`
-              margin-top: 30px;
               ${InputStyles};
+              resize: vertical;
             `}
           />
           <SubmitBtn>Send</SubmitBtn>

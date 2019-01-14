@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { css } from '@emotion/core'
+import { bpMaxSM } from '../lib/breakpoints'
 
 import { Container } from './markupHelpers'
 import Logo from './Logo'
@@ -14,6 +15,9 @@ const Header = ({ dark }) => (
       flex-shrink: 0;
       background: none;
       padding: 30px 0 0 0;
+      ${bpMaxSM} {
+        padding: 20px 0 0 0;
+      }
       background: ${dark ? '#090909' : 'none'};
     `}
   >
