@@ -1,21 +1,21 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import {graphql} from 'gatsby'
 import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 
-const Blog = ({
-  data: { site, allMdx },
-  pageContext: { pagination, categories }
+const Page = ({
+  data: {site, allMdx},
+  pageContext: {pagination, categories}
 }) => {
-  const { page, nextPagePath, previousPagePath } = pagination
+  const {page, nextPagePath, previousPagePath} = pagination
 
   const posts = page.map(id => allMdx.edges.find(edge => edge.node.id === id))
 
   return (
     <Layout site={site}>
-      {posts.map(({ node: post }) => (
+      {posts.map(({node: post}) => (
         <div key={post.id}>
           {post.frontmatter.banner && (
             <Img sizes={post.frontmatter.banner.childImageSharp.sizes} />
@@ -63,7 +63,7 @@ const Blog = ({
   )
 }
 
-export default Blog
+export default Page
 
 export const pageQuery = graphql`
   query {
