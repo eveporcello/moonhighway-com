@@ -13,6 +13,7 @@ import Footer from './Footer'
 const globalStyles = css`
   * {
     box-sizing: border-box;
+    font-family: ${fonts.regular}, sans-serif;
   }
   html,
   body {
@@ -32,7 +33,7 @@ const globalStyles = css`
   h4,
   h5,
   h6 {
-    font-family: ${fonts.semibold};
+    font-family: ${fonts.semibold}, sans-serif;
     a {
       color: inherit;
     }
