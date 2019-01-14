@@ -19,13 +19,14 @@ export default function ContinuousDeiveryPage({ data: { site } }) {
           position: absolute;
           top: -80px;
           display: flex;
+          align-items: center;
           flex-direction: column;
+          ${bpMaxSM} {
+            position: static;
+            transform: scale(0.85);
+          }
           img {
             display: block;
-            ${bpMaxSM} {
-              visibility: hidden;
-              display: none;
-            }
           }
           h1 {
             font-size: 24px;
@@ -40,12 +41,12 @@ export default function ContinuousDeiveryPage({ data: { site } }) {
       <Container>
         <section
           css={css`
-            padding: 300px 0 50px 0;
+            padding: 300px 0 20px 0;
             ${bpMaxMD} {
-              padding: 50px 100px;
+              padding: 250px 0 50px 0;
             }
             ${bpMaxSM} {
-              padding: 10px 20px;
+              padding: 10px 0;
             }
           `}
         >

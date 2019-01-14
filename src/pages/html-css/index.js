@@ -19,13 +19,14 @@ export default function HtmlPage({ data: { site } }) {
           position: absolute;
           top: -80px;
           display: flex;
+          align-items: center;
           flex-direction: column;
+          ${bpMaxSM} {
+            position: static;
+            transform: scale(0.85);
+          }
           img {
             display: block;
-            ${bpMaxSM} {
-              visibility: hidden;
-              display: none;
-            }
           }
           h1 {
             font-size: 24px;

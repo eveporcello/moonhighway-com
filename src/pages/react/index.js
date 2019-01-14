@@ -19,13 +19,14 @@ export default function ReactPage({ data: { site } }) {
           position: absolute;
           top: -80px;
           display: flex;
+          align-items: center;
           flex-direction: column;
+          ${bpMaxSM} {
+            position: static;
+            transform: scale(0.85);
+          }
           img {
             display: block;
-            ${bpMaxSM} {
-              visibility: hidden;
-              display: none;
-            }
           }
           h1 {
             font-size: 24px;
@@ -35,7 +36,7 @@ export default function ReactPage({ data: { site } }) {
         `}
       >
         <img src={HeaderImage} alt={Categories[0].title} />
-        <h1>{Categories[0].title}s</h1>
+        <h1>Our {Categories[0].title}s</h1>
       </div>
       <Container>
         <section

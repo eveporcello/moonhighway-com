@@ -112,7 +112,7 @@ const InputStyles = css`
 `
 
 export default ({ data: { site } }) => (
-  <Layout site={site} noFooter>
+  <Layout site={site}>
     <Container
       maxWidth={480}
       css={css`
