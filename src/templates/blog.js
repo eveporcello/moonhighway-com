@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import {css} from '@emotion/core'
 import {Container} from '../components/markupHelpers'
 import {bpMaxMD} from '../lib/breakpoints'
-
+import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 
@@ -26,7 +26,7 @@ const Blog = ({
 
   return (
     <Layout site={site}>
-      <SEO frontmatter={mdx.frontmatter} isBlogPost />
+      <SEO />
       <Container
         maxWidth={920}
         css={css`
