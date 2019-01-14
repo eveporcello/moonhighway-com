@@ -198,9 +198,49 @@ const Footer = () => (
             line-height: 1.65;
           `}
         >
-          <Link to="/" aria-label="go to homepage">
-            <Logo width={90} dark />
-          </Link>
+          <div
+            css={css`
+              display: flex;
+              align-items: center;
+              .active {
+                display: none;
+                visibility: hidden;
+              }
+
+              a:first-child {
+                margin-right: 20px;
+              }
+              a:not(:first-child) {
+                margin-left: 40px;
+                font-size: 17px;
+                opacity: 0.7;
+                :hover {
+                  opacity: 1;
+                }
+              }
+            `}
+          >
+            <Link to="/" aria-label="go to homepage">
+              <Logo width={90} dark />
+            </Link>
+            {/*
+            Secondary navigation
+            <Link
+              to="/about"
+              activeClassName="active"
+              aria-label="read more about moon highway"
+            >
+              About
+            </Link>
+            <Link
+              to="/contact"
+              activeClassName="active"
+              aria-label="Go to contact form"
+            >
+              Contact us
+            </Link>
+            */}
+          </div>
           <div
             css={css`
               display: flex;

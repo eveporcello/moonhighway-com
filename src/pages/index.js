@@ -114,7 +114,7 @@ const Hero = () => (
   </section>
 )
 
-export default function Index({ data: { site } }, { allMdx }) {
+export default function Index({ data: { site } }) {
   return (
     <Layout site={site} dark>
       <Hero />

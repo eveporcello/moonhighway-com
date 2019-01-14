@@ -23,16 +23,6 @@ const globalStyles = css`
     //scroll-behavior: smooth;
     max-width: 100%;
     overflow-x: hidden;
-  }
-  html,
-  body {
-    /* font-family: ${
-      fonts.regular
-    }, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-      'Roboto', 'Roboto Light', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-      'Droid Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
-      'Segoe UI Emoji', 'Segoe UI Symbol';
-    font-weight: 400; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -43,7 +33,9 @@ const globalStyles = css`
   h5,
   h6 {
     font-family: ${fonts.semibold};
-    a { color: inherit;}
+    a {
+      color: inherit;
+    }
   }
 
   p {
@@ -53,18 +45,18 @@ const globalStyles = css`
     }
   }
   a {
-  cursor: pointer;
-  text-decoration: none;
-  color: blue;
-  &:hover {
-    text-decoration: underline;
-    text-decoration-color: #c4c4c4;
-    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: blue;
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: #c4c4c4;
+      outline: none;
+    }
   }
-}
-hr {
-  margin-top: 50px;
-}
+  hr {
+    margin-top: 50px;
+  }
   input,
   textarea,
   button {
@@ -87,7 +79,8 @@ hr {
     margin-left: -1em;
     padding-right: 1em;
     padding-left: 1em;
-  }`
+  }
+`
 
 export default ({ site, frontmatter = {}, children, dark, noFooter }) => {
   const {

@@ -58,7 +58,11 @@ const Header = ({ dark }) => (
           >
             About
           </Link>
-          <Link to="/contact" aria-label="Go to contact form">
+          <Link
+            to="/contact"
+            activeClassName="active"
+            aria-label="Go to contact form"
+          >
             Contact us
           </Link>
         </div>
