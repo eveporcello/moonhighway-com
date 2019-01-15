@@ -29,6 +29,7 @@ A starter project in [Gatsby.js](https://www.gatsbyjs.org/) with [MDX](https://g
 - visit http://localhost:8000
 
 ## Adding Blog Posts
+
 - Inside of `content/blog/`, create a directory `YYYY-MM-DD-slug-here/` with a file `index.mdx`.
 - Posts will be displayed newest to oldest.
 - At the top of `index.mdx`, add the following frontmatter:
@@ -46,3 +47,4 @@ published: true // false will hide it from the site
 # This is where the Markdown starts
 ```
 
+- Once you add a first blog post, there's a commented out section in `components/Footer.js` with a list of Articles that you'll want reveal to the users.

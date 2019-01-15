@@ -93,6 +93,7 @@ const InputStyles = css`
   box-shadow: none;
   padding: 12px 16px;
   min-height: 50px;
+  margin-top: 8px;
   transition: 100ms;
   box-sizing: border-box;
   resize: none;
@@ -171,29 +172,34 @@ export default ({ data: { site } }) => (
             margin-top: 30px;
             display: flex;
             flex-direction: column;
-            label {
-              padding-bottom: 8px;
-            }
           `}
         >
-          <label>Your email address</label>
-          <input
-            type="email"
-            placeholder="example@email.com"
-            css={css`
-              ${InputStyles};
-              margin-bottom: 30px;
-            `}
-          />
-          <label>Other thoughts or topics of interest?</label>
-          <textarea
-            type="email"
-            rows="10"
-            css={css`
-              ${InputStyles};
-              resize: vertical;
-            `}
-          />
+          <label>
+            Your email address
+            <input
+              type="email"
+              placeholder="example@email.com"
+              aria-label="your email address"
+              aria-required="true"
+              css={css`
+                ${InputStyles};
+                margin-bottom: 30px;
+              `}
+            />
+          </label>
+          <label>
+            Other thoughts or topics of interest?
+            <textarea
+              type="email"
+              aria-label="other thoughts or topics of interest?"
+              aria-required="false"
+              rows="10"
+              css={css`
+                ${InputStyles};
+                resize: vertical;
+              `}
+            />
+          </label>
           <SubmitBtn>Send</SubmitBtn>
         </div>
       </form>

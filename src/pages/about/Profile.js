@@ -4,7 +4,7 @@ import MDReactComponent from 'markdown-react-js'
 import linkedin from './icon-linkedin.svg'
 import twitter from './icon-twitter.svg'
 import github from './icon-github.svg'
-import banner from './linkedinBanner.png'
+import banner from './linkedinBanner.webp'
 import { bpMaxSM, bpMaxMD } from '../../lib/breakpoints'
 
 export default ({

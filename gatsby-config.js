@@ -15,7 +15,7 @@ module.exports = {
       'Web Development',
     ],
     canonicalUrl: 'https://moonhighway.com',
-    image: '',
+    image: 'static/logo.png',
     author: {
       name: 'Moon Highway',
       minibio:
