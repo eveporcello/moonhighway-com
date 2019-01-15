@@ -63,6 +63,7 @@ const Item = ({
         <h1
           css={css`
             margin-bottom: 20px;
+            font-size: 28px;
           `}
         >
           {slug ? (

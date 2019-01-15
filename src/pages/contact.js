@@ -4,6 +4,7 @@ import { css } from '@emotion/core'
 import Layout from '../components/Layout'
 import { Container } from '../components/markupHelpers'
 import { bpMaxSM } from '../lib/breakpoints'
+import { Circles } from '../images/Circles'
 
 const checkboxes = [
   {
@@ -114,6 +115,7 @@ const InputStyles = css`
 
 export default ({ data: { site } }) => (
   <Layout site={site}>
+    <Circles />
     <Container
       maxWidth={480}
       css={css`
