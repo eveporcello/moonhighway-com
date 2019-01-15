@@ -1,6 +1,5 @@
 import React from 'react'
 import { css, keyframes } from '@emotion/core'
-import { bpMaxSM } from '../lib/breakpoints'
 
 const Rot1 = keyframes`
 from {
