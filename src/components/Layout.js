@@ -34,7 +34,7 @@ const globalStyles = css`
   h5,
   h6 {
     font-family: ${fonts.semibold}, sans-serif;
-    font-weight: strong;
+    font-weight: bold;
     a {
       color: inherit;
     }

@@ -1,11 +1,9 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import MDReactComponent from 'markdown-react-js'
-import linkedin from './icon-linkedin.svg'
-import twitter from './icon-twitter.svg'
-import github from './icon-github.svg'
 import banner from './linkedinBanner.png'
 import { bpMaxSM, bpMaxMD } from '../../lib/breakpoints'
+import { Twitter, GitHub, LinkedIn } from '../../images/Social'
 
 export default ({
   children,
@@ -86,20 +84,26 @@ export default ({
           a {
             margin-bottom: 20px;
           }
-          img {
+          svg {
             margin: 0 15px 0 0;
             max-width: 24px;
+          }
+          a:hover {
+            transition: fill 250ms ease;
+            path {
+              fill: black;
+            }
           }
         `}
       >
         <a aria-label={`${title}'s LinkedIn`} href={linkedinUrl}>
-          <img src={linkedin} alt={`${title}'s LinkedIn`} />
+          <LinkedIn color={`#797979`} />
         </a>
-        <a aria-label={`${title}'s LinkedIn`} href={twitterUrl}>
-          <img src={twitter} alt={`${title}'s Twitter`} />
+        <a aria-label={`${title}'s Twitter`} href={twitterUrl}>
+          <Twitter color={`#797979`} />
         </a>
-        <a aria-label={`${title}'s LinkedIn`} href={githubUrl}>
-          <img src={github} alt={`${title}'s GitHub`} />
+        <a aria-label={`${title}'s GitHub`} href={githubUrl}>
+          <GitHub color={`#797979`} />
         </a>
       </div>
       {children && <MDReactComponent text={children} />}

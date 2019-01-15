@@ -7,7 +7,7 @@ import { fonts } from '../lib/typography'
 import { Container } from './markupHelpers'
 import Logo from './Logo'
 
-import { Twitter, GitHub, LinkedIn } from '../images/social'
+import { Twitter, GitHub, LinkedIn } from '../images/Social'
 
 import categories from '../data/categories'
 
