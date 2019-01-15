@@ -8,7 +8,7 @@ import { Container } from '../components/markupHelpers/'
 import { bpMaxMD } from '../lib/breakpoints'
 import SubscribeForm from '../components/SubscribeForm'
 import Layout from '../components/Layout'
-import moon from '../images/moonHeader.webp'
+import moon from '../images/moonHeader.jpg'
 
 export default function Post({
   data: { site, mdx },

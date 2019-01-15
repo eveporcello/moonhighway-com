@@ -117,8 +117,10 @@ export default ({ data: { site } }) => (
     <Container
       maxWidth={480}
       css={css`
+        margin-top: 8vh;
         ${bpMaxSM} {
           padding-top: 30px;
+          margin-top: 0;
           h1 {
             font-size: 24px;
             padding: 0 50px;
