@@ -52,7 +52,7 @@ export default function JsPage({ data: { site } }) {
         >
           {JsNodeTraining.map(training => (
             <Item
-              key={training.title}
+              key={training.tags}
               title={training.title}
               description={training.description}
               thumb={training.thumb}

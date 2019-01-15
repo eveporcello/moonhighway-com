@@ -143,6 +143,7 @@ export default ({ data: { site } }) => (
       >
         {checkboxes.map(item => (
           <label
+            key={item.name}
             css={css`
               padding: 10px 15px;
               background: white;

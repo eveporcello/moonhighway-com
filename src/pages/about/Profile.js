@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 import MDReactComponent from 'markdown-react-js'
 import banner from './linkedinBanner.png'
+import Link from '../../components/Link'
 import { bpMaxSM, bpMaxMD } from '../../lib/breakpoints'
 import { Twitter, GitHub, LinkedIn } from '../../images/Social'
 
@@ -96,15 +97,15 @@ export default ({
           }
         `}
       >
-        <a aria-label={`${title}'s LinkedIn`} href={linkedinUrl}>
+        <Link aria-label={`${title}'s LinkedIn`} href={linkedinUrl}>
           <LinkedIn color={`#797979`} />
-        </a>
-        <a aria-label={`${title}'s Twitter`} href={twitterUrl}>
+        </Link>
+        <Link aria-label={`${title}'s Twitter`} href={twitterUrl}>
           <Twitter color={`#797979`} />
-        </a>
-        <a aria-label={`${title}'s GitHub`} href={githubUrl}>
+        </Link>
+        <Link aria-label={`${title}'s GitHub`} href={githubUrl}>
           <GitHub color={`#797979`} />
-        </a>
+        </Link>
       </div>
       {children && <MDReactComponent text={children} />}
     </div>

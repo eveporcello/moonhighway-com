@@ -103,7 +103,7 @@ const Item = ({
             >
               {tags.map(tag => (
                 <span
-                  key={tag.id}
+                  key={tag}
                   css={css`
                     font-size: 15px;
                     margin: 0px 8px 8px 0;
