@@ -1,13 +1,13 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import {css} from '@emotion/core'
 import Link from './Link'
-import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
-import { fonts } from '../lib/typography'
+import {bpMaxSM, bpMaxMD} from '../lib/breakpoints'
+import {fonts} from '../lib/typography'
 
-import { Container } from './markupHelpers'
+import {Container} from './markupHelpers'
 import Logo from './Logo'
 
-import { Twitter, GitHub, LinkedIn } from '../images/Social'
+import {Twitter, GitHub, LinkedIn} from '$images/social'
 
 import categories from '../data/categories'
 
