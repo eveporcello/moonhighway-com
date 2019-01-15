@@ -27,3 +27,22 @@ A starter project in [Gatsby.js](https://www.gatsbyjs.org/) with [MDX](https://g
 - `npm install`
 - `gatsby develop`
 - visit http://localhost:8000
+
+## Adding Blog Posts
+- Inside of `content/blog/`, create a directory `YYYY-MM-DD-slug-here/` with a file `index.mdx`.
+- Posts will be displayed newest to oldest.
+- At the top of `index.mdx`, add the following frontmatter:
+
+```
+---
+slug: "demo-post-1"
+date: "2017-01-01"
+title: "Demo Post 1"
+keywords: ['demo', 'post', 'one']
+description: "This is the first demo post"
+published: true // false will hide it from the site
+---
+
+# This is where the Markdown starts
+```
+
