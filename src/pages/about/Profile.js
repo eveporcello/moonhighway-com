@@ -1,10 +1,10 @@
 import React from 'react'
-import {css} from '@emotion/core'
+import { css } from '@emotion/core'
 import MDReactComponent from 'markdown-react-js'
 import banner from './linkedinBanner.png'
 import Link from '$components/Link'
-import {bpMaxSM, bpMaxMD} from '../../lib/breakpoints'
-import {Twitter, GitHub, LinkedIn} from '$images/social'
+import { bpMaxSM, bpMaxMD } from '../../lib/breakpoints'
+import { Twitter, GitHub, LinkedIn } from '$images/social'
 
 export default ({
   children,
