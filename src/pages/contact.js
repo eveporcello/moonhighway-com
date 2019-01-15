@@ -62,7 +62,7 @@ const SubmitBtn = props => {
         color: white;
         margin: 30px 0 0 0;
         box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.15);
-        border-radius: 5px;
+        border-radius: 3px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -90,7 +90,7 @@ const InputStyles = css`
   width: 100%;
   display: block;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: none;
   padding: 12px 16px;
   min-height: 50px;

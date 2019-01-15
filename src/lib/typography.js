@@ -11,7 +11,7 @@ export const fonts = {
 }
 
 const typography = new Typography({
-  baseFontSize: '16px',
+  baseFontSize: '17px',
   baseLineHeight: 1.55,
   headerLineHeight: 1.4,
   headerFontFamily: [fonts.semibold, 'sans-serif'],
