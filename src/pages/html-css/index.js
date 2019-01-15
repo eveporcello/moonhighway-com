@@ -36,7 +36,7 @@ export default function HtmlPage({ data: { site } }) {
         `}
       >
         <img src={HeaderImage} alt={Categories[2].title} />
-        <h1>{Categories[2].title}s</h1>
+        <h1>{Categories[2].title}</h1>
       </div>
       <Container>
         <section

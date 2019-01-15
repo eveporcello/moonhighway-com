@@ -38,10 +38,10 @@ export default function Post({
         maxWidth={640}
         css={css`
           z-index: 999;
-          margin-top: 8vh;
+          margin-top: 7vh;
           margin-bottom: 100px;
           ${bpMaxMD} {
-            margin-top: 30px;
+            margin-top: 60px;
           }
         `}
       >

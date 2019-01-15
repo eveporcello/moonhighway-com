@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import Layout from '../components/Layout'
 import { Container } from '../components/markupHelpers'
-import { bpMaxSM } from '../lib/breakpoints'
+import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
 import { Circles } from '../images/Circles'
 
 const checkboxes = [
@@ -119,18 +119,19 @@ export default ({ data: { site } }) => (
     <Container
       maxWidth={480}
       css={css`
-        margin-top: 8vh;
+        margin-top: 7vh;
+        h1 {
+          font-size: 40px;
+          text-align: center;
+          padding-bottom: 20px;
+        }
         ${bpMaxSM} {
           padding-top: 30px;
           margin-top: 0;
           h1 {
-            font-size: 24px;
-            padding: 0 50px;
+            font-size: 30px;
+            padding: 0 10px;
           }
-        }
-        h1 {
-          text-align: center;
-          padding-bottom: 20px;
         }
       `}
     >
@@ -139,8 +140,14 @@ export default ({ data: { site } }) => (
         css={css`
           border-radius: 5px;
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
           grid-gap: 12px;
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          ${bpMaxSM} {
+            grid-template-columns: 1fr 1fr;
+          }
+          ${bpMaxMD} {
+            grid-template-columns: 1fr 1fr;
+          }
         `}
       >
         {checkboxes.map(item => (

@@ -10,10 +10,12 @@ export default ({ children, author }) => (
     css={css`
       font-family: ${fonts.semibold}, sans-serif;
       margin: 20px 0;
-      font-size: 1.1875rem;
-      margin-left: 35px;
+      font-size: 18px;
+      padding-left: 25px;
+      margin-left: 40px;
       ${bpMaxMD} {
         margin: 10px 0;
+        padding-left: auto;
       }
       ${bpMaxSM} {
         margin: 10px 0 10px 0;
@@ -21,11 +23,12 @@ export default ({ children, author }) => (
       ::before {
         content: '';
         background-image: url(${Quote});
-        width: 25px;
-        height: 19px;
+        width: 20px;
+        height: 16px;
         position: absolute;
         margin-top: 5px;
-        margin-left: -45px;
+        margin-left: -30px;
+        background-size: cover;
       }
       div {
         font-size: 0.9375rem;

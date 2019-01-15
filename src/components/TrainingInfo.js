@@ -11,7 +11,7 @@ const TrainingInfo = ({ description, title }) => (
         background: rgba(0, 0, 0, 0.07);
         margin: ${rhythm(3)} 0 ${rhythm(3)} 0;
         ${bpMaxSM} {
-          margin: 40px 0 40px 0;
+          margin: 30px 0 30px 0;
         }
       `}
     />
@@ -28,6 +28,11 @@ const TrainingInfo = ({ description, title }) => (
           css={css`
             font-size: 2.4rem;
             margin-bottom: 0;
+            ${bpMaxSM} {
+              margin-top: 10px;
+              margin-bottom: 15px;
+              line-height: 1.2;
+            }
           `}
         >
           {title}
@@ -50,7 +55,7 @@ const TrainingInfo = ({ description, title }) => (
           padding-left: ${rhythm(2)};
           ${bpMaxSM} {
             padding-left: 0;
-            margin-top: ${rhythm(2)};
+            margin-top: ${rhythm(1)};
           }
         `}
       >
@@ -81,8 +86,11 @@ const TrainingInfo = ({ description, title }) => (
         <h5
           css={css`
             font-size: 18px;
-            margin-top: ${rhythm(2.68)};
+            margin-top: ${rhythm(2.5)};
             margin-bottom: ${rhythm(0.5)};
+            ${bpMaxSM} {
+              margin-top: ${rhythm(1.5)};
+            }
           `}
         >
           Custom Curriculums

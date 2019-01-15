@@ -32,6 +32,7 @@ export default ({
         width: 100%;
         margin-left: 0;
         flex-direction: column;
+        margin: 50px 0 30px 0;
       }
     `}
   >

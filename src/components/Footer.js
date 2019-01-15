@@ -15,9 +15,9 @@ const Footer = () => (
   <footer
     css={css`
       width: 100%;
-      margin-top: 70px;
+      margin-top: 50px;
       ${bpMaxSM} {
-        margin-top: 30px;
+        margin-top: 40px;
       }
       background: #fafafa;
       flex-shrink: 0;

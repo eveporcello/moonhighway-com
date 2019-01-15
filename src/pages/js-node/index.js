@@ -36,7 +36,7 @@ export default function JsPage({ data: { site } }) {
         `}
       >
         <img src={HeaderImage} alt={Categories[1].title} />
-        <h1>{Categories[1].title}s</h1>
+        <h1>{Categories[1].title}</h1>
       </div>
       <Container>
         <section

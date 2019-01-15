@@ -47,6 +47,9 @@ export default ({ title, length, image, link }) => (
           opacity: 0.7;
           font-family: ${fonts.regular}, sans-serif;
         }
+        h3 {
+          margin: 0;
+        }
       `}
     >
       <img src={image} alt={title} />

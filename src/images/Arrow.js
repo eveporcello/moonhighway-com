@@ -50,14 +50,14 @@ export const Arrow = ({ color = '#979797' }) => (
       <g
         fill="none"
         stroke={color}
-        stroke-linecap="round"
-        stroke-width="3"
+        strokeLinecap="round"
+        strokeWidth="3"
         transform="translate(1 1)"
       >
-        <path className="line" stroke-dasharray="26" d="M11,0.5 L11,28" />
+        <path className="line" strokeDasharray="26" d="M11,0.5 L11,28" />
         <path
           className="chevron"
-          stroke-dasharray="29"
+          strokeDasharray="29"
           d="M0.754882813,17.7548828 L11,28 L21.2451172,17.7548828"
         />
         {/* <path className="line2" stroke-dasharray="26" d="M11,0.5 L11,28" />
