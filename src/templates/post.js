@@ -8,7 +8,9 @@ import { Container } from '../components/markupHelpers/'
 import { bpMaxMD } from '../lib/breakpoints'
 import SubscribeForm from '../components/SubscribeForm'
 import Layout from '../components/Layout'
+import { fonts } from '../lib/typography'
 import moon from '../images/moonHeader.jpg'
+import { bpMaxSM } from '../lib/breakpoints'
 
 export default function Post({
   data: { site, mdx },
@@ -43,14 +45,35 @@ export default function Post({
           }
         `}
       >
-        <h1>{mdx.frontmatter.title}</h1>
-        <h2>{mdx.frontmatter.date}</h2>
+        <h1
+          css={css`
+            text-align: center;
+            font-size: 40px;
+            ${bpMaxSM} {
+              font-size: 30px;
+            }
+          `}
+        >
+          {mdx.frontmatter.title}
+        </h1>
+        <h3
+          css={css`
+            text-align: center;
+            font-size: 15px;
+            opacity: 0.6;
+            font-family: ${fonts.regular}, sans-serif;
+            font-weight: normal;
+          `}
+        >
+          {mdx.frontmatter.date}
+        </h3>
         {mdx.frontmatter.banner && (
           <Img
             sizes={mdx.frontmatter.banner.childImageSharp.sizes}
             alt={site.siteMetadata.keywords.join(', ')}
           />
         )}
+        <br />
         <MDXRenderer>{mdx.code.body}</MDXRenderer>
       </Container>
       <SubscribeForm />

@@ -39,12 +39,38 @@ const globalStyles = css`
       color: inherit;
     }
   }
-
+  h3 {
+    margin-top: 30px;
+    font-size: 20px;
+    font-family: ${fonts.bold}, sans-serif;
+  }
   p {
     margin: 0 0 20px 0;
     &:last-child {
       margin: 0;
     }
+    em {
+      font-family: ${fonts.regularItalic}, sans-serif;
+    }
+    strong {
+      em {
+        font-family: ${fonts.semiboldItalic}, sans-serif;
+      }
+    }
+  }
+  blockquote {
+    text-align: center;
+    font-size: 22px;
+    p {
+      padding-top: 15px;
+      font-size: 22px !important;
+      font-family: ${fonts.regularItalic}, sans-serif;
+    }
+  }
+  ul,
+  ol {
+    list-style-position: inside;
+    margin: 25px 0;
   }
   a {
     cursor: pointer;
@@ -71,9 +97,30 @@ const globalStyles = css`
     background-color: #061526 !important;
     border-radius: 4px;
     font-size: 14px;
-    padding: 5px;
-  }
+    padding: 20px;
 
+    ${bpMaxSM} {
+      padding: 10px;
+    }
+
+    overflow-x: auto;
+    /* Track */
+    ::-webkit-scrollbar {
+      width: 100%;
+      height: 7px;
+      border-radius: 0 0 4px 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #061526;
+      border-radius: 0 0 4px 4px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+    }
+  }
   .gatsby-highlight-code-line {
     background-color: #4f424c;
     display: block;

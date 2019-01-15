@@ -2,6 +2,7 @@ import React from 'react'
 import theme from 'prism-react-renderer/themes/oceanicNext'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
+import { css } from '@emotion/core'
 const Code = ({ codeString, language, ...props }) => {
   if (props['react-live']) {
     return (
@@ -20,7 +21,16 @@ const Code = ({ codeString, language, ...props }) => {
         theme={theme}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className} style={style}>
+          <pre
+            className={className}
+            style={style}
+            css={css`
+              * {
+                font-family: 'SFMono-Regular', Consolas, 'Liberation Mono',
+                  Menlo, Courier, monospace;
+              }
+            `}
+          >
             {tokens.map((line, i) => (
               <div {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => (

@@ -3,7 +3,7 @@ import { fonts } from '../../lib/typography'
 
 export default styled.h1`
   font-family: ${fonts.bold}, sans-serif;
-  italic {
+  em {
     font-family: ${fonts.boldItalic}, sans-serif;
   }
   font-size: 30px;

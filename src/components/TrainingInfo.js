@@ -56,6 +56,7 @@ const TrainingInfo = ({ description, title }) => (
       >
         <blockquote
           css={css`
+            text-align: left;
             margin: 0;
             margin-top: ${rhythm(1)};
             font-family: ${fonts.regularItalic}, sans-serif;
