@@ -1,13 +1,13 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import {css} from '@emotion/core'
 import Link from './Link'
-import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
-import { fonts } from '../lib/typography'
+import {bpMaxSM, bpMaxMD} from '../lib/breakpoints'
+import {fonts} from '../lib/typography'
 
-import { Container } from './markupHelpers'
+import {Container} from './markupHelpers'
 import Logo from './Logo'
 
-import { Twitter, GitHub, LinkedIn } from '../images/social'
+import {Twitter, GitHub, LinkedIn} from '../images/social'
 
 import categories from '../data/categories'
 
@@ -72,7 +72,7 @@ const Footer = () => (
             `}
           >
             <h4>
-              <Link to="/#trainings" aria-label="View all our trainings">
+              <Link to='/#trainings' aria-label='View all our trainings'>
                 Trainings
               </Link>
             </h4>
@@ -93,7 +93,7 @@ const Footer = () => (
               >
                 <Link
                   to={category.slug}
-                  activeClassName="active"
+                  activeClassName='active'
                   aria-label={`Link to ${category.title} training`}
                 >
                   {category.title}
@@ -111,62 +111,64 @@ const Footer = () => (
               }
             `}
           >
-            <h4>
-              <Link to="/blog/" aria-label="View all our articles">
-                Articles
-              </Link>
-            </h4>
-            <div
-              css={css`
-                a {
-                  margin: 10px 0;
-                  display: block;
-                }
-                .active {
-                  opacity: 0.8;
-                  font-family: ${fonts.semibold}, sans-serif;
-                  ::before {
-                    content: '→';
-                    padding-right: 10px;
-                  }
-                }
-                .all-active {
-                  visibility: hidden;
-                  display: none;
-                }
-              `}
-            >
-              <Link
-                activeClassName="active"
-                to="/blog/demo-post-1/"
-                aria-label="Read Article"
-              >
-                15 Benefits Of Javascript That May Change Your Perspective
-              </Link>
-              <Link
-                activeClassName="active"
-                to="/blog/demo-post-2/"
-                aria-label="Read Article"
-              >
-                Here's What No One Tells You About Javascript
-              </Link>
-              <Link
-                activeClassName="active"
-                to="/blog/demo-post-3/"
-                aria-label="Read Article"
-              >
-                Javascript Is Not Rocket Science! Learn It Now!
-              </Link>
-              <Link
-                to="/blog/"
+{/**
+              <h4>
+                <Link to='/blog/' aria-label='View all our articles'>
+                  Articles
+                </Link>
+              </h4>
+              <div
                 css={css`
-                  font-family: ${fonts.semibold}, sans-serif;
+                  a {
+                    margin: 10px 0;
+                    display: block;
+                  }
+                  .active {
+                    opacity: 0.8;
+                    font-family: ${fonts.semibold}, sans-serif;
+                    ::before {
+                      content: '→';
+                      padding-right: 10px;
+                    }
+                  }
+                  .all-active {
+                    visibility: hidden;
+                    display: none;
+                  }
                 `}
-                activeClassName="all-active"
               >
-                Show all
-              </Link>
-            </div>
+                <Link
+                  activeClassName='active'
+                  to='/blog/demo-post-1/'
+                  aria-label='Read Article'
+                >
+                  15 Benefits Of Javascript That May Change Your Perspective
+                </Link>
+                <Link
+                  activeClassName='active'
+                  to='/blog/demo-post-2/'
+                  aria-label='Read Article'
+                >
+                  Here's What No One Tells You About Javascript
+                </Link>
+                <Link
+                  activeClassName='active'
+                  to='/blog/demo-post-3/'
+                  aria-label='Read Article'
+                >
+                  Javascript Is Not Rocket Science! Learn It Now!
+                </Link>
+                <Link
+                  to='/blog/'
+                  css={css`
+                    font-family: ${fonts.semibold}, sans-serif;
+                  `}
+                  activeClassName='all-active'
+                >
+                  Show all
+                </Link>
+              </div>
+*/}
           </div>
         </div>
       </Container>
@@ -220,7 +222,7 @@ const Footer = () => (
               }
             `}
           >
-            <Link to="/" aria-label="go to homepage">
+            <Link to='/' aria-label='go to homepage'>
               <Logo width={90} dark />
             </Link>
             {/*
@@ -282,32 +284,32 @@ const Footer = () => (
               `}
             >
               <Link
-                to="https://twitter.com/moonhighway/"
-                aria-label="Visit our Twitter"
+                to='https://twitter.com/moonhighway/'
+                aria-label='Visit our Twitter'
               >
                 <Twitter color={`#797979`} />
               </Link>
               <Link
-                to="https://www.linkedin.com/company/moon-highway"
-                aria-label="Visit our LinkedIn"
+                to='https://www.linkedin.com/company/moon-highway'
+                aria-label='Visit our LinkedIn'
               >
                 <LinkedIn color={`#797979`} />
               </Link>
               <Link
-                to="https://github.com/MoonHighway"
-                aria-label="Visit our GitHub"
+                to='https://github.com/MoonHighway'
+                aria-label='Visit our GitHub'
               >
                 <GitHub color={`#797979`} />
               </Link>
             </div>
             <div>
               <a
-                aria-label="Send us an email"
-                href="mailto:info@moonhighway.com?subject=Hello!"
+                aria-label='Send us an email'
+                href='mailto:info@moonhighway.com?subject=Hello!'
               >
                 info@moonhighway.com
               </a>
-              <a aria-label="Call us" href="tel:530-523-3084">
+              <a aria-label='Call us' href='tel:530-523-3084'>
                 (530) 523 - 3084
               </a>
               Moon Highway, LLC
