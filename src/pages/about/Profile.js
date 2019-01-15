@@ -12,7 +12,7 @@ export default ({
   title,
   linkedinUrl,
   twitterUrl,
-  githubUrl,
+  githubUrl
 }) => (
   <div
     css={css`
@@ -58,7 +58,7 @@ export default ({
         css={css`
           max-width: 160px;
         `}
-        alt="LinkedIn Learning Insider"
+        alt='LinkedIn Learning Insider'
       />
     </div>
     <div
