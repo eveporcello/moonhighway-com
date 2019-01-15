@@ -138,7 +138,7 @@ export default ({ data: { site } }) => (
           border-radius: 5px;
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-          grid-gap: 20px;
+          grid-gap: 12px;
         `}
       >
         {checkboxes.map(item => (
