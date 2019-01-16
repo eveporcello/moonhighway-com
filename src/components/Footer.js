@@ -68,7 +68,7 @@ const Footer = () => (
           <div
             css={css`
               width: 100%;
-              max-width: 270px;
+              max-width: 280px;
             `}
           >
             <h4>
