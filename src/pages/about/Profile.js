@@ -2,9 +2,9 @@ import React from 'react'
 import { css } from '@emotion/core'
 import MDReactComponent from 'markdown-react-js'
 import banner from './linkedinBanner.png'
-import Link from '../../components/Link'
+import Link from '$components/Link'
 import { bpMaxSM, bpMaxMD } from '../../lib/breakpoints'
-import { Twitter, GitHub, LinkedIn } from '../../images/social'
+import { Twitter, GitHub, LinkedIn } from '$images/social'
 
 export default ({
   children,
@@ -12,7 +12,7 @@ export default ({
   title,
   linkedinUrl,
   twitterUrl,
-  githubUrl,
+  githubUrl
 }) => (
   <div
     css={css`
@@ -58,7 +58,7 @@ export default ({
         css={css`
           max-width: 160px;
         `}
-        alt="LinkedIn Learning Insider"
+        alt='LinkedIn Learning Insider'
       />
     </div>
     <div
