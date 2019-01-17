@@ -29,16 +29,16 @@ export const Circles = ({
     css={css`
       position: absolute;
       top: -230px;
-      zoom: 1.2;
+      transform: scale(1.2);
       .mask {
         animation: ${Rot1B} 40s linear infinite;
       }
       .c1a {
         animation: ${Rot1} 50s linear infinite;
       }
-
       path {
         transform-origin: center center;
+        transform-box: fill-box;
       }
     `}
   >
