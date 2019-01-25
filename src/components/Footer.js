@@ -43,7 +43,7 @@ const Footer = () => (
       `}
     >
       <Container maxWidth={900} noPadding>
-        <SubscribeForm />
+        {/* <SubscribeForm /> */}
         <div
           css={css`
             display: flex;
