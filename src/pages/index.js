@@ -6,7 +6,6 @@ import Link from '../components/Link'
 import { Container } from '../components/markupHelpers/'
 import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
 import Item from '../components/Item'
-import SubscribeForm from '../components/SubscribeForm'
 
 import imgMoon from '../images/moon.jpg'
 import categories from '../data/categories'
