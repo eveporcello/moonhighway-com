@@ -6,7 +6,6 @@ import SEO from 'components/SEO'
 import { css } from '@emotion/core'
 import { Container } from '../components/markupHelpers/'
 import { bpMaxMD } from '../lib/breakpoints'
-import SubscribeForm from '../components/SubscribeForm'
 import Layout from '../components/Layout'
 import { fonts } from '../lib/typography'
 import moon from '../images/moonHeader.jpg'
@@ -76,7 +75,7 @@ export default function Post({
         <br />
         <MDXRenderer>{mdx.code.body}</MDXRenderer>
       </Container>
-      {/* <SubscribeForm /> */}
+      {/* {<SubscribeForm />} */}
     </Layout>
   )
 }
