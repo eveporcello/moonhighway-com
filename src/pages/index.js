@@ -143,7 +143,7 @@ export default function Index({ data: { site } }) {
               slug={category.slug}
             />
           ))}
-          /*{' '}
+          {/*
           <div
             css={css`
               margin-top: 120px;
@@ -155,8 +155,8 @@ export default function Index({ data: { site } }) {
             `}
           >
             <SubscribeForm />
-          </div>{' '}
-          */
+          </div>
+          */}
         </Container>
       </section>
     </Layout>
