@@ -76,7 +76,7 @@ export default function Post({
         <br />
         <MDXRenderer>{mdx.code.body}</MDXRenderer>
       </Container>
-      {<SubscribeForm />}
+      /* {<SubscribeForm />} */
     </Layout>
   )
 }
