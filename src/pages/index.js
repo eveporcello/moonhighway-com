@@ -143,20 +143,20 @@ export default function Index({ data: { site } }) {
               slug={category.slug}
             />
           ))}
-{/**
-            <div
-              css={css`
-                margin-top: 120px;
-                ${bpMaxSM} {
-                  margin-top: 50px;
-                  border-top: 1px solid #f1f1f1;
-                  padding-top: 30px;
-                }
-              `}
-            >
-              <SubscribeForm />
-            </div>
-*/}
+          {/*
+          <div
+            css={css`
+              margin-top: 120px;
+              ${bpMaxSM} {
+                margin-top: 50px;
+                border-top: 1px solid #f1f1f1;
+                padding-top: 30px;
+              }
+            `}
+          >
+            <SubscribeForm />
+          </div>
+          */}
         </Container>
       </section>
     </Layout>
