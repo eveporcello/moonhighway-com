@@ -45,7 +45,8 @@
     "react-live": "^1.12.0",
     "react-typography": "^0.16.18",
     "serve": "^10.1.1",
-    "typography": "^0.16.18"
+    "typography": "^0.16.18",
+    "yup": "^0.26.10"
   },
   "devDependencies": {
     "babel-preset-gatsby": "^0.1.6",
