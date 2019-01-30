@@ -60,6 +60,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "start": "serve public/"
+    "start": "serve public/",
+    "newPost": "node ./scripts/new-post.js"
   }
 }
