@@ -1,0 +1,100 @@
+---
+slug: connecting-cities-with-graphql
+date: 2019-02-04
+title: 'Connecting Cities on the California Graph with GraphQL'
+description: 'representing interconnected types in GraphQL with custom objects'
+categories: ['graphql']
+keywords: ['graphql']
+banner: './images/tents.jpg'
+published: true
+redirects:
+  - '/invisible-post-423123'
+---
+
+One of my favorite memories of 2018 was hiking the Lost Coast Trail. A few days of backpacking took us up the rugged California coastline to watch incredible sunsets, take pictures of seals, and eat food out of a bag. The drive to the trailhead took about six hours and barely used a major highway. As the winding two lane roads drew lines between small towns across the state, I realized that I wasn’t just traversing the state of California. Oh no… I was away from work, but once again, I was traversing a graph.
+
+A graph is a formal way to represent a collection of interconnected objects. We could use a graph to represent the cities on the trip to the Lost Coast and their connections to each other. The diagram below describes the entire journey and represents it as a collection of nodes (the data points) and edges (the connections between the nodes):
+
+![diagram of connected cities](/images/city-to-city-diagram.png)
+
+To describe the relationships between these cities with GraphQL, we can start by considering the data. We’ll create an array that contains objects representing the cities:
+
+```javascript
+var connectedCities = [
+  { from: "Tahoe City", to: "Nevada City" },
+  { from: "Nevada City", to: "Redwood Valley" },
+  { from: "Redwood Valley", to: "Willits" },
+  { from: "Willits", to: "Garberville" },
+  { from: "Garberville", to: "Shelter Cove" },
+  { from: "Garberville", to: "Mendocino" },
+  { from: "Mendocino", to: "Redwood Valley" }
+];
+```
+
+Each of the objects in the array describes an edge. It represents a line from one city to another. From there, we can model this data by creating a type for a `City`. The city should have a `name`. It should also have a field called `connections` that returns a list of cities that are connected to it. Our schema should look something like this:
+
+```graphql
+type City {
+  name: String!
+  connections: [City!]!
+}
+type Query {
+  allCities: [City!]!
+}
+```
+
+To query the data, you can execute the following query:
+
+```graphql
+query {
+  allCities {
+    name
+    connections {
+      name
+    }
+  }
+}
+```
+
+This is a good start, but on every road trip, it’s pretty important to understand how far it is from one city to another. We need to figure out a way to represent the distance between cities, as shown by the diagram:
+
+![diagram of connected cities](/images/city-to-city-connection-distances.png)
+
+Now, the edge or connection between cities is a bit more complex. Each connection now contains data about the distance between the two cities. To reflect this dimension, we’ll adjust the schema to include another type, Connection:
+
+```graphql
+type City {
+  name: String!
+  connections: [Connection!]!
+}
+type Connection {
+  distance: Int!
+  to: City!
+}
+```
+
+The `Connection` type provides information about the distance between cities. Now, if we start traversing the graph at Tahoe City, we can determine that Tahoe City is connected to Nevada City and the distance between the cities is 65 miles. This type of connection is often called a **through type** or **connection object**.
+
+The data should also be updated to include the distance:
+
+```javascript
+var distances = [
+  { from: "Tahoe City", to: "Nevada City", distance: 65 },
+  { from: "Nevada City", to: "Redwood Valley", distance: 151 },
+  { from: "Redwood Valley", to: "Willits", distance: 16 },
+  { from: "Willits", to: "Garberville", distance: 68 },
+  { from: "Garberville", to: "Shelter Cove", distance: 24 },
+  { from: "Garberville", to: "Mendocino", distance: 76 },
+  { from: "Mendocino", to: "Redwood Valley", distance: 51 }
+];
+```
+
+When I execute the `allCities` query, this should return a list of cities, the city or cities that the city is connected to, and the distances between them.
+
+The `Connection` object allows us to define a relationship between cities where the edge has data associated with it: the distance and the city. In cases where data connections go beyond fields that return scalars or lists, creating a connection object can be extremely useful to ensure that the correct data is returned.
+
+Graphs are all around us all the time even on vacation. Luckily, the flexibility of GraphQL allows us to model any data relationship we’d like.
+
+Check out this sample project on [CodeSandbox](https://codesandbox.io/s/1wqpz240wl).
+
+<i>Header photo by <a target="_blank" href="https://www.wadesnider.com/">Wade Snider Photography</a></i>

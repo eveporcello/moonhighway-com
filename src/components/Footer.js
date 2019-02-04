@@ -102,75 +102,75 @@ const Footer = () => (
               </div>
             ))}
           </div>
-          {/*
-          <div
-            css={css`
-              margin-left: 65px;
-              margin-top: 0;
-              ${bpMaxSM} {
-                margin-left: 0;
-                margin-top: 30px;
-              }
-            `}
-          >
-            <h4>
-              <Link to="/blog/" aria-label="View all our articles">
-                Articles
-              </Link>
-            </h4>
+          {
             <div
               css={css`
-                a {
-                  margin: 10px 0;
-                  display: block;
-                }
-                .active {
-                  opacity: 0.8;
-                  font-family: ${fonts.semibold}, sans-serif;
-                  ::before {
-                    content: '→';
-                    padding-right: 10px;
-                  }
-                }
-                .all-active {
-                  visibility: hidden;
-                  display: none;
+                margin-left: 65px;
+                margin-top: 0;
+                ${bpMaxSM} {
+                  margin-left: 0;
+                  margin-top: 30px;
                 }
               `}
             >
-              <Link
-                activeClassName="active"
-                to="/blog/demo-post-1/"
-                aria-label="Read Article"
-              >
-                15 Benefits Of Javascript That May Change Your Perspective
-              </Link>
-              <Link
-                activeClassName="active"
-                to="/blog/demo-post-2/"
-                aria-label="Read Article"
-              >
-                Here's What No One Tells You About Javascript
-              </Link>
-              <Link
-                activeClassName="active"
-                to="/blog/demo-post-3/"
-                aria-label="Read Article"
-              >
-                Javascript Is Not Rocket Science! Learn It Now!
-              </Link>
-              <Link
-                to="/blog/"
+              <h4>
+                <Link to="/blog/" aria-label="View all our articles">
+                  Articles
+                </Link>
+              </h4>
+              <div
                 css={css`
-                  font-family: ${fonts.semibold}, sans-serif;
+                  a {
+                    margin: 10px 0;
+                    display: block;
+                  }
+                  .active {
+                    opacity: 0.8;
+                    font-family: ${fonts.semibold}, sans-serif;
+                    ::before {
+                      content: '→';
+                      padding-right: 10px;
+                    }
+                  }
+                  .all-active {
+                    visibility: hidden;
+                    display: none;
+                  }
                 `}
-                activeClassName="all-active"
               >
-                Show all
-              </Link>
+                <Link
+                  activeClassName="active"
+                  to="/blog/connecting-cities-with-graphql/"
+                  aria-label="Read Article"
+                >
+                  Connecting Cities on the California Graph with GraphQL
+                </Link>
+                {/* <Link
+                  activeClassName="active"
+                  to="/blog/demo-post-2/"
+                  aria-label="Read Article"
+                >
+                  Here's What No One Tells You About Javascript
+                </Link>
+                <Link
+                  activeClassName="active"
+                  to="/blog/demo-post-3/"
+                  aria-label="Read Article"
+                >
+                  Javascript Is Not Rocket Science! Learn It Now!
+                </Link> */}
+                <Link
+                  to="/blog/"
+                  css={css`
+                    font-family: ${fonts.semibold}, sans-serif;
+                  `}
+                  activeClassName="all-active"
+                >
+                  Show all
+                </Link>
+              </div>
             </div>
-          </div>
-          */}
+          }
         </div>
       </Container>
     </Container>

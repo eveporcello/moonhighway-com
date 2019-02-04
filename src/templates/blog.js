@@ -65,7 +65,7 @@ const Blog = ({
             <small>{post.frontmatter.date}</small>
             <p>{post.excerpt}</p>{' '}
             <Link
-              to={`blog/${post.fields.slug}`}
+              to={`${post.fields.slug}`}
               aria-label={`view "${post.frontmatter.title}" article`}
             >
               Continue Reading →
