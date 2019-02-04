@@ -22,7 +22,7 @@ const createPosts = (createPage, createRedirect, edges) => {
 
     const isBlogPost = _.get(node, 'parent.sourceInstanceName') === 'blog'
 
-    const pagePath = isBlogPost ? `blog/${node.fields.slug}` : node.fields.slug
+    const pagePath = node.fields.slug
 
     createPage({
       path: pagePath,
@@ -77,7 +77,7 @@ exports.createPages = ({ actions, graphql }) =>
     const { edges } = data.allMdx
     const { createRedirect, createPage } = actions
     createPosts(createPage, createRedirect, edges)
-    createPaginatedPages(actions.createPage, edges, '/blog', {
+    createPaginatedPages(actions.createPage, edges, '/articles', {
       categories: [],
     })
   })

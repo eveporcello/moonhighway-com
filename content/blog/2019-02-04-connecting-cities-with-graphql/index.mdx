@@ -7,8 +7,6 @@ categories: ['graphql']
 keywords: ['graphql']
 banner: './images/tents.jpg'
 published: true
-redirects:
-  - '/invisible-post-423123'
 ---
 
 One of my favorite memories of 2018 was hiking the Lost Coast Trail. A few days of backpacking took us up the rugged California coastline to watch incredible sunsets, take pictures of seals, and eat food out of a bag. The drive to the trailhead took about six hours and barely used a major highway. As the winding two lane roads drew lines between small towns across the state, I realized that I wasn’t just traversing the state of California. Oh no… I was away from work, but once again, I was traversing a graph.
@@ -21,14 +19,14 @@ To describe the relationships between these cities with GraphQL, we can start by
 
 ```javascript
 var connectedCities = [
-  { from: "Tahoe City", to: "Nevada City" },
-  { from: "Nevada City", to: "Redwood Valley" },
-  { from: "Redwood Valley", to: "Willits" },
-  { from: "Willits", to: "Garberville" },
-  { from: "Garberville", to: "Shelter Cove" },
-  { from: "Garberville", to: "Mendocino" },
-  { from: "Mendocino", to: "Redwood Valley" }
-];
+  { from: 'Tahoe City', to: 'Nevada City' },
+  { from: 'Nevada City', to: 'Redwood Valley' },
+  { from: 'Redwood Valley', to: 'Willits' },
+  { from: 'Willits', to: 'Garberville' },
+  { from: 'Garberville', to: 'Shelter Cove' },
+  { from: 'Garberville', to: 'Mendocino' },
+  { from: 'Mendocino', to: 'Redwood Valley' },
+]
 ```
 
 Each of the objects in the array describes an edge. It represents a line from one city to another. From there, we can model this data by creating a type for a `City`. The city should have a `name`. It should also have a field called `connections` that returns a list of cities that are connected to it. Our schema should look something like this:
@@ -79,14 +77,14 @@ The data should also be updated to include the distance:
 
 ```javascript
 var distances = [
-  { from: "Tahoe City", to: "Nevada City", distance: 65 },
-  { from: "Nevada City", to: "Redwood Valley", distance: 151 },
-  { from: "Redwood Valley", to: "Willits", distance: 16 },
-  { from: "Willits", to: "Garberville", distance: 68 },
-  { from: "Garberville", to: "Shelter Cove", distance: 24 },
-  { from: "Garberville", to: "Mendocino", distance: 76 },
-  { from: "Mendocino", to: "Redwood Valley", distance: 51 }
-];
+  { from: 'Tahoe City', to: 'Nevada City', distance: 65 },
+  { from: 'Nevada City', to: 'Redwood Valley', distance: 151 },
+  { from: 'Redwood Valley', to: 'Willits', distance: 16 },
+  { from: 'Willits', to: 'Garberville', distance: 68 },
+  { from: 'Garberville', to: 'Shelter Cove', distance: 24 },
+  { from: 'Garberville', to: 'Mendocino', distance: 76 },
+  { from: 'Mendocino', to: 'Redwood Valley', distance: 51 },
+]
 ```
 
 When I execute the `allCities` query, this should return a list of cities, the city or cities that the city is connected to, and the distances between them.
@@ -96,5 +94,11 @@ The `Connection` object allows us to define a relationship between cities where 
 Graphs are all around us all the time even on vacation. Luckily, the flexibility of GraphQL allows us to model any data relationship we’d like.
 
 Check out this sample project on [CodeSandbox](https://codesandbox.io/s/1wqpz240wl).
+
+<iframe
+  src="https://codesandbox.io/embed/1wqpz240wl?autoresize=1&hidenavigation=1&moduleview=1"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>
 
 <i>Header photo by <a target="_blank" href="https://www.wadesnider.com/">Wade Snider Photography</a></i>
