@@ -114,7 +114,7 @@ const Footer = () => (
               `}
             >
               <h4>
-                <Link to="/blog/" aria-label="View all our articles">
+                <Link to="/articles/" aria-label="View all our articles">
                   Articles
                 </Link>
               </h4>
@@ -140,7 +140,7 @@ const Footer = () => (
               >
                 <Link
                   activeClassName="active"
-                  to="/blog/connecting-cities-with-graphql/"
+                  to="/connecting-cities-with-graphql/"
                   aria-label="Read Article"
                 >
                   Connecting Cities on the California Graph with GraphQL
@@ -160,7 +160,7 @@ const Footer = () => (
                   Javascript Is Not Rocket Science! Learn It Now!
                 </Link> */}
                 <Link
-                  to="/blog/"
+                  to="/articles/"
                   css={css`
                     font-family: ${fonts.semibold}, sans-serif;
                   `}

@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import { Container } from '../components/markupHelpers'
-import { bpMaxMD } from '../lib/breakpoints'
+import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
@@ -30,9 +30,12 @@ const Blog = ({
       <Container
         maxWidth={920}
         css={css`
-          margin: 40px 0 0 0;
+          margin: 50px 0 0 0;
           ${bpMaxMD} {
             margin: 0;
+          }
+          ${bpMaxSM} {
+            margin-top: 30px;
           }
           a,
           p {
@@ -42,39 +45,81 @@ const Blog = ({
             display: block;
             margin-bottom: 15px;
           }
+          .gatsby-image-wrapper {
+            width: 340px;
+          }
+          h2 {
+            margin-top: 0;
+          }
         `}
       >
         {posts.map(({ node: post }) => (
-          <div key={post.id}>
-            {post.frontmatter.banner && (
-              <Img sizes={post.frontmatter.banner.childImageSharp.sizes} />
-            )}
-            <h2
+          <div
+            key={post.id}
+            css={css`
+              display: flex;
+              align-items: center;
+              flex-direction: row;
+              ${bpMaxMD} {
+                flex-direction: column;
+                .gatsby-image-wrapper {
+                  margin-bottom: 30px;
+                }
+              }
+            `}
+          >
+            {post.frontmatter.banner &&
+              post.fields.slug && (
+                <Link
+                  to={`/${post.fields.slug}`}
+                  aria-label={`View "${post.frontmatter.title}" article`}
+                >
+                  <Img sizes={post.frontmatter.banner.childImageSharp.sizes} />
+                </Link>
+              )}
+            {post.frontmatter.banner &&
+              !post.frontmatter.slug && (
+                <Img sizes={post.frontmatter.banner.childImageSharp.sizes} />
+              )}
+            <div
               css={css`
-                margin-top: 50px;
-                margin-bottom: 10px;
+                margin-left: ${post.frontmatter.banner ? '30px' : '0'};
+                ${bpMaxMD} {
+                  margin-left: 0;
+                }
               `}
             >
-              <Link
-                aria-label={`View "${post.frontmatter.title}" article`}
-                to={post.frontmatter.slug}
+              <h2
+                css={css`
+                  margin-top: 50px;
+                  margin-bottom: 10px;
+                `}
               >
-                {post.frontmatter.title}
+                <Link
+                  aria-label={`View "${post.frontmatter.title}" article`}
+                  to={`/${post.fields.slug}`}
+                >
+                  {post.frontmatter.title}
+                </Link>
+              </h2>
+              <small>{post.frontmatter.date}</small>
+              <p>{post.excerpt}</p>{' '}
+              <Link
+                to={`/${post.fields.slug}`}
+                aria-label={`view "${post.frontmatter.title}" article`}
+              >
+                Continue Reading →
               </Link>
-            </h2>
-            <small>{post.frontmatter.date}</small>
-            <p>{post.excerpt}</p>{' '}
-            <Link
-              to={`${post.fields.slug}`}
-              aria-label={`view "${post.frontmatter.title}" article`}
-            >
-              Continue Reading →
-            </Link>
+            </div>
           </div>
         ))}
         <hr
           css={css`
-            margin: 50px 0;
+            margin: 30px 0;
+            opacity: 0;
+            ${bpMaxSM} {
+              margin: 15px 0;
+            }
           `}
         />
         <div>

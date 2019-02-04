@@ -38,9 +38,10 @@ export default function Post({
         css={css`
           z-index: 999;
           margin-top: 7vh;
-          margin-bottom: 100px;
+          margin-bottom: 40px;
           ${bpMaxMD} {
             margin-top: 60px;
+            margin-bottom: 20px;
           }
         `}
       >
