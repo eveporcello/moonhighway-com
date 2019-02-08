@@ -29,7 +29,7 @@ const Header = ({ dark }) => (
           align-items: center;
         `}
       >
-        <Link to="/" aria-label="go to homepage">
+        <Link to='/' aria-label='go to homepage'>
           <Logo dark={!dark} />
         </Link>
         <div
@@ -52,21 +52,19 @@ const Header = ({ dark }) => (
           `}
         >
           <Link
-            to="/about"
-            activeClassName="active"
-            aria-label="Read more about moon highway"
+            to='/about'
+            activeClassName='active'
+            aria-label='Read more about Moon Highway'
           >
             About
           </Link>
-{/**
-            <Link
-              to="/contact"
-              activeClassName="active"
-              aria-label="Go to contact form"
-            >
-              Contact us
-            </Link>
-*/}
+          <Link
+            to='/articles'
+            activeClassName='active'
+            aria-label='Go to articles page'
+          >
+            Articles
+          </Link>
         </div>
       </nav>
     </Container>
