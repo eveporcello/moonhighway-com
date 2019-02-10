@@ -29,9 +29,9 @@ const app = express()
   .get('/inventory', catalogREST)
   .use('/customers', customerMiddleware)
 
-const server = new ApolloServer({typeDefs, resolvers})
+const server = new ApolloServer({ typeDefs, resolvers })
 
-server.applyMiddleware({app})
+server.applyMiddleware({ app })
 
 ```
 
