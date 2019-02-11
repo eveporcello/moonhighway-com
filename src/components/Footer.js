@@ -145,14 +145,14 @@ const Footer = () => (
                 >
                   Connecting Cities on the California Graph with GraphQL
                 </Link>
-                {/* <Link
+                <Link
                   activeClassName="active"
-                  to="/blog/demo-post-2/"
+                  to="/migrating-to-graphql/"
                   aria-label="Read Article"
                 >
-                  Here's What No One Tells You About Javascript
+                  Migrating to GraphQL
                 </Link>
-                <Link
+                {/* <Link
                   activeClassName="active"
                   to="/blog/demo-post-3/"
                   aria-label="Read Article"

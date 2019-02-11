@@ -1,0 +1,57 @@
+---
+slug: migrating-to-graphql
+date: 2019-02-11
+title: 'Migrating to GraphQL'
+description: 'representing interconnected types in GraphQL with custom objects'
+categories: ['graphql']
+keywords: ['graphql']
+banner: './images/migrating.jpeg'
+published: true
+---
+
+There are a lot of reasons to move from REST to GraphQL. You might have read plenty of articles and watched plenty of presentations about all of the reasons to adopt GraphQL. If not, here is a short list of reading to get you obsessed with the need to migrate to GraphQL:
+
+* [Why GraphQL is the Future](https://dev-blog.apollodata.com/why-graphql-is-the-future-3bec28193807)
+* [GraphQL vs. REST](https://blog.apollographql.com/graphql-vs-rest-5d425123e34b)
+* [Embracing GraphQL](https://www.gatsbyjs.org/blog/2017-09-26-embracing-graphql/)
+* [Top 5 Reasons to Use GraphQL](https://www.prisma.io/blog/top-5-reasons-to-use-graphql-b60cfa683511)
+
+Great! Now you are obsessed with GraphQL. You know that you want to start using it in all of your apps. However, you may not be ready to scrap everything you have ever built and start completely over with GraphQL. You may not be ready to invest the time required to learn everything there is to know about GraphQL before you start using it in production. The good news is: you don’t have to. You don’t have to scrap everything. You don’t have to know everything. You can incrementally adopt GraphQL and learn as you go.
+
+GraphQL and REST can live side by side. In fact, the same server can host your GraphQL endpoint right beside your current REST endpoints. Let’s say you have an Express server that has REST endpoints designed to handle customer data and inventory data. You can sneak a GraphQL endpoint directly into the same server:
+
+```javascript
+import express from 'express'
+import { ApolloServer } from 'apollo-server-express'
+import { customerMiddleware, catalog } from './rest-endpoints'
+
+const app = express()
+  .get('/inventory', catalogREST)
+  .use('/customers', customerMiddleware)
+
+const server = new ApolloServer({ typeDefs, resolvers })
+
+server.applyMiddleware({ app })
+
+```
+
+GraphQL is just another endpoint. It is another way to fetch data. It can work with your existing databases and infrastructure. You do not have to migrate your entire application to GraphQL and get rid of all of your REST endpoints. They can work together which will allow you to incrementally adopt GraphQL.
+
+Here are some suggestions that can help you commit to migrating to GraphQL without having to rebuild everything:
+
+## Don’t build any more REST endpoints.
+If you are making the decision to move away from REST, then move away from REST. You can still use it for your current production services. When you receive requirements to build a new feature, build it with GraphQL. Express does not care if it is routing a request to a REST function or a GraphQL resolver. Every time a task requires a new REST endpoint, add that feature to a GraphQL service instead.
+
+## Don’t maintain your current REST endpoints.
+The next time there is a task to modify a REST endpoint or provide a custom endpoint for some data… don’t! REST endpoints can be replaced one at a time based upon need and priority. Instead of modifying an existing REST endpoint, add that feature to your GraphQL service. You can slowly migrate your entire REST API this way.
+
+## Use graphql-request
+The killer features of Apollo and Relay are great, and you may use them one day. To get started though, you don’t have to use Apollo and Relay to work with GraphQL. [graphql-request](https://www.npmjs.com/package/graphql-request) is a package that allows you to send operations to a GraphQL endpoint. It’s like fetch. Instead of fetching data from a REST endpoint, you can send a query to a GraphQL service and receive a response formatted as JSON. You don’t even need to use graph-request, I got started using GraphQL in the browser with fetch. A GraphQL query is simply an HTTP request that provides instructions on what data to fetch. This approach will get you started, and it will get you hooked on GraphQL. Once you start down the GraphQL path, you will likely end up learning how to use Apollo or Relay.
+
+## Incorporate GraphQL in one or two components
+Instead of rebuilding your entire site, pick a single component or page and drive the data to that particular component using GraphQL. Just like servers, clients do not have to choose between GraphQL or REST. They can use both. A web page can get most of its data from existing REST endpoints, but individual sections of that web page might use GraphQL.
+
+## Fetch data from REST in your resolvers
+All of the work in GraphQL is done in resolvers. A resolver is just a function that returns data in a specific type and shape. You can do anything in a resolver that you can do in a function. This includes making HTTP requests to REST endpoints. Instead of rebuilding every REST endpoint, use GraphQL as a proxy that relies on REST endpoints to access data.
+
+If you are ready to adopt GraphQL, you do not have to scrap everything you have ever built and start all over again. It is possible to treat your GraphQL endpoint just like a REST endpoint: a place to send and receive data. Making the commitment to send and receive data to and from your clients with GraphQL will get you started down a path that makes it possible to take advantage of all of the robust features available in the GraphQL ecosystem.
