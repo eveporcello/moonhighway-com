@@ -6,6 +6,7 @@ import { Container } from '../components/markupHelpers'
 import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
+import { rhythm } from '../lib/typography'
 import Link from '../components/Link'
 
 const Blog = ({
@@ -55,11 +56,13 @@ const Blog = ({
       >
         {posts.map(({ node: post }) => (
           <div
+            className="post"
             key={post.id}
             css={css`
               display: flex;
               align-items: center;
               flex-direction: row;
+              margin-bottom: ${rhythm(2)};
               ${bpMaxMD} {
                 flex-direction: column;
                 .gatsby-image-wrapper {
@@ -113,15 +116,7 @@ const Blog = ({
             </div>
           </div>
         ))}
-        <hr
-          css={css`
-            margin: 30px 0;
-            opacity: 0;
-            ${bpMaxSM} {
-              margin: 15px 0;
-            }
-          `}
-        />
+
         <div>
           {nextPagePath && (
             <Link to={nextPagePath} aria-label="view next page">

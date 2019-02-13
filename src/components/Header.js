@@ -29,7 +29,7 @@ const Header = ({ dark }) => (
           align-items: center;
         `}
       >
-        <Link to='/' aria-label='go to homepage'>
+        <Link to="/" aria-label="go to homepage">
           <Logo dark={!dark} />
         </Link>
         <div
@@ -46,22 +46,21 @@ const Header = ({ dark }) => (
               }
             }
             .active {
-              display: none;
-              visibility: hidden;
+              text-decoration: underline;
             }
           `}
         >
           <Link
-            to='/about'
-            activeClassName='active'
-            aria-label='Read more about Moon Highway'
+            to="/about"
+            activeClassName="active"
+            aria-label="Read more about Moon Highway"
           >
             About
           </Link>
           <Link
-            to='/articles'
-            activeClassName='active'
-            aria-label='Go to articles page'
+            to="/articles"
+            activeClassName="active"
+            aria-label="Go to articles page"
           >
             Articles
           </Link>
