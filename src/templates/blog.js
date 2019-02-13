@@ -62,7 +62,7 @@ const Blog = ({
               display: flex;
               align-items: center;
               flex-direction: row;
-              margin-bottom: ${rhythm(2.5)};
+              margin-bottom: ${rhythm(2)};
               ${bpMaxMD} {
                 flex-direction: column;
                 .gatsby-image-wrapper {
