@@ -12,7 +12,7 @@ import { Twitter, GitHub, LinkedIn } from '$images/social'
 
 import categories from '../data/categories'
 
-const Footer = () => (
+const Footer = ({ noSubscribeForm = false, noNav = false }) => (
   <footer
     css={css`
       width: 100%;
@@ -24,156 +24,157 @@ const Footer = () => (
       flex-shrink: 0;
       h4 {
         font-size: 20px;
-        font-family: ${fonts.bold}, sans-serif;
       }
     `}
   >
-    <Container
-      maxWidth={1000}
-      css={css`
-        background: white;
-        box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.05);
-        border-radius: 5px;
-        padding-top: 80px;
-        padding-bottom: 80px;
-        ${bpMaxSM} {
-          padding-top: 40px;
-          padding-bottom: 40px;
-        }
-      `}
-    >
-      <Container maxWidth={900} noPadding>
-        <SubscribeForm />
-        <div
-          css={css`
-            display: flex;
-            align-items: flex-start;
-            a {
-              color: #090909;
-            }
-            &:not(:first-of-type) {
-              margin-top: 80px;
-            }
-            ${bpMaxMD} {
-              padding: 50px 0;
-            }
-            ${bpMaxSM} {
-              &:not(:first-of-type) {
-                margin-top: 40px;
-              }
-              flex-direction: column;
-              padding: 0;
-            }
-          `}
-        >
+    {!noNav && (
+      <Container
+        maxWidth={1000}
+        css={css`
+          background: white;
+          box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.05);
+          border-radius: 5px;
+          padding-top: 80px;
+          padding-bottom: 80px;
+          ${bpMaxSM} {
+            padding-top: 40px;
+            padding-bottom: 40px;
+          }
+        `}
+      >
+        <Container maxWidth={900} noPadding>
+          {!noSubscribeForm && <SubscribeForm />}
           <div
             css={css`
-              width: 100%;
-              max-width: 280px;
+              display: flex;
+              align-items: flex-start;
+              a {
+                color: #090909;
+              }
+              &:not(:first-of-type) {
+                margin-top: 80px;
+              }
+              ${bpMaxMD} {
+                padding: 50px 0;
+              }
+              ${bpMaxSM} {
+                &:not(:first-of-type) {
+                  margin-top: 40px;
+                }
+                flex-direction: column;
+                padding: 0;
+              }
             `}
           >
-            <h4>
-              <Link to="/#trainings" aria-label="View all our trainings">
-                Trainings
-              </Link>
-            </h4>
-            {categories.map(category => (
-              <div
-                key={category.title}
-                css={css`
-                  margin: 10px 0;
-                  .active {
-                    opacity: 0.8;
-                    font-family: ${fonts.semibold}, sans-serif;
-                    ::before {
-                      content: '→';
-                      padding-right: 10px;
-                    }
-                  }
-                `}
-              >
-                <Link
-                  to={category.slug}
-                  activeClassName="active"
-                  aria-label={`Link to ${category.title} training`}
-                >
-                  {category.title}
-                </Link>
-              </div>
-            ))}
-          </div>
-          {
             <div
               css={css`
-                margin-left: 65px;
-                margin-top: 0;
-                ${bpMaxSM} {
-                  margin-left: 0;
-                  margin-top: 30px;
-                }
+                width: 100%;
+                max-width: 280px;
               `}
             >
               <h4>
-                <Link to="/articles/" aria-label="View all our articles">
-                  Articles
+                <Link to="/#trainings" aria-label="View all our trainings">
+                  Trainings
                 </Link>
               </h4>
+              {categories.map(category => (
+                <div
+                  key={category.title}
+                  css={css`
+                    margin: 10px 0;
+                    .active {
+                      opacity: 0.8;
+                      font-family: ${fonts.semibold}, sans-serif;
+                      ::before {
+                        content: '→';
+                        padding-right: 10px;
+                      }
+                    }
+                  `}
+                >
+                  <Link
+                    to={category.slug}
+                    activeClassName="active"
+                    aria-label={`Link to ${category.title} training`}
+                  >
+                    {category.title}
+                  </Link>
+                </div>
+              ))}
+            </div>
+            {
               <div
                 css={css`
-                  a {
-                    margin: 10px 0;
-                    display: block;
-                  }
-                  .active {
-                    opacity: 0.8;
-                    font-family: ${fonts.semibold}, sans-serif;
-                    ::before {
-                      content: '→';
-                      padding-right: 10px;
-                    }
-                  }
-                  .all-active {
-                    visibility: hidden;
-                    display: none;
+                  margin-left: 65px;
+                  margin-top: 0;
+                  ${bpMaxSM} {
+                    margin-left: 0;
+                    margin-top: 30px;
                   }
                 `}
               >
-                <Link
-                  activeClassName="active"
-                  to="/connecting-cities-with-graphql/"
-                  aria-label="Read Article"
+                <h4>
+                  <Link to="/articles/" aria-label="View all our articles">
+                    Articles
+                  </Link>
+                </h4>
+                <div
+                  css={css`
+                    a {
+                      margin: 10px 0;
+                      display: block;
+                    }
+                    .active {
+                      opacity: 0.8;
+                      font-family: ${fonts.semibold}, sans-serif;
+                      ::before {
+                        content: '→';
+                        padding-right: 10px;
+                      }
+                    }
+                    .all-active {
+                      visibility: hidden;
+                      display: none;
+                    }
+                  `}
                 >
-                  Connecting Cities on the California Graph with GraphQL
-                </Link>
-                <Link
-                  activeClassName="active"
-                  to="/migrating-to-graphql/"
-                  aria-label="Read Article"
-                >
-                  Migrating to GraphQL
-                </Link>
-                {/* <Link
+                  <Link
+                    activeClassName="active"
+                    to="/connecting-cities-with-graphql/"
+                    aria-label="Read Article"
+                  >
+                    Connecting Cities on the California Graph with GraphQL
+                  </Link>
+                  <Link
+                    activeClassName="active"
+                    to="/migrating-to-graphql/"
+                    aria-label="Read Article"
+                  >
+                    Migrating to GraphQL
+                  </Link>
+                  {/* <Link
                   activeClassName="active"
                   to="/blog/demo-post-3/"
                   aria-label="Read Article"
                 >
                   Javascript Is Not Rocket Science! Learn It Now!
                 </Link> */}
-                <Link
-                  to="/articles/"
-                  css={css`
-                    font-family: ${fonts.semibold}, sans-serif;
-                  `}
-                  activeClassName="all-active"
-                >
-                  Show all
-                </Link>
+                  <Link
+                    to="/articles/"
+                    css={css`
+                      font-family: ${fonts.semibold}, sans-serif;
+                    `}
+                    activeClassName="all-active"
+                  >
+                    Show all
+                  </Link>
+                </div>
               </div>
-            </div>
-          }
-        </div>
+            }
+          </div>
+        </Container>
       </Container>
-    </Container>
+    )}
     <div
       css={css`
         padding: 70px 0;

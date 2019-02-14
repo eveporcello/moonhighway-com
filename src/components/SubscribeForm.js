@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { css } from '@emotion/core'
 import { bpMaxSM } from '../lib/breakpoints'
+import { fonts } from '../lib/typography'
 
 const FORM_ID = process.env.CONVERTKIT_SIGNUP_FORM
 
@@ -165,7 +166,7 @@ const SubmitBtn = props => {
         color: white;
         margin: 0;
         box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.15);
-        border-radius: 0;
+        border-radius: 3px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -204,14 +205,16 @@ const InputWrapperStyles = css`
 const InputStyles = css`
   width: 100%;
   display: block;
-  border: 1px solid #d7d7d7;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+  background: #fafafa;
   box-shadow: none;
   padding: 12px 16px;
   height: 50px;
   transition: 100ms;
   box-sizing: border-box;
   &::placeholder {
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.7);
     transition: 100ms;
   }
   &:focus {

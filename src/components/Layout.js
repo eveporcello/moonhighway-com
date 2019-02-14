@@ -94,16 +94,18 @@ const globalStyles = css`
   ${() => {
     /* Override PrismJS Defaults */ return null
   }} pre {
+    * {
+      white-space: nowrap;
+    }
+    overflow-x: auto;
     background-color: #061526 !important;
     border-radius: 4px;
     font-size: 14px;
     padding: 20px;
-
+    margin: 30px 0;
     ${bpMaxSM} {
       padding: 10px;
     }
-
-    overflow-x: auto;
     /* Track */
     ::-webkit-scrollbar {
       width: 100%;
@@ -113,7 +115,7 @@ const globalStyles = css`
     ::-webkit-scrollbar-track {
       background: #061526;
       border-radius: 0 0 4px 4px;
-      border: 1px solid rgba(0, 0, 0, 0.2);
+      border: 1px solid hsla(0, 0%, 0%, 0.2);
     }
     /* Handle */
     ::-webkit-scrollbar-thumb {
@@ -129,9 +131,24 @@ const globalStyles = css`
     padding-right: 1em;
     padding-left: 1em;
   }
+  code {
+    font-size: 95%;
+    color: black;
+    background: hsla(0, 0%, 0%, 0.05);
+    padding: 2px 5px;
+    border-radius: 2px;
+  }
 `
 
-export default ({ site, frontmatter = {}, children, dark, noFooter }) => {
+export default ({
+  site,
+  frontmatter = {},
+  children,
+  dark,
+  noFooter,
+  noSubscribeForm,
+  noNav,
+}) => {
   const {
     title,
     description: siteDescription,
@@ -186,7 +203,9 @@ export default ({ site, frontmatter = {}, children, dark, noFooter }) => {
             </div>
           </Fragment>
         </MDXProvider>
-        {!noFooter && <Footer />}
+        {!noFooter && (
+          <Footer noSubscribeForm={noSubscribeForm} noNav={noNav} />
+        )}
       </div>
     </Fragment>
   )

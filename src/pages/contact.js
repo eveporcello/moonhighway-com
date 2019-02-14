@@ -114,7 +114,7 @@ const InputStyles = css`
 `
 
 export default ({ data: { site } }) => (
-  <Layout site={site}>
+  <Layout site={site} noNav>
     <Circles />
     <Container
       maxWidth={480}
