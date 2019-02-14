@@ -32,10 +32,13 @@ const Footer = ({ noSubscribeForm = false, noNav = false }) => (
         maxWidth={1000}
         css={css`
           background: white;
-          box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 30px 70px -10px rgba(0, 0, 0, 0.05);
           border-radius: 5px;
           padding-top: 80px;
           padding-bottom: 80px;
+          ${bpMaxMD} {
+            padding-top: 40px;
+          }
           ${bpMaxSM} {
             padding-top: 40px;
             padding-bottom: 40px;
@@ -53,6 +56,9 @@ const Footer = ({ noSubscribeForm = false, noNav = false }) => (
               }
               &:not(:first-of-type) {
                 margin-top: 80px;
+                ${bpMaxMD} {
+                  margin-top: 40px;
+                }
               }
               ${bpMaxMD} {
                 padding: 50px 0;
