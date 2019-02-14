@@ -56,6 +56,7 @@ exports.createPages = ({ actions, graphql }) =>
             fields {
               title
               slug
+              description
               date
             }
             code {

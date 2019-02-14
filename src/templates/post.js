@@ -10,6 +10,7 @@ import Layout from '../components/Layout'
 import { fonts } from '../lib/typography'
 import moon from '../images/moonHeader.jpg'
 import { bpMaxSM } from '../lib/breakpoints'
+import { get } from 'lodash'
 
 export default function Post({
   data: { site, mdx },
@@ -17,7 +18,11 @@ export default function Post({
 }) {
   return (
     <Layout site={site} frontmatter={mdx.frontmatter}>
-      <SEO frontmatter={mdx.frontmatter} isBlogPost />
+      <SEO
+        frontmatter={mdx.frontmatter}
+        metaImage={get(mdx, 'frontmatter.banner.childImageSharp.sizes.src')}
+        isBlogPost
+      />
       <div
         css={css`
           display: flex;
@@ -98,6 +103,7 @@ export const pageQuery = graphql`
           }
         }
         slug
+        description
         keywords
       }
       code {
