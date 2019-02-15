@@ -146,10 +146,10 @@ const Footer = ({ noSubscribeForm = false, noNav = false }) => (
                 >
                   <Link
                     activeClassName="active"
-                    to="/connecting-cities-with-graphql/"
+                    to="what-is-the-graphql-spec"
                     aria-label="Read Article"
                   >
-                    Connecting Cities on the California Graph with GraphQL
+                    What is the GraphQL Spec?
                   </Link>
                   <Link
                     activeClassName="active"
@@ -158,13 +158,13 @@ const Footer = ({ noSubscribeForm = false, noNav = false }) => (
                   >
                     Migrating to GraphQL
                   </Link>
-                  {/* <Link
-                  activeClassName="active"
-                  to="/blog/demo-post-3/"
-                  aria-label="Read Article"
-                >
-                  Javascript Is Not Rocket Science! Learn It Now!
-                </Link> */}
+                  <Link
+                    activeClassName="active"
+                    to="/connecting-cities-with-graphql/"
+                    aria-label="Read Article"
+                  >
+                    Connecting Cities on the California Graph with GraphQL
+                  </Link>
                   <Link
                     to="/articles/"
                     css={css`
