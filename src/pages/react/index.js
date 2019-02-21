@@ -35,8 +35,8 @@ export default function ReactPage({ data: { site } }) {
           }
         `}
       >
-        <img src={HeaderImage} alt={Categories[0].title} />
-        <h1>{Categories[0].title}</h1>
+        <img src={HeaderImage} alt={Categories[1].title} />
+        <h1>{Categories[1].title}</h1>
       </div>
       <Container>
         <section
@@ -63,7 +63,7 @@ export default function ReactPage({ data: { site } }) {
           ))}
           <TrainingInfo
             title="React.js"
-            description={Categories[0].description}
+            description={Categories[1].description}
           />
         </section>
       </Container>

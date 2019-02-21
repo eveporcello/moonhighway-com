@@ -35,8 +35,8 @@ export default function JsPage({ data: { site } }) {
           }
         `}
       >
-        <img src={HeaderImage} alt={Categories[1].title} />
-        <h1>{Categories[1].title}</h1>
+        <img src={HeaderImage} alt={Categories[2].title} />
+        <h1>{Categories[2].title}</h1>
       </div>
       <Container>
         <section
@@ -62,8 +62,8 @@ export default function JsPage({ data: { site } }) {
             />
           ))}
           <TrainingInfo
-            title={`JavaScript & Node.js & GraphQL`}
-            description={Categories[1].description}
+            title={`JavaScript & Node.js`}
+            description={Categories[2].description}
           />
         </section>
       </Container>

@@ -12,7 +12,7 @@ export default ({
   title,
   linkedinUrl,
   twitterUrl,
-  githubUrl
+  githubUrl,
 }) => (
   <div
     css={css`
@@ -47,18 +47,10 @@ export default ({
         css={css`
           border-radius: 3px;
           box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.2);
-          width: 100%;
-          max-width: 230px;
+          max-width: 160px;
           height: auto;
         `}
         alt={title}
-      />
-      <img
-        src={banner}
-        css={css`
-          max-width: 160px;
-        `}
-        alt='LinkedIn Learning Insider'
       />
     </div>
     <div

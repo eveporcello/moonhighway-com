@@ -6,18 +6,18 @@ import { Container } from '../../components/markupHelpers'
 import { bpMaxSM, bpMaxMD } from '../../lib/breakpoints'
 import Item from '../../components/Item'
 
-import HeaderImage from '../../images/continuous-stack.svg'
-import ContinuousDeliveryTraining from '../../data/continuousDeliveryTrainings'
+import HeaderImage from '../../images/graphql-stack.svg'
+import GraphQLTraining from '../../data/graphqlTrainings'
 import Categories from '../../data/categories'
 import TrainingInfo from '../../components/TrainingInfo'
 
-export default function ContinuousDeiveryPage({ data: { site } }) {
+export default function GraphQLPage({ data: { site } }) {
   return (
     <Layout site={site}>
       <div
         css={css`
           position: absolute;
-          top: -80px;
+          top: -35px;
           display: flex;
           align-items: center;
           flex-direction: column;
@@ -35,13 +35,13 @@ export default function ContinuousDeiveryPage({ data: { site } }) {
           }
         `}
       >
-        <img src={HeaderImage} alt={Categories[3].title} />
-        <h1>{Categories[3].title}</h1>
+        <img src={HeaderImage} alt={Categories[0].title} />
+        <h1>{Categories[0].title}</h1>
       </div>
       <Container>
         <section
           css={css`
-            padding: 300px 0 20px 0;
+            padding: 300px 0 50px 0;
             ${bpMaxMD} {
               padding: 250px 0 50px 0;
             }
@@ -50,7 +50,7 @@ export default function ContinuousDeiveryPage({ data: { site } }) {
             }
           `}
         >
-          {ContinuousDeliveryTraining.map(training => (
+          {GraphQLTraining.map(training => (
             <Item
               key={training.tags}
               title={training.title}
@@ -62,8 +62,8 @@ export default function ContinuousDeiveryPage({ data: { site } }) {
             />
           ))}
           <TrainingInfo
-            title="Continuous Delivery"
-            description={Categories[3].description}
+            title="GraphQL"
+            description={Categories[0].description}
           />
         </section>
       </Container>

@@ -13,7 +13,7 @@
       <use xlink:href="#react-stack-a"/>
     </mask>
     <path id="react-stack-e" d="M0,0 L0,237.895522 L121.476471,237.895522 C131.173479,229.235355 140.88655,219.920927 150.615686,209.952239 C160.344822,199.983551 169.427175,190.039769 177.862745,180.120896 L177.862745,0 L0,0 Z"/>
-    <linearGradient id="react-stack-i" x1="0%" x2="62.3%" y1="0%" y2="59.659%">
+    <linearGradient id="react-stack-i" x1="0%" x2="62.3%" y1="2.189%" y2="59.236%">
       <stop offset="0%" stop-color="#29BEFB"/>
       <stop offset="71.189%" stop-color="#17AEF4"/>
       <stop offset="100%" stop-color="#228CCB"/>
@@ -30,8 +30,16 @@
       <stop offset="100%" stop-opacity=".5"/>
     </linearGradient>
     <path id="react-stack-j" d="M2,2 L166,2 L166,3 C166,3.55228475 165.552285,4 165,4 L3,4 C2.44771525,4 2,3.55228475 2,3 L2,2 Z"/>
+    <linearGradient id="react-stack-m" x1="50%" x2="50%" y1="100%" y2="-33.359%">
+      <stop offset="0%" stop-color="#FFF" stop-opacity=".5"/>
+      <stop offset="100%" stop-opacity=".5"/>
+    </linearGradient>
     <path id="react-stack-l" d="M2,2 L152,2 L152,3 C152,3.55228475 151.552285,4 151,4 L3,4 C2.44771525,4 2,3.55228475 2,3 L2,2 Z"/>
-    <path id="react-stack-m" d="M2,2 L180,2 L180,3 C180,3.55228475 179.552285,4 179,4 L3,4 C2.44771525,4 2,3.55228475 2,3 L2,2 Z"/>
+    <linearGradient id="react-stack-o" x1="50%" x2="50%" y1="100%" y2="-33.359%">
+      <stop offset="0%" stop-color="#FFF" stop-opacity=".5"/>
+      <stop offset="100%" stop-opacity=".5"/>
+    </linearGradient>
+    <path id="react-stack-n" d="M2,2 L180,2 L180,3 C180,3.55228475 179.552285,4 179,4 L3,4 C2.44771525,4 2,3.55228475 2,3 L2,2 Z"/>
   </defs>
   <g fill="none" fill-rule="evenodd" transform="translate(41 15)">
     <g fill-rule="nonzero">
@@ -66,11 +74,11 @@
       <g transform="translate(14 12)">
         <path fill="#F1F1F1" d="M0,0 L155,0 L155,4 C155,5.1045695 154.104569,6 153,6 L2,6 C0.8954305,6 1.3527075e-16,5.1045695 0,4 L0,0 Z"/>
         <use fill="#44C9ED" xlink:href="#react-stack-l"/>
-        <use fill="url(#react-stack-k)" fill-opacity=".4" xlink:href="#react-stack-l"/>
+        <use fill="url(#react-stack-m)" fill-opacity=".4" xlink:href="#react-stack-l"/>
       </g>
       <path fill="#FAFAFA" d="M0,0 L183,0 L183,4 C183,5.1045695 182.104569,6 181,6 L2,6 C0.8954305,6 1.3527075e-16,5.1045695 0,4 L0,0 Z"/>
-      <use fill="#44C9ED" xlink:href="#react-stack-m"/>
-      <use fill="url(#react-stack-k)" fill-opacity=".2" xlink:href="#react-stack-m"/>
+      <use fill="#44C9ED" xlink:href="#react-stack-n"/>
+      <use fill="url(#react-stack-o)" fill-opacity=".2" xlink:href="#react-stack-n"/>
     </g>
   </g>
 </svg>
