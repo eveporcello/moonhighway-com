@@ -94,9 +94,6 @@ const globalStyles = css`
   ${() => {
     /* Override PrismJS Defaults */ return null
   }} pre {
-    * {
-      white-space: nowrap;
-    }
     overflow-x: auto;
     background-color: #061526 !important;
     border-radius: 4px;
