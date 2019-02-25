@@ -1,0 +1,131 @@
+---
+slug: five-introspection-queries
+date: 2019-02-25
+title: 'Five Useful Introspection Queries'
+description: 'five useful introspection queries with GraphQL'
+categories: ['graphql']
+keywords: ['graphql']
+banner: './images/introspection.jpeg'
+published: true
+---
+
+We all love type systems, or at least, most of us can agree that type systems are generally good. They can help us eliminate bugs. They provide a formal structure which makes it possible incorporate tooling and automation. They give us a way to communicate about the structure of our code. So if type systems are good, then you should be in love with GraphQL. GraphQL is a type system for your API.
+
+In GraphQL, all types are defined in a **schema**. Every GraphQL API has one. You can surf the schema by using the "Docs" tab in GraphiQL, or the "Schema" tag in GraphQL Playground. Both GraphiQL and GraphQL playground construct the schema document explorer by querying the endpoint for details about the schema itself. These queries are called introspection queries, and you can send them to GraphQL APIs yourself.
+
+This article explores some common introspection queries that you can use for everything from helping to understand a GraphQL API to building tooling and automation for the GraphQL ecosystem. Let's have some fun! Load up GraphiQL or the GraphQL Playground and plug in your favorite GraphQL endpoint. You are about to ask that endpoint questions about itself.
+
+<span style="font-size: 0.8em; font-style: italic;">
+If you don't have a favorite GraphQL API you can use <a href="https://snowtooth.moonhighway.com" alt="Snowtooth GraphQL Endpoint">the Snowtooth API</a>. It is real GraphQL API for a fake ski resort. You can also use the <a href="https://graphql.org/swapi-graphql" alt="Star Wars GraphQL API">Star Wars API, or SWAPI</a> to practice sending introspection queries. Or pick from an endpoint from this <a href="https://github.com/APIs-guru/graphql-apis" alt="public GraphQL endpoints">list of public GraphQL endpoints</a>.
+</span>
+
+## Querying All Available Types in a Schema
+
+The first introspection query that I sent to a GraphQL API was a query that asked for all of the available types in that API's schema:
+
+```graphql
+
+query allSchemaTypes {
+    __schema {
+        types {
+            name 
+            kind
+            description
+        }
+    }
+}
+```
+
+Using the `__schema` field, we can ask a GraphQL API to provide a list of all of the types defined in the schema. This particular query will return the `name` and `description` for each type. We also ask for the `kind` of each type. The kind refers to the GraphQL constructor that was used to define the type: `SCALAR`, `OBJECT`, `INTERFACE`, `UNION`, `ENUM`, `INPUT_OBJECT`, `LIST`, `NON_NULL`. This query provides a general overview of what types are available on a particular GraphQL endpoint.
+
+If the `description` field returns `null`, that means that type descriptions were not supplied with the schema. In order to take full advantage of using a type system, it is always a good idea to formally describe each type when drafting a schema.
+
+## All Available Queries
+
+One of the first things that we need to know about an API is what are the queries that can we send to it? The following introspection query will list all of the root queries that can be sent to an api:
+
+```graphql
+query availableQueries {
+  __schema {
+    queryType {
+      fields {
+        name
+        description
+      }
+    }
+  }
+}
+```
+
+The `__schema` field allows us to ask for the `queryType`, which returns the query type `OBJECT` that contains of the root queries that we can send to that endpoint. Listing the `fields` of this `OBJECT` will supply a list of those available root queries. Here we are asking for the `name` and `description` of each field. You can also find all of the root mutations by querying the `mutationType` or all of the root subscriptions by querying the `subscriptionType`.
+
+## Details about an Individual Type
+
+Once you have received a list of types you can send a introspection query that asks for the details about any individual type:
+
+```graphql
+# Replace <TYPE> with the name of an actual type
+query liftType {
+  __type(name: "<TYPE>") {
+    fields {
+      name
+      description
+    }
+  }
+}
+```
+
+We must supply a name for the type that we wish to query in the above example. If you are using [Snowtooth](https://snowtooth.moonhighway.com) you can query the "Lift" or "Trail" type. If you are using [SWAPI](https://graphql.org/swapi-graphql), you can ask for the "Film" or "Species" type.
+
+This query returns details about a specific type. In this case we are asking for the `name` and `description` of every field defined in a specific type.
+
+## List of Enumerator Values
+
+Enumerators in GraphQL are great. They allow us to restrict possible values for a field to a specific list. When you want to know what those values are, you can send the following introspection query:
+
+```graphql
+# Replace <ENUM TYPE> with the name of an actual enumeration type
+query EnumerationValues {
+  __type(name: "<ENUM TYPE>") {
+    kind
+    name
+    description
+    enumValues {
+      name
+      description
+    }
+  }
+}
+```
+
+The above query asks for the `kind`, `name`, and `description` of the enumeration type as well as a list of `enumValues`. This will provide the `name` and `description` of each option that is defined in the enumeration type.
+
+We can only query enumeration values on `ENUM` types. This means that the `kind` of type has to be an `ENUM`. If you are using snowtooth you can query the "LiftStatus". If you are using an API that does not define any enums in the schema you can always use "\_\_TypeKind". This is an `ENUM` type that is used for introspection. It will return a list of all of the kinds of types that are available.
+
+## All Types Associated with an Interface or Union
+
+If your GraphQL API defines any unions or interfaces you can find out what types are associated with those unions or implemented by those interfaces:
+
+```graphql
+# Replace <INTERFACE OR UNION TYPE> with the name of an actual interface or union type
+query UnionInterfaceTypes {
+  __type(name: "<INTERFACE OR UNION TYPE>") {
+    kind
+    name
+    description
+    possibleTypes {
+      name
+      kind
+      description
+    }
+  }
+}
+```
+
+The above query will tell you what types are associated with a union or an interface. In order to make this query work, you must use it on a GraphQL API that defines union or interface types. Unfortunately, the Snowtooth API does not define these types. However the SWAPI does have an interface called "Node", which will allow you to test this query there.
+
+This useful query will point you to all of the objects that implement an interface type or are associated with a union type. If you queried the SWAPI for the "Node" interface, you will see the `kind`, `name`, and `description` of the "Node" interface as well as a list of objects that are implemented by that interface under the `possibleTypes` field. In SWAPI, this includes all of the main object types that contain an `id`.
+
+---
+
+Introspection queries are useful when we want to better understand a schema. We can use these queries in our code to build applications around GraphQL APIs themselves. A great example of this is GraphiQL or GraphQL Playground. Both of these tools provide an explorer that uses introspection queries to allow you to explore the schema. There are endless possibilities of what can be done when you add a type system to your API.
