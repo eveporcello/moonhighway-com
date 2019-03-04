@@ -153,17 +153,17 @@ const Footer = ({ noSubscribeForm = false, noNav = false }) => (
                   </Link>
                   <Link
                     activeClassName="active"
-                    to="/migrating-to-graphql/"
+                    to="/fetching-data-from-a-graphql-api"
                     aria-label="Read Article"
                   >
-                    Migrating to GraphQL
+                    Fetching Data from a GraphQL API
                   </Link>
                   <Link
                     activeClassName="active"
-                    to="/connecting-cities-with-graphql/"
+                    to="/five-introspection-queries"
                     aria-label="Read Article"
                   >
-                    Connecting Cities on the California Graph with GraphQL
+                    Five Useful Introspection Queries
                   </Link>
                   <Link
                     to="/articles/"

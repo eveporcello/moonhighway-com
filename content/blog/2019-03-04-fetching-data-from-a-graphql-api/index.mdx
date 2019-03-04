@@ -1,0 +1,165 @@
+---
+slug: fetching-data-from-a-graphql-api
+date: 2019-03-04
+title: 'Fetching Data from a GraphQL API'
+description: 'sending queries and mutations to a GraphQL API'
+categories: ['graphql']
+keywords: ['graphql']
+banner: './images/lift.jpeg'
+published: true
+---
+
+It's common to hear GraphQL described as a REST killer. Here to slash your REST services, to end your endpoints. But today, let's not focus on conflict. Let's consider where GraphQL and REST share something in common: HTTP requests. 
+
+That's right. If you know how to send HTTP requests, you already have the tools necessary to build a client application that communicates with any GraphQL API. We can get data using any method that sends an HTTP request. Let's build a tiny client by using `fetch`, which will work in the browser:
+
+```javascript
+const query = `
+  query {
+    Lift(id: "panorama") {
+      name
+      status
+    }
+  }
+`;
+
+const url = "https://snowtooth.moonhighway.com/";
+
+const opts = {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ query })
+};
+
+fetch(url, opts)
+  .then(res => res.json())
+  .then(console.log)
+  .catch(console.error);
+```
+
+We'll send the `fetch` request with some options. Then we'll convert the response to JSON. When we log the results to the console, we'll see the following:
+
+**results**
+
+```json
+{
+  "data": {
+    "Lift": {
+      "name": "Panorama",
+      "status": "HOLD"
+    }
+  }
+}
+```
+
+You could even display your results on an HTML page by replacing the `console.log` with some simple DOM manipulation:
+
+```javascript
+fetch(url, opts)
+  .then(res => res.json())
+  .then(
+    ({ data }) => `
+        <p>
+          Favorite Lift: ${data.Lift.name} 
+          Status: ${data.Lift.status}
+        </p>
+  `
+  )
+  .then(text => (document.body.innerHTML = text))
+  .catch(console.error);
+```
+
+### Mutations with `fetch`
+
+Whenever we want to change data, we'll use a GraphQL mutation. Our API supports a mutation called `setLiftStatus`. This mutation takes in the `id` of the `Lift` you want to change and the new `status` for that lift. The options for `LiftStatus` are a GraphQL enum, a restricted list of options for a specific field. These options are `OPEN`, `CLOSED`, and `HOLD`. Start by defining the `setLiftStatus` mutation string as a variable:
+
+```javascript
+const mutation = `
+  mutation {
+    setLiftStatus(id: "panorama", status: CLOSED) {
+      name
+      status
+    }
+  }
+`;
+```
+
+Then we want to use the same GraphQL endpoint. We'll adjust the body of the request to include the mutation:
+
+```javascript
+var url = "https://snowtooth.moonhighway.com/";
+
+var opts = {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ query: mutation })
+};
+
+```
+Finally, we can send the request and log the results:
+
+```javascript
+fetch(url, opts)
+  .then(res => res.json())
+  .then(console.log)
+  .catch(console.error);
+```
+
+And our results will reflect that the Panorama lift status has indeed been changed by the mutation:
+
+**results**
+
+```json
+{
+  "data": {
+    "Lift": {
+      "name": "Panorama",
+      "status": "CLOSED"
+    }
+  }
+}
+```
+
+### graphql-request
+
+There are other frameworks that can be used to send GraphQL operations to an API. One of the most minimal examples of this is `graphql-request`. GraphQL Request wraps `fetch` requests in a promise that can be used to make requests to the GraphQL server. It also handles the details of making the request and parsing the data for you. `graphql-request` is maintained by the team at [Prisma](https://prisma.io).
+
+To get started with `graphql-request`, you will need to install it:
+
+```
+npm install graphql-request --save
+```
+
+From there, you'll import and use the module as `request`:
+
+```javascript
+import { request } from "graphql-request";
+
+const query = `
+  query {
+    Trail(id: "grandma") {
+      name
+      status
+    }
+  }
+`;
+
+request("https://snowtooth.moonhighway.com/graphql", query)
+  .then(console.log)
+  .catch(console.error);
+```
+
+The request function takes in `url` and `query`, makes the request to the server, and returns the data in one line of code. The data returned is, as expected, a JSON response of all of the users:
+
+```json
+{
+  "Trail": {
+    "name": "Grandma",
+    "status": "OPEN"
+  }
+}
+```
+Notice that the results here are a little bit different than the `fetch` request. Instead of returning the data under the `data` key, the request sent with `graphql-request` returns just the object. If you wanted to use this data in your app, you would access that data off of the `Trail` key.
+
+
+Working with GraphQL on the client doesn't require a tremendous amount of setup. Start with one of these options to start seeing the benefits of GraphQL immediately.
