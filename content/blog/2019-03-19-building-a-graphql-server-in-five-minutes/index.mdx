@@ -1,0 +1,174 @@
+---
+slug: building-a-graphql-server-in-five-minutes
+date: 2019-03-19
+title: 'Building a GraphQL Server in Five Minutes'
+description: 'Averting crisis with GraphQL'
+categories: ['graphql']
+keywords: ['graphql', 'learning']
+banner: './images/tacos.jpg'
+published: true
+---
+It's 5:55pm on a Friday night. It's your night to cook, and you don't have a recipe. This wouldn't be that big of a deal if you hadn't bragged about the new taco recipe that you were going to cook on Friday night. But you had no recipe. You lied.
+
+You really don't want to be seen as a bragger and a liar. One or the other, fine, but both? It's a bridge too far. You need to find a recipe, and you need to find it now.
+
+You open your computer, and go to Google to find a delicious new taco recipe. But Google is down. WTF? You reach for your phone and see a notification: _"BREAKING: All Search Engines Are Down Across World"_. There's no Google. There's no Bing. There's no AskJeeves. That's unrelated to this, but AskJeeves is still not available.
+
+The only way you're going to be able to handle this situation is to send a query to the [TacoFancy Taco Randomizer API route](https://github.com/evz/tacofancy-api) that you have committed to memory, and the only way that you can do that is to build a GraphQL API. You have to do that by 6:00pm. You have five minutes to build a GraphQL server. The time starts now.
+
+You start by initializing a Node project and installing the dependencies with npm:
+
+```
+mkdir taco-emergency
+cd taco-emergency
+npm init -y
+npm install graphql apollo-server
+```
+
+Then create a file called `index.js`, and add the following:
+
+```javascript
+const { ApolloServer } = require("apollo-server");
+
+const server = new ApolloServer({});
+
+server.listen().then(({ url }) => 
+    console.log(`Server running on port ${url}`));
+```
+
+You'll require `ApolloServer`, your GraphQL server library of choice, from the `apollo-server` package. Then create a new instance of the `ApolloServer`. Then you'll run it, and it will listen on port 4000.
+
+Any new instance of Apollo Server must take in `typeDefs`, your GraphQL schema, and `resolvers`, the functions that are used to get the data to fulfill the requirements of the schema.
+
+```javascript
+const server = new ApolloServer({
+  typeDefs,
+  resolvers
+});
+```
+
+You'll start with the schema. You need to grab the direct url for a taco recipe. All of the queries available on a GraphQL API are found in the `Query` type:
+
+```javascript
+const typeDefs = `
+  type Query {
+    recipeURL: String
+  }
+`;
+```
+
+When you send a query for the `recipeURL`, it should return a value of type `String`.
+
+Next, you create a resolver for this query. The resolver will go get the data you need from the API by using a simple `fetch` call. Start by installing `node-fetch` with npm:
+
+```
+npm install node-fetch
+```
+
+Add this to your list of require statements at the top of the file too:
+
+```javascript
+const fetch = require("node-fetch");
+```
+
+Then create the resolvers object. These functions will return the data we need for the `recipeURL`:
+
+```javascript
+const resolvers = {
+  Query: {
+    recipeURL: () => {}
+    }
+  }
+};
+```
+
+Think about what you need the `recipeURL` resolver to do. **THINK!** It needs to make a `fetch` call to the Taco API to get a random recipe. Then it needs to transform the data response and just grab the URL out of the response, not all of the extra fields.
+
+Resolvers can be asynchronous, so you use an async function for the `recipeURL`. Within this function, you fetch from the API and log the result to the console:
+
+```javascript
+const resolvers = {
+  Query: {
+    recipeURL: async () => {
+      let taco = await fetch(
+        "http://taco-randomizer.herokuapp.com/random/"
+      ).then(res => res.json());
+      console.log(taco);
+    }
+  }
+};
+```
+
+Now you run `node index` in the Terminal to run this file. When you open up `localhost:4000`, you see the GraphQL Playground, which will allow you to send GraphQL queries directly in the browser. On the left side, you'll write the query:
+
+```graphql
+query {
+  recipeURL
+}
+```
+
+Then we'll click `Play`. The data returned on the right side is the following:
+
+```json
+{
+  "data": {
+    "recipeURL": null
+  }
+}
+```
+
+This is ok, because you're really trying to take a look at the full object logged to the console or Terminal. If you open the terminal, you'll see a blob of data. Remember that this is a random taco, so your result will differ slightly:
+
+```json
+{
+    base_layer: {
+        url: "https://raw.github.com/sinker/tacofancy/master/base_layers/spaghetti_squash.md",
+        ...
+    }
+}
+```
+
+Now that you know what the response object looks like you can drill down into it to grab just the URL.
+
+**TICK TOCK TICK TOCK**
+
+You change the resolver to return just the URL string:
+
+```javascript
+const resolvers = {
+  Query: {
+    recipeURL: async () => {
+      let taco = await fetch(
+        "http://taco-randomizer.herokuapp.com/random/"
+      ).then(res => res.json());
+      return taco.base_layer.url;
+    }
+  }
+};
+```
+
+And you stop and restart the index file: `node index`. You click Play to run the query again:
+
+```graphql
+query {
+  recipeURL
+}
+```
+
+**5...4...**
+
+You get the response:
+
+```json
+{
+  "data": {
+    "recipeURL": "https://raw.github.com/sinker/tacofancy/master/base_layers/bellpepper.md"
+  }
+}
+```
+
+**3...2...**
+
+Copy and paste the URL into the browser, and you have your recipe. You did it. Dinner is saved. Your integrity is saved. All thanks to a simple GraphQL server.
+
+_For a more detailed look at how to set up a GraphQL server, check out our playlist on egghead.io: [Create Fullstack Applications with GraphQL and Apollo](https://egghead.io/playlists/create-fullstack-applications-with-graphql-and-apollo-794dc9c7)_.
