@@ -36,7 +36,7 @@ type Mutation {
 
 In this example, we created a mutation called `submitAFile`. It expects a `file` argument that is of the `Upload` type. The `submitAFile` mutation will return statistics about the uploaded file in a custom type called `FileStats`.
 
-The Apollo Server incorporates an package called [graphql-upload](https://github.com/jaydenseric/graphql-upload) (previously `apollo-upload-server`). This package will retrieve files from the `Upload` scalar and pass the file stream in a Promise directly to your resolver:
+The Apollo Server incorporates a package called [graphql-upload](https://github.com/jaydenseric/graphql-upload) (previously `apollo-upload-server`). This package will retrieve files from the `Upload` scalar and pass the file stream in a Promise directly to your resolver:
 
 ```javascript
 Mutation: {
