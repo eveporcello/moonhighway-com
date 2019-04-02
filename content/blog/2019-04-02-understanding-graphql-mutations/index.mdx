@@ -1,0 +1,182 @@
+---
+slug: understanding-graphql-mutations
+date: 2019-04-02
+title: 'Understanding GraphQL Mutations'
+description: 'Changing data with GraphQL'
+categories: ['graphql']
+keywords: ['graphql']
+banner: './images/leaves.jpeg'
+published: true
+---
+
+You can't spell GraphQL without the QL: the query language. But don't let the term `query` suggest that GraphQL is only about getting data. GraphQL is way more than that.
+
+To change data with GraphQL, we can send a mutation. Think of a GraphQL mutation as a function that can perform custom CREATE, UPDATE, and/or DELETE operations with a little extra finesse and flexibility.
+
+In this article, we'll take a closer look at GraphQL mutations: how to design them in the schema and how to execute them using the GraphQL query language.
+
+Mutations should represent the **verbs** in your application. They should consist of the things that users should be able to perform with your server. When designing your GraphQL API, make a list of all of the actions that a user can take with your application. Those are most likely your mutations.
+
+The `Mutation` is a root object type, just like `Query`. Mutations have names. They can have selection sets that return object types or scalars. We define all of the mutations available on our GraphQL API within the `Mutation` type in the schema:
+
+```graphql
+type Mutation {
+  # mutations go here
+}
+```
+
+Within the `Mutation` type in the schema, we give the mutation by name and define what should be returned from the mutation:
+
+```graphql
+type Mutation {
+  deleteAllSongs: Boolean!
+}
+```
+
+`deleteAllSongs` is the name of the mutation. It will return a boolean to describe whether the mutation was successful or not. The verb we want to do is delete all of the songs in the dataset. This mutation is bad news.
+
+To run this mutation, we'll send the following mutation using the GraphQL query language:
+
+```graphql
+mutation Chaos {
+  deleteAllSongs
+}
+```
+
+And we should receive the following response:
+
+```json
+{
+  "data": {
+    "deleteAllSongs": true
+  }
+}
+```
+
+With that mutation, all of our songs are gone. While we may not feel great about torching all of our data, we should find solace in the fact that we now know how to send a mutation to a GraphQL API, a mutation that returns a boolean value.
+
+## Sending Arguments to a Mutation
+
+Let's consider another mutation, but instead of destroying something, let's create something. We'll start with the schema:
+
+```graphql
+type Mutation {
+  addSong(
+    title: String! 
+    numberOne: Boolean
+    performerName: String!
+  ): Song!
+}
+```
+
+The name of the mutation is `addSong` and takes in three arguments: a non-nullable string for `title`, a nullable boolean value for whether the song was a `numberOne` hit, and a non-nullable string for `performerName`. We can assume that the mutation adds this new song to a database. Notice that we're returning the `Song` type from this mutation. `Song` is defined in the schema as follows:
+
+```graphql
+type Song {
+  id: ID!
+  title: String!
+  numberOne: Boolean
+  performerName: String!
+}
+```
+
+This means that when we send the mutation, the `Song` object will be returned, giving us access to all of the fields on `Song`.
+
+```graphql
+mutation CreateSong {
+  addSong(
+    title: "Electric Avenue"
+    numberOne: false
+    performerName: "Eddy Grant"
+  ) {
+    title
+    numberOne
+    performerName
+  }
+}
+```
+
+The above can be used to create new songs. Because this mutation returns `Song` and it is non-nullable, we need add a selection set after the mutation. In other words, the arguments list is followed by a set of curly braces around another list of fields. Here we select the `title` and `numberOne` fields for the song that was just created.
+
+```json
+{
+  "data": {
+    "title": "Electric Avenue",
+    "numberOne": false,
+    "performerName": "Eddy Grant"
+  }
+}
+```
+
+## Sending Arguments as Variables
+
+So far, we've sent mutation arguments inline directly with the query text. It can be difficult to collect data from your applications this way. As an alternative, you could use input variables. Variables replace the static value in the query so that we can pass dynamic values instead. 
+
+Let's consider our addSong mutation. Instead of dealing with strings, we'll use variable names which in GraphQL are always preceded by a `$` character:
+
+```graphql
+mutation createSong($title: String!, $numberOne: Boolean, $by: String!) {
+  addSong(title: $title, numberOne: $numberOne, performerName: $by) {
+    title
+    numberOne
+    performerName
+  }
+}
+```
+
+The static value is replaced by a `$variable`. Then, we state that the `$variable` can be accepted by the mutation. From there, we map each of the `$variable` names with the argument name. In GraphiQL or GraphQL Playground, there is a window for Query Variables in the lower left corner. This is where we send the input data as a JSON object. Be sure to use the correct variable name as the JSON key:
+
+```json
+{
+  "title": "No Scrubs",
+  "numberOne": true,
+  "by": "TLC"
+}
+```
+
+Variables are very useful when sending argument data. Not only will this keep our mutations more organized in a GraphQL Playground test, but allowing dynamic inputs will be hugely helpful later when connecting a client interface.
+
+## Returning Custom Objects from a Mutation
+
+So far, we have returned a `Boolean` and a `Song` object from a mutation. There may be cases where you want to have access to more fields as the result of a mutation. Perhaps a timestamp? Or some data about whether the mutation was successful? You can construct a custom response object type that can deliver those fields. We'll start by returning the `AddSongResponse` object in the schema:
+
+```graphql
+type Mutation {
+  addSong(
+    title: String!
+    numberOne: Boolean
+    performerName: String!
+  ): AddSongResponse!
+}
+```
+
+Then we'll create the `AddSongResponse` object:
+
+```graphql
+type AddSongResponse {
+  song: Song!
+  success: Boolean!
+  timestamp: String!
+}
+```
+
+By creating this type, we can encapsulate the song and some metadata fields about the mutation's execution and return them from the mutation. The query changes a bit with this enhancement:
+
+```graphql
+mutation createSong($title: String!, $numberOne: Boolean, $by: String!) {
+  addSong(title: $title, numberOne: $numberOne, performerName: $by) {
+    song {
+      title
+      numberOne
+    }
+    success
+    timestamp
+  }
+}
+```
+
+The `Song` object fields are now nested under the `song` field. `song`, `success`, and `timestamp` are now at the same level. Creating these custom return objects can allow for greater insights into the mutations than just returning a simpler object type.
+
+Mutations start with the schema, and planning out which mutations is an important process. Remember that these mutations are flexible and can return anything: scalar values like booleans or strings, core types like the `Song`, or custom mutation response objects.
+
+_For more on how to set up a GraphQL server that supports mutations, check out our playlist on egghead.io: [Create Fullstack Applications with GraphQL and Apollo](https://egghead.io/playlists/create-fullstack-applications-with-graphql-and-apollo-794dc9c7)_.
