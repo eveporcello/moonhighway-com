@@ -6,7 +6,7 @@ export default [
   {
     title: 'GraphQL Training',
     slug: '/graphql',
-    description: `GraphQL is a query language for your APIs, and GraphQL is everywhere. Whether you're a front-end developer trying to load data predictably into your UIs, a back-end developer looking to wrangle microservices, or a manager hoping to tap into the performance and productivity benefits of GraphQL, we have a practical, hands-on course that will fast-track your progress at creating production-ready services with GraphQL. Learn the latest from the authors of O'Reilly's [Learning GraphQL](http://shop.oreilly.com/product/0636920137269.do).`,
+    description: `GraphQL is a query language for your APIs, and GraphQL is everywhere. Whether you're a front-end developer trying to load data predictably into your UIs, a back-end developer looking to wrangle microservices, or a manager hoping to tap into the performance and productivity benefits of GraphQL, we have practical, hands-on courses that will fast-track your progress at creating production-ready services with GraphQL. Learn the latest from the authors of O'Reilly's [Learning GraphQL](http://shop.oreilly.com/product/0636920137269.do).`,
     thumb: `${graphql}`,
     button: 'View More **→**',
     tags: '',

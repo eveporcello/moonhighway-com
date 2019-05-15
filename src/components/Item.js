@@ -50,7 +50,7 @@ const Item = ({
       >
         <div className="image">
           {slug ? (
-            <Link to={slug} aria-label={`View ${title} trainings`}>
+            <Link to={slug} aria-label={`View Full Description`}>
               <img src={thumb} alt={title} />
             </Link>
           ) : (

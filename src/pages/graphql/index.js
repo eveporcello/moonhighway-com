@@ -59,6 +59,7 @@ export default function GraphQLPage({ data: { site } }) {
               button={training.button}
               length={training.length}
               tags={training.tags}
+              slug={training.slug}
             />
           ))}
           <TrainingInfo
