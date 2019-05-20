@@ -54,17 +54,15 @@ export default function GraphQLPage({ data: { site } }) {
           <p>
             <img src={usingGraphQL} style={{ float: 'right' }} alt="" />
             In GraphQL the "Q" stands for Query, which means _to question_.
-            Developers and Engineers are not the only people with questions.
-            Everyone has questions, everyone needs answers. In this course,
-            everyone learns GraphQL, a special way to ask the internet
+            Developers and engineers are not the only people with questions
+            about data. Everyone has questions, everyone needs answers. In this
+            course, everyone learns GraphQL, a special way to ask the internet
             questions. We are going to learn how to ask the internet all sorts
             of questions at once and allow it to provide all of the answers in a
             single response. We'll also learn how to design a schema, the rules
-            that a server must follow when answering questions. This morning, or
-            afternoon, or evening but preferably morning... on this morning
-            everyone learns to communicate with APIs, everyone learns how to
-            retrieve and change domain data, everyone learns to be more
-            effective.
+            that a server must follow when answering questions. In this course,
+            everyone will learn to communicate with APIs, retrieve and change
+            domain data, and to be more effective with GraphQL.
           </p>
           <h2 style={{ clear: 'right' }}>GraphQL Query Language</h2>
           <h5>First Thing</h5>
@@ -96,9 +94,8 @@ export default function GraphQLPage({ data: { site } }) {
             morning break, we will dive head first into the Schema Definition
             Language starting with the syntax, then by designing our own
             schemas. In this segment, we will learn techniques for designing
-            schemas that clearly define business domains. Once complete we will
+            schemas that clearly define business domains. Once complete, we will
             have the skills to help design the domain and retrieve data from it.
-            We'll feel like more effective and valuable team members.
           </p>
           <Topics
             topics={[

@@ -76,8 +76,8 @@ export default function GraphQLPage({ data: { site } }) {
             time. For that, we'll need to understand what WebSockets are and how
             they are utilized by GraphQL subscriptions. At this point, you will
             need to fight the urge to rush home to implement accounts on your
-            side project, because there is more good stuff in the day's
-            pipeline.
+            side project, because there is more good stuff to come in the day's
+            schedule.
           </p>
           <Topics
             topics={[
@@ -125,10 +125,7 @@ export default function GraphQLPage({ data: { site } }) {
             practice in this section are all designed to demonstrate how to use
             GraphQL at scale. Many of us work on applications with millions,
             even billions, of users we'll need to understand how to scale
-            GraphQL services for the real world. Scaling GraphQL does not exist
-            in a vacuum, the techniques used to scale GraphQL APIs are the same
-            techniques used to scale REST APIs. It's just more fun to build
-            microservices with GraphQL than it is with REST.
+            GraphQL services for the real world.
           </p>
           <Topics
             topics={[

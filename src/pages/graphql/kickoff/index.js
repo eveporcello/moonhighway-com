@@ -105,7 +105,7 @@ export default function GraphQLPage({ data: { site } }) {
               'Strategies for Approaching Design',
             ]}
           />
-          <h2>The Apollo Server</h2>
+          <h2>Apollo Server</h2>
           <h5>After Lunch</h5>
           <p>
             Now that we understand the query language, how to design a schema,

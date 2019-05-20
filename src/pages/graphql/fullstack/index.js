@@ -65,13 +65,12 @@ export default function GraphQLPage({ data: { site } }) {
           <h2 style={{ clear: 'right' }}>Unions &amp; Interfaces</h2>
           <h5>First Thing</h5>
           <p>
-            The day begins with an in-depth review of unions and interfaces.
-            These are advanced GraphQL techniques for dealing with multiple
-            types of data as well as possible schema growth. We'll learn how to
-            identify and write queries for unions and interfaces using
-            fragments. We'll build unions and interfaces into our own API. We'll
-            understand why we use them, when to use them, and how to implement
-            them effectively.
+            The day begins with an in-depth overview of unions and interfaces.
+            These are advanced GraphQL techniques for modeling domain objects.
+            We'll learn how to identify and write queries for unions and
+            interfaces using fragments. We'll build unions and interfaces into
+            our own API. We'll understand why we use them, when to use them, and
+            how to implement them effectively.
           </p>
           <Topics
             topics={[
@@ -92,7 +91,7 @@ export default function GraphQLPage({ data: { site } }) {
             data on your API. Clients include web sites, but they also include
             native apps, virtual reality applications, even command line
             applications. Any client that supports JavaScript can take advantage
-            of the Apollo Client, a tool that helps us work faster and more
+            of Apollo Client, a tool that helps us work faster and more
             efficiently by managing network requests and caching data. In this
             next block, we're going to learn to use it.
           </p>
