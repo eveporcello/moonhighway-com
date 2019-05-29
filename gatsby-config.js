@@ -42,6 +42,13 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        path: `${__dirname}/content/workshops`,
+        name: 'workshops',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         path: `${__dirname}/src/pages`,
         name: 'pages',
       },
@@ -56,7 +63,6 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 1035,
-              sizeByPixelDensity: true,
               backgroundColor: '#fafafa',
             },
           },

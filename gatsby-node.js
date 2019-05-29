@@ -138,10 +138,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const titleSlugged = _.join(_.drop(parent.name.split('-'), 3), '-')
 
     const slug =
-      parent.sourceInstanceName === 'legacy'
-        ? `blog/${node.frontmatter.date
-            .split('T')[0]
-            .replace(/-/g, '/')}/${titleSlugged}`
+      parent.sourceInstanceName === 'workshops'
+        ? `workshops/${node.frontmatter.slug}`
         : node.frontmatter.slug || titleSlugged
 
     createNodeField({
@@ -202,6 +200,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: 'redirects',
       node,
       value: node.frontmatter.redirects,
+    })
+
+    createNodeField({
+      name: 'isWorkshop',
+      node,
+      value: parent.sourceInstanceName === 'workshops' ? true : false,
     })
   }
 }

@@ -51,18 +51,25 @@ const Header = ({ dark }) => (
           `}
         >
           <Link
+            to="/workshops"
+            activeClassName="active"
+            aria-label="Visit workshops page"
+          >
+            Workshops
+          </Link>
+          <Link
+            to="/articles"
+            activeClassName="active"
+            aria-label="Visit articles page"
+          >
+            Articles
+          </Link>
+          <Link
             to="/about"
             activeClassName="active"
             aria-label="Read more about Moon Highway"
           >
             About
-          </Link>
-          <Link
-            to="/articles"
-            activeClassName="active"
-            aria-label="Go to articles page"
-          >
-            Articles
           </Link>
         </div>
       </nav>
