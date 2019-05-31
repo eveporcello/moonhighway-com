@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-export default function({ topics = [] }) {
+export default function Topics({ topics = [] }) {
   return (
     <>
       <h3>Topics</h3>
