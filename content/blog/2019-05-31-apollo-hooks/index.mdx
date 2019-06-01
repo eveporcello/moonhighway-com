@@ -298,6 +298,8 @@ When the mutation receives a response, something magical happens. The Apollo Cli
 
 At this point, we can use our app to change the status of individual lifts. However, if we open another browser tab, we will not see the lift status change reflected in the new tab. Additionally, if any other user changes the status of any lift, we will not see that change until we refresh the page.
 
+![Snowtooth browser problem](https://i.imgur.com/AoPCuPS.gif)
+
 We can fix this by adding a subscription to listen for status changes on Lift types. Before we get started, we need to configure the Apollo Client to handle subscriptions. We'll need to install the following npms:
 
 ```
@@ -369,6 +371,8 @@ useSubscription(SUBSCRIPTION);
 ```
 
 That's it. The subscription should be working. Wait, that's it? It's voodoo for sure, but adding this hook tells Apollo Client to listen for a subscription. When a subscription is received, the hook will cause the `App` function to re-render. Then Apollo Client will use the `id` returned by the subscription to locate the `Lift` object in the cache and update the value of it's new `status`. Changing the data in the cache causes the `useQuery` hook to invoke the `App` function again with the new data from the cache. This time the data change will be reflected in the UI, and you will see all of the connected clients update their UI as well... that's it.
+
+![subscriptions pushing data across tabs](https://i.imgur.com/63cKUqg.gif)
 
 Now we have an app that the ski patrol can use to change lift status in real time. The data is provided by the `useQuery` hook, changed with the `useMutation` hook, and synchronized with the `useSubscription` hook. You now know what it feels like to be a pirate on a rocketship to the moon!
 
