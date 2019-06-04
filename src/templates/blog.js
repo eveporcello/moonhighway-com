@@ -141,7 +141,7 @@ export const pageQuery = graphql`
     site {
       ...site
     }
-    allMdx {
+    allMdx(filter: { fields: { isWorkshop: { eq: false } } }) {
       edges {
         node {
           excerpt(pruneLength: 285)
