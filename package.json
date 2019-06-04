@@ -68,6 +68,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "serve public/",
-    "newPost": "node ./scripts/new-post.js"
+    "newPost": "node ./scripts/new-post.js",
+    "dev:functions": "dotenv -e ./netlify/.env netlify-lambda serve netlify/functions",
+    "functions:build": "netlify-lambda build netlify/functions"
   }
 }
