@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import { MDXProvider } from '@mdx-js/tag'
+import { MDXProvider } from '@mdx-js/react'
 import { css, Global } from '@emotion/core'
 import { fonts } from '../lib/typography'
 import { bpMaxSM } from '../lib/breakpoints'
