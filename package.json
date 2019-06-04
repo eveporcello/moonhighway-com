@@ -71,6 +71,7 @@
     "start": "serve public/",
     "newPost": "node ./scripts/new-post.js",
     "dev:functions": "dotenv -e ./netlify/.env netlify-lambda serve netlify/functions",
-    "functions:build": "netlify-lambda build netlify/functions"
+    "functions:build": "netlify-lambda build netlify/functions",
+    "netlify": "npm-run-all --parallel functions:build"
   }
 }
