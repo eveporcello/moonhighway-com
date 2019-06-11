@@ -105,7 +105,7 @@ function buildEvents(eventsData) {
   return axios.all(events).then(axios.spread((...rest) => rest))
 }
 
-export function handler() {
+exports.handler = function () {
   const cacheDuration = 1000 * 60 * 30 //30mins
   const cachedEvents = cache.get('events')
 
