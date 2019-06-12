@@ -6,7 +6,7 @@ import { fonts } from '../lib/typography'
 import Link from '../components/Link'
 import { Container } from '../components/markupHelpers/'
 import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
-import Earth from '../images/Earth@2x.png'
+import Earth from '../images/earth.png'
 import {
   WorkshopEventsProvider,
   useWorkshopEvents,
@@ -23,6 +23,7 @@ export default function RemoteWorkshopsPage(props) {
 
 function Workshops({ data: { site, workshops } }) {
   const { events } = useWorkshopEvents()
+
   return (
     <Layout
       site={site}
