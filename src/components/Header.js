@@ -51,7 +51,7 @@ const Header = ({ dark }) => (
           `}
         >
           <Link
-            to="/workshops"
+            to="/workshops/"
             activeClassName="active"
             aria-label="Visit workshops page"
           >

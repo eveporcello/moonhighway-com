@@ -145,6 +145,7 @@ export default ({
   noFooter,
   noSubscribeForm,
   noNav,
+  styles,
 }) => {
   const {
     title,
@@ -194,6 +195,7 @@ export default ({
                 ${bpMaxSM} {
                   justify-content: flex-start;
                 }
+                ${styles}
               `}
             >
               {children}
