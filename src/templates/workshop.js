@@ -30,12 +30,11 @@ function WorkshopTemplate({ data: { site, mdx } }) {
   const { title, slug } = mdx.fields
   const { ckTag } = mdx.frontmatter
   const { events: allEvents, isLoading } = useWorkshopEvents()
+
   const events = allEvents.filter(event => {
     return event.title.toLowerCase() === title.toLowerCase()
   })
   const soldOut = !isEmpty(events) && events[0].remaining <= 0
-
-  console.log(events)
 
   return (
     <Layout site={site} frontmatter={mdx.frontmatter}>
@@ -88,7 +87,7 @@ function WorkshopTemplate({ data: { site, mdx } }) {
         )}
 
         {isLoading
-          ? '... loading workshop details...'
+          ? 'Loading workshop details...'
           : events.map(scheduledEvent => {
               const discount = get(scheduledEvent, 'discounts.early', false)
               return (

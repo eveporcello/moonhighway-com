@@ -5,7 +5,6 @@ import Layout from '../components/Layout'
 import { fonts } from '../lib/typography'
 import { Container } from '../components/markupHelpers/'
 import { bpMaxSM } from '../lib/breakpoints'
-import isEmpty from 'lodash/isEmpty'
 import Earth from '../images/earth.png'
 import {
   WorkshopEventsProvider,
@@ -22,7 +21,8 @@ export default function RemoteWorkshopsPage(props) {
 }
 
 function Workshops({ data: { site, workshops } }) {
-  const { events } = useWorkshopEvents()
+  const { events, isLoading } = useWorkshopEvents()
+
   return (
     <Layout
       site={site}
@@ -65,14 +65,18 @@ function Workshops({ data: { site, workshops } }) {
         </h1>
       </div>
       <Container maxWidth={640}>
-        {isEmpty(events) ? (
-          <h1
+        {isLoading ? (
+          <h3
             css={css`
+              font-size: 1.5rem;
+              opacity: 0.8;
+              font-family: ${fonts.regular};
+              font-weight: 100;
               text-align: center;
             `}
           >
-            No scheduled workshops.
-          </h1>
+            Loading workshop events...
+          </h3>
         ) : (
           <UpcomingWorkshops events={events} />
         )}
