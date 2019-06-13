@@ -1,0 +1,288 @@
+---
+slug: enhancing-schemas-with-interfaces
+date: 2019-06-13
+title: 'Enhancing GraphQL Schemas with Interfaces'
+description: 'Incorporating interfaces for more scalable schemas'
+categories: ['graphql']
+keywords: ['graphql']
+banner: './images/ski-resort.jpg'
+published: true
+---
+
+At the heart of any GraphQL project is a schema, a document that describes all of the types, queries, mutations, and subscriptions that are available on the API. In addition to these basic types, the GraphQL schema definition language provides us with a way to create an [interface](https://graphql.org/learn/schema/#interfaces). 
+
+The concept of an interface is often present in object-oriented languages. They define the properties and methods that an object must implement in order to communicate with other objects. For example, the traffic light doesn't need to know about the inner workings of every vehicle on the road. However, every vehicle on the road does need to stop when the light is red and go when the light is green. We could define an interface for a traffic light that requires every vehicle on the road to implement `stop()` and `go()` methods. So long as a car, bus, or pedestrian has methods defined for `stop()` and `go()` they will be able to *interface* with traffic lights. 
+
+In GraphQL, an interface serves a similar purpose. Instead of properties and methods, GraphQL interfaces require types to implement specific fields. Let's take a look at what this means by improving an already existing schema by incorporating interfaces. 
+
+We already have a schema set up for ski resort employees. We could improve this schema by using interfaces. At this resort, we have a type `Employee` that has the following fields:
+
+```graphql
+type Employee {
+  id: ID!
+  firstName: String!
+  lastName: String!  
+  job: JobType
+}
+
+enum JobType {
+  LIFTOPERATOR
+  SKIPATROL
+  INSTRUCTOR
+  BARTENDER
+}
+```
+
+At first glance, this looks good, but there is room for improvement. A lift operator and a bartender might have a few shared fields, but there are probably unique fields for each of them. Let's take a look at a sample data record for each job. There are role-specific fields that we want to make available in the API:
+
+**bartenders.json**
+
+```json
+[
+  {
+    "id": "0001",
+    "firstName": "Topher",
+    "lastName": "Saunders",
+    "assignment": "SUMMIT",
+    "supervisor": true,
+    "shift": 1
+  }
+]
+```
+
+**instructors.json**
+
+```json
+[
+  {
+    "id": "0002",
+    "firstName": "Matt",
+    "lastName": "Christie",
+    "level": 3,
+    "privateLessons": true
+  }
+]
+```
+
+**liftops.json**
+
+```json
+[
+  {
+    "id": "0008",
+    "firstName": "Shawni",
+    "lastName": "Horizon",
+    "yearsExperience": 1
+  }
+] 
+```
+
+**patrol.json**
+
+```json
+[
+  {
+    "id": "0007",
+    "firstName": "Denise",
+    "lastName": "Lankman",
+    "certified": true,
+    "aviLevel": 3
+  }
+]
+```
+We can enhance our schema by using a GraphQL **interface**. We'll start by converting the `Employee` type to be an `Employee` interface. This will include the base fields that every employee will have:
+
+```graphql
+interface Employee {
+  id: ID!
+  firstName: String!
+  lastName: String!
+}
+```
+
+Next, we'll create implementations of this interface for each of the employee types. All of these new types will need to implement the same fields that the interface does (`id`, `firstName`, and `lastName`), and then fields unique to the job role can be added to each type:
+
+```graphql
+type Bartender implements Employee {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  assignment: Location!
+  supervisor: Boolean!
+  shift: Int!
+}
+
+type Instructor implements Employee {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  level: Int!
+  privateLessons: Boolean!
+}
+
+type LiftOperator implements Employee {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  yearsExperience: Int!
+}
+
+type SkiPatrol implements Employee {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  certified: Boolean!
+  aviLevel: Int!
+}
+```
+
+If we want to query a list of everyone who works at Snowtooth Mountain regardless of their job role, we can now define that query using the `Employee` interface:
+
+```graphql
+type Query {
+  allEmployees: [Employee!]!
+}
+```
+
+In order to make this work, we need to reflect this change in the resolvers. We'll need to add a `__resolveType` resolver, that will return the name of the type that is being resolved: 
+
+```javascript
+const resolvers = {
+  Query: {...},
+  Mutation: {...},
+  Employee: {
+    __resolveType: parent => {
+      if (parent.assignment) {
+        return "Bartender";
+      } else if (parent.yearsExperience) {
+        return "LiftOperator";
+      } else if (parent.certified) {
+        return "SkiPatrol";
+      } else {
+        return "Instructor";
+      }
+    }
+  }
+};
+```
+
+When resolving employees, the `__resolveType` resolver will look at the parent data and decide what type of `Employee` is being resolved. In this case, we are checking the parent object to see if it contains fields that relate to each type. For example, if the parent has a field for `certified`, then they type must be `SkiPatrol`.
+
+Now we can query a list of all Snowtooth employees regardless of type:
+
+```graphql
+query {
+  allEmployees {
+    id
+    firstName
+    lastName
+  }
+}
+```
+
+The `__typename` filed can be added to our selection set to see what type of employee we are dealing with:
+
+```graphql
+query {
+  allEmployees {
+    __typename
+    id
+    firstName
+    lastName
+  }
+}
+```
+
+And, in the same query we can still ask for specific data about each individual type using inline fragments:
+
+```graphql
+query {
+  allEmployees {
+    __typename
+    id
+    firstName
+    lastName
+    ... on SkiPatrol {
+      certified
+    }
+  }
+}
+```
+
+The data returned from this query will have `id`, `firstName`, `lastName` for all employees and `certified` for just ski patrol employees. The JSON response from the query would look like this:
+
+```json
+[
+  {
+    "__typename": "SkiPatrol",
+    "id": "0011",
+    "firstName": "Jill",
+    "lastName": "Johnson",
+    "certified": "true"
+  },
+    {
+    "__typename": "Bartender",
+    "id": "0012",
+    "firstName": "Rebecca",
+    "lastName": "Wilson"
+  }
+  ...
+]
+```
+
+Interfaces also make your API more scalable and maintainable. When a new job role comes along, you can create formalized object types for that role that implements the `Employee` interface. That will make the new type available on all fields that resolve employees anywhere in your schema.
+
+Another benefit is that you can still use the interface types independently wherever you choose:
+
+```graphql
+type Query {
+  allBartenders: [Bartender!]!
+  allInstructors: [Instructor!]!
+  allLiftOperators: [LiftOperator!]!
+  allSkiPatrol: [SkiPatrol!]!
+}
+```
+
+Finally, let's try one more query, an introspection query that shows what types implement `Employee`:
+
+```graphql
+query UnionInterfaceTypes {
+  __type(name: "Employee") {
+    possibleTypes {
+      name
+      kind
+    }
+  }
+}
+```
+
+This query returns a list of every type that implements the `Employee` interface:
+
+```json
+{
+  "data": {
+    "__type": {
+      "possibleTypes": [
+        {
+          "name": "Bartender",
+          "kind": "OBJECT"
+        },
+        {
+          "name": "Instructor",
+          "kind": "OBJECT"
+        },
+        {
+          "name": "LiftOperator",
+          "kind": "OBJECT"
+        },
+        {
+          "name": "SkiPatrol",
+          "kind": "OBJECT"
+        }
+      ]
+    }
+  }
+}
+```
+
+When you're modeling your domain's objects with GraphQL, an interface is a useful structure to understand. Don't hesitate to start using them today.
