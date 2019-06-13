@@ -10,13 +10,13 @@ import slugify from '@sindresorhus/slugify'
 function UpcomingWorkshops({ events }) {
   if (events.length) {
     return (
-      <div>
+      <>
         {events.map(event => {
           return (
             <Workshop
               key={event.slug}
               title={event.title}
-              seatsRemaining={event.remaining}
+              remaining={event.remaining}
               startTime={event.startTime}
               endTime={event.endTime}
               url={event.url}
@@ -25,7 +25,7 @@ function UpcomingWorkshops({ events }) {
             />
           )
         })}
-      </div>
+      </>
     )
   } else return null
 }

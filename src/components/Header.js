@@ -35,6 +35,9 @@ const Header = ({ dark }) => (
         <div
           css={css`
             font-size: 16px;
+            ${bpMaxSM} {
+              font-size: 15px;
+            }
             line-height: 1.25;
             display: flex;
             align-items: center;
@@ -43,6 +46,9 @@ const Header = ({ dark }) => (
               text-decoration: none;
               & + a {
                 margin-left: 32px;
+                ${bpMaxSM} {
+                  margin-left: 20px;
+                }
               }
             }
             .active {

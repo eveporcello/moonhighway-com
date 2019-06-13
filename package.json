@@ -55,6 +55,7 @@
     "react-live": "^2.1.2",
     "react-typography": "^0.16.19",
     "serve": "^11.0.1",
+    "strip-markdown": "^3.0.3",
     "typography": "^0.16.19",
     "yup": "^0.27.0"
   },

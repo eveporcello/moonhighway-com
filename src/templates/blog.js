@@ -71,19 +71,17 @@ const Blog = ({
               }
             `}
           >
-            {post.frontmatter.banner &&
-              post.fields.slug && (
-                <Link
-                  to={`/${post.fields.slug}`}
-                  aria-label={`View "${post.frontmatter.title}" article`}
-                >
-                  <Img sizes={post.frontmatter.banner.childImageSharp.sizes} />
-                </Link>
-              )}
-            {post.frontmatter.banner &&
-              !post.frontmatter.slug && (
+            {post.frontmatter.banner && post.fields.slug && (
+              <Link
+                to={`/${post.fields.slug}`}
+                aria-label={`View "${post.frontmatter.title}" article`}
+              >
                 <Img sizes={post.frontmatter.banner.childImageSharp.sizes} />
-              )}
+              </Link>
+            )}
+            {post.frontmatter.banner && !post.frontmatter.slug && (
+              <Img sizes={post.frontmatter.banner.childImageSharp.sizes} />
+            )}
             <div
               css={css`
                 margin-left: ${post.frontmatter.banner ? '30px' : '0'};
@@ -100,7 +98,7 @@ const Blog = ({
               >
                 <Link
                   aria-label={`View "${post.frontmatter.title}" article`}
-                  to={`/${post.fields.slug}`}
+                  to={post.fields.slug}
                 >
                   {post.frontmatter.title}
                 </Link>
@@ -108,7 +106,7 @@ const Blog = ({
               <small>{post.frontmatter.date}</small>
               <p>{post.excerpt}</p>{' '}
               <Link
-                to={`/${post.fields.slug}`}
+                to={post.fields.slug}
                 aria-label={`view "${post.frontmatter.title}" article`}
               >
                 Continue Reading →
@@ -141,7 +139,7 @@ export const pageQuery = graphql`
     site {
       ...site
     }
-    allMdx(filter: { fields: { isWorkshop: { eq: false } } }) {
+    allMdx(filter: { fileAbsolutePath: { regex: "//content/blog//" } }) {
       edges {
         node {
           excerpt(pruneLength: 285)

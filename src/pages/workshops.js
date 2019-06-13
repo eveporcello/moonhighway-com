@@ -23,34 +23,42 @@ export default function RemoteWorkshopsPage(props) {
 
 function Workshops({ data: { site, workshops } }) {
   const { events } = useWorkshopEvents()
-
   return (
     <Layout
       site={site}
       styles={css`
         flex-grow: 0;
       `}
-      noFooter
     >
       <div
         css={css`
-          margin-bottom: 3rem;
+          margin-bottom: 2rem;
+          padding: 2rem;
           background-position: 50% 50%;
           background-repeat: no-repeat;
           background-image: url(${Earth});
-          background-size: 420px;
-          height: 500px;
+          background-size: 360px;
+          height: 400px;
           display: flex;
           align-items: center;
           justify-content: center;
+          ${bpMaxSM} {
+            background-size: 280px;
+            height: 350px;
+            margin-bottom: 1rem;
+          }
         `}
       >
         <h1
           css={css`
-            font-size: 5rem;
+            font-size: 3.75rem;
             font-weight: bold;
+            line-height: 1;
             font-family: ${fonts.bold}, sans-serif;
             letter-spacing: -0.15rem;
+            ${bpMaxSM} {
+              font-size: 3rem;
+            }
           `}
         >
           Remote Workshops

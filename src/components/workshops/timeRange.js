@@ -4,8 +4,8 @@ import { format } from 'date-fns'
 export default function TimeRange({ startTime, endTime }) {
   return (
     <time>
-      {format(new Date(startTime), 'h:mm a')} —{' '}
-      {format(new Date(endTime), 'h:mm a (ZZ)')}
+      {format(new Date(startTime), 'h:mma')} —{' '}
+      {format(new Date(endTime), 'h:mma (ZZ)')}
     </time>
   )
 }

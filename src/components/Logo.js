@@ -1,14 +1,24 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import { bpMaxSM } from 'lib/breakpoints'
 
 const Logo = ({ width, dark }) => (
   <div
     css={css`
       width: ${width ? width : 87}px;
+      ${bpMaxSM} {
+        width: ${width ? width : 70}px;
+      }
       transition: all 500ms ease;
       svg > g {
         transition: fill 500ms ease;
         fill: ${dark ? '#090909' : '#fff'};
+      }
+      ${bpMaxSM} {
+        svg {
+          max-width: 55px;
+          height: 100%;
+        }
       }
     `}
   >
