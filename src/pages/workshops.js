@@ -3,9 +3,9 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import Layout from '../components/Layout'
 import { fonts } from '../lib/typography'
-import Link from '../components/Link'
 import { Container } from '../components/markupHelpers/'
-import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
+import { bpMaxSM } from '../lib/breakpoints'
+import isEmpty from 'lodash/isEmpty'
 import Earth from '../images/earth.png'
 import {
   WorkshopEventsProvider,
@@ -65,7 +65,17 @@ function Workshops({ data: { site, workshops } }) {
         </h1>
       </div>
       <Container maxWidth={640}>
-        <UpcomingWorkshops events={events} />
+        {isEmpty(events) ? (
+          <h1
+            css={css`
+              text-align: center;
+            `}
+          >
+            No scheduled workshops.
+          </h1>
+        ) : (
+          <UpcomingWorkshops events={events} />
+        )}
       </Container>
       {/*
       {workshops.edges.map(({ node: workshop }) => (

@@ -33,6 +33,9 @@ function WorkshopTemplate({ data: { site, mdx } }) {
   const events = allEvents.filter(event => {
     return event.title.toLowerCase() === title.toLowerCase()
   })
+  const soldOut = !isEmpty(events) && events[0].remaining <= 0
+
+  console.log(events)
 
   return (
     <Layout site={site} frontmatter={mdx.frontmatter}>
@@ -87,11 +90,10 @@ function WorkshopTemplate({ data: { site, mdx } }) {
         {isLoading
           ? '... loading workshop details...'
           : events.map(scheduledEvent => {
-              const soldOut = scheduledEvent.remaining <= 0
               const discount = get(scheduledEvent, 'discounts.early', false)
               return (
                 <Workshop
-                  key={slug}
+                  key={scheduledEvent && scheduledEvent.slug}
                   date={scheduledEvent && scheduledEvent.date}
                   startTime={scheduledEvent && scheduledEvent.startTime}
                   endTime={scheduledEvent && scheduledEvent.endTime}
@@ -122,9 +124,11 @@ function WorkshopTemplate({ data: { site, mdx } }) {
             </Link>
           </div>
         )}
-        {!isLoading && !isEmpty(events) && (
-          <WorkshopInterestForm subscribeToTag={ckTag} title={title} />
-        )}
+
+        {(!isLoading && isEmpty(events)) ||
+          (soldOut && (
+            <WorkshopInterestForm subscribeToTag={ckTag} title={title} />
+          ))}
       </Container>
     </Layout>
   )
