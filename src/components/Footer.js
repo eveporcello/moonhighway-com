@@ -8,7 +8,7 @@ import { Container } from './markupHelpers'
 import SubscribeForm from './SubscribeForm'
 import Logo from './Logo'
 
-import { Twitter, GitHub, LinkedIn } from '$images/social'
+import { Twitter, GitHub, LinkedIn } from 'images/social'
 
 import categories from '../data/categories'
 

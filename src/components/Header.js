@@ -35,6 +35,9 @@ const Header = ({ dark }) => (
         <div
           css={css`
             font-size: 16px;
+            ${bpMaxSM} {
+              font-size: 15px;
+            }
             line-height: 1.25;
             display: flex;
             align-items: center;
@@ -43,6 +46,9 @@ const Header = ({ dark }) => (
               text-decoration: none;
               & + a {
                 margin-left: 32px;
+                ${bpMaxSM} {
+                  margin-left: 20px;
+                }
               }
             }
             .active {
@@ -51,18 +57,25 @@ const Header = ({ dark }) => (
           `}
         >
           <Link
+            to="/workshops/"
+            activeClassName="active"
+            aria-label="Visit workshops page"
+          >
+            Workshops
+          </Link>
+          <Link
+            to="/articles"
+            activeClassName="active"
+            aria-label="Visit articles page"
+          >
+            Articles
+          </Link>
+          <Link
             to="/about"
             activeClassName="active"
             aria-label="Read more about Moon Highway"
           >
             About
-          </Link>
-          <Link
-            to="/articles"
-            activeClassName="active"
-            aria-label="Go to articles page"
-          >
-            Articles
           </Link>
         </div>
       </nav>
