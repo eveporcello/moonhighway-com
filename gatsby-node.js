@@ -239,9 +239,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         slugify(node.frontmatter.title)}`
     }
 
-    if (node.fileAbsolutePath.includes('content/writing-blog/')) {
-      slug = `/writing/blog/${node.frontmatter.slug || slugify(parent.name)}`
-    }
     createNodeField({
       name: 'id',
       node,

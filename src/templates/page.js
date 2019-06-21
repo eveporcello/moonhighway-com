@@ -1,100 +1,50 @@
 import React from 'react'
-import {graphql} from 'gatsby'
-import Img from 'gatsby-image'
+import { css } from '@emotion/core'
+import { bpMaxMD } from 'lib/breakpoints'
+import Container from 'components/markupHelpers/Container'
+import SEO from 'components/SEO'
+import Layout from 'components/Layout'
+import moon from 'images/moonHeader.jpg'
 
-import Layout from '../components/Layout'
-import Link from '../components/Link'
-
-const Page = ({
-  data: {site, allMdx},
-  pageContext: {pagination, categories}
-}) => {
-  const {page, nextPagePath, previousPagePath} = pagination
-
-  const posts = page.map(id => allMdx.edges.find(edge => edge.node.id === id))
-
+function MarkdownPage({ children, pageContext: { frontmatter } }) {
   return (
-    <Layout site={site}>
-      {posts.map(({node: post}) => (
-        <div key={post.id}>
-          {post.frontmatter.banner && (
-            <Img sizes={post.frontmatter.banner.childImageSharp.sizes} />
-          )}
-          <h2>
-            <Link
-              to={post.frontmatter.slug}
-              aria-label={`view "${post.frontmatter.title}" article`}
-            >
-              {post.frontmatter.title}
-            </Link>
-          </h2>
-          <small>{post.frontmatter.date}</small>
-          <p>{post.excerpt}</p>
-          <Link
-            to={post.fields.slug}
-            aria-label={`view "${post.frontmatter.title}" article`}
-          >
-            Continue Reading
-          </Link>
-        </div>
-      ))}
-      <hr />
-      <div>
-        Pagination:
-        <ul>
-          {nextPagePath && (
-            <li>
-              <Link to={nextPagePath} aria-label='view next page'>
-                Next Page
-              </Link>
-            </li>
-          )}
+    <>
+      <SEO frontmatter={frontmatter} />
 
-          {previousPagePath && (
-            <li>
-              <Link to={previousPagePath} aria-label='view previous page'>
-                Previous Page
-              </Link>
-            </li>
-          )}
-        </ul>
-      </div>
-    </Layout>
+      <Layout>
+        <div
+          css={css`
+            display: flex;
+            z-index: 1;
+            align-items: center;
+            justify-content: center;
+            top: 0;
+            position: absolute;
+            height: 130px;
+            width: 100%;
+            background: url(${moon}) no-repeat;
+            background-size: 550px;
+            background-position: top center;
+          `}
+        />
+
+        <Container
+          maxWidth={640}
+          css={css`
+            z-index: 999;
+            margin-top: 7vh;
+            margin-bottom: 40px;
+            ${bpMaxMD} {
+              margin-top: 60px;
+              margin-bottom: 20px;
+            }
+          `}
+        >
+          {children}
+        </Container>
+      </Layout>
+    </>
   )
 }
 
-export default Page
-
-export const pageQuery = graphql`
-  query {
-    site {
-      ...site
-    }
-    allMdx {
-      edges {
-        node {
-          excerpt(pruneLength: 300)
-          id
-          fields {
-            title
-            slug
-            date
-          }
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            banner {
-              childImageSharp {
-                sizes(maxWidth: 720) {
-                  ...GatsbyImageSharpSizes
-                }
-              }
-            }
-            slug
-            keywords
-          }
-        }
-      }
-    }
-  }
-`
+export default MarkdownPage

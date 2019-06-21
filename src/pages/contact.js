@@ -1,10 +1,9 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import Layout from '../components/Layout'
-import { Container } from '../components/markupHelpers'
-import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
-import { Circles } from '../images/Circles'
+import Layout from 'components/Layout'
+import { Container } from 'components/markupHelpers'
+import { bpMaxSM, bpMaxMD } from 'lib/breakpoints'
+import { Circles } from 'images/Circles'
 
 const checkboxes = [
   {
@@ -113,8 +112,8 @@ const InputStyles = css`
   }
 `
 
-export default ({ data: { site } }) => (
-  <Layout site={site} noNav>
+export default () => (
+  <Layout noNav>
     <Circles />
     <Container
       maxWidth={480}
@@ -218,11 +217,3 @@ export default ({ data: { site } }) => (
     </Container>
   </Layout>
 )
-
-export const pageQuery = graphql`
-  query {
-    site {
-      ...site
-    }
-  }
-`

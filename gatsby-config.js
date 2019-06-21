@@ -73,6 +73,9 @@ module.exports = {
       resolve: `gatsby-mdx`,
       options: {
         extensions: ['.mdx', '.md', '.markdown'],
+        defaultLayouts: {
+          pages: require.resolve('./src/templates/page.js'),
+        },
         gatsbyRemarkPlugins: [
           { resolve: 'gatsby-remark-responsive-iframe' },
           {

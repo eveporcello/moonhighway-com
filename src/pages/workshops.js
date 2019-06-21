@@ -1,11 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import Layout from '../components/Layout'
-import { fonts } from '../lib/typography'
-import { Container } from '../components/markupHelpers/'
-import { bpMaxSM } from '../lib/breakpoints'
-import Earth from '../images/earth.png'
+import Layout from 'components/Layout'
+import { fonts } from 'lib/typography'
+import { Container } from 'components/markupHelpers/'
+import { bpMaxSM } from 'lib/breakpoints'
+import Earth from 'images/earth.png'
 import {
   WorkshopEventsProvider,
   useWorkshopEvents,
@@ -20,12 +20,11 @@ export default function RemoteWorkshopsPage(props) {
   )
 }
 
-function Workshops({ data: { site, workshops } }) {
+function Workshops() {
   const { events, isLoading } = useWorkshopEvents()
 
   return (
     <Layout
-      site={site}
       styles={css`
         flex-grow: 0;
       `}
@@ -96,9 +95,6 @@ function Workshops({ data: { site, workshops } }) {
 
 export const pageQuery = graphql`
   query {
-    site {
-      ...site
-    }
     workshops: allMdx(filter: { fields: { isWorkshop: { eq: true } } }) {
       edges {
         node {

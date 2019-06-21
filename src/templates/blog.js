@@ -2,15 +2,15 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
-import { Container } from '../components/markupHelpers'
-import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
-import SEO from '../components/SEO'
-import Layout from '../components/Layout'
-import { rhythm } from '../lib/typography'
-import Link from '../components/Link'
+import { Container } from 'components/markupHelpers'
+import { bpMaxSM, bpMaxMD } from 'lib/breakpoints'
+import SEO from 'components/SEO'
+import Layout from 'components/Layout'
+import { rhythm } from 'lib/typography'
+import Link from 'components/Link'
 
 const Blog = ({
-  data: { site, allMdx },
+  data: { allMdx },
   pageContext: { pagination, categories },
 }) => {
   const { page, nextPagePath, previousPagePath } = pagination
@@ -26,7 +26,7 @@ const Blog = ({
     .filter(post => post !== undefined)
 
   return (
-    <Layout site={site}>
+    <Layout>
       <SEO />
       <Container
         maxWidth={920}
@@ -73,7 +73,7 @@ const Blog = ({
           >
             {post.frontmatter.banner && post.fields.slug && (
               <Link
-                to={`/${post.fields.slug}`}
+                to={post.fields.slug}
                 aria-label={`View "${post.frontmatter.title}" article`}
               >
                 <Img sizes={post.frontmatter.banner.childImageSharp.sizes} />
@@ -115,15 +115,29 @@ const Blog = ({
           </div>
         ))}
 
-        <div>
-          {nextPagePath && (
-            <Link to={nextPagePath} aria-label="view next page">
-              Next Page →
-            </Link>
-          )}
+        <div
+          css={css`
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: ${previousPagePath && nextPagePath
+              ? 'space-between'
+              : 'center'};
+            ${bpMaxSM} {
+              width: 100%;
+            }
+          `}
+        >
           {previousPagePath && (
             <Link to={previousPagePath} aria-label="view previous page">
               ← Previous Page
+            </Link>
+          )}
+          {nextPagePath && (
+            <Link to={nextPagePath} aria-label="view next page">
+              Next Page →
             </Link>
           )}
         </div>
@@ -136,9 +150,6 @@ export default Blog
 
 export const pageQuery = graphql`
   query {
-    site {
-      ...site
-    }
     allMdx(filter: { fileAbsolutePath: { regex: "//content/blog//" } }) {
       edges {
         node {

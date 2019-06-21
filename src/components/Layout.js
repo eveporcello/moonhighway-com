@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
+import { graphql, StaticQuery } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { css, Global } from '@emotion/core'
+import { Global, css } from '@emotion/core'
 import { fonts } from '../lib/typography'
 import { bpMaxSM } from '../lib/breakpoints'
 
@@ -10,7 +10,7 @@ import mdxComponents from './mdx'
 import Header from './Header'
 import Footer from './Footer'
 
-const globalStyles = css`
+export const globalStyles = css`
   * {
     box-sizing: border-box;
     font-family: ${fonts.regular}, sans-serif;
@@ -137,88 +137,88 @@ const globalStyles = css`
   }
 `
 
-export default ({
-  site,
+function Layout({
+  data,
   frontmatter = {},
   children,
   dark,
   noFooter,
   noSubscribeForm,
   noNav,
-  styles,
-}) => {
+}) {
   const {
-    title,
-    description: siteDescription,
-    keywords: siteKeywords,
-  } = site.siteMetadata
+    site: {
+      siteMetadata: {
+        description: siteDescription,
+        keywords: siteKeywords,
+        title: siteTitle,
+      },
+    },
+  } = data
 
   const {
-    keywords: frontmatterKeywords,
-    description: frontmatterDescription,
+    keywords = siteKeywords,
+    description = siteDescription,
+    title = siteTitle,
   } = frontmatter
 
-  const keywords = (frontmatterKeywords || siteKeywords).join(', ')
-  const description = frontmatterDescription || siteDescription
-
   return (
-    <Fragment>
-      <div
-        css={css`
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          min-height: 100vh;
-        `}
+    <div
+      css={css`
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100vh;
+      `}
+    >
+      <Helmet
+        title={title}
+        meta={[
+          { name: 'description', content: description },
+          { name: 'keywords', content: keywords },
+        ]}
       >
-        <Helmet
-          title={title}
-          meta={[
-            { name: 'description', content: description },
-            { name: 'keywords', content: keywords },
-          ]}
+        <html lang="en" />
+      </Helmet>
+      <Global styles={globalStyles} />
+      <Header dark={dark} />
+      <MDXProvider components={mdxComponents}>
+        <div
+          css={css`
+            flex-grow: 1;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            ${bpMaxSM} {
+              justify-content: flex-start;
+                        
+          `}
         >
-          <html lang="en" />
-        </Helmet>
-        <Global styles={globalStyles} />
-        <Header dark={dark} />
-        <MDXProvider components={mdxComponents}>
-          <Fragment>
-            <div
-              css={css`
-                flex-grow: 1;
-                width: 100vw;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                ${bpMaxSM} {
-                  justify-content: flex-start;
-                }
-                ${styles}
-              `}
-            >
-              {children}
-            </div>
-          </Fragment>
-        </MDXProvider>
-        {!noFooter && (
-          <Footer noSubscribeForm={noSubscribeForm} noNav={noNav} />
-        )}
-      </div>
-    </Fragment>
+          {children}
+        </div>
+      </MDXProvider>
+      {!noFooter && <Footer noSubscribeForm={noSubscribeForm} noNav={noNav} />}
+    </div>
   )
 }
 
-export const pageQuery = graphql`
-  fragment site on Site {
-    siteMetadata {
-      title
-      description
-      author {
-        name
-      }
-      keywords
-    }
-  }
-`
+export default function LayoutWithSiteData(props) {
+  return (
+    <StaticQuery
+      query={graphql`
+        {
+          site {
+            siteMetadata {
+              title
+              description
+              keywords
+            }
+          }
+        }
+      `}
+      render={data => <Layout data={data} {...props} />}
+    />
+  )
+}

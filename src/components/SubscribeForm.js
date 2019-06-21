@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { css } from '@emotion/core'
-import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
-import { fonts } from '../lib/typography'
+import { bpMaxSM } from '../lib/breakpoints'
 
 const FORM_ID = process.env.CONVERTKIT_SIGNUP_FORM
 

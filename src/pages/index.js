@@ -1,14 +1,14 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import Layout from '../components/Layout'
-import Link from '../components/Link'
-import { Container } from '../components/markupHelpers/'
-import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
-import Item from '../components/Item'
+import Layout from 'components/Layout'
+import Link from 'components/Link'
+import { Container } from 'components/markupHelpers/'
+import { bpMaxSM, bpMaxMD } from 'lib/breakpoints'
+import SEO from 'components/SEO'
+import Item from 'components/Item'
 
-import imgMoon from '../images/moon.jpg'
-import categories from '../data/categories'
+import imgMoon from 'images/moon.jpg'
+import categories from 'data/categories'
 
 const Hero = () => (
   <section
@@ -113,36 +113,38 @@ const Hero = () => (
   </section>
 )
 
-export default function Index({ data: { site } }) {
+export default function Index() {
   return (
-    <Layout site={site} dark>
-      <Hero />
-      <section
-        id="trainings"
-        css={css`
-          padding: 100px 0 20px 0;
-          ${bpMaxMD} {
-            padding: 40px 0;
-          }
-          ${bpMaxSM} {
-            padding: 20px 0;
-          }
-        `}
-      >
-        <Container maxWidth={920}>
-          {categories.map(category => (
-            <Item
-              key={category.title}
-              title={category.title}
-              description={category.description}
-              thumb={category.thumb}
-              button={category.button}
-              length={category.length}
-              tags={category.tags}
-              slug={category.slug}
-            />
-          ))}
-          {/*
+    <>
+      <SEO />
+      <Layout dark>
+        <Hero />
+        <section
+          id="trainings"
+          css={css`
+            padding: 100px 0 20px 0;
+            ${bpMaxMD} {
+              padding: 40px 0;
+            }
+            ${bpMaxSM} {
+              padding: 20px 0;
+            }
+          `}
+        >
+          <Container maxWidth={920}>
+            {categories.map(category => (
+              <Item
+                key={category.title}
+                title={category.title}
+                description={category.description}
+                thumb={category.thumb}
+                button={category.button}
+                length={category.length}
+                tags={category.tags}
+                slug={category.slug}
+              />
+            ))}
+            {/*
           <div
             css={css`
               margin-top: 120px;
@@ -156,16 +158,9 @@ export default function Index({ data: { site } }) {
             <SubscribeForm />
           </div>
           */}
-        </Container>
-      </section>
-    </Layout>
+          </Container>
+        </section>
+      </Layout>
+    </>
   )
 }
-
-export const pageQuery = graphql`
-  query {
-    site {
-      ...site
-    }
-  }
-`

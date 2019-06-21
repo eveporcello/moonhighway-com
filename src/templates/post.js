@@ -4,20 +4,17 @@ import Img from 'gatsby-image'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import SEO from 'components/SEO'
 import { css } from '@emotion/core'
-import { Container } from '../components/markupHelpers/'
-import { bpMaxMD } from '../lib/breakpoints'
-import Layout from '../components/Layout'
-import { fonts } from '../lib/typography'
-import moon from '../images/moonHeader.jpg'
-import { bpMaxSM } from '../lib/breakpoints'
+import { Container } from 'components/markupHelpers/'
+import { bpMaxMD } from 'lib/breakpoints'
+import Layout from 'components/Layout'
+import { fonts } from 'lib/typography'
+import moon from 'images/moonHeader.jpg'
+import { bpMaxSM } from 'lib/breakpoints'
 import { get } from 'lodash'
 
-export default function Post({
-  data: { site, mdx },
-  pageContext: { next, prev },
-}) {
+export default function Post({ data: { mdx }, pageContext: { next, prev } }) {
   return (
-    <Layout site={site} frontmatter={mdx.frontmatter}>
+    <Layout frontmatter={mdx.frontmatter}>
       <SEO
         frontmatter={mdx.frontmatter}
         metaImage={get(mdx, 'frontmatter.banner.childImageSharp.sizes.src')}
@@ -73,10 +70,7 @@ export default function Post({
           {mdx.frontmatter.date}
         </h3>
         {mdx.frontmatter.banner && (
-          <Img
-            sizes={mdx.frontmatter.banner.childImageSharp.sizes}
-            alt={site.siteMetadata.keywords.join(', ')}
-          />
+          <Img sizes={mdx.frontmatter.banner.childImageSharp.sizes} />
         )}
         <br />
         <MDXRenderer>{mdx.code.body}</MDXRenderer>
@@ -88,9 +82,6 @@ export default function Post({
 
 export const pageQuery = graphql`
   query($id: String!) {
-    site {
-      ...site
-    }
     mdx(fields: { id: { eq: $id } }) {
       frontmatter {
         title

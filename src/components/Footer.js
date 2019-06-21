@@ -166,7 +166,7 @@ const Footer = ({ noSubscribeForm = false, noNav = false }) => (
                     Five Useful Introspection Queries
                   </Link>
                   <Link
-                    to="/articles/"
+                    to="/articles"
                     css={css`
                       font-family: ${fonts.semibold}, sans-serif;
                     `}

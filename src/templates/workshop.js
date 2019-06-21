@@ -4,11 +4,11 @@ import Img from 'gatsby-image'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import SEO from 'components/SEO'
 import { css } from '@emotion/core'
-import { Container } from '../components/markupHelpers'
-import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
-import { fonts } from '../lib/typography'
+import { Container } from 'components/markupHelpers'
+import { bpMaxSM, bpMaxMD } from 'lib/breakpoints'
+import { fonts } from 'lib/typography'
 import { get } from 'lodash'
-import Layout from '../components/Layout'
+import Layout from 'components/Layout'
 import Link from 'components/Link'
 import isEmpty from 'lodash/isEmpty'
 import {
@@ -26,8 +26,8 @@ export default function WorkshopPage(props) {
   )
 }
 
-function WorkshopTemplate({ data: { site, mdx } }) {
-  const { title, slug } = mdx.fields
+function WorkshopTemplate({ data: { mdx } }) {
+  const { title } = mdx.fields
   const { ckTag } = mdx.frontmatter
   const { events: allEvents, isLoading } = useWorkshopEvents()
 
@@ -37,7 +37,7 @@ function WorkshopTemplate({ data: { site, mdx } }) {
   const soldOut = !isEmpty(events) && events[0].remaining <= 0
 
   return (
-    <Layout site={site} frontmatter={mdx.frontmatter}>
+    <Layout frontmatter={mdx.frontmatter}>
       <SEO
         frontmatter={mdx.frontmatter}
         metaImage={get(mdx, 'frontmatter.banner.childImageSharp.sizes.src')}
@@ -80,16 +80,13 @@ function WorkshopTemplate({ data: { site, mdx } }) {
         </h5>
 
         {mdx.frontmatter.banner && (
-          <Img
-            sizes={mdx.frontmatter.banner.childImageSharp.sizes}
-            alt={site.siteMetadata.keywords.join(', ')}
-          />
+          <Img sizes={mdx.frontmatter.banner.childImageSharp.sizes} />
         )}
 
         {isLoading
           ? 'Loading workshop details...'
           : events.map(scheduledEvent => {
-              const discount = get(scheduledEvent, 'discounts.early', false)
+              /* const discount = get(scheduledEvent, 'discounts.early', false) */
               return (
                 <Workshop
                   key={scheduledEvent && scheduledEvent.slug}
@@ -135,9 +132,6 @@ function WorkshopTemplate({ data: { site, mdx } }) {
 
 export const workshopQuery = graphql`
   query($id: String!) {
-    site {
-      ...site
-    }
     mdx(fields: { id: { eq: $id } }) {
       frontmatter {
         title

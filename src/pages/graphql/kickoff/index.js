@@ -1,18 +1,17 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import Layout from '../../../components/Layout'
-import { Container } from '../../../components/markupHelpers'
-import { bpMaxSM, bpMaxMD } from '../../../lib/breakpoints'
-import Topics from '../../../components/Topics'
-import graphqlWorkshop from '../../../images/graphql/graphql-workshop.svg'
-import HeaderImage from '../../../images/graphql-stack.svg'
-import Categories from '../../../data/categories'
-import TrainingInfo from '../../../components/TrainingInfo'
+import Layout from 'components/Layout'
+import { Container } from 'components/markupHelpers'
+import { bpMaxSM, bpMaxMD } from 'lib/breakpoints'
+import Topics from 'components/Topics'
+import HeaderImage from 'images/graphql-stack.svg'
+import Categories from 'data/categories'
+import TrainingInfo from 'components/TrainingInfo'
+import graphqlWorkshop from 'images/graphql/graphql-workshop.svg'
 
-export default function GraphQLPage({ data: { site } }) {
+export default function GraphQLPage() {
   return (
-    <Layout site={site}>
+    <Layout>
       <div
         css={css`
           position: absolute;
@@ -144,11 +143,3 @@ export default function GraphQLPage({ data: { site } }) {
     </Layout>
   )
 }
-
-export const pageQuery = graphql`
-  query {
-    site {
-      ...site
-    }
-  }
-`

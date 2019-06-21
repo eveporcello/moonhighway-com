@@ -1,9 +1,4 @@
 import React from 'react'
-import get from 'lodash/get'
-import { css } from '@emotion/core'
-import { fonts } from 'lib/typography'
-import Link from 'components/Link'
-import { Container } from 'components/markupHelpers'
 import Workshop from './workshop'
 import slugify from '@sindresorhus/slugify'
 
