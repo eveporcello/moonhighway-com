@@ -1,0 +1,113 @@
+---
+slug: netlify-dev-with-apollo-server-lambda
+date: 2019-07-30
+title: 'Using Netlify Dev with Apollo Server Lambda: An Appreciation'
+description: 'New tools for building killer GraphQL Apps'
+categories: ['javascript', 'apollo', 'graphql', 'netlify']
+keywords: ['javascript']
+banner: './images/thankyou.jpg'
+published: true
+---
+
+A little over a year ago, we needed to publish the [GraphQL Workshop](https://www.graphqlworkshop.com) website and decided to use Netlify for hosting. Before we could deploy the site, I needed to set up the security certificate to enable HTTPS. Pre-Netlify, this used to take forever, so I carved out some time on the calendar. I then promptly found a one-click option to secure the site with HTTPS, and the whole thing was done automatically in around 37 seconds. Oh, and it was free.
+
+Ever since that day, I've been a Netlify believer, but I've always thought of Netlify as a hosting provider for front-end sites, not for standing up GraphQL servers. As it turns out, I was just as wrong about that as I was about how long it would take take to deploy a secure website with Netlify. You 100% can use Netlify to do this. Let's take a closer look at some of the tools that will help us make this happen:
+
+### Netlify Dev
+Announced in April 2019, [Netlify Dev](https://www.netlify.com/products/dev/) is a command line tool that allows you to run Netlify's platform on your computer. This allows you to test your site locally (i.e. Create React App) with serverless functions that handle specific tasks like running your GraphQL server that you created with Apollo Server. Netlify Dev also gives you some starter kits for common tasks as you'll see in our example below. 
+
+### Netlify Functions
+[Netlify Functions](https://www.netlify.com/products/functions/) allow you to deploy server-side code (your GraphQL API) to AWS without an AWS account alongside your frontend. That means you don't have to set up different repositories for front-end and back-end. Everything can run from the same project, on the same platform. Also, Netlify has the beloved deploy preview feature, so that when you send a pull request, you can test the preview to make sure both the front and backends are working as expected.
+
+### Apollo Server Lambda
+We've talked about how to set up the default Apollo Server in the article, [Building a GraphQL Server in Five Minutes](https://moonhighway.com/building-a-graphql-server-in-five-minutes). Apollo Server Lambda is the variation of this server that allows you to deploy the server using a Lambda function.
+
+### Create React App
+[Create React App](https://facebook.github.io/create-react-app/) allows you to generate a React project, and we'll use this as the starter kit for the deploy.
+
+Now that we're acquainted with the pieces, let's get started.
+
+## 1. Create a React Project
+
+Use `npx` to generate the files for a React project:
+
+```
+npx create-react-app netlify-apollo
+cd netlify-apollo
+```
+
+## 2. Install Netlify CLI Globally
+
+We'll need the Netlify CLI to use Netlify Dev. If you're on a Mac, install it globally:
+
+```
+npm install netlify-cli -g
+```
+
+On a PC, open the command prompt as an administrator and run:
+
+```
+npm install netlify-cli
+```
+
+## 3. Run the Netlify Dev Command
+
+Since you're currently located in the `netlify-apollo` folder, you can run the Netlify Dev command. When you run this command, Netlify uses a project detector to determine which type of project is in the folder (Create React App? Gatsby? Hugo?). Then it will run the development server and any functions that you create within the project. This mimics how your application will work in production so you can test locally with minimal configuration. 
+
+```
+netlify dev
+```
+
+Netlify will detect that we're using Create React App and will run our server on `localhost:3000`, the default port for Create React App, and `localhost:8888`, Netlify's default port.
+
+## 4. Add netlify.toml
+
+This is a configuration file for Netlify. You'll describe where your Netlify functions should be placed when you create them. 
+
+```
+[build]
+  functions = "src/functions" 
+  publish = "build"
+```
+
+## 5. Create the Netlify Function
+
+This is the command that's used to create a Netlify function. 
+
+```
+netlify function:create
+```
+
+This will give you a prompt to pick the starter template you'd like to use using the arrow keys. There are many here: `node-fetch`, `google-analytics`, `hello-world`, etc. We want to use the `apollo-graphql` one. Hit the down arrow until you've selected that and hit enter. This will install all of the dependencies for the project plus give you a server template where you can get started creating your own GraphQL server with your own types.
+
+Then you'll be prompted to name the function. We can stick with the default: `apollo-graphql`.
+
+Now you can check out the `src` folder. Here you'll find a new folder called `functions` with a subfolder called `apollo-graphql`. In the `apollo-graphql.js` file, you'll see a starter GraphQL server for author data. Here you can replace this with the types and queries that you want to make available on your service. 
+
+## 6. Run Netlify Dev to Test the Server
+
+We'll want to see our app running, so we'll run the Netlify command again:
+
+```
+netlify dev
+```
+
+When you visit `localhost:8888`, you'll see the default Create React App running. To view the GraphQL Playground, you can head over to `http://localhost:8888/.netlify/functions/apollo-graphql`. There you'll see it running, and you can send a test query to make sure that everything is working as expected.
+
+```graphql
+query {
+  allAuthors {
+    name
+  }
+}
+```
+
+There we go! We have scaffolded the front and the backend for a project that uses GraphQL and React. The next steps will be to adjust the schema and resolvers. 
+
+Netlify Dev and Apollo Server Lambda are a great pair for building GraphQL APIs quickly. In a future article, we'll discuss how you can use Apollo Client to display data provided by your GraphQL API in your frontend React application.
+
+If you want to learn more about any of these tools, I'd recommend any of the following resources:
+
+* [Netlify Dev Documentation](https://www.netlify.com/docs/cli/#netlify-dev-beta): The place to start.
+* [Announcing Netlify Dev - video](https://www.youtube.com/watch?v=RL_gtVZ_79Q): This is the Netlify Dev announcement that Matt Biilmann gave at JAMstack Conf in April
+* [Serverless GraphQL with Netlify Dev - video](https://www.youtube.com/watch?v=rCYOpTQReD4): This is a great talk by Shawn Wang from Apollo Day in May 2019.
