@@ -56,13 +56,13 @@ const Header = ({ dark }) => (
             }
           `}
         >
-          <Link
+          {/* <Link
             to="/workshops"
             activeClassName="active"
             aria-label="Visit workshops page"
           >
             Workshops
-          </Link>
+          </Link> */}
           <Link
             to="/articles"
             activeClassName="active"
