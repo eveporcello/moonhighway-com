@@ -1,0 +1,131 @@
+---
+slug: use-effect-part-one
+date: 2019-09-10
+title: 'Getting Familiar with useEffect: Part One'
+description: 'Understanding effects in React applications'
+categories: ['javascript', 'react', 'useEffect']
+keywords: ['react']
+banner: 'images/glitter.jpeg'
+published: true
+---
+
+Rendering is the heartbeat of a React application. When something changes (props, state), the component tree re-renders, reflecting that change in the user interface. But what happens when we need to do something after a render? As you might imagine, there's a Hook for that.
+
+Consider a simple component, the `Checkbox`. We're using `useState` to set a `checked` value and a function to change the value of `checked` called `setChecked`. A user can check and uncheck the box, but how might we alert the user that the box has been checked? We'll try this with an `alert` as it is a great way to block the thread:
+
+```javascript
+function Checkbox() {
+  const [checked, setChecked] = useState(false);
+
+  alert(`checked: ${checked.toString()}`);
+
+  return (
+    <>
+      <input
+        type="checkbox"
+        value={checked}
+        onChange={() => setChecked(checked => !checked)}
+      />
+      {checked ? "checked" : "not checked"}
+    </>
+  );
+}
+```
+
+We've added the `alert` before the render to block the render. The component will not render until the user clicks the `OK` button on the alert box. Because the alert is blocking, we don't see the next state of the checkbox rendered until clicking `OK`.
+
+That isn't the goal, so maybe we should place the alert after the return?
+
+```javascript
+function Checkbox() {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <>
+      <input
+        type="checkbox"
+        value={checked}
+        onChange={() => setChecked(checked => !checked)}
+      />
+      {checked ? "checked" : "not checked"}
+    </>
+  );
+
+  alert(`checked: ${checked.toString()}`);
+}
+```
+
+Scratch that. We can't call `alert` after the render because the code will never be reached. To ensure that we see the `alert` as expected, we can use `useEffect`. Placing the `alert` inside of the `useEffect` function means that the function will be called after the render, as a side effect:
+
+```javascript
+function Checkbox() {
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    alert(`checked: ${checked.toString()}`);
+  });
+
+  return (
+    <>
+      <input
+        type="checkbox"
+        value={checked}
+        onChange={() => setChecked(checked => !checked)}
+      />
+      {checked ? "checked" : "not checked"}
+    </>
+  );
+}
+```
+
+We use `useEffect` when a render needs to cause side effects. Think of a side effect as something that a function does that isn't part of the return. The function is the `Checkbox`. The `Checkbox` function returns a fragment. But we might want the component to do more than that. Those things we want the component to do other than return UI are called effects.
+
+An `alert`, a `console.log`, or an interaction with a browser or native API is not part of the render. It's not part of the return. In a React app though, the render affects the results of one of these events. We can use `useEffect` to wait for the render, and then provide the values to an `alert` or a `console.log`:
+
+```javascript
+useEffect(() => {
+  console.log(checked ? "Yes, checked" : "No, not checked");
+});
+```
+
+Similarly, we could check in with the value of `checked` on render and then set that to a value in `localStorage`:
+
+```javascript
+useEffect(() => {
+  localStorage.setItem("checkbox-value", checked);
+});
+```
+
+We also might use `useEffect` to focus on a specific text input that has been added to the DOM. React will render the output, and then call `useEffect` to focus the element:
+
+```javascript
+useEffect(() => {
+  txtInputRef.current.focus();
+});
+```
+
+On `render`, the `txtInputRef` will have a value. We can access that value in the effect to apply the focus. Every time we render, `useEffect` has access to the latest values from that render: props, state, refs, etc.
+
+Cool, but... why? Think about a render. We render a checkbox where the `checked` value is false. On that render, React will look at the value of `checked` and call `useEffect`:
+
+```javascript
+useEffect(() => {
+  console.log(checked ? "Yes, checked" : "No, not checked");
+});
+```
+
+React is calling this function post-render:
+
+```javascript
+useEffect(() => console.log("No, not checked"));
+```
+
+Then we update the `checked` value to `true`. This causes another render. At this point, the render will lead to `useEffect` being called again but at this point the function is different:
+
+```javascript
+useEffect(() => console.log("Yes, checked"));
+```
+
+Every time the component renders, we can see the value of `checked` in `useEffect` because `useEffect` is a unique function every time. Think of `useEffect` as being a function that happens after a `render`. When a `render` fires, we can take a look at that render's values and use them in the effect. Then once we render again, the whole thing starts over. New values, then new renders, then new effects.
+
+`useEffect` is a powerful tool to understand when building a React application. In the next part of this series, we'll take a closer look at the dependency array that allows us to define more specific rules around why and when rendering should happen.
