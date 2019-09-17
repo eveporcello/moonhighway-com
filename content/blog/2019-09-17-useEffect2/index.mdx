@@ -1,0 +1,204 @@
+---
+slug: useEffect2
+date: 2019-09-17
+title: 'Getting Familiar with useEffect: Part Two'
+description: 'understanding the dependency array'
+categories: ['react', 'javascript']
+keywords: ['react']
+banner: './images/jazzy.jpeg'
+published: true
+---
+
+[Last week](https://moonhighway.com/use-effect-part-one), we took a closer look at the `useEffect` Hook, but we still have yet to touch on one of the function's most important features: **the dependency array**.
+
+`useEffect` is designed to work in conjunction with other stateful Hooks like `useState` and `useReducer`. React will re-render the component tree when the state changes. As we've learned, `useEffect` will be called after these renders.
+
+Consider the following, the `App` component has two separate state values:
+
+```javascript
+import React, { useState, useEffect } from "react";
+
+function App() {
+  const [val, set] = useState("");
+  const [phrase, setPhrase] = useState("example phrase");
+
+  const createPhrase = () => {
+    setPhrase(val);
+    set("");
+  };
+
+  useEffect(() => {
+    console.log(`typing "${val}"`);
+  });
+
+  useEffect(() => {
+    console.log(`saved phrase: "${phrase}"`);
+  });
+
+  return (
+    <>
+      <label>Favorite phrase:</label>
+      <input
+        value={val}
+        placeholder={phrase}
+        onChange={e => set(e.target.value)}
+      />
+      <button onClick={createPhrase}>send</button>
+    </>
+  );
+}
+```
+
+`val` is a state variable that represents the value of the input field. The `val` changes every time the value of the input field changes. It causes the component to render ever time the user types a new character. When the user clicks the `send` button, the `val` of the text area is saved as the phrase, and the `val` is reset to "", which empties the text field.
+
+This works as expected, but the component is rendered more times than it should be. After every render, both `useEffect` Hooks are called.
+
+```
+typing ""                             // First Render
+saved phrase: "example phrase"        // First Render
+typing "S"                            // Second Render
+saved phrase: "example phrase"        // Second Render
+typing "Sh"                           // Third Render
+saved phrase: "example phrase"        // Third Render
+typing "Shr"                          // Fourth Render
+saved phrase: "example phrase"        // Fourth Render
+typing "Shre"                         // Fifth Render
+saved phrase: "example phrase"        // Fifth Render
+typing "Shred"                        // Sixth Render
+saved phrase: "example phrase"        // Sixth Render
+```
+
+We do not want every effect to be invoked on every render. We should just see what the user is typing, not the information about the saved phrase. To solve this problem, we can incorporate the dependency array. The dependency array can be used to control when an effect is invoked:
+
+```javascript
+useEffect(() => {
+  console.log(`typing "${val}"`);
+}, [val]);
+
+useEffect(() => {
+  console.log(`saved phrase: "${phrase}"`);
+}, [phrase]);
+```
+
+We've added the dependency array to both effects to control when they are invoked. The first effect is only invoked when the `val` value has changed. The second effect is only invoked when the `phrase` value has changed. Now when we run the app and take a look at the console, we'll see more efficient updates occurring:
+
+```
+typing ""                              // First Render
+saved phrase: "example phrase"         // First Render
+typing "S"                             // Second Render
+typing "Sh"                            // Third Render
+typing "Shr"                           // Fourth Render
+typing "Shre"                          // Fifth Render
+typing "Shred"                         // Sixth Render
+typing ""                              // Seventh Render
+saved phrase: "Shred"                  // Seventh Render
+```
+
+Changing the `val` value by typing into the input only causes the first effect to fire. When we click the button, the `phrase` is saved and the `val` is reset to `""`.
+
+It's an array after all, so it's possible to check multiple values in the dependency array. Let's say we wanted to run a specific effect anytime either the `val` or `phrase` has changed:
+
+```javascript
+useEffect(() => {
+  console.log("either val or phrase has changed");
+}, [val, phrase]);
+```
+
+If either of those values changes, the effect will be called again. It's also possible to supply an empty array as the second argument to a `useEffect` function. An empty dependency array causes the effect to only be invoked once after the initial render:
+
+```javascript
+useEffect(() => {
+  console.log("only once after initial render");
+}, []);
+```
+
+Since there are no dependencies in the array, the effect is invoked for the initial render. No dependencies means no changes, so the effect will never be invoked again. Effects that are only invoked on the first render are extremely useful for initialization.
+
+```javascript
+useEffect(() => {
+  welcomeChime.play();
+}, []);
+```
+
+If you return a function from the effect, the function will be invoked when the component is removed from the tree:
+
+```javascript
+useEffect(() => {
+  welcomeChime.play();
+  return () => goodbyeChime.play();
+}, []);
+```
+
+This means that you can use `useEffect` for setup and teardown. The empty array means that the welcome chime will play once on first render. Then we'll return a function as a cleanup function to play a goodbye chime.
+
+This pattern is useful in many situations. Perhaps we'll subscribe to a news feed on first render. Then we'll unsubscribe from the news feed with the cleanup function. More specifically, we'll start by creating a state value for `posts` and a function to change that value called `setPosts`. Then we'll create a function `addPosts` that will take in the newest post and add it to the array. Then we can use `useEffect` to subscribe to the news feed, to play the chime. Plus we can return the cleanup functions: unsubscribing and playing the goodbye chime:
+
+```javascript
+const [posts, setPosts] = useState([]);
+const addPost = post => setPosts(allPosts => [post, ...allPosts]);
+
+useEffect(() => {
+  newsFeed.subscribe(addPost);
+  welcomeChime.play();
+  return () => {
+    newsFeed.unsubscribe(addPost);
+    goodbyeChime.play();
+  };
+}, []);
+```
+
+This is a lot going on in `useEffect` though. We might want to use a separate `useEffect` for the news feed events and another `useEffect` for the chime events:
+
+```javascript
+useEffect(() => {
+  newsFeed.subscribe(addPost);
+  return () => newsFeed.unsubscribe(addPost);
+}, []);
+
+useEffect(() => {
+  welcomeChime.play();
+  return () => goodbyeChime.play();
+}, []);
+```
+
+Splitting functionality into multiple `useEffect` calls is typically a good idea. One function is responsible for a smaller share of responsibility. Let's enhance this even further. What we're trying to create here is a component that subscribes to news feed event. Our custom hook called `useJazzyNews` listens to a news feed and collects new posts as they are added. It contains a `useState` hook and two `useEffect` Hooks:
+
+```javascript
+const useJazzyNews = () => {
+  const [posts, setPosts] = useState([]);
+  const addPost = post => setPosts(allPosts => [post, ...allPosts]);
+
+  useEffect(() => {
+    newsFeed.subscribe(addPost);
+    return () => newsFeed.unsubscribe(addPost);
+  }, []);
+
+  useEffect(() => {
+    welcomeChime.play();
+    return () => goodbyeChime.play();
+  }, []);
+
+  return posts;
+};
+```
+
+Our custom hook contains all of the functionality to handle a jazzy news feed, which means that we can easily share this functionality with our components. In a new component called `NewsFeed`, we'll can use the custom hook:
+
+```javascript
+function NewsFeed({ url }) {
+  const posts = useJazzyNews();
+
+  return (
+    <>
+      <h1>{posts.length} articles</h1>
+      {posts.map(post => (
+        <Post key={post.id} {...post} />
+      ))}
+    </>
+  );
+}
+```
+
+Now we can use this function anywhere that we want to use some jazzy news: across files, across projects. The compositional nature of Hooks is pretty awesome.
+
+A solid understanding of `useEffect` is critical to working with React in the Hooks era. If you want to learn more, check out Dan Abramov's excellent article, [A Complete Guide to useEffect](https://overreacted.io/a-complete-guide-to-useeffect/).
