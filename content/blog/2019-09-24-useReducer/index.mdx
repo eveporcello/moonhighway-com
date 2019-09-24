@@ -1,0 +1,193 @@
+---
+slug: useReducer
+date: 2019-09-24
+title: 'Improving Code with useReducer'
+description: 'How and Why to Use the useReducer Hook'
+categories: ['react', 'javascript']
+keywords: ['react']
+banner: './images/spread.jpg'
+published: true
+---
+
+*The next in our series of articles from the Second Edition of [Learning React](http://shop.oreilly.com/product/0636920252894.do) is about `useReducer`.*
+
+Consider the `Checkbox` component. This component is a perfect example of a component that holds simple state. The box is either checked or not checked. `checked` is the state value, and `setChecked` is a function that will be used to change the state. When the component first renders, the value of `checked` will be `false`:
+
+```javascript
+function Checkbox() {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <>
+      <input
+        type="checkbox"
+        value={checked}
+        onChange={() => setChecked(checked => !checked)}
+      />
+      {checked ? "checked" : "not checked"}
+    </>
+  );
+}
+```
+
+This works well, but one area of this function could be cause for alarm:
+
+```javascript
+onChange={() => setChecked(checked => !checked)}
+```
+
+Look at it closely. It feels ok at first glance, but are we stirring up trouble here? We're sending a function that takes in the current value of `checked` and returns the opposite, `!checked`. This is probably more complex than it needs to be. Developers could easily send the wrong information and break the whole thing. Instead of handling this way, why not provide a function as a toggle?
+
+Let's add a function called `toggle` that will do the same thing: call `setChecked` and return the opposite of the current value of `checked`:
+
+```javascript
+function Checkbox() {
+  const [checked, setChecked] = useState(false);
+
+  function toggle() {
+    setChecked(checked => !checked);
+  }
+
+  return (
+    <>
+      <input type="checkbox" value={checked} onChange={toggle} />
+      {checked ? "checked" : "not checked"}
+    </>
+  );
+}
+```
+
+This is better. `onChange` is set to a predictable value: the `toggle` function. We know what that function is going to do every time, everywhere it is used. We can still take this one step further to yield even more predictable results each time we use the checkbox component. Remember the function that we sent to `setChecked` in the `toggle` function?
+
+```javascript
+setChecked(checked => !checked);
+```
+
+We're going to refer to this function, `checked => !checked`, by a different name now: a **reducer**. A reducer function's most simple definition is that it takes in the current state and returns a new state. If `checked` is `false`, it should return the opposite, `true`. Instead of hardcoding this behavior into `onChange` events, we can abstract the logic into a reducer function that will always produce the same results. Instead of `useState` in the component, we'll use `useReducer`:
+
+```javascript
+function Checkbox() {
+  const [checked, toggle] = useReducer(checked => !checked, false);
+
+  return (
+    <>
+      <input type="checkbox" value={checked} onChange={setChecked} />
+      {checked ? "checked" : "not checked"}
+    </>
+  );
+}
+```
+
+`useReducer` takes in the reducer function and the initial state, `false`. Then we'll set the `onChange` function to `setChecked` which will call the reducer function.
+
+Our earlier reducer `checked => !checked` is a prime example of this. If the same input is provided to a function, the same output should be expected. This concept originates with `Array.reduce` in JavaScript. `reduce` fundamentally does the same thing as a reducer: it takes in a function (to reduce all of the values into a single value) and an initial value and returns one value.
+
+`Array.reduce` takes in a reducer function and an initial value. For each value in the `numbers` array, the reducer is called until one value is returned.
+
+```javascript
+const numbers = [28, 34, 67, 68];
+
+numbers.reduce((number, nextNumber) => number + nextNumber, 0); // 197
+```
+
+The reducer sent to `Array.reduce` takes in two arguments. You can also send multiple arguments to a reducer function:
+
+```javascript
+function Numbers() {
+  const [number, setNumber] = useReducer(
+    (number, newNumber) => number + newNumber,
+    0
+  );
+
+  return <h1 onClick={() => setNumber(30)}>{number}</h1>;
+}
+```
+
+Every time we click on the `h1`, we'll add 30 to the total each time.
+
+### useReducer to Handle Complex State
+
+`useReducer` can help us handle state updates more predictably as state becomes more complex. Consider an object that contains user data:
+
+```javascript
+const firstUser = {
+  id: "0391-3233-3201",
+  firstName: "Bill",
+  lastName: "Wilson",
+  city: "Missoula",
+  state: "Montana",
+  email: "bwilson@mtnwilsons.com",
+  admin: false
+};
+```
+
+Then we have a component called `User` that sets the `firstUser` as the initial state, and the component displays the appropriate data:
+
+```javascript
+function User() {
+  const [user, setUser] = useState(firstUser);
+
+  return (
+    <div>
+      <h1>
+        {user.firstName} {user.lastName} - {user.admin ? "Admin" : "User"}
+      </h1>
+      <p>Email: {user.email}</p>
+      <p>
+        Location: {user.city}, {user.state}
+      </p>
+      <button>Make Admin</button>
+    </div>
+  );
+}
+```
+
+A common error when managing state is to overwrite the state:
+
+```javascript
+<button
+  onClick={() => {
+    setUser({ admin: true });
+  }}
+>
+  Make Admin
+</button>
+```
+
+Doing this would overwrite state from `firstUser` and replace it with just what we sent to the `setUser` function: `{admin: true}`. This can be fixed by spreading the current values from user, and then overwriting the `admin` value:
+
+```javascript
+<button
+  onClick={() => {
+    setUser({ ...user, admin: true });
+  }}
+>
+  Make Admin
+</button>
+```
+
+This will take the initial state and push in the new key/values: `{admin: true}`. We need to rewrite this logic in every `onClick`, making it prone to error. I might forget to do this when I come back to the app tomorrow.
+
+```javascript
+function User() {
+  const [user, setUser] = useReducer(
+    (user, newDetails) => ({ ...user, ...newDetails }),
+    firstUser
+  );
+  ...
+}
+```
+
+Then send the new state value `newDetails` to the reducer, and it will be pushed into the object:
+
+```javascript
+<button
+  onClick={() => {
+    setUser({ admin: true });
+  }}
+>
+  Make Admin
+</button>
+```
+
+This pattern is useful when state has multiple sub-values or when the next state depends on a previous state. Here we're tapping in to the power of the spread. Teach everyone to spread, they'll spread for a day. Teach everyone to useReducer, and they'll spread for life.
