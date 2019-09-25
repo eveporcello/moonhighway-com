@@ -71,14 +71,14 @@ function Checkbox() {
 
   return (
     <>
-      <input type="checkbox" value={checked} onChange={setChecked} />
+      <input type="checkbox" value={checked} onChange={toggle} />
       {checked ? "checked" : "not checked"}
     </>
   );
 }
 ```
 
-`useReducer` takes in the reducer function and the initial state, `false`. Then we'll set the `onChange` function to `setChecked` which will call the reducer function.
+`useReducer` takes in the reducer function and the initial state, `false`. Then we'll set the `onChange` function to `toggle` which will call the reducer function.
 
 Our earlier reducer `checked => !checked` is a prime example of this. If the same input is provided to a function, the same output should be expected. This concept originates with `Array.reduce` in JavaScript. `reduce` fundamentally does the same thing as a reducer: it takes in a function (to reduce all of the values into a single value) and an initial value and returns one value.
 
