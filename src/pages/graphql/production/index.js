@@ -113,16 +113,16 @@ export default function GraphQLPage() {
               'Incorporating the Apollo VSCode Extension',
             ]}
           />
-          <h2>API Orchestration</h2>
+          <h2>Apollo Federation</h2>
           <h5>After Lunch</h5>
           <p>
             Orchestration is the task of organizing many services under a single
             API. GraphQL is uniquely positioned to be the ultimate gateway layer
-            in your organization's architecture. The techniques that we put to
-            practice in this section are all designed to demonstrate how to use
-            GraphQL at scale. Many of us work on applications with millions,
-            even billions, of users we'll need to understand how to scale
-            GraphQL services for the real world.
+            in your organization's architecture with Apollo Federation. The
+            techniques that we put to practice in this section are all designed
+            to demonstrate how to use GraphQL at scale. Many of us work on
+            applications with millions, even billions, of users we'll need to
+            understand how to scale GraphQL services for the real world.
           </p>
           <Topics
             topics={[
@@ -132,11 +132,11 @@ export default function GraphQLPage() {
               'Building GraphQL Gateways',
             ]}
           />
-          <h2>Lab: Schema Stitching</h2>
+          <h2>Lab: Apollo Federation</h2>
           <h5>End of the Day</h5>
           <p>
-            Finally, Apollo Federation! Students will put their new skills to
-            the test by composing data from multiple GraphQL microservices.
+            Students will put their new skills to the test by composing data
+            from multiple GraphQL microservices.
           </p>
           <TrainingInfo
             title="GraphQL"
