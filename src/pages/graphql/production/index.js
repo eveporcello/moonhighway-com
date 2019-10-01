@@ -82,8 +82,6 @@ export default function GraphQLPage() {
             topics={[
               'Authorization Techniques',
               'Implementing Github OAuth',
-              'Handling Authorization Headers',
-              'Adding Authorized Users to Context',
               'WebSocket Overview',
               'Connecting and Disconnecting Subscriptions',
               'Publishing Subscription Data',
@@ -129,21 +127,16 @@ export default function GraphQLPage() {
           <Topics
             topics={[
               'Scaling Overview',
-              'Running multiple instances of GraphQL',
-              'Introducing Microservices',
-              'Understanding API Orchestration',
-              'GraphQL APIs as Microservices',
-              'How to stitch together schemas',
-              'Schema stitching challenges',
+              'Apollo Federation',
+              'Merging Schemas',
+              'Building GraphQL Gateways',
             ]}
           />
           <h2>Lab: Schema Stitching</h2>
           <h5>End of the Day</h5>
           <p>
-            Finally, schema stitching! Students will put their new skills to the
-            test by stitching together data from two different GraphQL
-            microservices. If there is additional time, students will
-            incorporate weather data from a third service.
+            Finally, Apollo Federation! Students will put their new skills to
+            the test by composing data from multiple GraphQL microservices.
           </p>
           <TrainingInfo
             title="GraphQL"

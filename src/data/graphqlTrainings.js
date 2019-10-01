@@ -38,15 +38,15 @@ export default [
     title: 'Production Ready GraphQL',
     slug: '/graphql/production/',
     description: `Now it's time to take your GraphQL full stack applications and make them better. In this one day, hands on course student will learn to work with real-time GraphQL, improve security, and scale GraphQL APIs.`,
-    overview: `What makes an expert? Is it working on the bleeding edge? Is it knowing the tools? Is it having strong opinions? On this day, the journey to a greater GraphQL begins. We are going to introduce the challenges exist out there on the bleeding edge. We are going to introduce the swords that can be used to slay those challenges. We are going to fuel you with the knowledge to develop your own strong opinions. We are going to learn to gracefully orchestrate hundreds (thousands?) of different services and APIs. Everyone seems to want to know about schema stitching, so we are going to make sure you do that before you leave too.`,
+    overview: `What makes an expert? Is it working on the bleeding edge? Is it knowing the tools? Is it having strong opinions? On this day, the journey to a greater GraphQL begins. We are going to introduce the challenges exist out there on the bleeding edge. We are going to introduce the swords that can be used to slay those challenges.`,
     thumb: `${graphqlForEveryone}`,
     button: 'View Full Description **→**',
     length: '1',
     tags: [
       'Membership and Authorization',
       'Subscriptions',
-      'GraphQL Tools',
-      'Schema Stitching',
+      'GraphQL Tooling',
+      'Apollo Federation',
     ],
   },
   {
