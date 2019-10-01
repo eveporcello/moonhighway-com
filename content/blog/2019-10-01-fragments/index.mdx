@@ -1,0 +1,147 @@
+---
+slug: graphql-fragments
+date: 2019-10-01
+title: 'Understanding Fragments in GraphQL'
+description: 'composing field selections in GraphQL queries'
+categories: ['graphql', 'javascript']
+keywords: ['react']
+banner: './images/rocks.jpg'
+published: true
+---
+
+The "QL" in GraphQL stands for the query language, and a key, yet often overlooked feature of the language is GraphQL fragments. A GraphQL query document can contain definitions for operations and fragments. Fragments are selection sets that can be reused in multiple operations. 
+
+Let's use the [Snowtooth API](https://snowtooth.moonhighway.com/), a fake ski resort with a real GraphQL API, to send some new queries:
+
+```graphql
+query {
+  Lift(id: "jazz-cat") {
+    name
+    status
+    capacity
+    night
+    elevationGain
+    trailAccess {
+      name
+      difficulty
+    }
+  }
+  Trail(id: "river-run") {
+    name
+    difficulty
+    accessedByLifts {
+      name
+      status
+      capacity
+      night
+      elevationGain
+    }
+  }
+}
+```
+
+This query requests information about the Jazz Cat lift and the River Run trail. The `Lift` includes `name`, `status`, `capacity`, `night`, and `elevationGain` in its selection set. The information that we want to obtain about the River Run trail includes a sub-selection on the `Lift` type for the same fields. We could create a fragment that can help us reduce redundancy in our query:
+
+```graphql
+fragment liftInfo on Lift {
+ name
+ status
+ capacity
+ night
+ elevationGain
+}
+```
+
+You create fragments by using the fragment identifier. Fragments are selection sets on specific types, so you must include the type that is associated with each fragment in its definition. The fragment in this example is named `liftInfo`, and it is a selection set on the `Lift` type. When we want to add the `liftInfo` fragment fields to another selection set, we can do so by using three dots with the fragment name:
+
+```graphql
+query {
+  Lift(id: "jazz-cat") {
+    ...liftInfo
+    trailAccess {
+      name
+      difficulty
+    }
+  }
+  Trail(id: "river-run") {
+    name
+    difficulty
+    accessedByLifts {
+      ...liftInfo
+    }
+  }
+}
+```
+
+The syntax is similar to the JavaScript spread operator, which is used for a similar purpose: to assign the keys and values of one object to another. These three dots instruct GraphQL to assign the fields from the fragment to the current selection set.
+
+In this example, we are able to select the `name`, `status`, `capacity`, `night`, and `elevationGain` in two different places within our query using one fragment. We would not be able to add the `liftInfo` fragment to the `Trail` selection set because it defines only fields on the Lift type. We can add another fragment for trails:
+
+```graphql
+query {
+  Lift(id: "jazz-cat") {
+    ...liftInfo
+    trailAccess {
+      ...trailInfo
+    }
+  }
+
+  Trail(id: "river-run") {
+    ...trailInfo
+    groomed
+    trees
+    night
+  }
+}
+
+fragment trailInfo on Trail {
+  name
+  difficulty
+  accessedByLifts {
+    ...liftInfo
+  }
+}
+
+fragment liftInfo on Lift {
+  name
+  status
+  capacity
+  night
+  elevationGain
+}
+```
+
+Here, we have created a fragment called `trailInfo` and used it in two places within our query. We’re also using the `liftInfo` fragment in the `trailInfo` fragment to select details about the connected lifts. You can create as many fragments as you want and use them interchangeably. In the selection set used by the River Run trail query, we are combining our fragment with additional details that we want to select about the River Run trail. You can use fragments in combination with other fields in a selection set. You also can combine multiple fragments on the same type in a single selection set:
+
+```graphql
+query {
+  allTrails {
+    ...trailStatus
+    ...trailDetails
+  }
+}
+
+fragment trailStatus on Trail {
+  name
+  status
+}
+
+fragment trailDetails on Trail {
+  groomed
+  trees
+  night
+}
+```
+
+Another nice thing about fragments is that you can modify the selection sets used in many different queries simply by modifying one fragment:
+
+```graphql
+fragment liftInfo on Lift {
+ name
+ status
+}
+```
+
+This change to the selection set in the `liftInfo` fragment causes every query that is using this fragment to select less data. Fragments are a pretty slick feature of the GraphQL query language. Consider how you might refactor your current queries to include these compositional helpers.
+
+*If you haven't checked out [Eve's Query Language course](https://egghead.io/courses/graphql-query-language) yet on egghead.io, get in there!*
