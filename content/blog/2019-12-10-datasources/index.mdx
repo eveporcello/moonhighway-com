@@ -1,0 +1,249 @@
+---
+slug: apollo-datasources
+date: 2019-12-10
+title: 'Incorporating Data from REST APIs with Apollo Data Sources'
+description: 'putting a wrap on REST APIs'
+categories: ['graphql', 'javascript']
+keywords: ['graphql']
+banner: './images/rest-graphql.jpg'
+published: true
+---
+
+When GraphQL was first released, some touted it as a replacement to REST. "REST is dead!" early adopters cried, and then encouraged us all to throw a shovel in the trunk and drive our unsuspecting REST APIs out to the woods. This was great for getting clicks on blogs and starting conversations at conferences, but painting GraphQL as a REST killer is an oversimplification. In fact, wrapping an existing REST API is a very effective way of migrating from REST to GraphQL.
+
+For example, you can use a resolver function to fetch from a REST API directly:
+
+```javascript
+const resolvers = {
+  Query: {
+    allLifts: () => fetch('/lifts').then(res => res.json()),
+  },
+}
+```
+
+Another option is to incorporate Apollo's Data Sources. To help developers make use of data from REST APIs, Apollo created [REST Data Sources](https://www.apollographql.com/docs/apollo-server/data/data-sources/) as a way to encapsulate data fetching. You might choose this utility over fetch because the package will help you with caching, deduplication, and error handling.
+
+Let's take a closer look at how you might use this utility this by building a small GraphQL server that fetches data from the [Countries API](https://restcountries.eu).
+
+## Project Setup
+
+The first step will be to create the project and install any necessary dependencies:
+
+```
+npm init -y
+npm install apollo-server graphql apollo-datasource-rest nodemon
+```
+
+Then you'll create an **index.js** file where you'll create the server:
+
+**index.js**
+
+```javascript
+const { ApolloServer, gql } = require('apollo-server')
+
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`
+
+const resolvers = {
+  Query: {
+    hello: () => 'Hello World',
+  },
+}
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+})
+
+server.listen().then(({ url }) => console.log(`Server running at ${url}`))
+```
+
+Now you can go to the **package.json** file and adjust the `start` script to run `nodemon`. This will watch for any changes to your files. You'll also want to set the environment variable to `development`. This will allow us to see how long the response takes when we incorporate the data sources package in a minute.
+
+**package.json**
+
+```json
+{
+  "name": "countries-datasources",
+  "version": "1.0.0",
+  "description": "A small app to demo Apollo REST Data Sources",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=development nodemon ."
+  },
+  ...
+}
+```
+
+Now we can run `npm start` to see the starter server running on `localhost:4000`.
+
+## Writing the Schema
+
+With our project scaffolded, we can start to model the data with our GraphQL schema. The Countries API has several routes where we can send GET requests to retrieve some data. The first is `https://restcountries.eu/rest/v2/all`, which shows an array of country data as JSON. When you're wrapping a REST API with GraphQL, you can use the schema definition language to model whichever fields you need. If the REST API has a field that you don't need in your GraphQL API, you can always skip it.
+
+We want to create a query for `allCountries` that returns all of the country data. We also want to create a `Country` type with fields for `name`, `capital`, and `population`:
+
+**index.js**
+
+```javascript
+const typeDefs = gql`
+  type Country {
+    name: String!
+    capital: String!
+    population: Int!
+  }
+
+  type Query {
+    allCountries: [Country!]!
+  }
+`
+```
+
+## Incorporating `RESTDataSource`
+
+At this point, we have our type modeled. Now we'll incorporate the `apollo-datasource-rest` package to make efficient REST calls from the GraphQL server. We'll use the `RESTDataSource` class to make a **GET** request to `https://restcountries.eu/rest/v2/all`:
+
+**index.js**
+
+```javascript
+const { RESTDataSource } = require('apollo-datasource-rest')
+
+class CountriesAPI extends RESTDataSource {
+  constructor() {
+    super()
+    this.baseURL = 'https://restcountries.eu/rest/v2'
+  }
+  async getAllCountries() {
+    return this.get('/all')
+  }
+}
+```
+
+In the constructor, we will set the `baseURL`. Then we create an asynchronous function that will make a **GET** request for the `baseURL` + `/all`. `getAllCountries` is the method that we'll invoke from the resolver later.
+
+Once we have created the `CountriesAPI` class, we'll need to pass it to the server constructor. When you create an Apollo Server, you'll pass it an object with `typeDefs` (aka the schema), `resolvers`, and now `dataSources`:
+
+```javascript
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  dataSources: () => {
+    return {
+      countriesAPI: new CountriesAPI(),
+    }
+  },
+})
+```
+
+## Write the Resolvers
+
+There's one final step in making this work. We'll need to create a resolver for the `allCountries` query. Resolvers are functions that return data for particular fields. This resolver function will be responsible for calling the `getAllCountries` method from the `CountriesAPI` class. How will we have access to that function? Context!
+
+```javascript
+const resolvers = {
+  Query: {
+    allCountries: async (parent, args, { dataSources }) => {
+      return dataSources.countriesAPI.getAllCountries()
+    },
+  },
+}
+```
+
+Every resolver function takes in positional arguments. If there's anything that the resolver needs to execute appropriately (database details, authentication information, etc.), it will be passed via the third argument: context. An important thing to note is that Apollo Server puts `dataSources` on the context object so it can be used by the resolver functions.
+
+Now we can send the query using the GraphQL Playground:
+
+```graphql
+query {
+  allCountries {
+    name
+    capital
+    population
+  }
+}
+```
+
+The first time we send the query, the terminal/Command Prompt should display the following message, give or take a few milliseconds:
+
+```
+GET https://restcountries.eu/rest/v2/all (367ms)
+```
+
+Then try sending the same query again. You'll see that the terminal tells a different story:
+
+```
+GET https://restcountries.eu/rest/v2/all (8ms)
+```
+
+HOLD THE PHONE. We went from 367ms on the first request to 8ms on the second? What kind of magic is that? That is the magic of caching.
+
+One of the potential drawbacks of GraphQL is that because GraphQL has a single endpoint, you cannot cache resources by route like you can with REST. But since we are still using REST behind the GraphQL server, the REST data source will cache the response from the resource route by URL, so that additional requests to the same resource are pulled from the cache rather than making an additional GET request. If we had just added a `fetch` request to a resolver, we would have to build our own cache to minimize requests.
+
+## `countryByName` Query
+
+Another query that might be useful on this server would be a `countryByName` query. We can start by adding the query to the schema:
+
+```javascript
+const typeDefs = gql`
+  type Query {
+    allCountries: [Country!]!
+    countryByName(name: String!): Country!
+  }
+`
+```
+
+`countryByName` will take in the name of a country, a non-nullable `String` value and will return a `Country`.
+
+From there, we'll create the `getCountryByName` method in the `CountriesAPI` class:
+
+```javascript
+class CountriesAPI extends RESTDataSource {
+  async getCountryByName(name) {
+    return this.get(`/name/${name}`)
+  }
+}
+```
+
+When we call the `getCountryByName` method, we'll take in the `name` and concatenate that onto the URL. Finally, we'll add the `countryByName` resolver. This will use the `name` from the arguments object and the `dataSources` from context to send a request to the resource and return the appropriate country.
+
+```javascript
+const resolvers = {
+  Query: {
+    countryByName: async (parent, { name }, { dataSources }) => {
+      let countryData = dataSources.countriesAPI.getCountryByName(name)
+      return countryData.then(data => data[0])
+    },
+  },
+}
+```
+
+Let's try it. With the Playground, we'll send a query to learn more about Colombia:
+
+```graphql
+query {
+  countryByName(name: "colombia") {
+    name
+    capital
+    population
+  }
+}
+```
+
+Notice that the second time you send the query, the response that is logged to the console is considerably quicker. There's that cache again.
+
+Apollo's REST data sources are an incredibly useful tool and a great way to get started with GraphQL if you're currently working with REST APIs.
+
+For next steps, you can check out the documentation to learn more about using other HTTP methods, [caching with Redis as a backend](https://www.apollographql.com/docs/apollo-server/data/data-sources/#using-memcachedredis-as-a-cache-storage-backend) to ensure that data is consistent across instances, or [you can even build your own cache backend](https://www.apollographql.com/docs/apollo-server/data/data-sources/#implementing-your-own-cache-backend).
+
+If you'd like to see the project in action, you can download the repo at [github.com/moonhighway/countries-datasources](https://github.com/moonhighway/countries-datasources) or check out this CodeSandbox:
+
+<iframe
+  src="https://codesandbox.io/embed/countries-datasources-lckj6?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="countries-datasources"
+  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>
