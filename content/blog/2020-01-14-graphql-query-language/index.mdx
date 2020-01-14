@@ -1,0 +1,129 @@
+---
+slug: graphql-query-language
+date: 2020-01-14
+title: 'Understanding the GraphQL Query Language'
+description: 'where to get started with GraphQL'
+categories: ['graphql', 'javascript']
+keywords: ['graphql']
+banner: './images/lightbulb.jpg'
+published: true
+---
+
+When Facebook open-sourced GraphQL, it had a few different parts. It came with a [spec](https://facebook.github.io/graphql/). That specification document described all of the features of the GraphQL query language and the schema definition language. It also came with a reference implementation of a GraphQL server called `graphql.js`. This was an example of what a GraphQL server might look like so that other people could implement their own servers in a variety of languages.
+
+The spec gave us rules. The reference implementation gave us direction. But a third piece, GraphiQL, gave us access, and access is how you create a legion of fans.
+
+[GraphiQL](https://github.com/graphql/graphiql) is an in-browser IDE that allows you to explore GraphQL APIs. No setup required. GraphiQL allows you to experiment with the query language, the QL part of GraphQL, which is at the heart of anything you’ll do with GraphQL in any implementation.
+
+The query language is standardized according to the spec. It doesn’t matter what language you are using: a GraphQL query is a GraphQL query. The query syntax is a string that looks the same regardless of whether the project uses JavaScript, Java, Haskell, or anything else.
+
+To demonstrate some of the features of the query language, we're going to use the [Snowtooth API](https://snowtooth.moonhighway.com/), a real GraphQL API for a fake ski resort. The API uses GraphQL Playground, a similar tool to GraphiQL, that will allow you to send these queries and receive some data right in the browser.
+
+When you visit the [Snowtooth API](https://snowtooth.moonhighway.com/) in the center, you'll see the GraphQL endpoint: https://snowtooth.moonhighway.com, and we'll send GraphQL queries to this endpoint. With GraphQL, there is only one endpoint.
+
+When we want to request some data from an API, we'll use a query. When you send a query, you ask for units of data by field. These fields map to the same field in the JSON data response you receive from your server. For example, if you send a query for `allLifts` and request the name and status fields, you should receive a JSON response that contains an array for `allLifts` and a string for each lift’s name and each lift’s status, as demonstrated here:
+
+```graphql
+query {
+  allLifts {
+    name
+    status
+  }
+}
+```
+
+Add this query to the left side of the screen. Click the Play button, and you'll see the JSON response on the right. Notice when you send the query, all of the fields in the query match the fields in the response.
+
+The `query` keyword is called the **operation name**. This describes what type of query or operation that is being sent to the GraphQL service. Nested inside the curly braces are **fields**. A field returns some data. Any fields nested inside of curly braces are called a **selection set**.
+
+You can add multiple queries to a query document, but you can run only one operation at a time. For example, you could place two query operations in a query document:
+
+```graphql
+query {
+  allLifts {
+    name
+    status
+  }
+}
+query {
+  allTrails {
+    name
+    difficulty
+  }
+}
+```
+
+If you tried to run one of these queries though, you'd see an error. If you have more than one query in a query document, you have to give the query an **operation name**. Think of an operation name like a function name.
+
+```graphql
+query lifts {
+  allLifts {
+    name
+    status
+  }
+}
+query trails {
+  allTrails {
+    name
+    difficulty
+  }
+}
+```
+
+When you press the Play button, a dropdown will appear to prompt you to select one of these two operations. If you want to send one request for all of this data, you can place it all within the same query:
+
+```graphql
+query liftsAndTrails {
+  allLifts {
+    name
+    status
+  }
+  allTrails {
+    name
+    difficulty
+  }
+}
+```
+
+Here is where the benefits of GraphQL begin to crystallize. We are able to receive all kinds of different datapoints in a single query. We are also asking for the name and status of every lift. Finally, we ask for the name and difficulty of every trail in the same query.
+
+## Connections
+
+In a GraphQL query, a field can return either scalar types or object types. Scalar types are similar to primitives in other languages. They are the leaves of our selection sets and return a single value. Out of the box, GraphQL comes with five built-in scalar types: integers (`Int`), floats (`Float`), strings (`String`), booleans (`Boolean`), and unique identifiers (`ID`).
+
+Both integers and floats return JSON numbers, and String and ID return JSON strings. Booleans return Booleans. Even though ID and String will return the same type of JSON data, GraphQL still makes sure that IDs return unique strings.
+
+GraphQL object types are groups of one or more fields that you define in your schema. They define the shape of the JSON object that should be returned. JSON can endlessly nest objects under fields and so can GraphQL. We can connect objects together by querying one object for details about related objects.
+
+For example, suppose that we want to return data about the trails that are accessed by each lift:
+
+```graphql
+query {
+  allLifts {
+    name
+    capacity
+    trailAccess {
+      name
+    }
+  }
+}
+```
+
+In this query, we are asking for data about all of the lifts and then all of the trails you can access off of each lift. Our selection set includes a request for the capacity field. Capacity is a scalar type; it returns an integer that represents the number of people that can ride on one chair. The trailAccess field is of type Trail (an object type). In this example, trailAccess returns a filtered list of trails that are accessible from each lift.
+
+This example operation queries a one-to-many connection between two types of data, lifts and trails. One lift is connected to many related trials.
+
+The same relationship exists from Trail to Lift. The connection is created on the `accessedByLifts` field. When you query that field, you return the lift or lifts that you would have to take to get to the trail.
+
+```graphql
+query AllTrails {
+  allTrails {
+    name
+    accessedByLifts {
+      name
+    }
+  }
+}
+```
+
+For a deeper look at the GraphQL Query Language, check out Eve's [Query Language course](https://egghead.io/courses/graphql-query-language/?af=448vdv) on egghead.io.
