@@ -1,0 +1,245 @@
+---
+slug: schema-definition-language
+date: 2020-01-21
+title: 'Designing GraphQL Schemas'
+description: 'modeling your domain objects with GraphQL'
+categories: ['javascript', 'apollo', 'graphql']
+keywords: ['programming']
+banner: './images/objects.jpg'
+published: true
+---
+
+When you start working with GraphQL, you'll start to realize that GraphQL is going to change your design process. Instead of looking at your APIs as a collection of REST endpoints, you'll start looking at APIs as collections of types. Before breaking ground on your new API, you need to think about, talk about, and formally define the data types that your API will expose. This collection of types is called a schema.
+
+GraphQL comes with a language that we can use to define our schemas called the Schema Definition Language, or SDL. Just like the GraphQL Query Language, the GraphQL SDL is the same no matter what language or framework you use to construct your applications. GraphQL schema documents are text documents that define the types available in an application, and they are later used by both clients and servers to validate GraphQL requests.
+
+Since we're already familiar with how to write queries for the Snowtooth API, let's take a closer look at the underlying schema that makes those queries possible.
+
+## Creating Schema Types
+
+A GraphQL API has a certain list of queries that are available on the API. One such query is `liftCount`:
+
+_Query Language_
+
+```graphql
+query {
+  liftCount
+}
+```
+
+The `Query` type has a specific meaning: it's the type that contains all of the queries that we can send to this API. `liftCount` and all other available queries are represented in the schema in the `Query` type:
+
+_Schema Definition Language_
+
+```graphql
+type Query {
+  liftCount: Int!
+}
+```
+
+The `liftCount` query returns a scalar type. Think of a scalar type as being a single value, not an object. There are five built-in scalars that are part of the schema definition language:
+
+- `String`: A UTF-8 character sequence
+- `Int`: A 32-bit integer
+- `Float`: A floating point value
+- `Boolean`: `true` or `false`
+- `ID`: A unique identifier that is serialized as a String
+
+We will use these scalars anytime we want to return a single value from a field. We can also create our own custom objects called types.
+
+The core unit of any GraphQL schema is the type. The Snowtooth API has two main types: a `Lift` and a `Trail`. A type has fields that represent the data associated with each object. Each field returns a specific type of data.
+
+Let's begin by defining the fields that are part of the `Lift` type:
+
+```graphql
+type Lift {
+  id: ID!
+  name: String!
+  status: String
+  capacity: Int!
+  night: Boolean!
+  elevationGain: Int!
+}
+```
+
+We have created our first GraphQL object type: a `Lift`. Between the curly brackets, we've defined the lift's fields. Each of these fields returns one of GraphQL's scalar types.
+
+So, what's the deal with the exclamation point?
+
+```graphql
+type Lift {
+  id: ID! # can't return null (non-nullable)
+  name: String! # can't return null (non-nullable)
+  status: String # can return null (nullable)
+  ...
+}
+```
+
+The exclamation point after a value means that this is non-nullable. If we query the `id` or `name` field, the value returned must not be `null`. If there is no exclamation point like with the `status` field, then it's ok to return `null` from that field.
+
+As you work to define your schema, you'll continue to create a type for each of your domain objects. Let's go ahead and create a `Trail` in the schema:
+
+```graphql
+type Trail {
+  id: ID!
+  name: String!
+  status: String
+  difficulty: String!
+  groomed: Boolean!
+  trees: Boolean!
+  night: Boolean!
+}
+```
+
+Now that we've created our two custom object types, we want to write a couple of queries that will return that data.
+
+## Returning Lists
+
+Let's construct another query with the query language that will return all of the lifts on the mountain:
+
+```graphql
+query {
+  allLifts {
+    name
+    status
+  }
+}
+```
+
+This query returns a list of lift objects. So how would we construct the schema to support this query? We already have the `Lift` object, so instead of returning a scalar value from the query, we're going to return a list of objects. The schema should look like this:
+
+```graphql
+type Query {
+  liftCount: Int!
+  allLifts: [Lift!]!
+}
+```
+
+The `allLifts` query returns a list of `Lift` objects. The exclamation points here mean that the `allLifts` query cannot return `null`, and no value within the lifts array can be `null`. The query could return an empty array though and not cause any errors, because nothing is `null` about an empty array.
+
+Similarly, we can add an `allTrails` query to return a list of trails:
+
+```graphql
+type Query {
+  liftCount: Int!
+  allLifts: [Lift!]!
+  allTrails: [Trail!]!
+}
+```
+
+The nullability rules are the same here for the `Trail` type.
+
+## Enums
+
+Another type that we can use in the schema definition language is an enum. Enums, or enumeration types, are scalar types that allow a field to return a restricted list of values. When you want to make sure that a field returns one value from a limited set of values, use an enum.
+
+One place where we could improve our schema is in the `Lift` type, specifically the status field:
+
+```graphql
+type Lift {
+  ...
+  status: String
+  ...
+}
+```
+
+Right now, the `status` field can return any string, but there are only three possible lift statuses that should be returned here: `OPEN`, `CLOSED`, and `HOLD`. We can create an enum and set the value of the enum to the `status` field in order to be more restrictive of the options:
+
+```graphql
+enum LiftStatus {
+  OPEN
+  CLOSED
+  HOLD
+}
+
+type Lift {
+  ...
+  status: LiftStatus
+  ...
+}
+```
+
+Now we've limited the options for this field. Notice that the enum values are capitalized. This is a convention, not a rule.
+
+We can repeat this for the `Trail` type, adding a `TrailStatus` enum. In this case, we'll only allow `OPEN` and `CLOSED` as values for `TrailStatus`:
+
+```graphql
+enum TrailStatus {
+  OPEN
+  CLOSED
+}
+
+type Trail {
+  ...
+  status: TrailStatus
+  ...
+}
+```
+
+## Arguments
+
+Currently, our schema has a few different queries listed in the `Query` type:
+
+```graphql
+type Query {
+  liftCount: Int!
+  allLifts: [Lift!]!
+  allTrails: [Trail!]!
+}
+```
+
+There might be a time when we want to query an individual lift or an individual trail. To do this, we'll need to take advantage of query arguments. Arguments can be added to any field in GraphQL. They allow us to send data that will affect the outcome of our GraphQL operations. Let's create a query called `Lift` that will return a lift by id.
+
+```graphql
+type Query {
+  ...
+  Lift(id: ID!): Lift!
+}
+```
+
+Now if we pass the `id` of one of the lifts, we should filter the results to the single `Lift` object that matches that `id`. Keep in mind that we're not worried about implementation details at this moment. Right now, we're only concerned about creating the blueprint for these data relationships.
+
+Similarly, we can create a `Trail` query to return a trail by `id`. It's going to look pretty similar to the `Lift` query:
+
+```graphql
+type Query {
+  ...
+  Lift(id: ID!): Lift!
+  Trail(id: ID!): Trail!
+}
+```
+
+## Connected Data
+
+It's possible to return data about different types in a single query. Making connections between data points is one of the most powerful features of GraphQL. At Snowtooth Mountain, a lift transports people to a certain list of trails, and a trail can be accessed by taking one or more of these lifts.
+
+If we want to replicate this data relationship with our GraphQL schema, we need to connect these two data types. First, we'll connect a `Lift` to a `Trail`:
+
+```graphql
+type Lift {
+  ...
+  trailAccess: [Trail!]!
+}
+```
+
+When we query the `trailAccess` field, this will return a list of all of the trails that are accessed by this lift.
+
+To draw the line back to the `Lift` from the `Trail`, we can add another field to the `Trail` type that returns a list of lifts.
+
+```graphql
+type Trail {
+  ...
+  accessedByLifts: [Lift!]!
+}
+```
+
+Connecting data doesn't always mean returning a list. Keep in mind that you can return a single object from a field as well. Perhaps our `Trail` had a `namedAfter` field to describe the `Person` who the `Trail` is named after. In the schema, this would look like this:
+
+```graphql
+type Trail {
+  ...
+  namedAfter: Person!
+}
+```
+
+The schema design process is vitally important to the success of a GraphQL project, but we think it's one of most fun parts. The schema document is the contract between engineers from all over the stack and provides a common vocabulary about the types that are part of the project.
