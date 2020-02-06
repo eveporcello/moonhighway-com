@@ -1,0 +1,131 @@
+---
+slug: query-arguments
+date: 2020-02-06
+title: 'Working with Query Arguments'
+description: 'filtering results with query arguments'
+categories: ['javascript', 'apollo', 'graphql']
+keywords: ['programming']
+banner: './images/coffee-filter.jpg'
+published: true
+---
+
+A common refrain you'll hear about GraphQL is that you can make one request and get only the data you want. A query will return just the fields that you request, nothing more and nothing less. For example in the `allLifts` query, we make a selection for a certain set of fields:
+
+```graphql
+query {
+  allLifts {
+    name
+    status
+  }
+}
+```
+
+*Note: To follow along with these queries, go to [snowtooth.moonhighway.com](https://snowtooth.moonhighway.com).*
+
+There are several other fields that are part of the `Lift` type but not part of this query. We don't have to deal with them in the response though, because we're only requesting `name` and `status`.
+
+Even though we're reducing the number of fields in the response, let's consider we only want to display one of these lifts in our UI. If you issued this query from the client, you'd get the full array of data back, and then it'd be the job of some JavaScript on the client to iterate over the array, find the right lift, and then display. Asking the client to transform that data is a lot of extra processing.
+
+GraphQL allows you to move a lot of that logic to the GraphQL server. Instead of parsing, sorting, filtering on the client, you can do this work on the server, and then deliver the exact data that you need to the client.
+
+Our UI only needs the one lift, right? So let's use one of the queries available on the API, the `Lift` query. To make this possible, we need to use query arguments. First, let's request a specific lift by id:
+
+```graphql
+query {
+  Lift(id: "panorama") {
+    name
+    status
+  }
+}
+```
+
+When we send this query, the GraphQL server will find the object in the lifts array that matches the id for `panorama`. Just the data that we need. If you look at the underlying schema, you'll notice that the `id` argument is non-nullable. We have to provide a value. But these types of filters can be optional, as we see in the `allLifts` query:
+
+```graphql
+query {
+  allLifts(status: OPEN) {
+    name
+    status
+    capacity
+  }
+}
+```
+
+We can filter the results of the `allLifts` query by sending the optional `status` argument. This query will return only the open lifts.
+
+## Changing Data with Mutations
+
+So far, we've talked about how to get data, but we haven't talked about you might change data with GraphQL. Queries are for getting data, mutations are for changing data. Just like with queries, the schema lists all of the possible mutation types that are available on the API. Mutations are defined like queries. They have names. They can have selection sets that return object types or scalars. The difference is that mutations perform some sort of a data change that affects the state of your backend data.
+
+Writing a mutation starts with the `mutation` keyword. Then we'll nest the name of the mutation and any fields we want to return from the mutation, just like we did with the query:
+
+```graphql
+mutation {
+  setLiftStatus(id: "panorama", status: OPEN) {
+    name
+    status
+    difficulty
+  }
+}
+```
+
+The `setLiftStatus` mutation takes in the `id` of the lift that we want to change and the new desired `status` of that lift. Then the `setLiftStatus` mutation returns the `Lift` object that has been changed. That way, we can view all of
+
+## Variables
+
+We have changed data by sending new string values as mutation arguments. As an alternative, you can use input variables. Variables replace the static value in the query so that we can pass dynamic values instead. Let's consider our `setLiftStatus` mutation. Instead of dealing with strings, let's use variable names, which in GraphQL are always preceded by a `$` character:
+
+```graphql
+mutation ($id: ID! status: LiftStatus!) {
+  setLiftStatus(id: $id, status: $status) {
+    name
+    status
+    difficulty
+  }
+}
+```
+
+The static value is replaced by a `$variable`. Then, we state that the `$variable` can be accepted by the mutation. From there, we map each of the `$variable` names with the argument name. In GraphiQL or the Playground, there is a window for Query Variables. This is where we send the input data as a JSON object. Be sure to use the correct variable name as the JSON key:
+
+```json
+{
+  "id": "panorama",
+  "status": "CLOSED"
+}
+```
+
+One quick note here that when we pass an enum value inline with the query we don't use quotes around the value:
+
+```graphql
+mutation {
+  setLiftStatus(id: "panorama", status: OPEN) {
+    name
+    status
+    difficulty
+  }
+}
+```
+
+It's `OPEN` not `"open"`. When we pass the values as variables with JSON, we have to use valid JSON syntax and surround each word with doublequotes.
+
+Variables are very useful when sending argument data. Not only will this keep our mutations more organized in a test, but allowing dynamic inputs will be hugely helpful later when connecting a client interface.
+
+## Default Values
+
+It's also possible to supply a default value for a query or mutation argument. We'll construct the `trailCount` query to demonstrate:
+
+```graphql
+query($status: TrailStatus!) {
+  trailCount(status: $status)
+}
+```
+
+The `trailCount` query takes in `status` as an argument. We're using query variables here too. But what happens if I don't supply a JSON variable value in the Query Variables panel? We'll get an error: `Response not successful: Received status code 400`. To resolve this, we could just update the JSON panel, or we could provide a default value for status using an equals sign:
+
+```graphql
+query($status: TrailStatus = OPEN) {
+  trailCount(status: $status)
+}
+```
+
+Note that you'll need to remove the exclamation point from `TrailStatus`. By setting `TrailStatus` to `OPEN`, this means that there will never be a case where we supply `null`. Instead, if we don't supply a value, the mutation will execute using the default value.
