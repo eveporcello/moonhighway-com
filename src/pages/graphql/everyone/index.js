@@ -1,13 +1,13 @@
-import React from 'react'
-import { css } from '@emotion/core'
-import Layout from 'components/Layout'
-import { Container } from 'components/markupHelpers'
-import { bpMaxSM, bpMaxMD } from 'lib/breakpoints'
-import Topics from 'components/Topics'
-import HeaderImage from 'images/graphql-stack.svg'
-import Categories from 'data/categories'
-import TrainingInfo from 'components/TrainingInfo'
-import usingGraphQL from 'images/graphql/using-graphql.svg'
+import React from 'react';
+import { css } from '@emotion/core';
+import Layout from 'components/Layout';
+import { Container } from 'components/markupHelpers';
+import { bpMaxSM, bpMaxMD } from 'lib/breakpoints';
+import Topics from 'components/Topics';
+import HeaderImage from 'images/graphql-stack.svg';
+import Categories from 'data/categories';
+import TrainingInfo from 'components/TrainingInfo';
+import graphqlForEveryone from 'images/graphql/graphql-for-everyone.png';
 
 export default function GraphQLPage() {
   return (
@@ -34,7 +34,6 @@ export default function GraphQLPage() {
         `}
       >
         <img src={HeaderImage} alt={Categories[0].title} />
-        <h1>{Categories[0].title}</h1>
       </div>
       <Container>
         <section
@@ -48,31 +47,44 @@ export default function GraphQLPage() {
             }
           `}
         >
-          <h1>GraphQL is for Everyone</h1>
-          <h5>Length 1/2 day</h5>
+          <img src={graphqlForEveryone} alt="" />
+          <h1>GraphQL is for Everyone Workshops</h1>
           <p>
-            <img src={usingGraphQL} style={{ float: 'right' }} alt="" />
-            In GraphQL the "Q" stands for Query, which means _to question_.
-            Developers and engineers are not the only people with questions
-            about data. Everyone has questions, everyone needs answers. In this
-            course, everyone learns GraphQL, a special way to ask the internet
-            questions. We are going to learn how to ask the internet all sorts
-            of questions at once and allow it to provide all of the answers in a
-            single response. We'll also learn how to design a schema, the rules
-            that a server must follow when answering questions. In this course,
-            everyone will learn to communicate with APIs, retrieve and change
-            domain data, and to be more effective with GraphQL.
+            No matter what your job role is, it's likely that you'll need to
+            understand how GraphQL works and how you can get data from GraphQL
+            APIs. In this online workshop series, you'll learn the basics of
+            GraphQL in two parts: The Query Language and The Schema Definition
+            Language.
           </p>
-          <h2 style={{ clear: 'right' }}>GraphQL Query Language</h2>
-          <h5>First Thing</h5>
           <p>
-            GraphQL comes with its own language for sending queries, the GraphQL
-            Query Language. We start the course out by covering this language in
-            detail. In this section, everyone will learn how to use GraphQL
-            Playground to inspect and query GraphQL endpoints. Students will
-            experiment with GraphQL by writing robust and complex queries,
-            sending mutations, and listening for data changes with
-            subscriptions.
+            Managers, developers, QA, designers, anyone who works with data:
+            these sessions are for you.
+          </p>
+          <hr />
+          <h2>
+            <span role="img">💐</span> Online Workshop: GraphQL is for Everyone
+          </h2>
+          <h5>Length: 1 Hour, Free</h5>
+          <h5>
+            <span role="img">🎟</span> Register Now!
+          </h5>
+          <ul>
+            <li>
+              <a href="https://zoom.us/webinar/register/WN_BKNP8olpRbiT2sxT9SfOVw">
+                March 3, 2020
+              </a>
+            </li>
+            <li>
+              <a href="https://zoom.us/webinar/register/WN_ChjHRwgUTGGZSoG_SIQhhA">
+                April 7, 2020
+              </a>
+            </li>
+          </ul>
+          <p>
+            If you're looking to start working with GraphQL, this webinar is the
+            place to start. In this hour, we'll cover the basics of GraphQL and
+            learn how to send queries to get data from GraphQL endpoints. Expect
+            some hands-on activities and resources for taking the next steps.
           </p>
           <Topics
             topics={[
@@ -82,31 +94,56 @@ export default function GraphQLPage() {
               'Changing Data with Mutations',
               'Using Arguments and Variables',
               'Listening for Changes with Subscriptions',
-              'Reviewing a Schema with Introspection',
+              'Reviewing a Schema with Introspection'
             ]}
           />
-          <h2>Designing GraphQL Schemas</h2>
-          <h5>Before Lunch</h5>
+          <h2>
+            <span role="img">🦄</span> Online Workshop: Schema Design is for
+            Everyone
+          </h2>
+          <h5>Length: 2 Hours, $149</h5>
+          <h5>
+            <span role="img">🎟</span> Register Now!
+          </h5>
+          <ul>
+            <li>
+              <a href="https://ti.to/moonhighway/graphql-schema-design">
+                April 10, 2020
+              </a>
+            </li>
+            <li>
+              <a href="https://ti.to/moonhighway/graphql-schemas">
+                June 12, 2020
+              </a>
+            </li>
+          </ul>
           <p>
-            GraphQL actually comes with two of its own languages: the Query
-            Language and the Schema Definition Language or SDL. After the
-            morning break, we will dive head first into the Schema Definition
-            Language starting with the syntax, then by designing our own
-            schemas. In this segment, we will learn techniques for designing
-            schemas that clearly define business domains. Once complete, we will
-            have the skills to help design the domain and retrieve data from it.
+            A strong GraphQL schema is the foundation of any GraphQL API
+            project. It's a document that describes your API's types. It's a
+            blueprint for building applications. It's a contract that offers a
+            shared understanding to developers, managers, and QA, so they can
+            build the right products the first time with focus and clarity.
+          </p>
+          <p>
+            In this online course, you'll learn to build readable, scalable,
+            well-documented schemas with GraphQL's schema definition language.
+            We'll cover real-world examples and best practices that you can
+            apply immediately to your own schema design projects. Learn to speak
+            the language of GraphQL fluently, no matter your job role.
           </p>
           <Topics
             topics={[
-              'Schema Definition Language',
-              'Designing your Own Schemas',
-              'Connecting Types with Fields',
-              'Connections with Through Types',
-              'Effectively Designing Mutations',
-              'Effectively Documenting a Schema',
-              'Strategies for Approaching Design',
+              'Designing a Schemas',
+              'Creating Types',
+              'Nullable vs. Non-nullable Fields',
+              'Connecting Types',
+              'Filters and Pagination',
+              'Interfaces and Unions',
+              'Custom Scalars',
+              'Schema Documentation'
             ]}
           />
+
           <TrainingInfo
             title="GraphQL"
             description={Categories[0].description}
@@ -114,5 +151,5 @@ export default function GraphQLPage() {
         </section>
       </Container>
     </Layout>
-  )
+  );
 }

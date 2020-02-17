@@ -1,7 +1,7 @@
-import graphqlWorkshop from '../images/graphql/graphql-workshop.svg'
-import graphqlForEveryone from '../images/graphql/graphql-for-everyone.svg'
-import graphqlTheNextParts from '../images/graphql/graphql-the-next-parts.svg'
-import usingGraphQL from '../images/graphql/using-graphql.svg'
+import graphqlWorkshop from '../images/graphql/graphql-workshop.svg';
+import graphqlForEveryone from '../images/graphql/graphql-for-everyone.svg';
+import graphqlTheNextParts from '../images/graphql/graphql-the-next-parts.svg';
+import usingGraphQL from '../images/graphql/using-graphql.svg';
 
 export default [
   {
@@ -16,8 +16,8 @@ export default [
       'Query Language',
       'Schema Definition Language',
       'Apollo Server',
-      'Writing Resolvers',
-    ],
+      'Writing Resolvers'
+    ]
   },
   {
     title: 'Fullstack GraphQL',
@@ -31,8 +31,8 @@ export default [
       'Unions & Interfaces',
       'Apollo Client',
       'Apollo & React',
-      'Building Your Own Client',
-    ],
+      'Building Your Own Client'
+    ]
   },
   {
     title: 'Production Ready GraphQL',
@@ -46,8 +46,8 @@ export default [
       'Membership and Authorization',
       'Subscriptions',
       'GraphQL Tooling',
-      'Apollo Federation',
-    ],
+      'Apollo Federation'
+    ]
   },
   {
     title: 'GraphQL For Everyone',
@@ -56,12 +56,11 @@ export default [
     overview: `In GraphQL the "Q" stands for Query, which means to question. Developers and Engineers are not the only people with questions. Everyone has questions, everyone needs answers. In this course, everyone learns GraphQL, a special way to ask the internet questions. We are going to learn how to ask the internet all sorts of questions at once and allow it to provide all of the answers in a single response. We'll also learn how to design a schema, the rules that a server must follow when answering questions. This morning, or afternoon, or evening but preferably morning... on this morning everyone learns to communicate with APIs, everyone learns how to retrieve and change domain data, everyone learns to be more effective.`,
     thumb: `${usingGraphQL}`,
     button: 'View Full Description **→**',
-    length: '1/2',
     tags: [
       'Playground & GraphiQL',
       'Query Language',
       'Schema Definition Language',
-      'Introspection',
-    ],
-  },
-]
+      'Introspection'
+    ]
+  }
+];
