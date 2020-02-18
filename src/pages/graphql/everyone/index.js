@@ -49,6 +49,7 @@ export default function GraphQLPage() {
         >
           <img src={graphqlForEveryone} alt="" />
           <h1>GraphQL is for Everyone Workshops</h1>
+          <h2>Free Webinars Once a Month!</h2>
           <p>
             No matter what your job role is, it's likely that you'll need to
             understand how GraphQL works and how you can get data from GraphQL

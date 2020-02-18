@@ -50,7 +50,7 @@ export default [
     ]
   },
   {
-    title: 'GraphQL For Everyone',
+    title: 'GraphQL For Everyone: Free Webinars Once a Month',
     slug: '/graphql/everyone/',
     description: `Your entire team needs to be on the same page. Interacting with a GraphQL API using the Playground is not just for developers and engineers. Project Managers, Product Owners, and Administrators will learn to communicate with their business domain using GraphQL too.`,
     overview: `In GraphQL the "Q" stands for Query, which means to question. Developers and Engineers are not the only people with questions. Everyone has questions, everyone needs answers. In this course, everyone learns GraphQL, a special way to ask the internet questions. We are going to learn how to ask the internet all sorts of questions at once and allow it to provide all of the answers in a single response. We'll also learn how to design a schema, the rules that a server must follow when answering questions. This morning, or afternoon, or evening but preferably morning... on this morning everyone learns to communicate with APIs, everyone learns how to retrieve and change domain data, everyone learns to be more effective.`,
