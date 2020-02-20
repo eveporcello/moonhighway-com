@@ -77,7 +77,7 @@ export default function GraphQLPage() {
             </li>
             <li>
               <a href="https://zoom.us/webinar/register/WN_ChjHRwgUTGGZSoG_SIQhhA">
-                April 7, 2020
+                April 3, 2020
               </a>
             </li>
           </ul>
