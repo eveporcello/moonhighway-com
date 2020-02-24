@@ -72,12 +72,12 @@ export default function GraphQLPage() {
           <ul>
             <li>
               <a href="https://zoom.us/webinar/register/WN_BKNP8olpRbiT2sxT9SfOVw">
-                March 3, 2020
+                March 3, 2020, 9:00AM Pacific
               </a>
             </li>
             <li>
               <a href="https://zoom.us/webinar/register/WN_ChjHRwgUTGGZSoG_SIQhhA">
-                April 13, 2020
+                April 14, 2020, 7:00AM Pacific
               </a>
             </li>
           </ul>
@@ -109,12 +109,12 @@ export default function GraphQLPage() {
           <ul>
             <li>
               <a href="https://ti.to/moonhighway/graphql-schema-design">
-                April 10, 2020
+                April 10, 2020, 9AM Pacific
               </a>
             </li>
             <li>
               <a href="https://ti.to/moonhighway/graphql-schemas">
-                June 12, 2020
+                June 12, 2020, 9AM Pacific
               </a>
             </li>
           </ul>
