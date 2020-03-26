@@ -1,0 +1,305 @@
+---
+slug: the-parent-argument
+date: 2020-03-25
+title: 'Handling the Parent Object in GraphQL Resolvers'
+description: 'working with resolver functions more effectively'
+categories: ['graphql', 'javascript', 'tutorial']
+keywords: ['graphql']
+banner: './images/parent.jpg'
+published: true
+---
+
+GraphQL resolvers are functions that return data for fields in your [GraphQL schema](https://www.moonhighway.com/schema-definition-language). If the schema is the plan for your GraphQL API, the resolvers are the executors of that plan. They're the workers who go get the data for you, no matter where that data is. 
+
+Imagine we were working on a project, and we needed to model some data with GraphQL. In one dataset, we have information about people:
+
+```json
+[
+    {
+        "id": "001", 
+        "name": "Megan Wishbone", 
+        "email": "mwish@gmail.com", 
+        "petName": "Washington" 
+    },
+    {
+        "id": "002", 
+        "name": "Jonathan Scrimshaw", 
+        "email": "jscrim@gmail.com", 
+        "petName": "Hamilton" 
+    },
+    {
+        "id": "003", 
+        "name": "Cam Cornington", 
+        "email": "ccorn@gmail.com", 
+        "petName": "Burr" 
+    },
+    {
+        "id": "004", 
+        "name": "Shanice Gilbertine", 
+        "email": "sgilbers@gmail.com", 
+        "petName": "Jefferson" 
+    }
+]
+```
+
+In another dataset, we have some information about pets:
+
+```json
+[
+    {
+        "id": "p123", 
+        "name": "Jefferson", 
+        "type": "dog",
+        "weight": 30, 
+        "awardWinner": true
+    },
+    {
+        "id": "p313", 
+        "name": "Hamilton", 
+        "type": "cat", 
+        "weight": 10, 
+        "awardWinner": true
+    },
+    {
+        "id": "p316", 
+        "name": "Burr", 
+        "type": "rabbit", 
+        "weight": 3, 
+        "awardWinner": true
+    },
+    {
+        "id": "p414", 
+        "name": "Washington", 
+        "type": "beluga whale", 
+        "weight": 3000, 
+        "awardWinner": false
+    }
+]
+```
+
+Given that data, we can create a schema for a few different types:
+
+```graphql
+type Person {
+    id: ID!
+    name: String!
+    email: String!
+}
+
+type Pet {
+    id: ID!
+    name: String!
+    type: String!
+    weight: Int!
+    awardWinner: Boolean!
+}
+
+type Query {
+    allPeople: [Person!]!
+    allPets: [Pet!]!
+}
+```
+
+With our schema created, it's time to write some resolver functions. These resolvers will go get the data from wherever it is. This could mean in a JSON file, a database, a REST API, anywhere. In this case, we'll return the JSON:
+
+```javascript
+const people = require('/people.json')
+const pets = require('/pets.json')
+
+const resolvers = {
+    Query: {
+        allPeople: () => people,
+        allPets: () => pets
+    }
+}
+```
+
+From here, we might add another query to find a pet by their ID. Starting with the schema, we'll add a query that accepts an argument for `id`: 
+
+
+```graphql
+type Query {
+    allPeople: [Person!]!
+    allPets: [Pet!]!
+    petById(id: ID!): Pet!
+}
+```
+Then we'll write the corresponding resolver. Every time we send the `petById` query, we'll require that the client send an `id` for the pet, so that we can filter the results. The way that we pass this value into the resolver function is by the second argument: args.
+
+```javascript
+const resolvers = {
+    Query: {
+        allPeople: () => people,
+        allPets: () => pets,
+        petById: (parent, args) => {
+            return pets.filter(pet => pet.id === args.id)
+        } 
+    }
+}
+```
+
+"BUT WAIT," you might be shouting at your screen. "WTF is that `parent` stuff, and why didn't you explain it?" Step 1: Calm down. You might be too emotionally invested in this blog. Step 2: Let's talk about it.
+
+If the `args` argument is the Marcia of the world of resolvers, then `parent` is the Jan. Jan is great but Marcia gets the most attention. (If you don't understand that reference, ask a person who is the age of a parent or older.) Though `parent` is often overlooked, it's very useful when generating dynamic values or connecting data. 
+
+*Note: You may see different names used for this argument. `parent` is sometimes called `obj`, `root`, or `_`, but it always does the same thing.*
+
+Always remember that a resolver function returns whatever data you want it to. The data for pets does not have a field called `loud` to describe each pet:
+
+```json
+[
+    {
+        "id": "p123", 
+        "name": "Jefferson", 
+        "type": "dog",
+        "weight": 30, 
+        "awardWinner": true
+    },
+    {
+        "id": "p313", 
+        "name": "Hamilton", 
+        "type": "cat", 
+        "weight": 10, 
+        "awardWinner": true
+    },
+    {
+        "id": "p316", 
+        "name": "Burr", 
+        "type": "rabbit", 
+        "weight": 3, 
+        "awardWinner": true
+    },
+    {
+        "id": "p414", 
+        "name": "Washington", 
+        "type": "beluga whale", 
+        "weight": 3000, 
+        "awardWinner": false
+    }
+]
+```
+
+That doesn't mean that we can't create and return a `loud` field from the GraphQL API. We could use a resolver to generate some data for that field. We'd add the field to the schema first:
+
+```graphql
+type Pet {
+    id: ID!
+    name: String!
+    type: String!
+    weight: Int!
+    awardWinner: Boolean!
+    loud: Boolean! 
+}
+```
+As long as we return a boolean for that field, our query will execute as expected:
+
+```javascript
+const resolvers = {
+    Query: {
+        allPeople: () => people,
+        allPets: () => pets,
+        petById: (parent, args) => {
+            return pets.filter(pet => pet.id === args.id)
+        }
+    },
+    Pet: {
+        loud: () => true
+    }
+}
+```
+Notice that we have added the `Pet` resolver outside of the `Query` resolver. Whenever we send a query to request the `loud` field, our server will return `true`:
+
+```graphql
+query {
+    allPets {
+        name
+        loud  # <-- this field will return `true`
+    }
+}
+```
+We're using the resolver to generate data. As long as the resolver returns the same type that the schema says it should, the query will execute as expected. This is called a **trivial resolver**. These resolvers allow you to write functions that execute every time we ask for specific fields. 
+
+The same technique can be used to generate a dynamic value. Let's add to the `Pet` type a field for `email`. This email field will return an email address based on the data. 
+
+```graphql
+type Pet {
+    id: ID!
+    name: String!
+    type: String!
+    weight: Int!
+    awardWinner: Boolean!
+    loud: Boolean! 
+    email: String!
+}
+```
+
+Every time we ask for the `email` field, we want to return a custom email address based on the pet's name. The resolver will look at the data for each pet and generate that. The way that we look at the data for each pet is with the `parent` object:
+
+```javascript
+const resolvers = {
+    //..
+    Pet: {
+        loud: () => true,
+        email: parent => `${parent.name}@pet-library.com`
+    }
+}
+```
+The `parent` object contains all of the fields for the pet, so you can concatenate that on to a string to generate an email.
+
+The final purpose of the `parent` object is to connect different data types. Our schema supports two main types: `Pet` and `Person`. To link these two types, we would add a field to each type:
+
+```graphql
+type Person {
+    id: ID!
+    name: String!
+    email: String!
+    pet: Pet!
+}
+
+type Pet {
+    id: ID!
+    name: String!
+    type: String!
+    weight: Int!
+    awardWinner: Boolean!
+    human: Person!
+}
+```
+The `Person.pet` field returns a pet. The `Pet.human` field returns a person. With the relationship created in the schema, we'll write resolvers to connect the types:
+
+```javascript
+const resolvers = {
+    Query: {
+        //...
+    },
+    Person: {
+        pet: parent => {
+            return pets.find(pet => pet.name === parent.petName);
+        }
+    }
+}
+```
+
+When we query the `pets` field on a `Person`, we'll call that resolver function. This function will filter the pets array to return the correct pet by matching the name with the `petName` field in the people data.
+
+To draw the line from the `Pet` to the `Person`, we need to write the resolver. This time, we'll look at the people data and find the instances where the pet names match:
+
+```javascript
+const resolvers = {
+  Query: {
+    //...
+  },
+  Person: {
+    //... 
+  },
+  Pet: {
+    human: parent => {
+      return people.find(
+        person => person.petName === parent.name
+      );
+    }
+  }
+};
+```
+
+We've used the `parent` argument to generate data and to connect data types. This is definitely a powerful feature to know about when setting out to build your own APIs.
