@@ -71,13 +71,13 @@ export default function GraphQLPage() {
           </h5>
           <ul>
             <li>
-              <a href="https://zoom.us/webinar/register/WN_BKNP8olpRbiT2sxT9SfOVw">
-                March 3, 2020, 9:00AM Pacific
+              <a href="https://zoom.us/webinar/register/WN_ChjHRwgUTGGZSoG_SIQhhA">
+                April 14, 2020, 7:00AM Pacific
               </a>
             </li>
             <li>
-              <a href="https://zoom.us/webinar/register/WN_ChjHRwgUTGGZSoG_SIQhhA">
-                April 14, 2020, 7:00AM Pacific
+              <a href="https://zoom.us/webinar/register/WN_oem2KqGCSpGM9pFgtAktHg">
+                May 12, 2020, 9:30AM Pacific
               </a>
             </li>
           </ul>
@@ -108,15 +108,11 @@ export default function GraphQLPage() {
           </h5>
           <ul>
             <li>
-              <a href="https://ti.to/moonhighway/graphql-schema-design">
-                April 10, 2020, 9AM Pacific
-              </a>
-            </li>
-            <li>
               <a href="https://ti.to/moonhighway/graphql-schemas">
                 June 12, 2020, 9AM Pacific
               </a>
             </li>
+            <li>August 12, 2020, 9AM Pacific (Registration coming soon)</li>
           </ul>
           <p>
             A strong GraphQL schema is the foundation of any GraphQL API
