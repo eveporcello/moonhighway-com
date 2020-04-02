@@ -1,0 +1,139 @@
+---
+slug: typescript-and-apollo
+date: 2020-04-02
+title: 'Generating Types with Apollo CLI'
+description: 'if you like types, you might like GraphQL'
+categories: ['graphql', 'javascript', 'tutorial']
+keywords: ['graphql']
+banner: './images/tiny-doors.jpg'
+published: true
+---
+
+If you're ever trying to talk someone into liking GraphQL, a good place to start is by explaining that GraphQL is a type system for your API. Enforcing types is something that GraphQL is really good at, and if you add TypeScript in the mix, you're dealing with a pretty powerful combination. GraphQL and TypeScript are like Leslie Knope and Ben Wyatt - they both love rules, and they both bring out the best in one another. 
+
+To get a sense of how some of the tooling works in the GraphQL - Apollo - TypeScript ecosystem, let's set up a small project. First, we want to generate a project with Create React App. We'll send the `--template typescript` flag to generate the project with the TypeScript defaults. We also want to install `apollo-boost` for everything Apollo Client-related that we'll need and `@apollo/react-hooks` to build our user interface:
+
+```
+npx create-react-app snowtooth-ui --template typescript
+npm install graphql apollo-boost @apollo/react-hooks
+cd snowtooth-ui
+npm start
+```
+
+With the project set up, let's take a look at what has happened. Unlike regular ol' Create React App, the `src` folder contains `.ts` and `.tsx` files. The `package.json` file also shows that several typed versions of packages (`@types/react`, `@types/react-dom`, etc) have been installed.
+
+Now that the project is set up, we can start to build our app that will consume data from a GraphQL API. We'll use the GraphQL server to populate data for the user interface. We're going to be using the Snowtooth API, a real GraphQL API for a fake ski resort to build a React UI using TypeScript. We can use Apollo's CLI tool to download the Snowtooth schema. Then we'll use that to generate the types automatically. In the project root, run the following:
+
+```
+npx apollo schema:download --endpoint=https://snowtooth.moonhighway.com graphql-schema.json
+```
+
+Running this command will run the [Apollo CLI](https://www.apollographql.com/docs/devtools/cli/). The Apollo CLI has several helpful commands for interacting with the Apollo platform to download schemas, check in schemas with Apollo's Graph Manager tool, and to register client operations. In our case, we're using it to download Snowtooth's schema as JSON.
+
+Next we'll create a file that contains our GraphQL queries in the `src/queries` folder. In that folder, we'll add a file called `liftQuery.ts`. This will contain the query we want to send to populate the data about lifts in our app:
+
+```javascript
+import { gql } from "apollo-boost";
+
+const liftQuery = gql`
+  query AllLifts {
+    allLifts {
+      id
+      name
+      status
+      capacity
+      trailAccess {
+        id
+        name
+        status
+      }
+    }
+  }
+`;
+
+export default liftQuery;
+```
+
+Since we identified the fields that the schema will allow and we've specified which fields we'll request in the query, we can now generate the TypeScript type definitions for the eventual React component. The command for this is extremely long, but copying and pasting is allowed:
+
+```
+npx apollo codegen:generate --localSchemaFile=graphql-schema.json --target=typescript --includes=src/**/*.ts --tagName=gql --addTypename --globalTypesFile=src/types/graphql-global-types.ts types
+```
+
+We just used Apollo Codegen to create the type definitions for our future app. Running this process created a couple files in a new folder called `types`. `graphql-global-types.ts` contains the enums and input types that are part of the schema. `AllLifts.ts` contains all of the type definitions for the fields in the query. 
+
+Now we need to create the client. We'll use `apollo-boost` for this, a wrapper around many of the most popularly used packages that are part of Apollo Client. We'll create the client by passing the `uri` for the Snowtooth GraphQL endpoint. Then we'll pass that client to `ApolloProvider` as a property so that the `App` component has access to all of the data from that API. We'll add the following code to the `src/index.ts` file:
+
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./index.css";
+
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "@apollo/react-hooks";
+
+const client = new ApolloClient({
+  uri: "https://snowtooth.moonhighway.com"
+});
+
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
+  document.getElementById("root")
+);
+```
+
+From there, we'll adjust the `App.tsx` file to import the lift query, the types, and to create the app. `useQuery` is the function, the hook that we're going to use to fetch the data from the API:
+
+```typescript
+import { useQuery } from "@apollo/react-hooks";
+import liftQuery from "./queries/liftQuery";
+import { AllLifts } from "./queries/types/AllLifts";
+
+const App: React.FC = () => {
+  const { loading, data } = useQuery<AllLifts>(liftQuery);
+  if (loading) return <p>Loading</p>;
+
+  return <h1>Snowtooth Lift Status</h1>;
+};
+
+export default App;
+```
+
+First, we'll check to see if `loading` is true. Next, we need to show the data:
+
+```typescript
+const App: React.FC = () => {
+  const { loading, data } = useQuery<AllLifts>(liftQuery);
+  if (loading) return <p>Loading</p>;
+
+  return (
+    <section>
+      <h1>Snowtooth Lift Status</h1>
+
+      {data && !loading && (
+        <table className="lifts">
+          <thead>
+            <tr>
+              <th>Lift Name</th>
+              <th>Current Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.allLifts.map(lift => (
+              <tr key={lift.id}>
+                <td>{lift.name}</td>
+                <td>{lift.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </section>
+  );
+};
+```
+
+Now we've got ourselves a nice little table of data. That's the tip of the iceberg for working with [Apollo & TypeScript](https://www.apollographql.com/docs/react/development-testing/static-typing/) together, but if you're looking for a way in to GraphQL or a way in to TypeScript, you might enjoy how they bring out the best in one another! 
