@@ -71,13 +71,13 @@ export default function GraphQLPage() {
           </h5>
           <ul>
             <li>
-              <a href="https://zoom.us/webinar/register/WN_ChjHRwgUTGGZSoG_SIQhhA">
-                April 14, 2020, 7:00AM Pacific
+              <a href="https://zoom.us/webinar/register/WN_oem2KqGCSpGM9pFgtAktHg">
+                May 12, 2020, 9:30AM Pacific
               </a>
             </li>
             <li>
-              <a href="https://zoom.us/webinar/register/WN_oem2KqGCSpGM9pFgtAktHg">
-                May 12, 2020, 9:30AM Pacific
+              <a href="https://us02web.zoom.us/webinar/register/WN_eYZ8Vig-QzeWye37uzCrYA">
+                June 2, 2020, 9:00AM Pacific
               </a>
             </li>
           </ul>
@@ -102,7 +102,7 @@ export default function GraphQLPage() {
             <span role="img">🦄</span> Online Workshop: Schema Design is for
             Everyone
           </h2>
-          <h5>Length: 2 Hours, $149</h5>
+          <h5>Length: 2 Hours, $39</h5>
           <h5>
             <span role="img">🎟</span> Register Now!
           </h5>
