@@ -1,0 +1,395 @@
+---
+slug: functional-javascript
+date: 2020-05-15
+title: 'Functional JavaScript: Immutability'
+description: 'have a good summer. never change.'
+categories: ['react', 'javascript', 'functional']
+keywords: ['react']
+banner: './images/sheep.jpg'
+published: true
+---
+
+*This is an excerpt from our book, [Learning React](https://www.amazon.com/Learning-React-Modern-Patterns-Developing/dp/1492051721/ref=sr_1_3?dchild=1&keywords=learning+react&qid=1589503548&s=books&sr=1-3). The second edition will be coming out this summer!*
+
+When you start to explore React, you'll likely notice that the topic of functional programming comes up a lot. Functional techniques are being used more and more in JavaScript projects, particularly React projects.
+
+It's likely that you have already written functional JavaScript code without thinking about it. If you've mapped or reduced an array, then you're already on your way to becoming a functional JavaScript programmer. Functional programming techniques are core not only to React but to many of the libraries in the React ecosystem as well.
+
+If you are wondering where this functional trend came from, the answer is the 1930s, with the invention of _lambda calculus_, or λ-calculus. Dana S. Scott, ["λ-Calculus: Then & Now"](http://turing100.acm.org/lambda_calculus_timeline.pdf). Functions have been a part of calculus since it emerged in the 17th century. Functions can be sent to functions as arguments or returned from functions as results.  More complex functions, called _higher-order functions_, can manipulate functions and use them as either arguments or results or both. In the 1930s, Alonzo Church was at Princeton experimenting with these higher-order functions when he invented lambda calculus.
+
+In the late 1950s, John McCarthy took the concepts derived from λ-calculus and applied them to a  new programming language called Lisp.  Lisp implemented the concept of higher-order functions and functions as _first-class members_ or first-class citizens. A function is considered a first-class member when it can be declared as a variable and sent to functions as an argument. These functions can even be returned from functions.
+
+Let's take a look at one of the concepts that is often associated with functional JavaScript: **immutability**.
+
+To mutate is to change, so to be _immutable_ is to be unchangeable. In a functional program, data is immutable. It never changes.
+
+If you need to share your birth certificate with the public, but want to redact or remove private information, you essentially have two choices: you can take a big Sharpie to your original birth certificate and cross out your private data, or you can find a copy machine. Finding a copy machine, making a copy of your birth certificate, and writing all over that copy with that big Sharpie would be preferable. This way you can have a redacted birth certificate to share and your original that is still intact.
+
+This is how immutable data works in an application. Instead of changing the original data structures, we build changed copies of those data structures and use them instead.
+
+To understand how immutability works, let's take a look at what it means to mutate data. Consider an object that represents the color `lawn`:
+
+```javascript
+let color_lawn = {
+  title: "lawn",
+  color: "#00FF00",
+  rating: 0
+};
+```
+
+We could build a function that would rate colors, and use that function to change the rating of the `color` object:
+
+```javascript
+function rateColor(color, rating) {
+  color.rating = rating;
+  return color;
+}
+
+console.log(rateColor(color_lawn, 5).rating); // 5
+console.log(color_lawn.rating); // 5
+```
+
+In JavaScript, function arguments are references to the actual data. Setting the color's rating like this changes or mutates the original color object. (Imagine if you tasked a business with redacting and sharing your birth certificate and they returned your original birth certificate with black marker covering the important details. You'd hope that a business would have the common sense to make a copy of your birth certificate and return the original unharmed.) We can rewrite the `rateColor` function so that it does not harm the original goods (the `color` object):
+
+```javascript
+const rateColor = function(color, rating) {
+  return Object.assign({}, color, { rating: rating });
+};
+
+console.log(rateColor(color_lawn, 5).rating); // 5
+console.log(color_lawn.rating); // 4
+```
+
+Here, we used `Object.assign` to change the color rating. `Object.assign` is the copy machine. It takes a blank object, copies the color to that object, and overwrites the rating on the copy. Now we can have a newly rated color object without having to change the original.
+
+We can write the same function using an arrow function along with the object spread operator. This `rateColor` function uses the spread operator to copy the color into a new object and then overwrite its rating:
+
+```javascript
+const rateColor = (color, rating) => ({
+  ...color,
+  rating
+});
+```
+
+This version of the `rateColor` function is exactly the same as the previous one. It treats color as an immutable object, does so with less syntax, and looks a little bit cleaner. Notice that we wrap the returned object in parentheses. With arrow functions, this is a required step since the arrow can't just point to an object's curly braces.
+
+Let's consider an array of color names:
+
+```javascript
+let list = [
+  { title: "Rad Red" }, 
+  { title: "Lawn" }, 
+  { title: "Party Pink" }
+];
+```
+
+We could create a function that will add colors to that array using `Array.push`:
+
+```javascript
+const addColor = function(title, colors) {
+  colors.push({ title: title });
+  return colors;
+};
+
+console.log(addColor("Glam Green", list).length); // 4
+console.log(list.length); // 4
+```
+
+However, `Array.push` is not an immutable function. This `addColor` function changes the original array by adding another field to it. In order to keep the `colors` array immutable, we must use `Array.concat` instead:
+
+```javascript
+const addColor = (title, array) => array.concat({ title });
+
+console.log(addColor("Glam Green", list).length); // 4
+console.log(list.length); // 3
+```
+
+`Array.concat` concatenates arrays. In this case, it takes a new object, with a new color title, and adds it to a copy of the original array.
+
+You can also use the spread operator to concatenate arrays in the same way it can be used to copy objects. Here is the emerging JavaScript equivalent of the previous `addColor` function:
+
+```javascript
+const addColor = (title, list) => [...list, { title }];
+```
+
+This function copies the original list to a new array and then adds a new object containing the color's title to that copy. It is immutable.
+
+### Data Transformations
+
+How does anything change in an application if the data is immutable? Functional programming is all about transforming data from one form to another. We will produce transformed copies using functions. These functions make our code less imperative and thus reduce complexity.
+
+You do not need a special framework to understand how to produce one dataset that is based upon another. JavaScript already has the necessary tools for this task built into the language. There are two core functions that you must master in order to be proficient with functional JavaScript: `Array.map` and `Array.reduce`.
+
+In this section, we will take a look at how these and some other core functions transform data from one type to another.
+
+Consider this array of high schools:
+
+```javascript
+const schools = ["Yorktown", "Washington & Lee", "Wakefield"];
+```
+
+We can get a comma-delimited list of these and some other strings by using the `Array.join` function:
+
+```javascript
+console.log(schools.join(", "));
+
+// "Yorktown, Washington & Lee, Wakefield"
+```
+
+`Array.join` is a built-in JavaScript array method that we can use to extract a delimited string from our array. The original array is still intact; `join` simply provides a different take on it. The details of how this string is produced are abstracted away from the programmer.
+
+If we wanted to create a function that creates a new array of the schools that begin with the letter "W", we could use the `Array.filter` method:
+
+```javascript
+const wSchools = schools.filter(school => school[0] === "W");
+
+console.log(wSchools);
+// ["Washington & Lee", "Wakefield"]
+```
+
+`Array.filter` is a built-in JavaScript function that produces a new array from a source array. This function takes a _predicate_ as its only argument. A predicate is a function that always returns a Boolean value: `true` or `false`. `Array.filter` invokes this predicate once for every item in the array. That item is passed to the predicate as an argument and the return value is used to decide if that item shall be added to the new array. In this case, `Array.filter` is checking every school to see if its name begins with a "W".
+
+When it is time to remove an item from an array we should use `Array.filter` over `Array.pop` or `Array.splice` because `Array.filter` is immutable. In this next sample, the `cutSchool` function returns new arrays that filter out specific school names:
+
+```javascript
+const cutSchool = (cut, list) => list.filter(school => school !== cut);
+
+console.log(cutSchool("Washington & Lee", schools).join(", "));
+
+// "Yorktown, Wakefield"
+
+console.log(schools.join("\n"));
+
+// Yorktown
+// Washington & Lee
+// Wakefield
+```
+
+In this case, the `cutSchool` function is used to return a new array that does not contain "Washington & Lee". Then the `join` function is used with this new array to create a star-delimited string out of the remaining two school names. `cutSchool` is a pure function. It takes a list of schools and the name of the school that should be removed and returns a new array without that specific school.
+
+Another array function that is essential to functional programming is `Array.map`. Instead of a predicate, the `Array.map` method takes a function as its argument. This function will be invoked once for every item in the array, and whatever it returns will be added to the new array:
+
+```javascript
+const highSchools = schools.map(school => `${school} High School`);
+
+console.log(highSchools.join("\n"));
+
+// Yorktown High School
+// Washington & Lee High School
+// Wakefield High School
+
+console.log(schools.join("\n"));
+
+// Yorktown
+// Washington & Lee
+// Wakefield
+```
+
+In this case, the `map` function was used to append "High School" to each school name. The `schools` array is still intact.
+
+In the last example, we produced an array of strings from an array of strings. The `map` function can produce an array of objects, values, arrays, other functions—any JavaScript type. Here is an example of the `map` function returning an object for every school:
+
+```javascript
+const highSchools = schools.map(school => ({ name: school }));
+
+console.log(highSchools);
+
+// [
+// { name: "Yorktown" },
+// { name: "Washington & Lee" },
+// { name: "Wakefield" }
+// ]
+```
+
+An array containing objects was produced from an array that contains strings.
+
+If you need to create a pure function that changes one object in an array of objects, `map` can be used for this, too. In the following example, we will change the school with the name of "Stratford" to "HB Woodlawn" without mutating the `schools` array:
+
+```javascript
+let schools = [
+  { name: "Yorktown" },
+  { name: "Stratford" },
+  { name: "Washington & Lee" },
+  { name: "Wakefield" }
+];
+
+let updatedSchools = editName("Stratford", "HB Woodlawn", schools);
+
+console.log(updatedSchools[1]); // { name: "HB Woodlawn" }
+console.log(schools[1]); // { name: "Stratford" }
+```
+
+The `schools` array is an array of objects. The `updatedSchools` variable calls the `editName` function and we send it the school we want to update, the new school, and the `schools` array. This changes the new array but makes no edits to the original:
+
+```javascript
+const editName = (oldName, name, arr) =>
+  arr.map(item => {
+    if (item.name === oldName) {
+      return {
+        ...item,
+        name
+      };
+    } else {
+      return item;
+    }
+  });
+```
+
+Within `editName`, the `map` function is used to create a new array of objects based upon the original array.  The `editName` function can be written entirely in one line. Here's an example of the same function using a shorthand `if/else` statement:
+
+```javascript
+const editName = (oldName, name, arr) =>
+  arr.map(item => (item.name === oldName ? { ...item, name } : item));
+```
+
+If you need to transform an array into an object, you can use `Array.map` in conjunction with `Object.keys`. `Object.keys` is a method that can be used to return an array of keys from an object.
+
+Let's say we needed to transform `schools` object into an array of schools:
+
+```javascript
+const schools = {
+  Yorktown: 10,
+  "Washington & Lee": 2,
+  Wakefield: 5
+};
+
+const schoolArray = Object.keys(schools).map(key => ({
+  name: key,
+  wins: schools[key]
+}));
+
+console.log(schoolArray);
+
+// [
+// {
+// name: "Yorktown",
+// wins: 10
+// },
+// {
+// name: "Washington & Lee",
+// wins: 2
+// },
+// {
+// name: "Wakefield",
+// wins: 5
+// }
+// ]
+```
+
+In this example, `Object.keys` returns an array of school names, and we can use `map` on that array to produce a new array of the same length. The `name` of the new object will be set using the key, and `wins` is set equal to the value.
+
+So far we've learned that we can transform arrays with `Array.map` and `Array.filter`. We've also learned that we can change arrays into objects by combining `Object.keys` with `Array.map`. The final tool that that we need in our functional arsenal is the ability to transform arrays into primitives and other objects.
+
+The `reduce` and `reduceRight` functions can be used to transform an array into any value, including a number, string, boolean, object, or even a function.
+
+Let's say we needed to find the maximum number in an array of numbers. We need to transform an array into a number; therefore, we can use `reduce`:
+
+```javascript
+const ages = [21, 18, 42, 40, 64, 63, 34];
+
+const maxAge = ages.reduce((max, age) => {
+  console.log(`${age} > ${max} = ${age > max}`);
+  if (age > max) {
+    return age;
+  } else {
+    return max;
+  }
+}, 0);
+
+console.log("maxAge", maxAge);
+
+// 21 > 0 = true
+// 18 > 21 = false
+// 42 > 21 = true
+// 40 > 42 = false
+// 64 > 42 = true
+// 63 > 64 = false
+// 34 > 64 = false
+// maxAge 64
+```
+
+The `ages` array has been reduced into a single value: the maximum age, `64`. `reduce` takes two arguments: a callback function and an original value. In this case, the original value is `0`, which sets the initial maximum value to `0`. The callback is invoked once for every item in the array. The first time this callback is invoked, `age` is equal to `21`, the first value in the array, and `max` is equal to `0`, the initial value. The callback returns the greater of the two numbers, `21`, and that becomes the `max` value during the next iteration. Each iteration compares each `age` against the `max` value and returns the greater of the two. Finally, the last number in the array is compared and returned from the previous callback.
+
+If we remove the `console.log` statement from the preceding function and use a shorthand `if/else` statement, we can calculate the max value in any array of numbers with the following syntax:
+
+```javascript
+const max = ages.reduce(
+  (max, value) => (value > max ? value : max), 
+  0
+);
+```
+
+Sometimes we need to transform an array into an object. The following example uses `reduce` to transform an array that contains colors into a hash:
+
+```javascript
+const colors = [
+  {
+    id: "xekare",
+    title: "rad red",
+    rating: 3
+  },
+  {
+    id: "jbwsof",
+    title: "big blue",
+    rating: 2
+  },
+  {
+    id: "prigbj",
+    title: "grizzly grey",
+    rating: 5
+  },
+  {
+    id: "ryhbhsl",
+    title: "banana",
+    rating: 1
+  }
+];
+
+const hashColors = colors.reduce((hash, { id, title, rating }) => {
+  hash[id] = { title, rating };
+  return hash;
+}, {});
+
+console.log(hashColors);
+
+// {
+// "xekare": {
+// title:"rad red",
+// rating:3
+// },
+// "jbwsof": {
+// title:"big blue",
+// rating:2
+// },
+// "prigbj": {
+// title:"grizzly grey",
+// rating:5
+// },
+// "ryhbhsl": {
+// title:"banana",
+// rating:1
+// }
+// }
+```
+
+In this example, the second argument sent to the `reduce` function is an empty object. This is our initial value for the hash. During each iteration, the callback function adds a new key to the hash using bracket notation and sets the value for that key to the `id` field of the array. `Array.reduce` can be used in this way to reduce an array to a single value—in this case, an object.
+
+We can even transform arrays into completely different arrays using `reduce`.  Consider reducing an array with multiple instances of the same value to an array of unique values. The `reduce` method can be used to accomplish this task:
+
+```javascript
+const colors = ["red", "red", "green", "blue", "green"];
+
+const uniqueColors = colors.reduce(
+  (unique, color) =>
+    unique.indexOf(color) !== -1 ? unique : [...unique, color],
+  []
+);
+
+console.log(uniqueColors);
+
+// ["red", "green", "blue"]
+```
+
+In this example, the `colors` array is reduced to an array of distinct values. The second argument sent to the `reduce` function is an empty array. This will be the initial value for `distinct`. When the `distinct` array does not already contain a specific color, it will be added. Otherwise, it will be skipped, and the current `distinct` array will be returned.
+
+`map` and `reduce` are the main weapons of any functional programmer, and JavaScript is no exception. The ability to create one dataset from another is a required skill and is useful for any type of programming paradigm.
