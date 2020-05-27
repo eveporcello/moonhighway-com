@@ -78,6 +78,8 @@
     "newPost": "node ./scripts/new-post.js",
     "dev:functions": "dotenv -e ./netlify/.env netlify-lambda serve netlify/functions",
     "functions:build": "netlify-lambda build netlify/functions",
-    "netlify": "gatsby build functions:build"
-  }
+    "netlify": "gatsby build functions:build",
+    "shorten": "netlify-shortener"
+  },
+  "baseUrl": "https://moonhighway.com"
 }
