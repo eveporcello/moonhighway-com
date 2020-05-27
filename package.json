@@ -63,6 +63,7 @@
   },
   "devDependencies": {
     "babel-preset-gatsby": "^0.1.11",
+    "netlify-shortener": "^2.2.0",
     "prettier": "1.17.1"
   },
   "keywords": [
