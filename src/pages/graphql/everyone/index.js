@@ -71,13 +71,8 @@ export default function GraphQLPage() {
           </h5>
           <ul>
             <li>
-              <a href="https://zoom.us/webinar/register/WN_oem2KqGCSpGM9pFgtAktHg">
-                May 12, 2020, 9:30AM Pacific
-              </a>
-            </li>
-            <li>
-              <a href="https://us02web.zoom.us/webinar/register/WN_eYZ8Vig-QzeWye37uzCrYA">
-                June 2, 2020, 9:00AM Pacific
+              <a href="https://us02web.zoom.us/webinar/register/WN_h3VjhqkeSRiL-Hh_nAlesg">
+                July 7, 2020, 9:30AM Pacific
               </a>
             </li>
           </ul>
@@ -98,49 +93,6 @@ export default function GraphQLPage() {
               'Reviewing a Schema with Introspection'
             ]}
           />
-          <h2>
-            <span role="img">🦄</span> Online Workshop: Schema Design is for
-            Everyone
-          </h2>
-          <h5>Length: 2 Hours, $39</h5>
-          <h5>
-            <span role="img">🎟</span> Register Now!
-          </h5>
-          <ul>
-            <li>
-              <a href="https://ti.to/moonhighway/graphql-schemas">
-                June 12, 2020, 9AM Pacific
-              </a>
-            </li>
-            <li>August 12, 2020, 9AM Pacific (Registration coming soon)</li>
-          </ul>
-          <p>
-            A strong GraphQL schema is the foundation of any GraphQL API
-            project. It's a document that describes your API's types. It's a
-            blueprint for building applications. It's a contract that offers a
-            shared understanding to developers, managers, and QA, so they can
-            build the right products the first time with focus and clarity.
-          </p>
-          <p>
-            In this online course, you'll learn to build readable, scalable,
-            well-documented schemas with GraphQL's schema definition language.
-            We'll cover real-world examples and best practices that you can
-            apply immediately to your own schema design projects. Learn to speak
-            the language of GraphQL fluently, no matter your job role.
-          </p>
-          <Topics
-            topics={[
-              'Designing a Schemas',
-              'Creating Types',
-              'Nullable vs. Non-nullable Fields',
-              'Connecting Types',
-              'Filters and Pagination',
-              'Interfaces and Unions',
-              'Custom Scalars',
-              'Schema Documentation'
-            ]}
-          />
-
           <TrainingInfo
             title="GraphQL"
             description={Categories[0].description}
