@@ -82,7 +82,7 @@ export default function GraphQLPage() {
             </li>
             <li>
               <a href="https://us02web.zoom.us/webinar/register/WN_eyckN1MTTS-Q0t_BEr61Zg">
-                November 3, 2020, 9:00AM Pacific
+                November 2, 2020, 9:00AM Pacific
               </a>
             </li>
             <li>
