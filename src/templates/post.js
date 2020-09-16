@@ -11,8 +11,15 @@ import { fonts } from 'lib/typography'
 import moon from 'images/moonHeader.jpg'
 import { bpMaxSM } from 'lib/breakpoints'
 import { get } from 'lodash'
+import GraphQLWorkshopBanner from 'components/GraphQLWorkshopBanner'
 
-export default function Post({ data: { mdx }, pageContext: { next, prev } }) {
+export default function Post({data: {mdx}, pageContext: {next, prev}}) {
+  const isGraphQLPost =
+    (mdx.frontmatter.keywords &&
+      mdx.frontmatter.keywords.includes('graphql')) ||
+    (mdx.frontmatter.categories &&
+      mdx.frontmatter.categories.includes('graphql'))
+
   return (
     <Layout frontmatter={mdx.frontmatter}>
       <SEO
@@ -75,6 +82,7 @@ export default function Post({ data: { mdx }, pageContext: { next, prev } }) {
         <br />
         <MDXRenderer>{mdx.code.body}</MDXRenderer>
       </Container>
+      {isGraphQLPost && <GraphQLWorkshopBanner />}
       {/* {<SubscribeForm />} */}
     </Layout>
   )
