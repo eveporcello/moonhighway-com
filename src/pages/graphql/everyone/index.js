@@ -71,11 +71,6 @@ export default function GraphQLPage() {
           </h5>
           <ul>
             <li>
-              <a href="https://us02web.zoom.us/webinar/register/WN_zAJxbnuPQj62QgSq4YHBww">
-                September 1, 2020, 9:00AM Pacific
-              </a>
-            </li>
-            <li>
               <a href="https://us02web.zoom.us/webinar/register/WN_AGleyt6WQBqFbcBT466GjA">
                 October 5, 2020, 8:00AM Pacific
               </a>
