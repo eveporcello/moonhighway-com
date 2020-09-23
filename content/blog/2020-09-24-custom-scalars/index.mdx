@@ -1,0 +1,207 @@
+---
+slug: creating-custom-scalars
+date: 2020-09-24
+title: 'Creating Custom Scalars'
+description: 'returning and validating values with GraphQL and Apollo Server'
+categories: ['graphql', 'javascript', 'apollo']
+keywords: ['graphql']
+banner: './images/leaves.jpg'
+published: true
+---
+
+GraphQL fields can return lists and objects, but of course, they can also return singular values. These are called **scalar types**. A scalar in computer science represents a single variable, an atomic unit that can hold one value at a time. A lot of data for our apps falls into the scalar category: names, email addresses, phone numbers. These are leaves of the tree: lone values instead of objects.
+
+GraphQL has a collection of [default scalar types](https://graphql.org/learn/schema/#scalar-types) that you can use as values for any field.
+
+- `Int`: A 32-bit integer
+- `Float`: A floating-point value
+- `String`: A UTF-8 character sequence
+- `Boolean`: `true` or `false`
+- `ID`: A unique identifier (serialized as a string)
+
+These scalars are suitable for the majority of situations. When you're designing a schema, you can look at each field and consider: does this field return an object type or a scalar type? If a scalar type is best, you'll typically choose from one of the five built-in scalars.
+
+Let's consider some song data:
+
+```javascript
+let songs = [
+  {
+    id: '3123',
+    title: 'Toxic',
+    artist: 'Britney Spears',
+    topChartPosition: 1,
+    numberOne: true,
+    releaseDate: '1/13/2004'
+  },
+  {
+    id: '5325',
+    title: 'Poison',
+    artist: 'Bell Biv Devoe',
+    topChartPosition: 3,
+    numberOne: false,
+    releaseDate: '2/24/1990'
+  }
+];
+```
+
+To represent this data, we'd create a `Song` type:
+
+```graphql
+type Song {
+  title: String!
+}
+```
+
+Setting `String` as the type for a song title makes a lot of sense: it's a small blob of text. It doesn't have to be formatted in a certain style. It's just a blob of text.
+
+Then you'd continue that process for all fields in the `Song` object.
+
+```graphql
+type Song {
+  id: ID!
+  title: String!
+  artist: String!
+  topChartPosition: Int
+  numberOne: Boolean
+  releaseDate: String!
+}
+```
+
+This type is looking good, but hold on. What about `releaseDate`? That's a date. It has some semantic meaning, and we likely want to save this in a specific format. For that, we can create a custom scalar type.
+
+## Returning Custom Scalars
+
+To create a custom scalar, you'll add a scalar type definition to the schema:
+
+```
+scalar Date
+```
+
+And set the value of `releaseDate` to `Date`:
+
+```graphql
+type Song {
+  id: ID!
+  title: String!
+  artist: String!
+  topChartPosition: Int
+  numberOne: Boolean
+  releaseDate: Date!
+}
+```
+
+Every field in our schema needs to map to a resolver, a function that returns data for a field. The `releaseDate`field needs to map to a resolver for the `Date` type. With `Date`, we will be able to parse and validate any fields that use this scalar as `Date` types.
+
+In the file contains your resolvers, you'll import `GraphQLScalarType`:
+
+```javascript
+const { GraphQLScalarType } = require('graphql');
+```
+
+Then create a resolver at the root of your resolver object for `Date`:
+
+```javascript
+const resolvers = {
+  Query: {
+    allSongs: () => songs
+  },
+  Date: new GraphQLScalarType({
+    name: 'Date',
+    description: 'A formatted date',
+    serialize: () => 'a date'
+  })
+};
+```
+
+Within the constructor, you'll add fields for `name`, `description`, and `serialize`.
+
+When we query the `releaseDate` field, the `serialize` function is called. With that function, we can return a whatever we want including a string that says "a date". Or more usefully, we could return a formatted date.
+
+Consider the various ways in which we can represent a date and time as a string. All of these strings represent valid dates:
+
+- "4/19/2021"
+- "4/19/2021 1:30:00 PM"
+- "Fri Apr 19 2021 12:10:17 GMT-0700 (PDT)"
+- "2021-04-19T19:09:57.308Z"
+
+We can use any of these strings to create `datetime` objects with JavaScript:
+
+```javascript
+var d = new Date('4/19/2021');
+console.log(d.toISOString());
+// "2019-04-18T07:00:00.000Z"
+```
+
+Now instead of returning a string from the `serialize` function, let's convert the date into an ISO-formatted date string.
+
+```javascript
+Date: new GraphQLScalarType({
+  name: 'Date',
+  description: 'A formatted date',
+  serialize: value => new Date(value).toISOString()
+});
+```
+
+Now when we query the releaseDate field, the serialize function is invoked which converts the string to a Date object, then an ISO string.
+
+The serialize function will be called anytime we query a field. Let's adjust this resolver to handle values that are sent as mutation arguments.
+
+The `addSong` mutation takes the following arguments and returns a `Song`:
+
+```graphql
+type Mutation {
+  addSong(title: String!, artist: String!, releaseDate: Date!): Song
+}
+```
+
+In order to parse client input or arguments, we need to add two additional functions to the custom scalar resolver:
+
+```javascript
+Date: new GraphQLScalarType({
+  name: 'Date',
+  description: 'A formatted date',
+  serialize: value => value.substring(0, 10),
+  parseValue: value => new Date(value).toISOString(),
+  parseLiteral: literal => new Date(literal.value).toISOString()
+});
+```
+
+`parseValue` is called when arguments are passed as variables.
+
+```graphql
+mutation($title: String!, $artist: String!, $releaseDate: Date!) {
+  addSong(title: $title, artist: $artist, releaseDate: $releaseDate) {
+    releaseDate # serialize() is called to return the date
+  }
+}
+```
+
+Query Variables
+
+```json
+{
+  "title": "Loading Zones",
+  "artist": "Kurt Vile",
+  "releaseDate": "10/12/2018"
+}
+```
+
+The value is parsed from the JavaScript object, converted to a `Date` object, then to an ISO string. When we call `serialize` to return the date, we get a substring - just the first 10 characters in YYYY-MM-DD format.
+
+`parseLiteral` is called when arguments are sent inline as strings, not as variables.
+
+```graphql
+mutation {
+  addSong(
+    title: "Loading Zones"
+    artist: "Kurt Vile"
+    releaseDate: "10/12/2018"
+  ) {
+    releaseDate # serialize() is called to return the date
+  }
+}
+```
+
+We get the value from the AST, convert to a `Date` object, then to an ISO string. Then `serialize` is invoked the same way for the `releaseDate` field.
+
+Custom scalars provide a way to assign semantic meaning to a field that returns a leaf or single value. If you're looking to save some time, there are npm packages that can help with this including [graphql-scalars](https://github.com/okgrow/graphql-scalars), [graphql-type-json](https://github.com/taion/graphql-type-json), and [graphql-currency-scalars](https://github.com/abhiaiyer91/graphql-currency-scalars).
