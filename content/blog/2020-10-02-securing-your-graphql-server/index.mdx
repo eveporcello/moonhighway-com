@@ -1,0 +1,235 @@
+---
+slug: securing-your-graphql-server
+date: 2020-10-02
+title: 'Securing Your GraphQL Server'
+description: 'An intro to security concepts in Apollo Server'
+categories: ['graphql', 'javascript', 'apollo']
+keywords: ['graphql']
+banner: './images/fence.jpg'
+published: true
+---
+
+When you build a GraphQL API, you provide a lot of freedom and flexibility to your clients. They have the flexibility to query data from multiple sources in a single request. They also have the ability to request large amounts of related, or connected, data in a single request. Left unchecked, your clients could have the capability of requesting too much from your service. Not only will the strain of large queries affect server performance, it could also take your service down entirely. Some clients might do this unintentionally, whereas other clients might have more malicious intent. Either way, you need to put some safeguards in place and monitor your server’s performance in order to protect against large or malicious queries.
+
+In this article, we'll cover some of the options available to improve the security of your GraphQL service.
+
+## Request Timeouts
+
+A request timeout is a first defense against large or malicious queries. A request time‐ out allows only a certain amount of time to process each request. This means that requests of your service need to be completed within a specific time frame. Request timeouts are used not only for GraphQL services, they are used for all sorts of services and processes across the internet. You might have already implemented these timeouts for your Representational State Transfer (REST) API to guard against lengthy requests with too much POST data.
+
+You can add an overall request timeout to the express server by setting the timeout key. In the following, we’ve added a timeout of five seconds to guard against troublesome queries:
+
+```javascript
+const httpServer = createServer(app);
+server.installSubscriptionHandlers(httpServer);
+httpServer.timeout = 5000;
+```
+
+Additionally, you can set timeouts for overall queries or individual resolvers. The trick to implementing timeouts for queries or resolvers is to save the start time for each query or resolver and validate it against your preferred timeout. You can record the start time for each request in context:
+
+```javascript
+const context = async ({ request }) => {
+  return {
+    timestamp: performance.now()
+  };
+};
+```
+
+Now each of the resolvers will know when the query began and can throw an error if the query takes too long.
+
+## Data Limitations
+
+Another simple safeguard that you can place against large or malicious queries is to limit the amount of data that can be returned by each query. You can return a specific number of records, or a page of data, by allowing your queries to specify how many records to return.
+
+We can design schemas to allow for pagination. But what if a client requested an extremely large page of data? Here’s an example of a client doing just that:
+
+```graphql
+query allPhotos {
+  allPhotos(first=99999) {
+    name
+    url
+    postedBy {
+      name
+      avatar
+    }
+  }
+}
+```
+
+You can guard against these types of large requests by simply setting a limit for a page of data. For example, you could set a limit for 100 photos per query in your GraphQL server. That limit can be enforced in the query resolver by checking an argument:
+
+```javascript
+allPhotos: (parent, data, context) {
+  if (data.first > 100) {
+    throw new Error('Only 100 photos can be requested at a time');
+  }
+}
+```
+
+When you have a large number of records that can be requested, it is always a good idea to implement data paging. You can implement data paging simply by providing the number of records that should be returned by a query.
+
+## Limiting Query Depth
+
+One of the benefits GraphQL provides the client is the ability to query connected data. For example, in our photo API, we can write a query that can deliver information about a photo, who posted it, and all the other photos posted by that user all in one request:
+
+```graphql
+query getPhoto($id: ID!) {
+  Photo(id: $id) {
+    name
+    url
+    postedBy {
+      name
+      avatar
+      postedPhotos {
+        name
+        url
+      }
+    }
+  }
+}
+```
+
+This is a really nice feature that can improve network performance within your applications. We can say that the preceding query has a depth of 3 because it queries the photo itself along with two connected fields: postedBy and postedPhotos. The root query has a depth of 0, the Photo field has a depth of 1, the postedBy field has a depth of 2 and the postedPhotos field has a depth of 3.
+Clients can take advantage of this feature. Consider the following query:
+
+```graphql
+query getPhoto($id: ID!) {
+  Photo(id: $id) {
+    name
+    url
+    postedBy {
+      name
+      avatar
+      postedPhotos {
+        name
+        url
+        taggedUsers {
+          name
+          avatar
+          postedPhotos {
+            name
+            url
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+We’ve added two more levels to this query’s depth: the taggedUsers in all of the photos posted by the photographer of the original photo, and the postedPhotos of all of the taggedUsers in all of the photos posted by the photographer of the original photo. This means that if I posted the original photo, this query would also resolve to all of the photos I’ve posted, all of the users tagged in those photos, and all of the photos posted by all of those tagged users. That’s a lot of data to request. It is also a lot of work to be performed by your resolvers. Query depth grows exponentially and can easily get out of hand.
+
+You can implement a query depth limit for your GraphQL services to prevent deep queries from taking your service down. If we had set a query depth limit of 3, the first query would have been within the limit, whereas the second query would not because it has a query depth of 5.
+
+Query depth limitations are typically implemented by parsing the query’s AST and determining how deeply nested the selection sets are within these objects. There are npm packages like graphql-depth-limit that can assist with this task:
+
+```
+npm install graphql-depth-limit
+```
+
+After you install it, you can add a validation rule to your GraphQL server configuration using the depthLimit function:
+
+```javascript
+const depthLimit = require('graphql-depth-limit');
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  validationRules: [depthLimit(5)],
+  context: async ({ req, connection }) => {}
+});
+```
+
+Here, we have set the query depth limit to 10, which means that we provided our clients with the capability of writing queries that can go 10 selection sets deep. If they go any deeper, the GraphQL server will prevent the query from executing and return an error.
+
+## Limiting Query Complexity
+
+Another measurement that can help you identify troublesome queries is query complexity. There are some client queries that might not run too deep but can still be expensive due to the amount of fields that are queried. Consider this query:
+
+```graphql
+query everything($id: ID!) {
+  totalUsers
+  Photo(id: $id) {
+    name
+    url
+  }
+  allUsers {
+    id
+    name
+    avatar
+    postedPhotos {
+      name
+      url
+    }
+    inPhotos {
+      name
+      url
+      taggedUsers {
+        id
+      }
+    }
+  }
+}
+```
+
+The everything query does not exceed our query depth limit, but it’s still pretty expensive due to the number of fields that are being queried. Remember, each field maps to a resolver function that needs to be invoked.
+
+Query complexity assigns a complexity value to each field and then totals the overall complexity of any query. You can set an overall limit that defines the maximum complexity available for any given query. When implementing query complexity you can identify your expensive resolvers and give those fields a higher complexity value.
+
+There are several npm packages available to assist with the implementation of query complexity limits. Let’s take a look at how we could implement query complexity in our service using graphql-validation-complexity:
+
+```
+npm install graphql-validation-complexity
+```
+
+GraphQL validation complexity has a set of default rules out of the box for determining query complexity. It assigns a value of 1 to each scalar field. If that field is in a list, it multiplies the value by a factor of 10.
+
+For example, let’s look at how graphql-validation-complexity would score the everything query:
+
+```graphql
+query everything($id: ID!) {
+  totalUsers # complexity 1
+  Photo(id: $id) {
+    name # complexity 1
+    url # complexity 1
+  }
+  allUsers {
+    id # complexity 10
+    name # complexity 10
+    avatar # complexity 10
+    postedPhotos {
+      name # complexity 100
+      url # complexity 100
+    }
+    inPhotos {
+      name # complexity 100
+      url # complexity 100
+      taggedUsers {
+        id # complexity 1000
+      }
+    }
+  }
+}
+```
+
+By default, graphql-validation-complexity assigns each field a value. It multiplies that value by a factor of 10 for any list. In this example, totalUsers represents a sin‐ gle integer field and is assigned a complexity of 1. Querying fields in a single photo have the same value. Notice that the fields queried in the allUsers list are assigned a value of 10. This is because they are within a list. Every list field is multiplied by 10. So a list within a list is assigned a value of 100. Because taggedUsers is a list within the inPhotos list, which is within the allUsers list, the values of taggedUser fields is 10 × 10 × 10, or 1000.
+
+We can prevent this particular query from executing by setting an overall query complexity limit of 1000:
+
+```javascript
+const { createComplexityLimitRule } = require('graphql-validation-complexity');
+const options = {
+  validationRules: [
+    depthLimit(5),
+    createComplexityLimitRule(1000, {
+      onCost: cost => console.log('query cost: ', cost)
+    })
+  ]
+};
+```
+
+In this example, we set the maximum complexity limit to 1000 with the use of the createComplexityLimitRule found in the graphql-validation-complexity package. We’ve also implemented the onCost function, which will be invoked with the total cost of each query as soon as it is calculated. The preceding query would not be allowed to execute under these circumstances because it exceeds a maximum complexity of 1000.
+
+Most query complexity packages allow you to set your own rules. We could change the complexity values assigned to scalars, objects, and lists with the graphql-validation-complexity package. It is also possible to set custom complexity values for any field that we deem very complicated or expensive.
+
+There are other options for GraphQL security enhancements, of course, but these techniques will get you started thinking about how to block potentially malicious queries from jeopardizing your server.
