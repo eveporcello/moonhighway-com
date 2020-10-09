@@ -1,0 +1,100 @@
+---
+slug: incorporating-rest-data
+date: 2020-10-09
+title: 'Incorporating REST Data with a GraphQL API'
+description: 'pulling data from the Strava API'
+categories: ['graphql', 'javascript', 'apollo']
+keywords: ['graphql']
+banner: './images/skiing.jpeg'
+published: true
+---
+
+One popular misconception about GraphQL is that you have to tear down all of your REST APIs in order to build a GraphQL server. The flexibility of GraphQL allows you to use all of your favorite REST data sources while enjoying the organizational benefits of a GraphQL schema. In this article, we'll take a closer look at how we can incorporate the data from a REST API into an existing GraphQL server.
+
+The server in question is the Snowtooth API, a real GraphQL API for a fake ski resort. With this API, we host data about two types: `Lifts` and `Trails`, and the app provides lift status and trail status for the ski resort. We want to update this API to include data from the Strava API. Strava is an app that allows you to track your activities like bike rides, hikes, and, of course, ski days. Strava exposes a REST API that we're going to consume with our app.
+
+## Create a Type in the Schema
+
+To start, we'll look at the data from the Strava API and create a type that models the data. Strava's data type that we want to model is the `Activity` type, so we'll choose the fields we want using GraphQL's schema definition language:
+
+```graphql
+type Activity {
+  id: ID!
+  name: String
+  distance: Float
+  type: String
+  time: Int
+}
+```
+
+While the Strava API gives us more fields than that, we'll only create GraphQL fields for the fields we want.
+
+## Add a Field to the `Query` Type
+
+In our app, we want to be able to send queries for the data from Strava. To do so, we'll create a query called `myActivities` that returns a list of activities:
+
+```graphql
+type Query {
+    ...
+    myActivities: [Activity!]!
+}
+```
+
+We'll make `Activity` non-nullable in this case, meaning that `myActivities` can't return null and all values within the returned array must be non-null. If `myActivities` returns an empty array, this will be valid because an empty array is not a null value.
+
+## Create a Resolver for `myActivities`
+
+Next, we'll create the query resolver for the `Query.myActivities` field. Resolvers are functions that return data for specific fields. Resolvers can be asynchronous and can fetch directly from REST APIs. We'll include `node-fetch` to help us with this task, but you can use `isomorphic-fetch`, `axios`, or whatever your favorite fetching tool is from npm:
+
+```
+npm install node-fetch
+```
+
+Then we'll use this in the resolver, and to handle the asynchronous nature of the request, we'll use async/await syntax:
+
+```javascript
+const resolvers = {
+  Query: {
+    myActivities: async () => {
+      let results = await fetch(
+        'https://www.strava.com/api/v3/activities?per_page=100'
+      ).then(r => r.json());
+
+      return results;
+    }
+  }
+};
+```
+
+We're looking to return an array of activities, so we can just convert the response to JSON and return it.
+
+## Pass Authorization Headers
+
+The final step is that we need to get an auth token from Strava and pass that via the request's headers. To obtain a token, you'll visit the [Strava API docs](https://developers.strava.com/docs/getting-started/) and follow the instructions.
+
+Then you can pass that token directly via the second argument sent to the `fetch` function:
+
+```javascript
+const resolvers = {
+  Query: {
+    myActivities: async () => {
+      let results = await fetch(
+        'https://www.strava.com/api/v3/activities?per_page=100',
+        {
+          headers: {
+            Authorization: 'Bearer <Your_Strava_Token_here>'
+          }
+        }
+      ).then(r => r.json());
+
+      return results;
+    }
+  }
+};
+```
+
+Replace the <Your_Strava_Token_here> bit with your own token.
+
+Fetching data from a REST API is a pretty common task when we're building GraphQL services, and usually the fastest way to get started is to incorporate `fetch`!
+
+If you'd like to review the project, you can [check out the repo](https://github.com/eveporcello/simple-strava-sample/).
