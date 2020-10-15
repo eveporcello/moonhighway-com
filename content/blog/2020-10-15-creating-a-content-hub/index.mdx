@@ -1,0 +1,406 @@
+---
+slug: creating-a-content-hub
+date: 2020-10-15
+title: 'Creating a Content Hub with GraphQL'
+description: 'Orchestrating GraphQL DataSources with Apollo Server'
+categories: ['graphql', 'javascript', 'apollo']
+keywords: ['graphql']
+banner: './images/pwmct.png'
+published: true
+---
+
+Many of the most common misconceptions about GraphQL have to do with the whereabouts of data. It's often thought of as a database. It's often thought of as a replacement to REST. It's often associated with a certain type of database.
+
+The real deal is that GraphQL can be placed in front of any data source. To demonstrate this recently, I got to be part of the true treat of a show, [Learn with Jason](https://www.learnwithjason.dev/). If you haven't seen the show before, the premise is that [Jason Lengstorf](https://twitter.com/jlengstorf) invites someone to teach him something, so I decided to teach him how to orchestrate a bunch of different data sources with GraphQL.
+
+I was recently watching the president be interviewed, and he was talking about a test that he took. Some sort of competency test. The way that he said that you could prove that you were understanding what's going on is that you'd be able to retrieve data, specifically a sequence of data. The sequence of data that the president had to retrieve was: Person, Woman, Man, Camera, TV. So on the show, we built an app that orchestrated those data types.
+
+_If you like videos more than reading blogs, [watch the video](https://www.youtube.com/watch?list=PLz8Iz-Fnk_eTpvd49Sa77NiF8Uqq5Iykx&v=cf0TtWA2p9E&feature=emb_title)!_
+
+## Project Setup
+
+We'll start by cloning this repo. In it, you'll find all of the start files and packages to install:
+
+```
+git clone https://github.com/eveporcello/pwmct.git
+cd pwmct
+npm install
+```
+
+The dependencies that were installed are:
+
+- `apollo-server`: A Node.js server for building GraphQL APIs
+- `apollo-datasource-rest`: A package for wrapping REST APIs with GraphQL Servers
+- `dotenv`: A package for processing environment variables
+- `mongodb`: A package for connecting to Mongo databases
+- `nodemon`: A package for restarting the GraphQL server when changes are made
+
+The project contains a starter server in the `src/index.js` file that contains the Apollo Server configuration.
+
+```javascript
+const { ApolloServer, gql } = require('apollo-server');
+
+require('dotenv').config();
+
+const typeDefs = gql`
+  type Query {
+    welcome: String!
+  }
+`;
+
+const resolvers = {
+  Query: {
+    welcome: () => 'hello!'
+  }
+};
+
+const start = async () => {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers
+  });
+
+  const PORT = process.env.PORT || 4000;
+
+  server
+    .listen({ port: PORT })
+    .then(({ port }) => console.log(`Apollo Server running at ${port}`));
+};
+
+start();
+```
+
+Once we have the dependencies installed, we can run `npm start` to serve up the project on `localhost:4000`. Then we can get to building our types. Do you remember what the first one is?
+
+## Person
+
+To create a person, we'll start with the schema. In the `index.js` within the `typeDefs` variable, we're going to create a `Person` type and a query field to query a person.
+
+```
+type Person {
+  _id: ID!
+  username: String!
+  name: String!
+  address: String!
+  birthdate: String!
+  email: String!
+}
+```
+
+The data for the person comes from a Mongo database, so we'll adjust our server to connect to this datasource. To start, we'll install `mongodb`:
+
+```
+npm install mongodb
+```
+
+Then we'll adjust the server configuration. We'll need to require `mongodb` first. Then we'll create the client by passing the `uri` of the database to the `MongoClient.connect` function. The `uri` is the location of the database. (_Note: To obtain one of these URI's, you can create a free MongoDB cloud account at: https://www.mongodb.com/cloud/atlas._) Then when we call the `.db()` function, we create the connection to the database.
+
+```javascript
+const MongoClient = require('mongodb').MongoClient;
+
+const start = async () => {
+  const uri = process.env.MONGO_URI;
+  const client = await MongoClient.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+  const db = client.db();
+};
+```
+
+We then need to make context available to all of the resolver functions that are part of the server. Context can be an object or function, and in this case since we're making an asynchronous connection to a database, we'll make it a function. We'll also need to pass `context` into the server constructor:
+
+```javascript
+const context = async () => {
+  const people = db.collection("customers");
+  return { people };
+};
+
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context
+};
+```
+
+Now that our resolvers have access to all of these database details, we can write a resolver function that can find a person by their username:
+
+```javascript
+const resolvers = {
+  Query: {
+    person: (parent, { username }, { people }) => {
+      return people.findOne({ username });
+    }
+  }
+};
+```
+
+Context is the third argument that is sent to any function, so this allows us to use MongoDB functions directly in the resolver. Finally, we can test this by running the following query on `localhost:4000`.
+
+```graphql
+query {
+  person(username: "charleshudson") {
+    username
+    name
+    address
+    birthdate
+  }
+}
+```
+
+If you'd like to try this without running the server, you can do so with the demo app at `https://pwmct.herokuapp.com`.
+
+We've added a `Person`. Next up (do you remember?) is `Woman`!
+
+## Woman
+
+The data that we'll use for woman is a JSON file which you'll find as `women.json`. Each record has a few fields:
+
+```json
+{
+  "id": 1,
+  "first": "Rachel",
+  "last": "Roberts",
+  "location": "Reno, NV"
+}
+```
+
+To start, we'll model this data with a type in the schema:
+
+```graphql
+type Woman {
+  id: ID!
+  first: String!
+  last: String!
+  location: String!
+}
+```
+
+Then in the schema, we'll create a `woman` query where we filter by their id:
+
+```graphql
+type Query {
+  woman(id: ID!): Woman!
+}
+```
+
+Next, we'll import `women` as a global and write a resolver that finds the correct woman in the data using JavaScript's `.find` method:
+
+```javascript
+const women = require('./women.json');
+
+const resolvers = {
+  Query: {
+    woman: (parent, { id }) => women.find(woman => id == woman.id)
+  }
+};
+```
+
+Now, we can send a query for this data:
+
+```graphql
+query {
+  woman(id: "1") {
+    id
+    first
+    last
+    location
+  }
+}
+```
+
+Check! We've incoproated our JSON data source. The next step is to query for a `Man`.
+
+## Man
+
+One of the oft-overlooked features of GraphQL is that you can use it to simply send a fetch request to a REST API. No need to tear anything down or do anything too fancy. You can literally use fetch to make this happen. The API that we'll use in this case is the Ron Swanson Quotes API. Man, right?
+
+The API lives at this endpoint: `https://ron-swanson-quotes.herokuapp.com/v2/quotes`. Each time we hit this endpoint, it will give us an array of a single Ron Swanson quote. With a fuller understanding of the API, we can create a type and its corresponding query operation:
+
+```graphql
+type Man {
+  quote: String!
+}
+
+type Query {
+  man: Man!
+}
+```
+
+Since we're fetching from an API, we'll need to incorporate a version of `fetch` that is compatible with Node. You can, of course, use Axios or any other data fetcher that you'd like.
+
+```
+npm install node-fetch
+```
+
+Then in the JavaScript file, we'll import `node-fetch` and create the resolver function:
+
+```javascript
+const resolvers = {
+  Query: {
+    man: async () => {
+      const [quote] = await fetch(
+        'https://ron-swanson-quotes.herokuapp.com/v2/quotes'
+      ).then(res => res.json());
+      return {
+        quote
+      };
+    }
+  }
+};
+```
+
+Once we fetch from the API, we'll parse the response as JSON with `.json()`, and we'll return an object with a single key: `quote`.
+
+To test this, we can send the following operation in the GraphQL Playground:
+
+```graphql
+query {
+  man {
+    quote
+  }
+}
+```
+
+This demonstrates how we can fetch from a REST API using a resolver, but one of the most common questions that I get about GraphQL is "IF WE ARE JUST FETCHING FROM A REST API, ISN'T THIS SLOW AND AREN'T THERE A LOT OF ROUNDTRIPS???" (People usually seem stressed out when they ask this.)
+
+The way that we can make these REST calls even more efficient is we can use [Apollo Data Sources](https://www.apollographql.com/docs/apollo-server/data/data-sources/). Apollo REST Data Sources are a way to encapsulate data fetching. You might choose this utility over `fetch` because the package will help you with caching, deduplication, and error handling.
+
+Let's use Apollo's REST Data Sources to help us grab some data from the Best Buy API. Yes, the Best Buy API.
+
+## Camera
+
+If you aren't currently a Best Buy API expert, you can check out [their very good documentation](https://bestbuyapis.github.io/api-documentation/). To make use of this data, you'll need to grab a Best Buy API key from their site. We want to model the API's data by creating a `Camera` type in the schema. We'll also create the `SortCategories` enum to enable sorting in the `camera` query. If we want to sort by `SKU` or `NAME`, we can supply those optional sort arguments:
+
+```graphql
+type Camera {
+  sku: String!
+  name: String!
+  salePrice: Float!
+}
+enum SortCategories {
+  SKU
+  NAME
+}
+
+type Query {
+  camera(sortBy: SortCategories): Camera!
+}
+```
+
+From here, we'll create the `RESTDataSource`. This is a class that will define some logic around fetching from the Best Buy API. To start, we'll create a `baseURL` for any product fetches:
+
+```javascript
+const { RESTDataSource } = require('apollo-datasource-rest');
+
+class BestBuyAPI extends RESTDataSource {
+  constructor() {
+    super();
+    this.baseURL = 'https://api.bestbuy.com/v1';
+  }
+}
+```
+
+Then we'll create a function that will request data about cameras specifically. This is a very long URL that we'll add to the asynchronous `getCamera` method:
+
+```javascript
+class BestBuyAPI extends RESTDataSource {
+  // ...
+  async getCamera(sortBy) {
+    const camera = await this.get(
+      `/products(categoryPath.name=digital%20cameras)?format=json&show=sku,name,salePrice,description&sort=${sortBy}&apiKey=${
+        process.env.BB_API_KEY
+      }`
+    ).then(data => data.products[0]);
+    return camera;
+  }
+}
+```
+
+Notice that we've imported the `BB_API_KEY` from our `.env` file. Once we've created this class, we'll need to add it to our server constructor as a new key:
+
+```javascript
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context,
+  dataSources: () => ({
+    bestBuyAPI: new BestBuyAPI()
+  })
+});
+```
+
+This makes the Best Buy API functions available to all resolvers via context. So our query will call that `getCamera` function directly from `dataSources`:
+
+```javascript
+Query: {
+  camera: (parent, { sortBy }, { dataSources }) =>
+    dataSources.bestBuyAPI.getCamera(sortBy);
+}
+```
+
+To test this, we can send the following query operation:
+
+```graphql
+query {
+  camera(sortBy: NAME) {
+    sku
+    name
+  }
+}
+```
+
+The first time we send this query, it will make a roundtrip to the server. On subsequent requests, it will be much faster because the request won't fetch from the API. Instead, the request will be sent to the cache.
+
+## TV
+
+Now it's time to include a query and type for a TV.
+
+```graphql
+type TV {
+  sku: String!
+  name: String!
+  salePrice: Float!
+}
+type Query {
+  tv(sortBy: SortCategories!): TV!
+}
+```
+
+Since we already have our Data Source set up, we are going to be able to add an additional method for getting a TV:
+
+```javascript
+class BestBuyAPI extends RESTDataSource {
+  // ...
+  async getTV(sortBy) {
+    const tv = await this.get(
+      `/products(categoryPath.name=TVs)?format=json&show=sku,name,salePrice,description&sort=${sortBy}&apiKey=${
+        process.env.BB_API_KEY
+      }`
+    ).then(data => data.products[0]);
+    return tv;
+  }
+}
+```
+
+Just as we did before, we'll also use this method in the resolver for `tv`:
+
+```
+Query: {
+  tv: (parent, { sortBy }, { dataSources }) =>
+    dataSources.bestBuyAPI.getTV(sortBy);
+}
+```
+
+Finally, we should be able to send a query for a TV in the GraphQL Playground:
+
+```graphql
+query {
+  tv(sortBy: NAME) {
+    sku
+    name
+  }
+}
+```
+
+We did it. Person. Woman. Man. Camera. TV. All of this data comes from different places (Mongo, JSON files, REST APIs), but the GraphQL API will pull everything together in one location.
