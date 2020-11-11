@@ -8,6 +8,7 @@ keywords: ['graphql', 'learning']
 banner: './images/tacos.jpg'
 published: true
 ---
+
 It's 5:55pm on a Friday night. It's your night to cook, and you don't have a recipe. This wouldn't be that big of a deal if you hadn't bragged about the new taco recipe that you were going to cook on Friday night. But you had no recipe. You lied.
 
 You really don't want to be seen as a bragger and a liar. One or the other, fine, but both? It's a bridge too far. You need to find a recipe, and you need to find it now.
@@ -28,12 +29,11 @@ npm install graphql apollo-server
 Then create a file called `index.js`, and add the following:
 
 ```javascript
-const { ApolloServer } = require("apollo-server");
+const { ApolloServer } = require('apollo-server');
 
 const server = new ApolloServer({});
 
-server.listen().then(({ url }) => 
-    console.log(`Server running on port ${url}`));
+server.listen().then(({ url }) => console.log(`Server running on port ${url}`));
 ```
 
 You'll require `ApolloServer`, your GraphQL server library of choice, from the `apollo-server` package. Then create a new instance of the `ApolloServer`. Then you'll run it, and it will listen on port 4000.
@@ -68,7 +68,7 @@ npm install node-fetch
 Add this to your list of require statements at the top of the file too:
 
 ```javascript
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
 ```
 
 Then create the resolvers object. These functions will return the data we need for the `recipeURL`:
@@ -91,7 +91,7 @@ const resolvers = {
   Query: {
     recipeURL: async () => {
       let taco = await fetch(
-        "http://taco-randomizer.herokuapp.com/random/"
+        'http://taco-randomizer.herokuapp.com/random/'
       ).then(res => res.json());
       console.log(taco);
     }
@@ -139,7 +139,7 @@ const resolvers = {
   Query: {
     recipeURL: async () => {
       let taco = await fetch(
-        "http://taco-randomizer.herokuapp.com/random/"
+        'http://taco-randomizer.herokuapp.com/random/'
       ).then(res => res.json());
       return taco.base_layer.url;
     }
@@ -171,4 +171,4 @@ You get the response:
 
 Copy and paste the URL into the browser, and you have your recipe. You did it. Dinner is saved. Your integrity is saved. All thanks to a simple GraphQL server.
 
-*Want to learn more about building a GraphQL server? Check out this great tutorial about [building APIs with GraphQL, Node.js, and TypeScript](https://www.toptal.com/graphql/graphql-nodejs-api).*
+_Want to learn more about building a GraphQL server? Check out this great tutorial about [building APIs with GraphQL, Node.js, and TypeScript](https://www.toptal.com/graphql/graphql-nodejs-api)._

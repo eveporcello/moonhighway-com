@@ -138,11 +138,11 @@ Before we program the `authorizeWithGithub` resolver, we'll need to build two fu
 
 ```javascript
 const requestGithubToken = credentials =>
-  fetch("https://github.com/login/oauth/access_token", {
-    method: "POST",
+  fetch('https://github.com/login/oauth/access_token', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
     },
     body: JSON.stringify(credentials)
   })
@@ -289,5 +289,3 @@ query currentUser {
 When you run this query, you will be identified. A good test is to try to run this query without the authorization header or with an incorrect token. Given a wrong token or missing header, you'll see that the `me` query is null.
 
 There is no "one true way" to handle user authentication and authorization with GraphQL, but using a social OAuth solution like GitHub can be a quick way to get started. The process of passing tokens might differ slightly for Facebook, Google, or Auth0, but the main ideas will be consistent. We can use mutations to authenticate and authorize users and then with the data saved about a valid user, we can write queries for that user data.
-
-In the next part of this series, we will look at how to set up authorization with GraphQL clients, specifically Apollo Client.

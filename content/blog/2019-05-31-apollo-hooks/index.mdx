@@ -78,7 +78,7 @@ Now we'll need some tools to use the client with React:
 npm i @apollo/react-hooks graphql-tag
 ```
 
-This installs `@apollo/react-hooks`, the Hooks library that is the subject of this article along with the `graphql-tag` function that we will be using when we define our operations. 
+This installs `@apollo/react-hooks`, the Hooks library that is the subject of this article along with the `graphql-tag` function that we will be using when we define our operations.
 
 Finally, we need `styled-components` to help us build status indicators:
 
@@ -91,16 +91,16 @@ npm i styled-components
 First, we need to set up an instance of the Apollo Client and add it to React Context using a Provider. In the `./src/index.js` file, add the following code:
 
 ```javascript
-import React from "react";
-import { render } from "react-dom";
-import { ApolloClient } from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { createHttpLink } from "apollo-link-http";
-import { ApolloProvider } from "@apollo/react-hooks";
-import App from "./App";
+import React from 'react';
+import { render } from 'react-dom';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { createHttpLink } from 'apollo-link-http';
+import { ApolloProvider } from '@apollo/react-hooks';
+import App from './App';
 
 // 1. Create Apollo Client instance
-const link = createHttpLink({ uri: "http://snowtooth.moonhighway.com" });
+const link = createHttpLink({ uri: 'http://snowtooth.moonhighway.com' });
 const cache = new InMemoryCache();
 const client = new ApolloClient({ link, cache });
 
@@ -109,7 +109,7 @@ render(
   <ApolloProvider client={client}>
     <App />
   </ApolloProvider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 ```
 
@@ -120,10 +120,10 @@ Then, we'll create a new instance of the Apollo Client using a http link to mana
 We are now ready to incorporate our first hook, the `useQuery` hook. We will use this hook in the main `<App />` component where we will display the lifts along with their current status. Open, or create and open, the `./src/App.js` file and add the following code:
 
 ```javascript
-import React from "react";
-import styled from "styled-components";
-import gql from "graphql-tag";
-import { useQuery } from "@apollo/react-hooks";
+import React from 'react';
+import styled from 'styled-components';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
 
 const QUERY = gql`
   query {
@@ -190,27 +190,27 @@ return (
 );
 ```
 
-This table displays the name and status of each lift. That information is available in `data.allLifts`. A table row `<tr>` is created for each lift. Nested within the row, a table cell `<td>` is created for the lift's name and status. 
+This table displays the name and status of each lift. That information is available in `data.allLifts`. A table row `<tr>` is created for each lift. Nested within the row, a table cell `<td>` is created for the lift's name and status.
 
 It's time to use `styled-components`. Let's a visual indicator to display the current status:
 
 ```javascript
-const StatusIndicator = ({ status = "CLOSED", onChange = f => f }) => (
+const StatusIndicator = ({ status = 'CLOSED', onChange = f => f }) => (
   <>
     <Circle
       color="green"
-      selected={status === "OPEN"}
-      onClick={() => onChange("OPEN")}
+      selected={status === 'OPEN'}
+      onClick={() => onChange('OPEN')}
     />
     <Circle
       color="yellow"
-      selected={status === "HOLD"}
-      onClick={() => onChange("HOLD")}
+      selected={status === 'HOLD'}
+      onClick={() => onChange('HOLD')}
     />
     <Circle
       color="red"
-      selected={status === "CLOSED"}
-      onClick={() => onChange("CLOSED")}
+      selected={status === 'CLOSED'}
+      onClick={() => onChange('CLOSED')}
     />
   </>
 );
@@ -218,9 +218,9 @@ const StatusIndicator = ({ status = "CLOSED", onChange = f => f }) => (
 const Circle = styled.div`
   border-radius: 50%;
   background-color: ${({ color, selected }) =>
-    selected ? color : "transparent"};
+    selected ? color : 'transparent'};
   border: solid 2px ${({ color }) => color};
-  border-width: ${({ selected }) => (selected ? "0" : "2")};
+  border-width: ${({ selected }) => (selected ? '0' : '2')};
   width: 20px;
   height: 20px;
   float: left;
@@ -253,7 +253,7 @@ Now a visual indicator visually displays each lifts status.
 With the clickable `StatusIndicator` in place, we are ready to incorporate the `useMutation` hook. Go ahead and import this hook to the current file:
 
 ```javascript
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation } from '@apollo/react-hooks';
 ```
 
 And add the `SetLiftStatus` mutation to the file right below the `QUERY`:
@@ -311,16 +311,16 @@ This installs the `apollo-link-ws`, a link that we can use to handle networking 
 We'll need to use these packages in our client configuration, add them to `index.js`:
 
 ```javascript
-import { WebSocketLink } from "apollo-link-ws";
-import { split } from "apollo-link";
-import { getMainDefinition } from "apollo-utilities";
+import { WebSocketLink } from 'apollo-link-ws';
+import { split } from 'apollo-link';
+import { getMainDefinition } from 'apollo-utilities';
 ```
 
 Now replace the `link` that we use to create `client` instance. We'll actually need to create two links: one for http requests, and another for websockets. We'll also need to use a function to decide when to use which link.
 
 ```javascript
 const httpLink = createHttpLink({
-  uri: "http://snowtooth.moonhighway.com"
+  uri: 'http://snowtooth.moonhighway.com'
 });
 const wsLink = new WebSocketLink({
   uri: `ws://snowtooth.moonhighway.com/graphql`,
@@ -332,7 +332,7 @@ const wsLink = new WebSocketLink({
 const link = split(
   ({ query }) => {
     const { kind, operation } = getMainDefinition(query);
-    return kind === "OperationDefinition" && operation === "subscription";
+    return kind === 'OperationDefinition' && operation === 'subscription';
   },
   wsLink,
   httpLink
@@ -341,12 +341,12 @@ const link = split(
 
 Here we renamed the `link` to `httpLink`. This link will work as it did before. It will send queries and mutations to [http://snowtooth.moonhighway.com](http://snowtooth.moonhighway.com). Below that we created a second link, the `wsLink`. This link is used to connect to the websocket at `ws://snowtooth.moonhighway.com/graphql`. In the `options` we tell this link to attempt to automatically reconnect when the connection is dropped. We have also set the `lazy` option to `true` which prevents our link from connecting to the web socket until the client has been asked to subscribe. No need to connect to a socket when there is not a subscription.
 
-The Apollo Client can only use one `link` at a time, so we use the `split` function to split between the `httpLink` and the `wsLink`. The first argument sent to this function is a *predicate*. A *predicate* is a function that only returns `true` or `false`. In this case, it is a function that checks the current operation to see if it is a subscription operation. If this function returns true, the next argument, the `wsLink`, will be used. If the predicate returns `false`, as it will when the operation is a query or a mutation, the value of the third argument sent to the `split` function will be used. This is the `httpLink`. With our new link in place the Apollo Client is ready to handle the `useSubscription` hook.
+The Apollo Client can only use one `link` at a time, so we use the `split` function to split between the `httpLink` and the `wsLink`. The first argument sent to this function is a _predicate_. A _predicate_ is a function that only returns `true` or `false`. In this case, it is a function that checks the current operation to see if it is a subscription operation. If this function returns true, the next argument, the `wsLink`, will be used. If the predicate returns `false`, as it will when the operation is a query or a mutation, the value of the third argument sent to the `split` function will be used. This is the `httpLink`. With our new link in place the Apollo Client is ready to handle the `useSubscription` hook.
 
 Next, we will need to import the `useSubscription` hook:
 
 ```javascript
-import { useQuery, useMutation, useSubscription } from "@apollo/react-hooks";
+import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks';
 ```
 
 Now, we will need to add the GraphQL subscription to the page right below the `QUERY` and the `MUTATION`:
@@ -378,4 +378,9 @@ Now we have an app that the ski patrol can use to change lift status in real tim
 
 The project is running here on CodeSandbox:
 
-<iframe src="https://codesandbox.io/embed/green-lake-zgb1d?fontsize=14" title="green-lake-zgb1d" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe
+  src="https://codesandbox.io/embed/green-lake-zgb1d?fontsize=14"
+  title="green-lake-zgb1d"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>

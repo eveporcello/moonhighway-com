@@ -37,9 +37,7 @@ In the book, we used a class component for the `StarRating` and a function compo
 
 ```javascript
 const Star = ({ selected = false, onClick = f => f }) => (
-  <div 
-    className={selected ? "star selected" : "star"} 
-    onClick={onClick} />
+  <div className={selected ? 'star selected' : 'star'} onClick={onClick} />
 );
 ```
 
@@ -83,13 +81,18 @@ class StarRating extends React.Component {
 
 render(
   <StarRating totalStars={5} />,
-  document.getElementById("react-container")
+  document.getElementById('react-container')
 );
 ```
 
 You can also check this out on CodeSandbox:
 
-<iframe src="https://codesandbox.io/embed/k9pqp90mw3?fontsize=14" title="StarRating - Class Component Version" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe
+  src="https://codesandbox.io/embed/k9pqp90mw3?fontsize=14"
+  title="StarRating - Class Component Version"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>
 
 This looks pretty good, but we can make it better with Hooks.
 
@@ -107,9 +110,7 @@ This step was the easy one. Since the `Star` is already a function, we didn't ha
 
 ```javascript
 const Star = ({ selected = false, onClick = f => f }) => (
-  <div 
-    className={selected ? "star selected" : "star"} 
-    onClick={onClick} />
+  <div className={selected ? 'star selected' : 'star'} onClick={onClick} />
 );
 ```
 
@@ -118,7 +119,7 @@ const Star = ({ selected = false, onClick = f => f }) => (
 Next, let's refactor the class component and make it a function. We'll start with `ReactDOM.render`. We want to render the `StarRating` and pass it a property: `totalStars`:
 
 ```javascript
-render(<StarRating totalStars={5} />, document.getElementById("root"));
+render(<StarRating totalStars={5} />, document.getElementById('root'));
 ```
 
 Next up, we'll refactor the `StarRating` component, passing it `totalStars` as a property:
@@ -149,7 +150,7 @@ We need to update the `onClick` handler for the `Star` because the `StarRating` 
 Hooks allow you to use state without writing a class. When the `StarRating` was a class, we had a state variable for `starsSelected` and a method called `change` to set the state of `starsSelected` to something else. We'll use this same state variable in the function component:
 
 ```javascript
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const StarRating = ({ totalStars }) => {
   const [starsSelected] = useState(0);
@@ -194,6 +195,11 @@ Pretty slick, right? We didn't have to make too many changes at all. Just a quic
 
 Here's the whole thing on CodeSandbox:
 
-<iframe src="https://codesandbox.io/embed/v0n20v6143?fontsize=14" title="Hooks - Star Rating" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe
+  src="https://codesandbox.io/embed/v0n20v6143?fontsize=14"
+  title="Hooks - Star Rating"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>
 
 When [Hooks were announced at ReactConf](https://www.youtube.com/watch?v=dpw9EHDh2bM), there was a mad rush to start using them as much as possible. That makes sense because they are very cool. You don't need to rush though. Start by refactoring a few small components, perhaps components that you are very familiar with. We've written this `StarRating` countless times in our book and in our workshops. It's exciting to see this old friend look better than ever with Hooks.

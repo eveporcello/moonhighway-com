@@ -45,7 +45,7 @@ npm i apollo-client graphql
 All of the changes we'll make to our mini app will happen in the `src/index.js` file. The first change is that we'll highlight everything in the file and delete it. Then we'll create the client and log whatever the client is to the console:
 
 ```javascript
-import { ApolloClient } from "apollo-client";
+import { ApolloClient } from 'apollo-client';
 
 const client = new ApolloClient();
 
@@ -61,15 +61,15 @@ npm i apollo-link-http apollo-cache-inmemory
 These packages are going to help us connect to our GraphQL API and set up a local cache. Once installed, we'll import and use them in the `index.js` file. Let's start with the imports:
 
 ```javascript
-import { createHttpLink } from "apollo-link-http";
-import { InMemoryCache } from "apollo-cache-inmemory";
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 ```
 
 Then we'll use these helpers in the client constructor:
 
 ```javascript
 const client = new ApolloClient({
-  link: createHttpLink({ uri: "https://snowtooth.moonhighway.com" }),
+  link: createHttpLink({ uri: 'https://snowtooth.moonhighway.com' }),
   cache: new InMemoryCache()
 });
 ```
@@ -89,7 +89,7 @@ npm install graphql-tag
 Once installed, we'll import a function called `gql` from `graphql-tag` and wrap the query that we want to send to the API in this tag:
 
 ```javascript
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 const query = gql`
   query {
@@ -119,13 +119,13 @@ This object gives us all of the data from the query on the key called `data`. We
 Another thing we can take a look at with a console log message is the cache:
 
 ```javascript
-console.log("Cache", client.cache);
+console.log('Cache', client.cache);
 ```
 
 This will show the entire client cache object. We can drill down into the data response as well with:
 
 ```javascript
-console.log("Cache", client.extract());
+console.log('Cache', client.extract());
 ```
 
 The data is cached on a key called `ROOT_QUERY`. Then we see the data added to an index on the query value. For example, if we ask for `allLifts`, the first lift will be cached at `allLifts.0`, the second lift cached at `allLifts.1`, and so on.
@@ -140,4 +140,10 @@ Apollo Client doesn't require you to use any sort of specific UI library. Everyt
 
 Check out the project running on CodeSandbox:
 
-<iframe src="https://codesandbox.io/embed/adoring-dewdney-kp3e8?fontsize=14" title="apollo-client-quick-setup" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe
+  src="https://codesandbox.io/embed/adoring-dewdney-kp3e8?fontsize=14"
+  title="apollo-client-quick-setup"
+  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>

@@ -8,6 +8,7 @@ keywords: ['graphql']
 banner: './images/mailbox.jpg'
 published: true
 ---
+
 We don't have a mailbox. The postman will not deliver mail to us where we live. We know. We were mad about it too before we realized that we get a free PO BOX at the local post office. All of our mail and all of our packages are delivered through one tiny box. Our PO BOX handles letters just fine. They can easily be delivered and collected through this box. However, packages present a different problem. The mail carrier cannot put our packages inside of our tiny mailbox. Instead they store the package in a large locker and leave a small key inside of our PO BOX. We collect the key and use it to find and unlock the locker that stores our package.
 
 What does any of this have to do with GraphQL? A GraphQL request is kind of like our PO BOX. It has limitations. Specifically, we can only send and receive data that can be parsed as JSON text in a GraphQL operation. Just like our PO BOX handles letters without issue, GraphQL handles sending and receiving text without issue.
@@ -54,11 +55,11 @@ const getFileDetails = file =>
     let filesize = 0;
     let stream = createReadStream();
 
-    stream.on("data", chunk => {
+    stream.on('data', chunk => {
       filesize += chunk.length;
     });
 
-    stream.once("end", () =>
+    stream.once('end', () =>
       resolves({
         filename,
         mimetype,
@@ -66,7 +67,7 @@ const getFileDetails = file =>
       })
     );
 
-    stream.on("error", rejects);
+    stream.on('error', rejects);
   });
 ```
 
@@ -85,10 +86,10 @@ The `graphql-upload` package has a counterpart: [apollo-upload-client](https://g
 The `createUploadLink` function will create an `ApolloLink` that works like the `HttpLink`, but additionally it supports file uploads:
 
 ```javascript
-import { ApolloClient, InMemoryCache } from "apollo-boost";
-import { createUploadLink } from "apollo-upload-client";
+import { ApolloClient, InMemoryCache } from 'apollo-boost';
+import { createUploadLink } from 'apollo-upload-client';
 
-const link = createUploadLink({ uri: "http://localhost:4000" });
+const link = createUploadLink({ uri: 'http://localhost:4000' });
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({ cache, link });
@@ -113,9 +114,9 @@ When you want to upload a file from the client, it is important to make sure tha
 File input types have a field called `files`. This field, found in `e.target.files`, contains an array of files. It is possible to upload more than one file at once. Since we are only uploading one file at a time are using array destructuring to obtain the first `file` from the array. Now that we have the `file`, we can pass it in the mutation. Here is an example of the full component used to send the `submitAFile` mutation to our API:
 
 ```javascript
-import React from "react";
-import { gql } from "apollo-boost";
-import { Mutation } from "react-apollo";
+import React from 'react';
+import { gql } from 'apollo-boost';
+import { Mutation } from 'react-apollo';
 
 const UPLOAD_MUTATION = gql`
   mutation submit($file: Upload!) {
@@ -193,8 +194,8 @@ Notice that the above code contains an `input` element that invokes a function c
 
 ```javascript
 // A reference to the input element that will contain the file
-const inputFile = document.getElementById("file-to-upload");
-const results = document.getElementById("results");
+const inputFile = document.getElementById('file-to-upload');
+const results = document.getElementById('results');
 
 // The function that is invoked when a user selects the file
 async function sendFile() {
@@ -226,26 +227,26 @@ async function sendFile() {
   // This map is used to associate the file saved in the body
   // of the request under "0" with the operation variable "variables.file"
   const map = {
-    "0": ["variables.file"]
+    '0': ['variables.file']
   };
 
   // This is the body of the request
   // the FormData constructor builds a multipart/form-data request body
   // Here we add the operation, map, and file to upload
   const body = new FormData();
-  body.append("operations", JSON.stringify(operation));
-  body.append("map", JSON.stringify(map));
+  body.append('operations', JSON.stringify(operation));
+  body.append('map', JSON.stringify(map));
   body.append(0, theFile);
 
   // Create the options of our POST request
   const opts = {
-    method: "POST",
+    method: 'POST',
     body
   };
 
   // Send the fetch request to the API
   // Parse the response as json and obtain the resulting data
-  const { data } = await fetch("http://localhost:4000/graphql", opts).then(
+  const { data } = await fetch('http://localhost:4000/graphql', opts).then(
     res => res.json()
   );
 
@@ -256,13 +257,13 @@ async function sendFile() {
 
 // A function to reset the form so users can add another file
 function reset() {
-  inputFile.style = " display: block; ";
-  results.innerHTML = "";
+  inputFile.style = ' display: block; ';
+  results.innerHTML = '';
 }
 
 // A function that displays the results on the page
 function showStats({ filename, mimetype, filesize }) {
-  inputFile.style = " display: none; ";
+  inputFile.style = ' display: none; ';
   results.innerHTML = `
     <p>
       <b>name</b>: ${filename}

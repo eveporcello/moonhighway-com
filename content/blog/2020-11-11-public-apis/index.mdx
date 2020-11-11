@@ -1,0 +1,126 @@
+---
+slug: public-graphql-apis
+date: 2020-11-11
+title: 'Free Public GraphQL APIs'
+description: 'Start querying today with these APIs'
+categories: ['graphql', 'javascript', 'apollo']
+keywords: ['graphql']
+banner: './images/free.jpg'
+published: true
+---
+
+One of the most genius things that the creators of GraphQL ever did was give us GraphiQL. GraphiQL is an in-browser tool that you can use to send queries to a GraphQL API. To start working with GraphQL, you don't have to build a server. You don't have to write a parser. You don't have to set up a client solution. Instead, you can just start sending queries.
+
+In this article, we'll take a look at a few public APIs that you can use to start sending queries right away!
+
+## SpaceX
+
+[https://api.spacex.land/graphql/](https://api.spacex.land/graphql/)
+
+A robust API to start practicing with is the SpaceX API. In it, you'll find all of the SpaceX missions and a lot of different fields to query. For example, you could send a query for past launches:
+
+```graphql
+query {
+  launchesPast(limit: 10) {
+    mission_name
+    launch_date_local
+    launch_site {
+      site_name_long
+    }
+  }
+}
+```
+
+The field takes in a `limit` argument meaning that it will give you the most recent 10 launches. This API was created by my friend, [Carlos Rufo](https://twitter.com/swcarlosrj), who does a ton of great things for the GraphQL community so follow him on Twitter!
+
+## The Original: SWAPI
+
+[https://graphql.org/swapi-graphql](https://graphql.org/swapi-graphql)
+
+When GraphQL was first open sourced in 2015, the first demo API was SWAPI (the Star Wars API). This was a GraphQL version of a REST API so really showed the comparison between the two technologies.
+
+```graphql
+query {
+  allFilms {
+    films {
+      title
+    }
+  }
+}
+```
+
+One thing to note is that SWAPI only shows the old Star Wars films, not the ones from the most recent decade. This is not a big deal, but if you're demoing with this API, people will tell you that the list of films is wrong. I've been there.
+
+## GitHub
+
+[https://developer.github.com/v4/explorer/](https://developer.github.com/v4/explorer/)
+
+One of the biggest companies to place a big bet on GraphQL was GitHub. This API has been a really important learning resource for me as I've learned more about GraphQL. Not only can you send queries, but you can learn about how a schema is designed for an enterprise company.
+
+It's also fun to be able to query your live data. For example, you can query to see when you created your GitHub account:
+
+```graphql
+query {
+  user(login: "your-username-here") {
+    createdAt
+  }
+}
+```
+
+I created a whole course about this API back in 2017 that still works! If you want to check it out on LinkedIn Learning, it's [here](https://www.linkedin.com/learning/learning-graphql).
+
+## Rick and Morty
+
+[https://rickandmortyapi.com/graphql](https://rickandmortyapi.com/graphql)
+
+Back when you could stay at Airbnbs with your friends, I stayed with my friends at an Airbnb. During this stay, I watched one episode of Rick and Morty because someone put it on. I guess what I'm trying to say is that I don't know anything about Rick and Morty but I do know that you can send queries to get data about the show.
+
+For example, you could send a query for some episodes by their ids. This query takes in an array of episode ids and then you can select details.
+
+```graphql
+query {
+  episodesByIds(ids: [1, 2]) {
+    name
+    characters {
+      name
+    }
+  }
+}
+```
+
+The data returned truly means nothing to me, but it's still fun to see a query work!
+
+## OneGraph GraphiQL
+
+[https://www.onegraph.com/graphiql](https://www.onegraph.com/graphiql)
+
+OneGraph is kind of an outlier here. It's not just one public API. It's many, all wrapped up into a single GraphiQL interface. The GraphiQL explorer allows you to send queries to numerous APIs in a single request and also allows for authentication and code exporting for client use.
+
+For example, I could send a query to get all of the tweets in my timeline from Twitter (you will have to authorize Twitter, but this box will pop up automatically when you add these fields). Then I can look at the articles on DevTo, all in the same query:
+
+```graphql
+query TwitterDevTo {
+  twitter {
+    homeTimeline {
+      tweets {
+        text
+      }
+    }
+  }
+  devTo {
+    articles {
+      nodes {
+        title
+      }
+    }
+  }
+}
+```
+
+OneGraph knows that the future of data fetching will be modeled around consuming data from public and private APIs in queries. This is an exciting project to learn about by practicing in the GraphiQL explorer.
+
+--
+
+Practicing sending queries to a public GraphQL API is a very useful learning activity. Not only will you learn about how to send queries, but you'll pick up tips about schema design along the way!
+
+_Which ones are we missing? What are your favorite APIs?_

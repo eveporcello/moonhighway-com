@@ -61,11 +61,7 @@ Let's consider another mutation, but instead of destroying something, let's crea
 
 ```graphql
 type Mutation {
-  addSong(
-    title: String! 
-    numberOne: Boolean
-    performerName: String!
-  ): Song!
+  addSong(title: String!, numberOne: Boolean, performerName: String!): Song!
 }
 ```
 
@@ -110,7 +106,7 @@ The above can be used to create new songs. Because this mutation returns `Song` 
 
 ## Sending Arguments as Variables
 
-So far, we've sent mutation arguments inline directly with the query text. It can be difficult to collect data from your applications this way. As an alternative, you could use input variables. Variables replace the static value in the query so that we can pass dynamic values instead. 
+So far, we've sent mutation arguments inline directly with the query text. It can be difficult to collect data from your applications this way. As an alternative, you could use input variables. Variables replace the static value in the query so that we can pass dynamic values instead.
 
 Let's consider our addSong mutation. Instead of dealing with strings, we'll use variable names which in GraphQL are always preceded by a `$` character:
 
