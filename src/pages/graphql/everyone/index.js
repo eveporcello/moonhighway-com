@@ -67,13 +67,29 @@ export default function GraphQLPage() {
           </h2>
           <h5>Length: 1 Hour, Free</h5>
           <h5>
-            <span role="img">🎟</span> Registration Coming Soon!
+            <span role="img">🎟</span> Register Now!
           </h5>
           <ul>
-            <li>March 8, 2021, 9:00AM Pacific</li>
-            <li>April 12, 2021, 9:00AM Pacific</li>
-            <li>May 10, 2021, 9:00AM Pacific</li>
-            <li>June 14, 2021, 9:00AM Pacific</li>
+            <li>
+              <a href="https://us02web.zoom.us/webinar/register/WN_hGssylwmQLqOE2LTRZ-BUQ">
+                March 8, 2021, 9:00AM Pacific
+              </a>
+            </li>
+            <li>
+              <a href="https://us02web.zoom.us/webinar/register/WN_RriYL85jRP6uY85cbibeKA">
+                April 12, 2021, 9:00AM Pacific
+              </a>
+            </li>
+            <li>
+              <a href="https://us02web.zoom.us/webinar/register/WN_cWRbuhBpSAi5eTwKJM8_TA">
+                May 10, 2021, 9:00AM Pacific
+              </a>
+            </li>
+            <li>
+              <a href="https://us02web.zoom.us/webinar/register/WN_C3dzeo11RVCrHHeoeuYbqw">
+                June 14, 2021, 9:00AM Pacific
+              </a>
+            </li>
           </ul>
           <p>
             If you're looking to start working with GraphQL, this webinar is the
