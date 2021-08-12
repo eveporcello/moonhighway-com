@@ -70,9 +70,14 @@ export default function GraphQLPage() {
             <span role="img">🎟</span> Register Now!
           </h5>
           <ul>
+          <li>
+              <a href="https://us02web.zoom.us/webinar/register/WN_JLJ1QSbDSc2SyLSxLNUT8Q">
+                September 16, 2021, 9:00AM Pacific
+              </a>
+            </li>
             <li>
-              <a href="https://us02web.zoom.us/webinar/register/WN_C3dzeo11RVCrHHeoeuYbqw">
-                June 14, 2021, 9:00AM Pacific
+              <a href="https://us02web.zoom.us/webinar/register/WN_6k3u5yFgS2ewAcaOVZQyTw">
+                October 8, 2021, 9:00AM Pacific
               </a>
             </li>
           </ul>
